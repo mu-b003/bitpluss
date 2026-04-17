@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bitpluss</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+ 
+<div class="logo">
+    <a href="index.html" style="text-decoration: none;">
+        <span style= " color: #ffffff; font-weight: bold; font-size: 18px; font-family: sans-serif;">BIT+</span>
+    </a>
+</div>  
+
+
+  <nav>
+    <a href="https://github.com/mu-b003" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="nots.html">Notes</a>
+    <a href="script.html">Scripts</a>
+    <a href="linux.html">Linux</a>
+  </nav>
+</header>
+
+<div class="content-container">
+  <div class="texi-title">
+   
+    <div class="main-box">
+  <div class="top-section">
+  <h3 class="main-title">LINUX</h3>
+  </div>
+
+  <div class="content-section">
+    <p>نظام لينكس Linux هو نواة Kernel لنظام تشغيل حر ومفتوح المصدر وهو يمثل العمود الفقري لمعظم الخوادم، الأنظمة السحابية، وحتى الهواتف الذكية أندرويد في الأصل، لينكس هو "نواة"  Kernel  طوّرها لينوس تورفالدس عام 1991. ومع دمجها بأدوات مشروع "جنو"  GNU ، أصبح لدينا نظام تشغيل متكامل. أهم ما يميزه أنه مفتوح المصدر  Open Source ، مما يعني أن أي شخص يمكنه رؤية الكود البرمجي و تعديله وتوزيعه.</p>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775055022/l59_ahefsp.png" class="images">
+    <details open>
+      <summary>إدارة الملفات والمجلدات (File and folder management)</summary>
+      <h3>عرض الملفات</h3>
+      <p>يعرض الملفات داخل المجلد الحالي <pre>ls</pre></p>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774983518/l1_gtybki.png" class="images">
+      <p>يعرض التفاصيل الحجم + الصلاحيات <pre>ls -l</pre></p>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774983633/l2_asv6ar.png" class="images">
+      <p>يعرض المجلدات بشكل شجرة <pre>tree</pre></p>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774983708/l3_xxapr0.png" class="images">
+      <P>التنقل</P>
+      <p>الدخول إلى مجلد <pre>cd Documents</pre></p>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774983788/l4_b7mxkg.png" class="images">
+      <p>الرجوع للخلف  <pre>cd ..</pre></p>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774983881/l5_izysb7.png" class="images">
+      <P>معرفة المسار</P>
+      <p>يظهر مكانك الحالي <pre>pwd</pre></p>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774983957/l6_gvlrjq.png" class="images">
+      <P>إنشاء ملف</P>
+      <p>ينشئ ملف جديد <pre>touch file.txt</pre></p>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774985118/l7_gaxmb1.png" class="images">
+      <P>إنشاء مجلد</P>
+      <p>ينشئ مجلد باسم <pre>mkdir test</pre></p>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774985298/l8_u8pjav.png" class="images">
+      <P>حذف ملف <pre>rm file.txt</pre></P>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774985493/l9_s4czyp.png" class="images">
+      <P>حذف مجلد فارغ <pre>rmdir test1</pre></P>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774985669/l10_uunaqd.png" class="images">
+      <P>حذف مجلد مع محتوياته <pre>rm -r test1</pre></P>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774985959/l11_a9eqpt.png" class="images">
+      <P>نسخ ملف <pre>cp file1.txt copy.txt</pre></P>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774986171/l12_tdkjsl.png" class="images">
+      <P>نقل أو إعادة تسمية</P>
+      <p>تغيير الاسم <pre>mv file1.txt newname.txt</pre></p>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774986352/l13_fht00d.png" class="images">
+      <p>نقل الملف إلى مجلد <pre>mv file1.txt test/</pre></p>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774986558/l14_kw8qnp.png" class="images">
+      <p>يبحث عن ملف داخل المجلد الحالي <pre>find . -name "file1.txt"</pre></p>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774986832/l15_vxi7os.png" class="images">
+      <P>البحث السريع</P>
+      <p>بحث سريع  قد يحتاج تحديث قاعدة البيانات <pre>locate file1.txt</pre></p>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774986989/l16_dzvdcn.png" class="images">
+      <P>تغيير الصلاحيات</P>
+      <p>يعطي كل الصلاحيات <pre>chmod 777 file2.txt</pre></p>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774987178/l17_sewjkb.png" class="images">
+      <hr>
+    </details>
+
+    <details>
+      <summary>عرض وقراءة الملفات (View and read files)</summary>
+      <h3>اضافة محتوى للملف</h3>
+      <p>اضافة محتوى للملف <pre>echo "Hello Linux" > file2.txt</pre></p>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774988301/l19_qimqjc.png" class="images">
+      <P>عرض محتوى الملف</P>
+      <p>يعرض كل محتوى الملف دفعة واحدة <pre>cat file2.txt</pre></p>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774988453/l20_ukilju.png" class="images">
+      <P>عرض تدريجي</P>
+      <p>يسمح لك تقرأ الملف صفحة صفحة استخدم:↑ ↓ للتنقلq للخروج <pre>less file2.txt</pre></p>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774988745/l21_rgssif.png" class="images">
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774988893/l22_ur9fbi.png" class="images">
+      <P>عرض بسيط</P>
+      <p>مثل less لكن أقل مرونة <pre>more file2.txt</pre></p>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774989069/l23_xgd3nq.png" class="images">
+      <P>أول سطور</P>
+      <p>عرض أول سطر<pre>head file2.txt</pre></p>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774989327/l24_lamedb.png" class="images">
+      <p>عرض اول سطرين <pre>head -n 2 file2.txt</pre></p>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774989807/l26_jwjyxr.png" class="images">
+      <P>اخر سطور</P>
+      <p>يعرض آخر أسطر <pre>tail file2.txt</pre></p>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774989663/l25_rhrtfu.png" class="images">
+      <p>عرض اخر سطرين<pre>tail -n 2 file2.txt</pre></p>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774989947/l27_vlftm3.png" class="images">
+      <p> يراقب الملف لحظة بلحظة مثل logs متابعة مباشرة <pre>tail -f file2.txt</pre></p>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774990050/l28_jwv6vi.png" class="images">
+      <P>البحث داخل ملف</P>
+      <p>يبحث عن كلمة داخل الملف <pre>grep "Mubarak" file2.txt</pre></p>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774990414/l29_hzzmn5.png" class="images">
+      <hr>
+    </details>
+
+    <details>
+      <summary>البحث داخل الملفات والنظام (Searching within files and the system)</summary>
+      <p>يبحث عن كلمة بدون حساسية لحالة الأحرف HELLO = hello</p>
+      <pre>grep -i "mubarak" file2.txt</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774990908/l30_c0pukf.png" class="images">
+      <p>يبحث داخل كل المجلدات</p>
+      <pre>grep -r "password"</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774991543/l31_oc2zck.png" class="images">
+      <p>لبحث عن كل ملفات txt</p>
+      <pre>find /home -name "*.txt"</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774991728/l32_f0rbav.png" class="images">
+      <p>البحث عن الملفات فقط</p>
+      <pre>find . -type f</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774991952/l33_ciohfo.png" class="images">
+      <p>البحث عن المجلدات فقط</p>
+      <pre>find . -type d</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774992069/l34_d8ftom.png" class="images">
+      <p>أسرع لأنه يعتمد على قاعدة بيانات</p>
+      <pre>locate file2.txt</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774992222/l35_cghbcz.png" class="images">
+      <p>معرفة مكان الأمر</p>
+      <pre>which python</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1774992452/l36_qbodcf.png" class="images">
+      <hr>
+    </details>
+    
+
+    <details>
+      <summary>الصلاحيات والمستخدمين (Permissions and Users)</summary>
+      <h3>المستخدمين</h3>
+      <p>معرفة المستخدم الحالي</p>
+      <pre>whoami</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775037890/l37_ylpfmf.png" class="images">
+      <p>عرض المستخدمين المتصلين</p>
+      <pre>who</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775038006/l38_dxywtw.png" class="images">
+      <p>انشاء مستخدم جديد</p>
+      <pre>sudo useradd mubarak</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775046534/l39_kdi0br.png" class="images">
+      <p>إعطاء كلمة مرور</p>
+      <pre>sudo passwd mubarak</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775046651/l40_ahypfr.png" class="images">
+      <P>حذف مستخدم<P>
+      <pre>sudo userdel mubarak2</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775046788/l41_ivmlnb.png" class="images">
+      <P>التبديل بين المستخدمين<P>
+      <pre>su ali1</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775046999/l42_n3nidv.png" class="images">
+      <h3>المجموعات</h3>
+      <p>إضافة مستخدم إلى مجموعة</p>
+      <pre>sudo usermod -aG developers ali1</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775047282/l43_ujqvef.png" class="images">
+      <P>الصلاحيات Permissions <P>
+      <p>كل ملف له 3 أنواع صلاحيات:</p>
+      <p>r = قراءة</p>
+      <p>w = كتابة</p>
+      <p>x = تنفيذ</p>
+      <pre>ls -l</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775047541/l44_lfggbs.png" class="images">
+      <h3>تنقسم إلى:</h3>
+      <p>المالك</p>
+      <p>المجموعة</p>
+      <p>الآخرين</p>
+      <P>تغيير الصلاحيات chmod</P>
+      <p>يعطي كل الصلاحيات للجميع</p>
+      <pre>chmod 777 file2.txt</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775048046/l45_lkzurg.png" class="images">
+      <p>قراءة وكتابة للمالك + قراءة فقط للآخرين</p>
+      <pre>chmod 644 file2.txt</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775048153/l46_pvlwyp.png" class="images">
+      <p>صلاحية قراءة للآخرين</p>
+      <pre>chmod 644 test.pdf</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775051841/l47_pinbsk.png" class="images">
+      <p>عطاء صلاحية كتابة للآخرين</p>
+      <pre>chmod o+w test.pdf</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775051972/l48_qt1y5z.png" class="images">
+      <p>إعطاء صلاحية التنفيذ</p>
+      <pre>chmod o+x test.pdf</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775052183/49_w1dcax.png" class="images">
+      <p>إزالة صلاحية التنفيذ</p>
+      <pre>chmod o-x test.pdf</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775052295/l50_znq0ci.png" class="images">
+      <hr>
+    </details>
+
+    <details>
+      <summary>العمليات (Processes)</summary>
+      <p>يعرض العمليات الحالية</p>
+      <pre>ps</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775052738/l51_yibe83.png" class="images">
+      <P>عرض كامل</P>
+      <p>يعرض كل العمليات في النظام</p>
+      <pre>ps aux</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775053053/l52_efaeru.png" class="images">
+      <P>عرض مباشر top</P>
+      <pre>top</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775053244/l53_pcxlpm.png" class="images">
+      <P>البحث عن عملية</P>
+      <p>يبحث عن عملية معينة</p>
+      <pre>ps aux | grep firefox</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775053364/l54_j0tyzc.png" class="images">
+      <P>معرفة رقم العملية PID</P>
+      <p>كل عملية لها رقم خاص سترى رقم PID لكل عملية</p>
+      <pre>ps aux</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775053553/l55_k7uge0.png" class="images">
+      <P>إيقاف عملية kill</P>
+      <p>يوقف العملية برقم PID</p>
+      <pre>sudo kill 12</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775053815/l56_g6is8r.png" class="images">
+      <P>تشغيل عملية في الخلفية</P>
+      <p>يعمل في الخلفية</p>
+      <pre>sleep 100 &</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775054092/l57_r381sp.png" class="images">
+      <P>إيقاف جميع العمليات باسم معين</P>
+      <pre>pkill</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775054562/l58_rmwzbz.png" class="images">
+      <hr>
+    </details>
+
+    <details>
+      <summary>الشبكات (Networking)</summary>
+      <h3>ما هو Networking؟</h3>
+      <p>معرفة عنوان IP </p>
+      <pre>ip a</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775055606/l60_qrrsuz.png" class="images">
+      <P>اختبار الاتصال ping</P>
+      <p>يختبر الاتصال بالسيرفر إيقاف: Ctrl + C</p>
+      <pre>ping google.com</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775055963/l61_udrbq4.png" class="images">
+      <P>تتبع المسار traceroute</P>
+      <p>يوضح مسار الاتصال خطوة خطوة</p>
+      <pre>traceroute google.com</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775056133/l62_wkkb9e.png" class="images">
+      <P>فحص DNS nslookup</P>
+      <p>يحول الدومين إلى IP</p>
+      <pre>nslookup google.com</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775056247/l63_pbrydm.png" class="images">
+      <P>معلومات الشبكة ifconfig</P>
+      <p>مثل ip a قديم</p>
+      <pre>ifconfig</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775056364/l64_ug5nda.png" class="images">
+      <P>فحص المنافذ netstat</P>
+      <p>يعرض المنافذ المفتوحة</p>
+      <pre>netstat -tuln</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775056488/l65_qzezoi.png" class="images">
+      <P>البديل الحديث ss</P>
+      <p>سرع من netstat</p>
+      <pre>ss -tuln</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775056594/l66_oviyiu.png" class="images">
+      <P>تحميل من الإنترنت wget</P>
+      <pre>wget http://example.com/file.txt</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775056796/l67_eudasj.png" class="images">
+      <P>إرسال طلب HTTP curl</P>
+      <pre>curl google.com</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775056923/l68_iphkoj.png" class="images">
+      <hr>
+    </details>
+
+    <details>
+      <summary>الفحص والاستكشاف (Recon and Scanning)</summary>
+      <pre>nslookup bitpluss.com</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775057512/l69_ecjtwz.png" class="images">
+      <P>معلومات الدومين whois</P>
+      <pre>whois google.com</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775057798/l70_q4eoir.png" class="images">
+      <P>حمل الاداة اذا لم يتوفر عندك</P>
+      <pre>sudo apt install subfinder</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775058068/l71_f9k7jf.png" class="images">
+      <p>اكتشاف Subdomains</p>
+      <p>يبحث عن نطاقات فرعية</p>
+      <pre>subfinder -d google.com</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775058701/l72_vlrmgj.png" class="images">
+      <p>جمع معلومات DNS</p>
+      <pre>dig google.com</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775058865/l73_je5lcg.png" class="images">
+      <p>Scanning (الفحص)</p>
+      <p>تحميل nmap</p>
+      <pre>sudo apt install nmap</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775059056/l74_vdbvlq.png" class="images">
+      <h5>فحص المنافذ nmap يكتشف المنافذ المفتوحة</h5>
+      <pre>nmap google.com</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775059225/l75_ncbx8q.png" class="images">
+      <p>فحص متقدم:</p>
+      <pre>nmap -sV -A example.com</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775060844/l76_fsufqr.png" class="images">
+      <p>فحص موقع whatweb</p>
+      <p>يعرف تقنية الموقع PHP, WordPress…</p>
+      <pre>whatweb google.com</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775060103/l77_otxgrd.png" class="images">
+      <p>فحص الأدلة dirb</p>
+      <p>يبحث عن ملفات مخفية</p>
+      <pre>dirb http://example.com</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775060625/l77_ewhjvw.png" class="images">
+      <hr>
+    </details>
+
+    <details open>
+      <summary>أوامر النظام العامة (General Order)</summary>
+      <h3>معلومات النظام</h3>
+      <pre>uname -a</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775061587/l78_ieeyrc.png" class="images">
+      <p>معرفة استهلاك الرام</p>
+      <pre>free -h</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775061681/l79_qaox0y.png" class="images">
+      <p>معرفة مساحة القرص</p>
+      <pre>df -h</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775061787/l80_apnrlo.png" class="images">
+      <h3>معلومات المستخدم</h3>
+      <p>المستخدم الحالي</p>
+      <pre>whoami</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775061909/l81_pf0chc.png" class="images">
+      <p>المستخدمين المتصلين</p>
+      <pre>who</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775062009/l82_pzp8wa.png" class="images">
+      <p>الوقت والتاريخ</p>
+      <pre>date</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775062127/l83_pwcari.png" class="images">
+      <p>إيقاف الجهاز</p>
+      <pre>shutdown now</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775062233/l84_sptslx.png" class="images">
+      <p>إعادة التشغيل</p>
+      <pre>reboot</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775062332/l85_nr5zy6.png" class="images">
+      <p>مراقبة النظام</p>
+      <pre>top</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775062447/l86_lh3ehb.png" class="images">
+      <p>تحديث النظام Debian/Ubuntu</p>
+      <pre>sudo apt update</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775062625/l87_awdhjw.png" class="images">
+      <p>تثبيت برنامج</p>
+      <pre>sudo apt install nano</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775062753/l88_avogeh.png" class="images">
+      <p>تنظيف الشاشة</p>
+      <pre>clear</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775062847/l89_qh6i2e.png" class="images">
+      <p>عرض تاريخ الأوامر</p>
+      <pre>history</pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775062972/l90_r2r0tg.png" class="images">
+    </details>
+    
+  </div>
+</div>
+  </div>
+</div>
+
+
+
+
+
+
+
+<div id="imageModal" class="modal">
+  <span class="close-btn">&times;</span>
+  <img class="modal-content" id="fullImage">
+</div>
+
+<script>
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("fullImage");
+  const closeBtn = document.querySelector(".close-btn");
+
+  
+  document.querySelectorAll('.images').forEach(img => {
+    img.onclick = function() {
+      modal.style.display = "block";
+      modalImg.src = this.src; 
+    }
+  });
+
+  
+  closeBtn.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+
+
+
+
+</body>
+</html>

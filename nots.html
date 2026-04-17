@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bitpluss</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  
+<div class="logo">
+    <a href="index.html" style="text-decoration: none;">
+        <span style= " color: #ffffff; font-weight: bold; font-size: 18px; font-family: sans-serif;">BIT+</span>
+    </a>
+</div>
+
+  <nav>
+    <a href="https://github.com/mu-b003" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="nots.html">Notes</a>
+    <a href="script.html">Scripts</a>
+    <a href="linux.html">Linux</a>
+  </nav>
+</header>
+
+<div class="content-container">
+  <div class="texi-title">
+   
+    <div class="nots-text">
+  <div class="top-section">
+      <h3 class="main-title">NOTS</h3>
+ </div>
+  
+
+  <details open>
+  <summary>SQL Injection</summary>
+  <h5>4/16/2026</h5>
+  <p>هو نوع من الثغرات الأمنية يحدث عندما يتمكن المهاجم من "حقن" أو إدخال أوامر SQL خبيثة داخل حقول الإدخال في التطبيق مثل صناديق تسجيل الدخول أو شريط البحث. الهدف من ذلك هو خداع قاعدة البيانات لتنفيذ أوامر لم يكن مبرمج الموقع ينوي تنفيذها، مما يمنح المهاجم وصولاً غير مصرح به للبيانات، أو القدرة على تعديلها وحذفها. </p>
+  <h3>كيف تعمل الثغرة</h3>
+  <p>تعتمد الثغرة على عدم تصفية المدخلات Input Validation. لنفترض أن هناك نموذج تسجيل دخول يستخدم الاستعلام التالي:</p>
+  <pre>SELECT * FROM users WHERE username = 'user_input' AND password = 'password_input';</pre>
+  <p>إذا قام المهاجم بإدخال النص التالي في حقل اسم المستخدم:</p>
+  <pre>' OR '1'='1</pre>
+  <p>سيتحول الاستعلام إلى:</p>
+  <pre>SELECT * FROM users WHERE username = '' OR '1'='1' AND password = '...';</pre>
+  <p>بما أن الشرط 1=1 صحيح دائماً، سيقوم النظام بتسجيل دخول المهاجم دون الحاجة لمعرفة كلمة المرور الفعلية.</p>
+  <hr>
+</details>
+
+
+  
+
+
+  <!-- <div class="content-section">
+    <div class="ad-container">
+      <div class="ad-box">
+        <span class="ad-label">إعلان</span>
+        <div class="ad-content">
+            <p>محتوى إعلاني مميز</p>
+            <a href="#" class="ad-button">اكتشف المزيد</a>
+        </div>
+      </div>
+    </div> -->
+
+      
+    <details open>
+      <summary>CIA</summary>
+      <h5>4/16/2026</h5>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775505491/n1_hh2xux.png" class="images">
+        <p>مفهوم مثلث CIA (السرية، السلامة، والتوافر)، والذي يعتبر حجر الزاوية في استراتيجيات الدفاع الرقمي. يهدف هذا النموذج إلى تحديد الأهداف الأساسية لحماية أي نظام معلوماتي، حيث تعمل أضلاعه الثلاثة معاً لضمان بيئة تقنية آمنة وموثوقة. إن فهم هذه المبادئ هو الخطوة الأولى لأي متخصص يسعى لتقييم المخاطر وتصميم الحلول الأمنية الفعالة لمواجهة التهديدات المتزايدة.</p>
+        <h3>1. السرية (Confidentiality)</h3>
+        <p>تعتبر السرية الركن الأول الذي يهدف إلى منع كشف المعلومات الحساسة للأشخاص أو الأنظمة غير المصرح لها بالوصول إليها. يتطلب تحقيق هذا الهدف استخدام تقنيات متقدمة مثل التشفير القوي للبيانات أثناء سكونها أو انتقالها عبر الشبكات لضمان عدم قراءتها حتى في حال اعتراضها. كما تبرز هنا أهمية سياسات التحكم في الوصول (Access Control) التي تمنح الصلاحيات بناءً على مبدأ "الحاجة إلى المعرفة" فقط. وتعتبر التهديدات مثل هجمات التصيد الاحتيالي أو التجسس الصناعي أكبر التحديات التي تواجه هذا الركن في العصر الحالي. لذا، يتم تعزيز السرية من خلال استخدام المصادقة المتعددة العوامل (MFA) وتدريب الموظفين على حماية بياناتهم.</p>
+        <h3>2. السلامة أو النزاهة (Integrity)</h3>
+        <p>يركز هذا الركن على ضمان بقاء البيانات دقيقة وصحيحة وكاملة طوال دورة حياتها، وحمايتها من أي تعديل غير مصرح به أو عبث غير مقصود. تشمل السلامة التأكد من أن المعلومات لم يتم تغييرها من قبل متسلل أثناء إرسالها، أو حذف أجزاء منها بسبب خطأ تقني في النظام. لتحقيق ذلك، يتم الاعتماد بشكل كبير على دوال الهاش (Hashing) التي تعطي بصمة فريدة لكل ملف، فإذا تغير محتوى الملف ولو بجزء بسيط، تتغير البصمة فوراً. كما تلعب التواقيع الرقمية دوراً حيوياً في إثبات هوية المرسل وضمان عدم تلاعب أي طرف ثالث بالرسالة الأصلية. وتساعد أنظمة مراقبة التغييرات في اكتشاف أي نشاط مشبوه قد يؤثر على موثوقية قواعد البيانات أو ملفات النظام الحساسة.</p>
+        <h3>3. التوافر أو المتاحية (Availability)</h3>
+        <p>يعني التوافر ضمان وصول المستخدمين المصرح لهم إلى الأنظمة والبيانات والخدمات في أي وقت يحتاجون إليها دون انقطاع. لا تكتمل المنظومة الأمنية إذا كانت البيانات مشفرة وسليمة ولكنها غير متاحة بسبب عطل في الخوادم أو هجوم حجب الخدمة (DDoS). يتطلب هذا الركن بناء بنية تحتية قوية تعتمد على مبدأ التكرار (Redundancy)، بحيث يتوفر جهاز بديل جاهز للعمل فور تعطل الجهاز الأساسي. كما تشمل استراتيجيات التوافر وضع خطط محكمة للتعافي من الكوارث (Disaster Recovery) والاحتفاظ بنسخ احتياطية دورية يتم اختبارها باستمرار. بالإضافة إلى ذلك، تلعب الصيانة الوقائية للأجهزة وتحديث البرمجيات دوراً كبيراً في منع التوقفات المفاجئة التي قد تؤدي لخسائر فادحة للمؤسسات.</p>
+        <hr>
+      </details>
+  </div>
+</div>
+
+  </div>
+</div>
+
+
+
+<div id="imageModal" class="modal">
+  <span class="close-btn">&times;</span>
+  <img class="modal-content" id="fullImage">
+</div>
+
+<script>
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("fullImage");
+  const closeBtn = document.querySelector(".close-btn");
+
+  
+  document.querySelectorAll('.images').forEach(img => {
+    img.onclick = function() {
+      modal.style.display = "block";
+      modalImg.src = this.src; 
+    }
+  });
+
+  
+  closeBtn.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+
+
+</body>
+</html>

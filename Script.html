@@ -1,0 +1,2965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bitpluss</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+
+
+<div class="logo">
+    <a href="index.html" style="text-decoration: none;">
+        <span style= " color: #ffffff; font-weight: bold; font-size: 18px; font-family: sans-serif;">BIT+</span>
+    </a>
+</div>
+
+
+  <nav>
+    <a href="https://github.com/mu-b003" target="_blank" rel="noopener noreferrer">GitHub</a>
+    <a href="nots.html">Notes</a>
+    <a href="script.html">Scripts</a>
+    <a href="linux.html">Linux</a>
+  </nav>
+</header>
+
+<div class="content-container">
+  <div class="texi-title">
+   
+    <div class="main-box">
+  <div class="top-section">
+  <h3 class="main-title">SCRIPTS</h3>
+  </div>
+
+  <div class="content-section">
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775131495/p1_iyptf5.png" class="images">
+    <details open>
+<summary>ما هي بايثون (Python)</summary>
+<p>بايثون هي لغة برمجة سهلة تُستخدم في الذكاء الاصطناعي الأمن السيبراني تطوير الويب تحليل البيانات</p>
+ <a href="https://www.programiz.com/python-programming/online-compiler/ " target="_blank">لتشغيل كود بايثون</a>   
+<h5>أول برنامج</h5>
+<pre>
+  <code>
+    print("Hello, World!")
+  </code>
+</pre>
+<p>هذا الكود يطبع رسالة على الشاشة: Hello, World!</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775144082/p40_ygoeco.png" class="images">
+    </details>
+    
+    <details open>
+      <summary>المتغيرات (Variables)</summary>
+      <p>المتغير هو مكان في الذاكرة نخزن فيه قيمة ونستطيع استخدامها لاحقًا.</p>
+      <pre>
+        <code>
+          name = "Mubarak"     # نص (String)
+          age = 20             # رقم صحيح (Integer)
+          height = 1.75        # رقم عشري (Float)
+          is_student = True    # قيمة منطقية (Boolean)
+
+          # طباعة القيم
+          print("Name:", name)
+          print("Age:", age)
+          print("Height:", height)
+          print("Student:", is_student)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775145176/p41_fjckyd.png" class="images">
+      <p>(String) نص: نضعه بين علامات تنصيص " " </p>
+      <p>(Integer) رقم صحيح : أرقام بدون فاصلة عشرية مثل 20</p>
+      <p>(Float) رقم عشري: أرقام تحتوي على فاصلة مثل 1.75</p>
+      <p>(Boolean) قيمة منطقية: تحتمل فقط True  أو False </p>
+    </details>
+    
+    <details>
+      <summary>أنواع البيانات (Data Types)</summary>
+      <pre>
+        <code>
+            # أنواع البيانات الأساسية
+
+          name = "Mubarak"      # String (نص)
+          age = 20              # Integer (عدد صحيح)
+          height = 1.75         # Float (عدد عشري)
+          is_student = True     # Boolean (صح/خطأ)
+
+          # طباعة نوع كل متغير
+          print(type(name))
+          print(type(age))
+          print(type(height))
+          print(type(is_student))
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1776248700/py42_h8v0fg.png" class="images">
+      <p>name هو نص String لأنه داخل علامات اقتباس</p>
+      <p>age عدد صحيح Integer بدون فاصلة، وheight عدد عشري Float</p>
+      <p>is_student قيمة منطقية Boolean تكون إما True أو False.</p>
+      <p>أوامر ()print تقوم بعرض القيم على الشاشة، ولعرض النوع نستخدم ()type</p>
+    </details>
+
+    <details>
+      <summary>العمليات (Operators)</summary>
+      <h3>أنواع العمليات</h3>
+      <h5>العمليات الحسابية Arithmetic</h5>
+      <pre>
+        <code>
+          x = 5
+          y = 2
+
+          print(x + y)   # 7
+          print(x - y)   # 3
+          print(x * y)   # 10
+          print(x / y)   # 2.5
+          print(x % y)   # 1
+          print(x ** y)  # 25
+          print(x // y)  # 2
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775146384/p43_ucsits.png" class="images">
+      <p>العمليات الحسابية في Python باستخدام المتغيرين x و y</p>
+      <p>+ للجمع، - للطرح، * للضرب، و / للقسمة العادية تعطي عدد عشري</p>
+      <p>% يعطي باقي القسمة ، و ** يستخدم للأس</p>
+      <p>// هي قسمة صحيحة بدون فاصلة ترجع عدد صحيح فقط</p>
+      <p>كل أوامر ()print تقوم بعرض ناتج كل عملية على الشاشة.</p>
+       <h5>عمليات المقارنة Comparison</h5>
+      <pre>
+        <code>
+          a = 10
+          b = 5
+
+          print(a == b)  # False (هل متساويين؟)
+          print(a != b)  # True (هل مختلفين؟)
+          print(a > b)   # True
+          print(a < b)   # False
+          print(a >= b)  # True
+          print(a <= b)  # False
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775146657/p44_rbcehz.png" class="images">
+      <p>عمليات المقارنة في Python بين المتغيرين a و b</p>
+      <p>== تتحقق هل القيم متساوية، و != هل القيم مختلفة</p>
+      <p>> و < تستخدم لمعرفة الأكبر والأصغر</p>
+      <p>>= و <= تعني أكبر أو يساوي وأصغر أو يساوي</p>
+      <p>كل النتائج تكون True أو False ويتم عرضها باستخدام ()print</p>
+
+
+      <h5>العمليات المنطقية Logical</h5>
+      <pre>
+        <code>
+         x = True
+         y = False
+
+         print(x and y)  # False
+         print(x or y)   # True
+         print(not x)    # False
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775147094/p45_g1qreb.png" class="images">
+      <p>العمليات المنطقية في Python باستخدام قيم True و False</p>
+      <p>and ترجع True فقط إذا كانت القيمتان True، وهنا النتيجة False</p>
+      <p>or ترجع True إذا كانت واحدة على الأقل True، وهنا النتيجة True</p>
+      <p>not تعكس القيمة، فـ True تصبح False</p>
+      <p>تُستخدم هذه العمليات كثيرًا في الشروط if واتخاذ القرارات في البرامج</p>
+
+      <h5>عمليات الإسناد Assignment</h5>
+      <pre>
+        <code>
+        num = 5
+
+        num += 3   # num = num + 3
+        print(num)
+
+        num -= 2   # num = num - 2
+        print(num)
+
+        num *= 2
+        print(num)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775147269/p46_iograp.png" class="images">
+      <p>عمليات الإسناد المختصرة في Python</p>
+      <p> =+ تعني زيادة القيمة num = num + 3، و =- تعني الطرح</p>
+      <p> =* تستخدم للضرب في نفس المتغير</p>
+      <p>كل عملية تغيّر قيمة num ثم يتم طباعتها باستخدام ()print</p>
+      <p>هذه الطريقة تجعل الكود أقصر وأسهل في الكتابة </p>
+    </details>
+
+    <details>
+      <summary>الإدخال والإخراج (Input / Output)</summary>
+      <h3>الإدخال Input</h3>
+      <p>تستخدم لأخذ بيانات من المستخدم دائمًا تُرجع نص String</p>
+      <p>حتى لو أدخلت رقم ➜ سيُعتبر نص</p>
+      <pre>
+        <code>
+         age = input("Enter your age: ")
+         print(age)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775160562/p47_xbd8gt.png" class="images">
+      <p>هذا الكود يطلب من المستخدم إدخال عمره باستخدام ()input</p>
+      <p>القيمة التي يدخلها المستخدم تُخزن في المتغير age</p>
+      <p>بشكل افتراضي، ()input ترجع القيمة كنص String</p>
+      <p>print(age) يقوم بعرض القيمة التي أدخلها المستخدم</p>
+      <p>إذا أردت استخدام العمر كعدد، يجب تحويله باستخدام ()int</p>
+
+      <p>تحويل الإدخال إلى رقم</p>
+      <p>()int  لتحويل إلى عدد صحيح ()float  لتحويل إلى عدد عشري</p>
+      <pre>
+        <code>
+          age = int(input("Enter your age: "))
+          print(age + 5)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775160860/p48_hq5r9o.png" class="images">
+      <p>هذا الكود يطلب من المستخدم إدخال عمره باستخدام ()input</p>
+      <p>ثم يتم تحويل القيمة إلى عدد صحيح باستخدام ()int</p>
+      <p>القيمة تُخزن في المتغير age</p>
+      <p>print(age + 5) يقوم بإضافة 5 إلى العمر وعرض النتيجة</p>
+      <p>بهذه الطريقة يمكنك إجراء عمليات حسابية على المدخلات</p>
+
+      <h3>الإخراج Output</h3>
+      <pre>
+        <code>
+        print("Hello World")
+        print(10)
+        print("Age:", 20)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775161488/p49_v9axse.png" class="images">
+      <p>هذا الكود يوضح طرق مختلفة لاستخدام ()print</p>
+      <p>print("Hello World") يطبع نص على الشاشة</p>
+      <p>print(10) يطبع رقم بدون تحويله لنص</p>
+      <p>print("Age:", 20) يطبع نص ورقم معًا في نفس السطر</p>
+      <p>تُستخدم ()print لعرض النتائج والمعلومات للمستخدم</p>
+
+      <h3>الإدخال والإخراج</h3>
+      <pre>
+        <code>
+         name = input("Enter your name: ")
+         age = int(input("Enter your age: "))
+
+         print("Your name is:", name)
+         print("After 5 years you will be:", age + 5)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775162468/p50_sqn0my.png" class="images">
+      <p>هذا الكود يطلب من المستخدم إدخال اسمه وعمره باستخدام ()input</p>
+      <p>يتم تحويل العمر إلى عدد صحيح باستخدام ()int حتى يمكن إجراء عمليات حسابية</p>
+      <p>ثم يتم تخزين القيم في المتغيرين name و age</p>
+      <p>()print يعرض اسم المستخدم، ثم يحسب عمره بعد 5 سنوات</p>
+      <p>الكود يجمع بين الإدخال Input والمعالجة Calculation والإخراج Output</p>
+
+    </details>
+
+    <details>
+      <summary>الجمل الشرطية (If / Else / Elif)</summary>
+      <h3>if فقط</h3>
+      <p>ينفذ فقط إذا الشرط صحيح</p>
+      <pre>
+        <code>
+         num = 10
+
+         if num > 5:
+            print("Number is greater than 5")
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775163106/p51_ffxfjf.png" class="images">
+      <p>هذا الكود يوضح استخدام جملة الشرط if في Python</p>
+      <p>يتم تخزين القيمة 10 في المتغير num</p>
+      <p>الشرط num > 5 يتحقق إذا كان العدد أكبر من 5</p>
+      <p>إذا كان الشرط صحيح True، يتم تنفيذ الأمر داخل if</p>
+      <p>في هذه الحالة سيتم طباعة "Number is greater than 5"</p>
+
+      <h3>if + else</h3>
+      <p>إما هذا أو هذا</p>
+      <pre>
+        <code>
+          num = 3
+
+          if num > 5:
+              print("Big number")
+          else:
+              print("Small number")
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775163425/p52_dqnk0w.png" class="images">
+      <p>هذا الكود يوضح استخدام if و else في Python</p>
+      <p>يتم تخزين القيمة 3 في المتغير num</p>
+      <p>الشرط num > 5 يتم التحقق منه</p>
+      <p>إذا كان الشرط صحيح يُطبع "Big number"، وإذا كان خطأ يُنفذ else</p>
+      <p>بما أن 3 أصغر من 5، سيتم طباعة "Small number"</p>
+      <h3>if + elif + else</h3>
+      <p>تستخدم elif لعدة شروط</p>
+      <pre>
+        <code>
+        num = 10
+
+        if num > 10:
+            print("Greater than 10")
+        elif num == 10:
+            print("Equal to 10")
+        else:
+            print("Less than 10")
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775163735/p53_lgjaxq.png" class="images">
+      <p>هذا الكود يوضح استخدام if و elif و else في Python</p>
+      <p>يتم التحقق أولًا هل num > 10، وإذا لم يتحقق ينتقل إلى الشرط التالي</p>
+      <p>elif تستخدم لفحص شرط آخر مثل num == 10.</p>
+      <p>إذا لم يتحقق أي شرط، يتم تنفيذ else</p>
+      <p>بما أن القيمة 10، سيتم طباعة "Equal to 10"</p>
+      <p>الجمل الشرطية (If / Else / Elif)</p>
+      <pre>
+        <code>
+          age = int(input("Enter your age: "))
+
+          if age < 13:
+              print("Child")
+          elif age < 18:
+              print("Teen")
+          else:
+              print("Adult")
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775164089/p54_xy1abd.png" class="images">
+      <p>هذا الكود يطلب من المستخدم إدخال عمره ثم يحوله إلى عدد باستخدام ()int</p>
+      <p>يتم استخدام if للتحقق إذا كان العمر أقل من 13 (Child)</p>
+      <p>elif تتحقق إذا كان العمر أقل من 18 (Teen).</p>
+      <p>إذا لم يتحقق أي من الشرطين، يتم تنفيذ else (Adult)</p>
+      <p>الكود يصنّف الشخص حسب عمره إلى طفل أو مراهق أو بالغ</p>
+    </details>
+
+    <details>
+      <summary> الحلقات  (Loops - For / While)</summary>
+      <p>الحلقات تستخدم لتكرار تنفيذ الكود أكثر من مرة بدون ما تعيد كتابته</p>
+      <h3>حلقة for</h3>
+      <p>range(5)  يبدأ من 0 إلى 4  ,i  متغير يتغير كل مرة</p>
+      <pre>
+        <code>
+        for i in range(5):
+            print(i)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775203645/p55_tanqhd.png" class="images">
+      <p>هذا الكود يوضح استخدام حلقة for في Python</p>
+      <p>range(5) تُنشئ أرقام من 0 إلى 4 (لا تشمل 5)</p>
+      <p>المتغير i يأخذ قيمة جديدة في كل تكرار</p>
+      <p>في كل مرة يتم تنفيذ print(i)</p>
+      <p>النتيجة ستكون طباعة الأرقام من 0 إلى 4</p>
+      <h3>حلقة while</h3>
+      <p>تستمر الحلقة طالما الشرط صحيح يجب زيادة i لكي لا تصبح حلقة لا نهائية</p>
+      <pre>
+        <code>
+         i = 0
+
+         while i < 5:
+             print(i)
+             i += 1
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775203955/p56_igjptu.png" class="images">
+      <p>هذا الكود يوضح استخدام حلقة while في Python</p>
+      <p>يبدأ المتغير i بالقيمة 0.</p>
+      <p>تستمر الحلقة طالما الشرط i < 5 صحيح</p>
+      <p>في كل مرة يتم طباعة i ثم زيادته بـ 1</p>
+      <p>النتيجة هي طباعة الأرقام من 0 إلى 4</p>
+      <h3>خطأ حلقة لا نهائية</h3>
+      <p>هنا البرنامج لن يتوقف</p>
+      <pre>
+        <code>
+        i = 0
+
+        while i < 5:
+            print(i)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775204135/p57_jx2a0r.png" class="images">
+      <p>هذا الكود يحتوي على حلقة while بدون زيادة المتغير</p>
+      <p>يبدأ i بالقيمة 0 والشرط i < 5 دائمًا صحيح</p>
+      <p>لأنه لا يوجد i += 1، لن تتغير قيمة i</p>
+      <p>بالتالي ستستمر الحلقة إلى ما لا نهاية Infinite Loop</p>
+      <p>وسيتم طباعة الرقم 0 بشكل متكرر</p>
+    </details>
+
+    <details>
+      <summary>التحكم في الحلقات (Break / Continue / Pass)</summary>
+      <p>نستخدم هذه الأوامر داخل الحلقات for أو while للتحكم في التنفيذ.</p>
+      <h3>break إيقاف الحلقة</h3>
+      <p>يوقف الحلقة فورًا حتى لو لم تنتهِ</p>
+      <pre>
+        <code>
+         for i in range(10):
+             if i == 5:
+                 break
+              print(i)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775204341/p58_s9uxmx.png" class="images">
+      <p>هذا الكود يوضح استخدام break داخل حلقة for في Python</p>
+      <p>الحلقة range(10) تطبع الأرقام من 0 إلى 9</p>
+      <p>عندما تصل القيمة i إلى 5، يتم تنفيذ break</p>
+      <p>break تقوم بإيقاف الحلقة فورًا</p>
+      <p>لذلك سيتم طباعة الأرقام من 0 إلى 4 فقط</p>
+      <h3> تخطي continue</h3>
+      <p>يتخطى التكرار الحالي ويكمل الباقي</p>
+      <p>تم تخطي الرقم 2</p>
+      <pre>
+        <code>
+          for i in range(5):
+              if i == 2:
+                  continue
+              print(i)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775204543/p59_is6epn.png" class="images">
+      <p>هذا الكود يوضح استخدام continue داخل حلقة for في Python</p>
+      <p>الحلقة تطبع الأرقام من 0 إلى 4</p>
+      <p>عندما تكون قيمة i تساوي 2 يتم تنفيذ continue</p>
+      <p>continue تتخطى هذه الدورة ولا تنفذ print(i)</p>
+      <p>لذلك سيتم طباعة: 0، 1، 3، 4 (بدون 2)</p>
+     
+      <h3> تجاهل مؤقت pass</h3>
+      <p>لا يفعل شيء (مكان فارغ للكود)</p>
+      <p>البرنامج يعمل بدون خطأ</p>
+      <pre>
+        <code>
+          for i in range(5):
+              if i == 2:
+                  pass
+              print(i)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775204683/p60_dv8x5b.png" class="images">
+      <p>هذا الكود يوضح استخدام pass داخل حلقة for في Python</p>
+      <p>pass تعني لا تفعل شيئًا تُستخدم كعنصر فارغ</p>
+      <p>عندما تكون i == 2، لا يحدث أي تغيير ويستمر التنفيذ</p>
+      <p>بالتالي يتم تنفيذ print(i) في كل مرة</p>
+      <p>النتيجة: طباعة الأرقام من 0 إلى 4 بدون تغيير</p>
+
+      <h3>continue و break </h3>
+      <pre>
+        <code>
+        for i in range(10):
+            if i == 3:
+                continue
+            if i == 7:
+                break
+            print(i)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775206119/p61_ztcpeo.png" class="images">
+      <p>هذا الكود يوضح استخدام continue و break معًا داخل حلقة for</p>
+      <p>الحلقة تبدأ من 0 إلى 9</p>
+      <p>عندما i == 3 يتم تخطي الطباعة بسبب continue</p>
+      <p>وعندما i == 7 تتوقف الحلقة تمامًا بسبب break</p>
+      <p>النتيجة: طباعة 0، 1، 2، 4، 5، 6</p>
+    </details>
+
+    <details>
+      <summary>القوائم (Lists)</summary>
+      <p>هي مجموعة من القيم نخزنها في متغير واحد</p>
+      <pre>
+        <code>
+        numbers = [1, 2, 3, 4, 5]
+        print(numbers)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775206356/p62_jfvjfw.png" class="images">
+      <p>هذا الكود يوضح القوائم List في Python</p>
+      <p>numbers هي قائمة تحتوي على عدة أرقام</p>
+      <p>القائمة تُكتب بين أقواس مربعة [ ]</p>
+      <p>يمكن تخزين أكثر من قيمة في متغير واحد</p>
+      <p>print(numbers) يقوم بطباعة جميع العناصر داخل القائمة</p>
+     
+      <h3>الوصول إلى العناصر</h3>
+      <p>الفهرسة تبدأ من 0</p>
+      <pre>
+        <code>
+         fruits = ["apple", "banana", "orange"]
+
+         print(fruits[0])  # apple
+         print(fruits[1])  # banana
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775206490/p63_q9tarh.png" class="images">
+      <p>هذا الكود يوضح الوصول إلى عناصر القائمة List في Python</p>
+      <p>القائمة fruits تحتوي على عدة عناصر نصية</p>
+      <p>نستخدم الفهرس [index] للوصول إلى العنصر</p>
+      <p>الفهرس يبدأ من 0، لذلك fruits[0] هو "apple"</p>
+      <p>وfruits[1] هو "banana"</p>
+
+      <h3>تعديل عنصر</h3>
+      <pre>
+        <code>
+         fruits = ["apple", "banana", "orange"]
+ 
+         fruits[1] = "grape"
+         print(fruits)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775206664/p64_rumej8.png" class="images">
+      <p>هذا الكود يوضح تعديل عناصر القائمة في Python</p>
+      <p>القائمة fruits تحتوي على عناصر نصية</p>
+      <p>fruits[1] = grape يقوم بتغيير العنصر الثاني</p>
+      <p>الفهرس 1 يشير إلى "banana" ويتم استبداله بـ "grape"</p>
+      <p>النتيجة: ["apple", "grape", "orange"].</p>
+ 
+      <h3>إضافة عناصر</h3>
+      <pre>
+        <code>
+         fruits = ["apple", "banana"]
+
+         fruits.append("orange")  # إضافة عنصر
+         print(fruits)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775206845/p65_ohrhac.png" class="images">
+      <p>هذا الكود يوضح إضافة عنصر إلى القائمة في Python</p>
+      <p>القائمة fruits تحتوي على عنصرين في البداية</p>
+      <p>append("orange") تضيف عنصرًا جديدًا في نهاية القائمة</p>
+      <p>لا يتم استبدال العناصر بل يتم إضافة عنصر جديد</p>
+      <p>النتيجة: ["apple", "banana", "orange"]</p>
+
+      <h3>حذف عناصر</h3>
+      <pre>
+        <code>
+         fruits = ["apple", "banana", "orange"]
+
+         fruits.remove("banana")
+         print(fruits)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775206933/p66_clmady.png" class="images">
+      <p>هذا الكود يوضح حذف عنصر من القائمة في Python</p>
+      <p>القائمة fruits تحتوي على عدة عناصر</p>
+      <p>remove("banana") تقوم بحذف العنصر "banana" من القائمة</p>
+      <p>يتم الحذف بناءً على القيمة وليس الفهرس</p>
+      <p>النتيجة: ["apple", "orange"]</p>
+ 
+      <h3>التكرار باستخدام loop</h3>
+      <pre>
+        <code>
+         fruits = ["apple", "banana", "orange"]
+
+         for fruit in fruits:
+             print(fruit)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775207187/p67_sbye36.png" class="images">
+      <p>هذا الكود يوضح التكرار على عناصر القائمة باستخدام for في Python</p>
+      <p>القائمة fruits تحتوي على عدة عناصر</p>
+      <p>الحلقة for تمر على كل عنصر واحدًا تلو الآخر</p>
+      <p>المتغير fruit يأخذ قيمة عنصر جديد في كل دورة</p>
+      <p>يتم طباعة كل عنصر في القائمة بشكل منفصل</p>
+ 
+      <h3>طول القائمة</h3>
+      <pre>
+        <code>
+         numbers = [1, 2, 3, 4]
+
+         print(len(numbers))
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775207338/p68_qxncpe.png" class="images">
+      <p>هذا الكود يوضح استخدام الدالة ()len في Python</p>
+      <p>القائمة numbers تحتوي على 4 عناصر</p>
+      <p>len(numbers) تُرجع عدد العناصر داخل القائمة</p>
+      <p>لا تهتم بالقيم بل بعددها فقط</p>
+      <p>النتيجة ستكون: 4</p>
+
+      <h3>قائمة grades </h3>
+      <pre>
+        <code>
+         # قائمة درجات
+         grades = [80, 90, 70]
+
+         # إضافة درجة
+         grades.append(85)
+
+         # حساب المجموع
+         total = 0
+         for g in grades:
+             total += g
+
+         print("Total:", total)
+         print("Average:", total / len(grades))
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775207559/p69_riemoi.png" class="images">
+      <p>هذا الكود ينشئ قائمة grades تحتوي على درجات</p>
+      <p>يتم إضافة درجة جديدة باستخدام ()append</p>
+      <p>ثم يتم حساب مجموع الدرجات باستخدام حلقة for</p>
+      <p>المتغير total يجمع كل القيم داخل القائمة</p>
+      <p>وأخيرًا يتم طباعة المجموع والمتوسط باستخدام ()len</p>
+    </details>
+
+    <details>
+      <summary>المصفوفات المتقدمة (List Methods)</summary>
+      <p>هي دوال جاهزة تساعدك تتحكم بالقوائم بسهولة إضافة، حذف، ترتيب</p>
+      <h3>أهم الدوال</h3>
+      <h3> إضافة عنصر ()append</h3>
+      <pre>
+        <code>
+         nums = [1, 2, 3]
+         nums.append(4)
+
+         print(nums)  # [1, 2, 3, 4]
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775208227/p70_soqfax.png" class="images">
+      <p>هذا الكود يوضح إضافة عنصر إلى قائمة في Python</p>
+      <p>القائمة nums تحتوي على الأرقام 1، 2، 3</p>
+      <p>append(4) تضيف الرقم 4 في نهاية القائمة</p>
+      <p>لا يتم تعديل العناصر القديمة بل يتم إضافة عنصر جديد</p>
+      <p>النتيجة: [1, 2, 3, 4]</p>
+
+      <h3>إضافة في مكان معين ()insert</h3>
+      <pre>
+        <code>
+         nums = [1, 2, 3]
+         nums.insert(1, 99)
+
+         print(nums)  # [1, 99, 2, 3]
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775208340/p71_ur7rm7.png" class="images">
+      <p>هذا الكود يوضح استخدام ()insert في Python</p>
+      <p>القائمة nums تحتوي على الأرقام 1، 2، 3</p>
+      <p>insert(1, 99) تضيف الرقم 99 في الفهرس 1</p>
+      <p>يتم تحريك باقي العناصر إلى اليمين</p>
+      <p>النتيجة: [1، 99، 2، 3]</p>
+
+      <h3> حذف عنصر ()remove</h3>
+      <pre>
+        <code>
+         nums = [1, 2, 3]
+         nums.remove(2)
+
+         print(nums)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775208472/p72_mwwlkl.png" class="images">
+      <p>هذا الكود يوضح حذف عنصر من القائمة في Python</p>
+      <p>القائمة nums تحتوي على الأرقام 1، 2، 3</p>
+      <p>remove(2) تقوم بحذف الرقم 2 من القائمة</p>
+      <p>يتم الحذف حسب القيمة وليس الفهرس</p>
+      <p>النتيجة: [1, 3]</p>
+
+      <h3>  حذف باستخدام الفهرس ()pop</h3>
+      <pre>
+        <code>
+         nums = [1, 2, 3]
+         nums.pop(1)
+
+         print(nums)  # [1, 3]
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775208548/p73_uauoep.png" class="images">
+      <p>هذا الكود يوضح استخدام ()pop في Python</p>
+      <p>القائمة nums تحتوي على الأرقام 1، 2، 3</p>
+      <p>pop(1) تقوم بحذف العنصر في الفهرس 1 وهو الرقم 2</p>
+      <p>يتم الحذف باستخدام الموقع index وليس القيمة</p>
+      <p>النتيجة: [1, 3]</p>
+
+      <h3>  ترتيب ()sort</h3>
+      <pre>
+        <code>
+         nums = [3, 1, 2]
+         nums.sort()
+
+         print(nums)  # [1, 2, 3]
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775208687/p74_pwccfs.png" class="images">
+      <p>هذا الكود يوضح ترتيب القائمة في Python</p>
+      <p>القائمة nums تحتوي على الأرقام 3، 1، 2</p>
+      <p>()sort تقوم بترتيب العناصر تصاعديًا</p>
+      <p>يتم تعديل القائمة نفسها بدون إنشاء قائمة جديدة</p>
+      <p>النتيجة: [1, 2, 3]</p>
+
+      <h3>  عكس القائمة ()reverse</h3>
+      <pre>
+        <code>
+         nums = [1, 2, 3]
+         nums.reverse()
+
+         print(nums)  # [3, 2, 1]
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775208801/p75_wffgjr.png" class="images">
+      <p>هذا الكود يوضح عكس ترتيب القائمة في Python</p>
+      <p>القائمة nums تحتوي على الأرقام 1، 2، 3</p>
+      <p>()reverse تقوم بعكس ترتيب العناصر.</p>
+      <p>يتم تعديل القائمة نفسها بدون إنشاء قائمة جديدة</p>
+      <p>النتيجة: [3, 2, 1]</p>
+
+      <h3> عدد التكرار ()count </h3>
+      <pre>
+        <code>
+         nums = [1, 2, 2, 3]
+         print(nums.count(2))  # 2
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775209066/p76_prv9jo.png" class="images">
+      <p>هذا الكود يوضح استخدام ()count في Python</p>
+      <p>القائمة nums تحتوي على الأرقام مع تكرار الرقم 2</p>
+      <p>count(2) تقوم بعدّ عدد مرات ظهور الرقم 2</p>
+      <p>لا تعدّ العناصر الأخرى، فقط القيمة المحددة</p>
+      <p>النتيجة: 2</p>
+
+      <h3>  معرفة موقع عنصر ()index</h3>
+      <pre>
+        <code>
+         nums = [1, 2, 3]
+         print(nums.index(2))  # 1
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775209188/p77_beoxd9.png" class="images">
+      <p>هذا الكود يوضح استخدام index() في Python</p>
+      <p>القائمة nums تحتوي على الأرقام 1، 2، 3</p>
+      <p>index(2) تُرجع موقع الرقم 2 داخل القائمة</p>
+      <p>الفهرس يبدأ من 0، لذلك موقع 2 هو 1</p>
+      <p>النتيجة: 1</p>
+
+      <h3>التعامل مع قائمة Dealing with the list</h3>
+      <pre>
+        <code>
+         names = ["Ali", "Ahmed", "Sara"]
+
+         names.append("Mubarak")
+         names.remove("Ahmed")
+         names.sort()
+
+         print(names)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775209413/p78_oy3jfj.png" class="images">
+      <p>هذا الكود يوضح التعامل مع قائمة أسماء في Python</p>
+      <p>يتم إضافة اسم جديد باستخدام ()append</p>
+      <p>ثم حذف اسم "Ahmed" باستخدام ()remove</p>
+      <p>بعد ذلك يتم ترتيب الأسماء باستخدام ()sort</p>
+      <p>النتيجة: ['Ali', 'Mubarak', 'Sara']</p>
+    </details>
+
+    <details>
+      <summary>الثوابت(Tuples)</summary>
+      <p>هي مثل القائمة List لكن  لا يمكن تعديلها بعد إنشائها Immutable</p>
+      <pre>
+        <code>
+         numbers = (1, 2, 3, 4)
+         print(numbers)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775209805/p79_hasivf.png" class="images">
+      <p>هذا الكود يوضح Tuple في Python</p>
+      <p>numbers عبارة عن مجموعة قيم داخل أقواس دائرية ( )</p>
+      <p>الـ Tuple تشبه القائمة لكن لا يمكن تعديل عناصرها</p>
+      <p>يمكن تخزين عدة قيم في متغير واحد</p>
+      <p>print(numbers) يعرض جميع القيم داخل الـ Tuple</p>
+
+      <h3>الوصول إلى العناصر Accessing the elements</h3>
+      <pre>
+        <code>
+         data = ("Ali", 20, True)
+
+         print(data[0])  # Ali
+         print(data[1])  # 20
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775210033/p81_rt8wn2.png" class="images">
+      <p>هذا الكود يوضح الوصول إلى عناصر Tuple في Python</p>
+      <p>data يحتوي على قيم مختلفة نص، رقم، وقيمة منطقية</p>
+      <p>نستخدم الفهرس [index] للوصول إلى العناصر</p>
+      <p>الفهرس يبدأ من 0، لذلك data[0] هو "Ali"</p>
+      <p>وdata[1] هو 20</p>
+
+      <h3>التكرار على Tuple</h3>
+      <pre>
+        <code>
+         nums = (1, 2, 3)
+
+         for n in nums:
+             print(n)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775210189/p82_yiikbf.png" class="images">
+      <p>هذا الكود يوضح التكرار على عناصر Tuple في Python</p>
+      <p>nums يحتوي على القيم 1، 2، 3</p>
+      <p>الحلقة for تمر على كل عنصر داخل الـ Tuple</p>
+      <p>المتغير n يأخذ قيمة جديدة في كل دورة</p>
+      <p>يتم طباعة كل عنصر بشكل منفصل</p>
+
+      <h3>طول Tuple</h3>
+      <pre>
+        <code>
+         nums = (1, 2, 3, 4)
+         print(len(nums))
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775210329/p83_dybqms.png" class="images">
+      <p>هذا الكود يوضح استخدام () len مع Tuple في Python.</p>
+      <p>nums يحتوي على 4 عناصر</p>
+      <p>len(nums) تُرجع عدد العناصر داخل الـ Tuple</p>
+      <p>لا تهتم بالقيم بل بعددها فقط</p>
+      <p>النتيجة: 4</p>
+      <h3>لتخزين بيانات الطالب Using Tuple to store student data</h3>
+      <pre>
+        <code>
+         student = ("Ali", 20, "CS")
+
+         print("Name:", student[0])
+         print("Age:", student[1])
+         print("Major:", student[2])
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775210769/p84_a2ks0h.png" class="images">
+      <p>هذا الكود يوضح استخدام Tuple لتخزين بيانات الطالب</p>
+      <p>student يحتوي على الاسم والعمر والتخصص</p>
+      <p>نستخدم الفهرس للوصول لكل قيمة داخل الـ Tuple</p>
+      <p>student[0] للاسم، student[1] للعمر، student[2] للتخصص.</p>
+      <p>يتم عرض البيانات باستخدام ()print</p>
+    </details>
+
+    <details>
+      <summary>المجموعات (Sets)</summary>
+      <p>هي مجموعة من القيم لكن لا تسمح بالتكرار غير مرتبة قابلة للتعديل </p>
+      <pre>
+        <code>
+         numbers = {1, 2, 3, 3, 4}
+
+         print(numbers)  # التكرار يُحذف تلقائيًا
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775211167/p85_dgpagl.png" class="images">
+      <p>هذا الكود يوضح استخدام Set في Python</p>
+      <p>numbers مجموعة تُكتب بين أقواس { }</p>
+      <p>الـ Set لا تسمح بتكرار العناصر</p>
+      <p>لذلك الرقم 3 المكرر سيتم حذفه تلقائيًا</p>
+      <p>النتيجة ستكون: {1, 2, 3, 4}</p>
+
+      <h3>إضافة عنصر Add elemen</h3>
+      <pre>
+        <code>
+         nums = {1, 2, 3}
+         nums.add(4)
+
+         print(nums)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775211407/p86_pg6k6u.png" class="images">
+      <p>هذا الكود يوضح إضافة عنصر إلى Set في Python</p>
+      <p>nums مجموعة تحتوي على الأرقام 1، 2، 3</p>
+      <p>add(4) تضيف الرقم 4 إلى المجموعة</p>
+      <p>الـ Set لا تسمح بتكرار العناصر</p>
+      <p>النتيجة: {1, 2, 3, 4}</p>
+      <h3>حذف عنصر Delete element</h3>
+      <pre>
+        <code>
+         nums = {1, 2, 3}
+
+         nums.remove(2)
+         print(nums)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775211536/p87_qgc8ve.png" class="images">
+      <p>هذا الكود يوضح حذف عنصر من Set في Python</p>
+      <p>المجموعة nums تحتوي على الأرقام 1، 2، 3</p>
+      <p>remove(2) تقوم بحذف الرقم 2 من المجموعة</p>
+      <p>إذا لم يكن العنصر موجودًا سيحدث خطأ</p>
+      <p>النتيجة: {1, 3}</p>
+
+      <h3>التكرار على Set</h3>
+      <pre>
+        <code>
+         nums = {1, 2, 3}
+
+         for n in nums:
+             print(n)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775211658/p88_k2wjhv.png" class="images">
+      <p>هذا الكود يوضح التكرار على عناصر Set في Python</p>
+      <p>nums مجموعة تحتوي على الأرقام 1، 2، 3</p>
+      <p>الحلقة for تمر على كل عنصر داخل الـ Set</p>
+      <p>المتغير n يأخذ قيمة جديدة في كل دورة.</p>
+      <p>يتم طباعة كل عنصر، لكن الترتيب غير ثابت</p>
+
+      <h3>عدد العناصر Number of elements</h3>
+      <pre>
+        <code>
+         nums = {1, 2, 3}
+         print(len(nums))
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775211767/p89_hpkax6.png" class="images">
+      <p>هذا الكود يوضح استخدام ()len مع Set في Python.</p>
+      <p>nums يحتوي على 3 عناصر</p>
+      <p>len(nums) تُرجع عدد العناصر داخل المجموعة</p>
+      <p>لا تهتم بالقيم بل بعددها فقط</p>
+      <p>النتيجة: 3</p>
+
+      <h3>العمليات على Sets</h3>
+      <h3>الاتحاد Union</h3>
+      <pre>
+        <code>
+         a = {1, 2, 3}
+         b = {3, 4, 5}
+
+         print(a | b)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775211979/p90_reuor5.png" class="images">
+      <p>هذا الكود يوضح الاتحاد بين مجموعتين Set Union في Python</p>
+      <p>المجموعتان a و b تحتويان على عناصر مختلفة ومتكررة</p>
+      <p>الرمز | يقوم بدمج المجموعتين دون تكرار العناصر</p>
+      <p>يتم حذف أي عناصر متكررة تلقائيًا</p>
+      <p>النتيجة: {1, 2, 3, 4, 5}</p>
+
+      <h3>التقاطع Intersection</h3>
+      <pre>
+        <code>
+        a = {1, 2, 3}
+        b = {3, 4, 5}
+
+        print(a & b)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775212170/p91_yzf3c5.png" class="images">
+      <p>هذا الكود يوضح التقاطع بين مجموعتين Set Intersection في Python</p>
+      <p>المجموعتان a و b تحتويان على عناصر مختلفة ومتكررة</p>
+      <p>الرمز & يقوم بإرجاع العناصر المشتركة فقط بين المجموعتين</p>
+      <p>في هذا المثال، الرقم المشترك هو 3</p>
+      <p>النتيجة: {3}</p>
+
+      <h3>الفرق Difference</h3>
+      <pre>
+        <code>
+         a = {1, 2, 3}
+         b = {3, 4, 5}
+
+         print(a - b)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775212341/p92_ets7au.png" class="images">
+      <p>هذا الكود يوضح فرق المجموعتين Set Difference في Python</p>
+      <p>المجموعتان a و b تحتويان على عناصر مختلفة ومتكررة</p>
+      <p>الرمز - يقوم بإرجاع العناصر الموجودة في a فقط وليست في b</p>
+      <p>في هذا المثال، العناصر 1 و 2 موجودة فقط في a</p>
+      <p>النتيجة: {1, 2}</p>
+      <h3> يوضح عمليات الاتحاد والتقاطع بين مجموعتين </h3>
+      <pre>
+        <code>
+        students1 = {"Ali", "Ahmed", "Sara"}
+        students2 = {"Sara", "Mubarak"}
+
+        print("All students:", students1 | students2)
+        print(" مشتركون:", students1 & students2)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775212480/p93_hiah74.png" class="images">
+      <p>هذا الكود يوضح عمليات الاتحاد والتقاطع بين مجموعتين Sets في Python</p>
+      <p>students1 | students2 الاتحاد تجمع كل الأسماء بدون تكرار.</p>
+      <p>النتيجة: {'Ali', 'Ahmed', 'Sara', 'Mubarak'}</p>
+      <p>students1 & students2 (التقاطع) تعطي الأسماء المشتركة بين المجموعتين</p>
+      <p>النتيجة: {'Sara'}</p>
+    </details>
+
+    <details>
+      <summary> القواميس(Dictionaries)</summary>
+      <p>هو مجموعة من البيانات على شكل مفتاح : قيمة مثل: الاسم "Ali" العمر 20</p>
+      <pre>
+        <code>
+     student = {
+         "name": "Ali",
+         "age": 20,
+         "major": "CS"
+     }
+
+     print(student)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775212821/p94_nktr8v.png" class="images">
+      <p>هذا الكود يوضح استخدام Dictionary في Python</p>
+      <p>student يحتوي على أزواج مفتاح: قيمة key: value</p>
+      <p>المفاتيح هنا هي "name", "age", "major"</p>
+      <p>القيم المرتبطة بها هي "Ali", 20, "CS"</p>
+      <p>print(student) يعرض كل المفاتيح والقيم</p>
+
+      <h3>الوصول إلى القيم Accessing values</h3>
+      <pre>
+        <code>
+         student = {
+             "name": "Ali",
+             "age": 20
+         }
+
+         print(student["name"])  # Ali
+         print(student["age"])   # 20
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775212969/p95_dxr8ab.png" class="images">
+      <p>هذا الكود يوضح الوصول إلى قيم الـ Dictionary في Python</p>
+      <p>student يحتوي على مفاتيح "name" و "age"</p>
+      <p>نستخدم المفتاح بين أقواس [ ] للحصول على القيمة المرتبطة به</p>
+      <p>student["name"] تعطي "Ali" و student["age"] تعطي 20</p>
+      <p>النتيجة: عرض اسم وعمر الطالب</p>
+
+      <h3>تعديل قيمة Adjust value</h3>
+      <pre>
+        <code>
+         student = {"name": "Ali", "age": 20}
+
+         student["age"] = 21
+         print(student)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775213077/p96_oiqsm5.png" class="images">
+      <p>هذا الكود يوضح تعديل قيمة في Dictionary في Python</p>
+      <p>student يحتوي على المفتاح "age" بقيمة 20</p>
+      <p>student["age"] = 21 تقوم بتغيير القيمة إلى 21</p>
+      <p>لا يتم إضافة مفتاح جديد، بل تعديل القيمة الموجودة</p>
+      <p>النتيجة: {"name": "Ali", "age": 21}</p>
+      <h3>إضافة عنصر Add element</h3>
+      <pre>
+        <code>
+         student = {"name": "Ali"}
+
+         student["age"] = 20
+         print(student)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775213191/p97_y37o5s.png" class="images">
+      <p>هذا الكود يوضح إضافة مفتاح جديد في Dictionary في Python</p>
+      <p>student يحتوي في البداية على المفتاح "name"</p>
+      <p>student["age"] = 20 تضيف مفتاحًا جديدًا باسم "age" مع القيمة 20</p>
+      <p>يمكن إضافة أي مفتاح جديد بهذه الطريقة</p>
+      <p>النتيجة: {"name": "Ali", "age": 20}</p>
+
+      <h3>حذف عنصر Delete element</h3>
+      <pre>
+        <code>
+         student = {"name": "Ali", "age": 20}
+
+         del student["age"]
+         print(student)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775213286/p98_skbndn.png" class="images">
+      <p>هذا الكود يوضح حذف مفتاح من Dictionary في Python</p>
+      <p>student يحتوي على المفتاح "age" بقيمة 20</p>
+      <p>del student["age"] تقوم بحذف هذا المفتاح والقيمة المرتبطة به</p>
+      <p>يمكن حذف أي مفتاح بنفس الطريقة</p>
+      <p>النتيجة: {"name": "Ali"}</p>
+      <h3>التكرار على Dictionary</h3>
+      <pre>
+        <code>
+         student = {"name": "Ali", "age": 20}
+
+         for key in student:
+             print(key, ":", student[key])
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775213392/p99_ultgw9.png" class="images">
+      <p>هذا الكود يوضح التكرار على عناصر Dictionary في Python</p>
+      <p>student يحتوي على مفاتيح "name" و "age" مع قيمها</p>
+      <p>الحلقة for key in student تمر على كل مفتاح داخل الـ Dictionary</p>
+      <p>student[key] تعطي القيمة المرتبطة بالمفتاح</p>
+      <p>يتم طباعة كل مفتاح مع قيمته، النتيجة:</p>
+      <p>name : Ali</p>
+      <p>age : 20</p>
+      <h3>ستخدام ()items</h3>
+      <pre>
+        <code>
+         student = {"name": "Ali", "age": 20}
+         for key, value in student.items():
+             print(key, value)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775213565/p100_ofnv1p.png" class="images">
+      <p>هذا الكود يوضح التكرار على Dictionary باستخدام ()items في Python</p>
+      <p>()student.items تُرجع كل زوج مفتاح: قيمة</p>
+      <p>الحلقة for key, value in  تتيح الوصول لكل مفتاح وقيمته مباشرة</p>
+      <p>يتم طباعة المفتاح والقيمة في كل دورة</p>
+      <p>النتيجة:</p>
+      <p>name Ali</p>
+      <p>age 20</p>
+
+
+      <h3>أهم الدوال The most important functions</h3>
+      <pre>
+        <code>
+         student = {"name": "Ali", "age": 20}
+
+         print(student.keys())    # المفاتيح
+         print(student.values())  # القيم
+         print(student.items())   # الاثنين معًا
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775213677/p101_j76dmu.png" class="images">
+      <p>هذا الكود يوضح بعض الدوال المفيدة للـ Dictionary في Python</p>
+      <p>()student.keys ترجع جميع المفاتيح: dict_keys(['name', 'age'])</p>
+      <p>()student.values ترجع جميع القيم: dict_values(['Ali', 20])</p>
+      <p>()student.items ترجع أزواج المفتاح والقيمة معًا: dict_items([('name', 'Ali'), ('age', 20)])</p>
+      
+
+      <h3>Create a dictionary and add user data</h3>
+      <pre>
+        <code>
+         user = {}
+
+         name = input("Enter name: ")
+         age = int(input("Enter age: "))
+
+         user["name"] = name
+         user["age"] = age
+
+         print(user)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775213843/p102_fvgdyd.png" class="images">
+      <p>هذا الكود يوضح إنشاء Dictionary وإضافة بيانات من المستخدم في Python</p>
+      <p>يبدأ بإنشاء Dictionary فارغ: user = {}</p>
+      <p>يطلب من المستخدم إدخال الاسم والعمر باستخدام ()input</p>
+      <p>يتم تحويل العمر إلى عدد صحيح باستخدام ()int</p>
+      <p>تُضاف البيانات إلى الـ Dictionary باستخدام المفاتيح "name" و "age"</p>
+      <p>يتم طباعة الـ Dictionary لعرض البيانات المدخلة</p>
+    </details>
+
+    <details>
+      <summary>التعامل مع النصوص (Strings)</summary>
+      <h3>ما هو String</h3>
+      <p>هو أي نص بين: "Hello" أو 'Hello'</p>
+      <pre>
+        <code>
+        text = "Hello World"
+        print(text)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775241404/p103_eehqzm.png" class="images">
+      <p>هذا الكود يوضح استخدام String في Python</p>
+      <p>text يحتوي على النص "Hello World"</p>
+      <p>print(text) يقوم بعرض النص على الشاشة</p>
+      <p>يمكن تخزين أي نص داخل المتغير بهذه الطريقة</p>
+      <p>النصوص تُكتب عادة بين علامات اقتباس " " أو ' '</p>
+
+      <h3>الوصول إلى الحروف Accessing the letters</h3>
+      <p>يبدأ العد من 0</p>
+      <pre>
+        <code>
+        text = "Python"
+
+        print(text[0])  # P
+        print(text[1])  # y
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775241517/p104_bqbxfk.png" class="images">
+      <p>هذا الكود يوضح الوصول إلى أحرف النص String في Python</p>
+      <p>النص text يحتوي على "Python"</p>
+      <p>نستخدم الفهرس [index] للوصول إلى حرف معين</p>
+      <p>الفهرس يبدأ من 0، لذلك text[0] هو "P" و text[1] هو "y"</p>
+      <p>يمكن الوصول لأي حرف بنفس الطريقة</p>
+
+      <h3>تقطيع النص Slicing</h3>
+      <pre>
+        <code>
+        text = "Python"
+
+        print(text[0:3])  # Pyt
+        print(text[2:])   # thon
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775241611/p105_fvrqjk.png" class="images">
+      <p>هذا الكود يوضح تقطيع النصوص String Slicing في Python</p>
+      <p>text[0:3] يختار الأحرف من الفهرس 0 حتى 2 لا يشمل 3، النتيجة: "Pyt"</p>
+      <p>text[2:] يختار الأحرف من الفهرس 2 حتى نهاية النص، النتيجة: "thon"</p>
+      <p>يمكن التحكم بالبداية والنهاية لاستخراج أي جزء من النص</p>
+    
+      <h3>أهم الدوال The most important functions</h3>
+      <h3>تحويل الأحرف Character conversion</h3>
+      <pre>
+        <code>
+         text = "hello"
+
+         print(text.upper())  # HELLO
+         print(text.lower())  # hello
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775241784/p106_km3mab.png" class="images">
+      <p>هذا الكود يوضح تغيير حالة الأحرف في النصوص String في Python.</p>
+      <p>()text.upper تحول كل الأحرف إلى حروف كبيرة: "HELLO"</p>
+      <p>()text.lower تحول كل الأحرف إلى حروف صغيرة: "hello"</p>
+      <p>هذه الدوال لا تغير النص الأصلي، بل تُرجع نسخة جديدة بالحالة المطلوبة</p>
+    
+
+      <h3>البحث داخل النص Search within the text</h3>
+      <pre>
+        <code>
+         text = "Hello World"
+
+         print(text.find("World"))  # موقع الكلمة
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775241861/p107_eqquix.png" class="images">
+      <p>هذا الكود يوضح استخدام ()find للبحث عن نص داخل String في Python</p>
+      <p>ترجع موقع بداية الكلمة إذا وُجدت، أو -1 إذا لم توجد</p>
+      <p>في هذا المثال، "World" تبدأ من الفهرس 6</p>
+      <p>النتيجة: 6</p>
+
+      <h3>الاستبدال replace</h3>
+      <pre>
+        <code>
+         text = "Hello World"
+
+         print(text.replace("World", "Python"))
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775241936/p108_jcfeve.png" class="images">
+      <p>هذا الكود يوضح استخدام ()replace لتغيير جزء من النص في Python</p>
+      <p>text.replace("World", "Python") تستبدل الكلمة "World" بالكلمة "Python"</p>
+      <p>الدالة تُرجع نصًا جديدًا ولا تغيّر النص الأصلي text النتيجة: "Hello Python"</p>
+      <h3>طول النص Text length</h3>
+      <pre>
+        <code>
+         text = "Python"
+
+         print(len(text))
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775242044/p109_qxydfh.png" class="images">
+      <p>هذا الكود يوضح استخدام ()len لمعرفة طول النص String في Python.</p>
+      <p>text يحتوي على "Python"</p>
+      <p>len(text) تُرجع عدد الأحرف في النص</p>
+      <p>في هذا المثال، عدد الأحرف هو 6</p>
+      <p>النتيجة: 6</p>
+
+      <h3>دمج النصوص Text merging</h3>
+      <pre>
+        <code>
+         a = "Hello"
+         b = "World"
+
+         print(a + " " + b)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775242197/110_bknhji.png" class="images">
+      <p>هذا الكود يوضح دمج النصوص String Concatenation في Python</p>
+      <p>a يحتوي على "Hello" و b يحتوي على "World"</p>
+      <p>a + " " + b تجمع النصين مع إضافة مسافة بينهما</p>
+      <p>النتيجة: "Hello World"</p>
+      
+
+      <h3>تنسيق النص Text formatting </h3>
+      <p>هذه أفضل طريقة</p>
+      <pre>
+        <code>
+         name = "Ali"
+         age = 20
+
+         print(f"My name is {name} and I am {age}")
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775242308/p111_jgflk3.png" class="images">
+      <p>هذا الكود يوضح استخدام f-strings لطباعة النصوص مع المتغيرات في Python</p>
+      <p>f"My name is {name} and I am {age}" تسمح بإدراج قيم المتغيرات مباشرة داخل النص</p>
+      <p>{name} تُستبدل بالقيمة "Ali" و {age} بالقيمة 20</p>
+      <p>النتيجة: "My name is Ali and I am 20"</p>
+      
+
+      <h3> التعامل مع نصوص المستخدم Handling user texts</h3>
+      <pre>
+        <code>
+         name = input("Enter your name: ")
+
+         print("Upper:", name.upper())
+         print("Lower:", name.lower())
+         print("Length:", len(name))
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775242401/p112_t6nvfc.png" class="images">
+      <p>هذا الكود يوضح التعامل مع نصوص المستخدم في Python</p>
+      <p>يطلب من المستخدم إدخال اسمه باستخدام ()input</p>
+      <p>()name.upper تعرض الاسم كله أحرف كبيرة</p>
+      <p>()name.lower تعرض الاسم كله أحرف صغيرة</p>
+      <p>len(name) تعطي عدد الأحرف في الاسم</p>
+      <p>بهذه الطريقة يمكن تحليل أو تعديل النصوص المدخلة من المستخدم</p>
+    </details>
+
+    <details>
+      <summary>الدوال (Functions)</summary>
+      <h3>ما هي الدالة  function</h3>
+      <p>الدالة هي قطعة كود تقوم بمهمة معينة ويمكن إعادة استخدامها</p>
+      <pre>
+        <code>
+        def say_hello():
+            print("Hello")
+
+        say_hello()
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775242638/p113_zb6c6v.png" class="images">
+      <p>هذا الكود يوضح تعريف واستدعاء دالة Function في Python</p>
+      <p>()def say_hello: تنشئ دالة باسم say_hello</p>
+      <p>داخل الدالة يوجد الأمر print("Hello") الذي ينفذ عند استدعاء الدالة</p>
+      <p>say_hello() تستدعي الدالة وتنفذ محتواها</p>
+      <p>النتيجة: سيتم طباعة "Hello" على الشاشة</p>
+
+      <h3>دالة مع معاملات Parameters</h3>
+      <pre>
+        <code>
+         def greet(name):
+             print("Hello", name)
+
+         greet("Ali")
+         greet("Mubarak")
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775242906/114_ueahbj.png" class="images">
+      <p>هذا الكود يوضح تعريف دالة مع معامل Parameter في Python</p>
+      <p>def greet(name): تنشئ دالة باسم greet تأخذ متغيرًا name</p>
+      <p>داخل الدالة يتم طباعة "Hello" متبوعة بالقيمة المرسلة</p>
+      <p>عند استدعاء greet("Ali") و greet("Mubarak") تُمرر القيم المختلفة للدالة</p>
+      <p>النتيجة:</p>
+      <p>Hello Ali</p>
+      <p>Hello Mubarak</p>
+
+      <h3>دالة ترجع قيمة Return</h3>
+      <p>الفرق:()print يعرض  return  يرجع قيمة تستخدمها لاحقًا</p>
+      <pre>
+        <code>
+         def add(a, b):
+             return a + b
+
+         result = add(3, 5)
+         print(result)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775243765/p115_u8mi2i.png" class="images">
+      <p>هذا الكود يوضح تعريف دالة مع قيم إرجاع Return في Python</p>
+      <p>def add(a, b): تنشئ دالة باسم add تستقبل متغيرين a و b</p>
+      <p>return a + b تعيد ناتج جمع المتغيرين</p>
+      <p>result = add(3, 5) تستدعي الدالة وتخزن الناتج في المتغير result</p>
+      <p>print(result) يعرض الناتج: 8</p>
+
+      <h3> دالة لحساب مربع رقم Function to calculate the square of a number </h3>
+      <pre>
+        <code>
+         def square(num):
+             return num * num
+
+         print(square(4))
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775243763/p116_todhn3.png" class="images">
+      <p>هذا الكود يوضح دالة لحساب مربع رقم في Python</p>
+      <p>def square(num): تنشئ دالة باسم square تأخذ متغير num</p>
+      <p>return num * num تُرجع مربع الرقم</p>
+      <p>square(4) تستدعي الدالة بالقيمة 4</p>
+      <p>print(square(4)) يعرض الناتج: 16</p>
+      <h3>دوال بقيم افتراضية Functions with default values</h3>
+      <pre>
+        <code>
+         def greet(name="User"):
+             print("Hello", name)
+
+         greet()
+         greet("Ali")
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775243761/p117_xc5lvb.png" class="images">
+      <p>هذا الكود يوضح دالة مع قيمة افتراضية للمعامل Default Parameter في Python</p>
+      <p>def greet(name="User"): تنشئ دالة باسم greet، وname له قيمة افتراضية "User"</p>
+      <p>عند استدعاء ()greet بدون تمرير قيمة، تستخدم القيمة الافتراضية وتطبع "Hello User"</p>
+      <p>عند استدعاء greet("Ali") يتم استبدال القيمة الافتراضية بالقيمة المرسلة وتطبع "Hello Ali"</p>
+      <p>النتيجة:</p>
+      <p>Hello User</p>
+      <p>Hello Ali</p>
+
+      <h3>دوال متعددة المعاملات Multi-parameter functions</h3>
+      <pre>
+        <code>
+         def info(name, age):
+             print(f"{name} is {age} years old")
+
+         info("Ali", 20)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775243760/p118_tlxy9q.png" class="images">
+      <p>هذا الكود يوضح دالة مع عدة معاملات Parameters في Python</p>
+      <p>def info(name, age): تنشئ دالة باسم info تأخذ اسم وعمر</p>
+      <p>داخل الدالة يتم استخدام f-string لعرض النص مع المتغيرات</p>
+      <p>عند استدعاء info("Ali", 20) يتم تمرير القيم "Ali" و 20</p>
+      <p>النتيجة:</p>
+      <p>Ali is 20 years old</p>
+
+      <h3>تحديد ما إذا كان الرقم زوجيًا أو فرديًا Determine whether the number is even or odd</h3>
+      <pre>
+        <code>
+         def check(num):
+             if num % 2 == 0:
+                 return "Even"
+             else:
+                 return "Odd"
+
+        print(check(4))
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775243759/p119_sjtten.png" class="images">
+      <p>هذا الكود يوضح دالة لتحديد ما إذا كان الرقم زوجيًا أو فرديًا في Python</p>
+      <p>def check(num): تنشئ دالة باسم check تستقبل رقمًا</p>
+      <p>if num % 2 == 0: تتحقق مما إذا كان الرقم قابلًا للقسمة على 2 بدون باقي زوجي</p>
+      <p>إذا كان الرقم زوجيًا تُرجع "Even"، وإلا تُرجع "Odd".</p>
+      <p>print(check(4)) تستدعي الدالة بالرقم 4 وتطبع الناتج: "Even"</p>
+    </details>
+
+    <details>
+      <summary>الدوال المتقدمة (Arguments / Return / Lambda)</summary>
+      <h3>أنواع المعاملات Arguments</h3>
+      <h3>معاملات عادية Positional</h3>
+      <pre>
+        <code>
+         def add(a, b):
+             print(a + b)
+
+         add(3, 5)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775244269/p120_g2foiz.png" class="images">
+      <p>هذا الكود يوضح دالة تجمع رقمين وتطبع الناتج مباشرة في Python</p>
+      <p>def add(a, b): تنشئ دالة باسم add تستقبل متغيرين a و b</p>
+      <p>print(a + b) تقوم بطباعة مجموع الرقمين مباشرة داخل الدالة</p>
+      <p>عند استدعاء add(3, 5) يتم جمع 3 و 5 وطباعة الناتج</p>
+      <p>لنتيجة: 8</p>
+      <h3>معاملات باسم Keyword</h3>
+      <p>يمكنك تغيير الترتيب</p>
+      <pre>
+        <code>
+         
+          def info(name, age):
+              print(name, age)
+
+          info(name="Ali", age=20)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775275170/p121_rxomve.png" class="images">
+      <p>هذا الكود يوضح استدعاء دالة باستخدام المعاملات المسماة Keyword Arguments في Python</p>
+      <p>def info(name, age): تنشئ دالة باسم info تأخذ اسمًا وعمرًا</p>
+      <p>عند استدعاء info(name="Ali", age=20) يتم تحديد القيم باستخدام أسماء المعاملات مباشرة</p>
+      <p>هذا يسمح بتمرير القيم بأي ترتيب، ويزيد وضوح الكود</p>
+      <p>النتيجة: Ali 20</p>
+
+      <h3>معاملات افتراضية Default</h3>
+      <pre>
+        <code>
+         def greet(name="User"):
+             print("Hello", name)
+
+         greet()
+         greet("Mubarak")
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775275555/p122_o3nmfs.png" class="images">
+      <p>هذا الكود يوضح دالة مع قيمة افتراضية للمعامل Default Parameter في Python</p>
+      <p>def greet(name="User"): تنشئ دالة باسم greet، وname له قيمة افتراضية "User"</p>
+      <p>عند استدعاء ()greet بدون تمرير قيمة، تُستخدم القيمة الافتراضية وتطبع "Hello User".</p>
+      <p>عند استدعاء greet("Mubarak") يتم استبدال القيمة الافتراضية بالقيمة المرسلة  </p>
+      <p>النتيجة:</p>
+      <p>Hello User</p>
+      <p>Hello Mubarak</p>
+
+      <h3>عدد غير محدود من المعاملات args*</h3>
+      <p>يستقبل عدة قيم</p>
+      <pre>
+        <code>
+         def total(*numbers):
+             print(sum(numbers))
+
+         total(1, 2, 3, 4)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775275801/p123_e1uzpd.png" class="images">
+      <p>هذا الكود يوضح دالة تستخدم معاملات متغيرة Variable-length Arguments في Python</p>
+      <p>numbers* يعني أن الدالة يمكنها استقبال أي عدد من القيم</p>
+      <p>sum(numbers) تقوم بجمع كل الأرقام المرسلة</p>
+      <p>عند استدعاء total(1, 2, 3, 4)، يتم جمع 1+2+3+4</p>
+      <p>النتيجة: 10</p>
+
+      <h3>معاملات باسم غير محدودة kwargs**</h3>
+      <p>يستقبل بيانات مثل Dictionary</p>
+      <pre>
+        <code>
+         def user_info(**data):
+             print(data)
+
+         user_info(name="Ali", age=20)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775275886/p124_xcr4sj.png" class="images">
+      <p>هذا الكود يوضح دالة تستخدم معاملات مسماة متعددة غير محددة Keyword Arguments في Python</p>
+      <p> data** يسمح بتمرير أي عدد من أزواج مفتاح: قيمة للدالة</p>
+      <p>داخل الدالة، data تُصبح Dictionary تحتوي على هذه الأزواج</p>
+      <p>عند استدعاء user_info(name="Ali", age=20)، يتم إنشاء Dictionary: {"name": "Ali", "age": 20}</p>
+      <p>print(data) يعرض: {'name': 'Ali', 'age': 20}</p>
+      <h3> إرجاع القيم Return</h3>
+      <p></p>
+      <pre>
+        <code>
+         def multiply(a, b):
+             return a * b
+
+         result = multiply(3, 4)
+         print(result)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775276097/p125_oqmntc.png" class="images">
+      <p>هذا الكود يوضح دالة لإرجاع حاصل ضرب رقمين في Python</p>
+      <p>def multiply(a, b): تنشئ دالة باسم multiply تأخذ متغيرين a و b</p>
+      <p>return a * b تعيد ناتج ضرب الرقمين.</p>
+      <p>result = multiply(3, 4) تستدعي الدالة وتخزن الناتج في المتغير result</p>
+      <p>print(result) يعرض الناتج: 12</p>
+      <h3>إرجاع أكثر من قيمة Return more than one value</h3>
+      <p></p>
+      <pre>
+        <code>
+         def calc(a, b):
+             return a + b, a * b
+
+         x, y = calc(2, 3)
+         print(x, y)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775276185/p126_rthr0j.png" class="images">
+      <p>هذا الكود يوضح دالة ترجع أكثر من قيمة Multiple Return Values في Python</p>
+      <p>def calc(a, b): تنشئ دالة باسم calc تستقبل متغيرين a و b</p>
+      <p>return a + b, a * b تُرجع مجموع وضرب الرقمين</p>
+      <p>عند استدعاء x, y = calc(2, 3) يتم تخزين المجموع في x والضرب في y</p>
+      <p>print(x, y) يعرض النتائج: 5 6</p>
+      <h3>  الدوال المختصرة Lambda Function</h3>
+      <p>هي دالة صغيرة بدون اسم تستخدم في الحالات البسيطة</p>
+      <pre>
+        <code>
+         add = lambda a, b: a + b
+         print(add(3, 5))
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775276262/p127_curtql.png" class="images">
+      <p>هذا الكود يوضح استخدام دالة Lambda في Python</p>
+      <p>lambda a, b: a + b تنشئ دالة صغيرة غير مسماة تجمع رقمين</p>
+      <p>add = lambda a, b: a + b تخزن الدالة في المتغير add</p>
+      <p>عند استدعاء add(3, 5) يتم جمع الرقمين</p>
+      <p>print(add(3, 5)) يعرض الناتج: 8</p>
+
+      <h3> مع list</h3>
+      <p></p>
+      <pre>
+        <code>
+        nums = [1, 2, 3, 4]
+
+        # تربيع كل رقم
+        result = list(map(lambda x: x * x, nums))
+        print(result)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775276692/p128_j6mxrz.png" class="images">
+      <p>هذا الكود يوضح استخدام ()map مع دالة Lambda في Python</p>
+      <p>nums تحتوي على [1, 2, 3, 4]</p>
+      <p>lambda x: x * x دالة صغيرة تقوم بتربيع الرقم</p>
+      <p>map(lambda x: x * x, nums) تطبق الدالة على كل عنصر في القائمة</p>
+      <p>list(...) تحول النتيجة إلى قائمة جديدة</p>
+      <p>النتيجة: [1, 4, 9, 16]</p>
+      <h3> مع filter</h3>
+      <p></p>
+      <pre>
+        <code>
+         nums = [1, 2, 3, 4, 5]
+
+         # الأعداد الزوجية فقط
+         even = list(filter(lambda x: x % 2 == 0, nums))
+         print(even)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775276784/p129_crz2ma.png" class="images">
+      <p>هذا الكود يوضح استخدام ()filter مع دالة Lambda في Python</p>
+      <p>nums تحتوي على [1, 2, 3, 4, 5]</p>
+      <p>lambda x: x % 2 == 0 دالة صغيرة تتحقق إذا كان الرقم زوجيًا</p>
+      <p>filter(lambda x: x % 2 == 0, nums) تختار فقط العناصر التي تحقق الشرط</p>
+      <p>(...)list تحول النتيجة إلى قائمة جديدة</p>
+      <p>النتيجة: [2, 4]</p>
+    </details>
+
+    <details>
+      <summary>النطاق (Scope - Global / Local)</summary>
+      <h3>ما هو Scope</h3>
+      <p>هو المكان الذي يمكن الوصول فيه إلى المتغير</p>
+      <h3>المتغير المحلي Local</h3>
+      <p>يُعرّف داخل دالة لا يمكن استخدامه خارجها</p>
+      <pre>
+        <code>
+          def my_func():
+              x = 10  # متغير محلي
+              print(x)
+
+          my_func()
+
+          # print(x)  خطأ
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775276877/p130_ze90cx.png" class="images">
+      <p>هذا الكود يوضح المتغيرات المحلية Local Variables في Python</p>
+      <p>المتغير x = 10 تم تعريفه داخل الدالة ()my_func</p>
+      <p>داخل الدالة يمكن استخدام x وطباعته</p>
+      <p>عند استدعاء ()my_func يتم طباعة 10</p>
+      <p>خارج الدالة، محاولة استخدام x تسبب خطأ لأنه متغير محلي لا يمكن الوصول له خارج الدالة</p>
+
+      <h3>المتغير العام Global</h3>
+      <p>يُعرّف خارج الدوال يمكن استخدامه في كل مكان</p>
+      <pre>
+        <code>
+        x = 5  # متغير عام
+
+        def my_func():
+            print(x)
+
+        my_func()
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775276948/p131_hiiwnc.png" class="images">
+      <p>هذا الكود يوضح المتغيرات العامة Global Variables في Python</p>
+      <p>المتغير x = 5 تم تعريفه خارج أي دالة، لذا هو متغير عام</p>
+      <p>الدالة ()my_func يمكنها الوصول إلى المتغير العام مباشرة</p>
+      <p>عند استدعاء ()my_func يتم طباعة 5</p>
+      <p>المتغير العام يمكن استخدامه داخل أي دالة إلا إذا تم تغييره محليًا بنفس الاسم</p>
+
+
+      <h3>الفرق بين المتغير المحلي والمتغير العام Local vs Global Variables</h3>
+      <p></p>
+      <pre>
+        <code>
+         name = "Mubarak"
+
+         def greet():
+             name = "Ali"
+             print("Inside:", name)
+
+         greet()
+         print("Outside:", name)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775277105/p132_nr6ura.png" class="images">
+      <p>هذا الكود يوضح الفرق بين المتغير المحلي والمتغير العام Local vs Global Variables في Python</p>
+      <p>name = "Mubarak" هو متغير عام (Global)</p>
+      <p>داخل الدالة greet() تم تعريف name = "Ali"، وهو متغير محلي (Local) يظل موجودًا فقط داخل الدالة</p>
+      <p>print("Inside:", name) داخل الدالة يطبع "Ali"</p>
+      <p>print("Outside:", name) خارج الدالة يطبع "Mubarak" لأن المتغير العام لم يتغير</p>
+    </details>
+
+    <details>
+      <summary>التعامل مع الأخطاء (Exception Handling)</summary>
+      <p>هو خطأ يحدث أثناء تشغيل البرنامج مثل: إدخال نص بدل رقم القسمة على صفر</p>
+      <h5>مثال بدون معالجة خطأ</h5>
+      <p>إذا أدخل المستخدم 0 أو نص  البرنامج يتوقف</p>
+      <pre>
+        <code>
+         num = int(input("Enter number: "))
+         print(10 / num)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775998822/p133_fl9vcd.png" class="images">
+      <p>هذا الكود يوضح إدخال رقم من المستخدم وعملية القسمة في Python</p>
+      <p>num = int(input("Enter number: ")) يطلب من المستخدم إدخال رقم ويحوّله إلى عدد صحيح</p>
+      <p>print(10 / num) يقوم بقسمة 10 على الرقم المدخل ويطبع الناتج.</p>
+      <p>إذا أدخل المستخدم الرقم 0، سيحدث خطأ قسمة على صفر (ZeroDivisionError)</p>
+      <p>للتعامل مع هذا الخطأ يمكن استخدام try-except</p>
+      <h3>الحل باستخدام try / except</h3>
+      <p>البرنامج لن يتوقف</p>
+      <pre>
+        <code>
+         try:
+             num = int(input("Enter number: "))
+             print(10 / num)
+         except:
+             print("Error occurred")
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775999134/p134_hrgrg2.png" class="images">
+      <p>هذا الكود يوضح التعامل مع الأخطاء Exception Handling في Python</p>
+      <p>try: يحتوي على الكود الذي قد يسبب خطأ، هنا إدخال رقم وقسمة 10 عليه</p>
+      <p>إذا حدث أي خطأ (مثل قسمة على صفر أو إدخال غير رقم)، يتم الانتقال إلى except:</p>
+      <p>داخل except يتم طباعة "Error occurred" بدلاً من توقف البرنامج</p>
+      <p>بهذه الطريقة يمكن منع البرنامج من التعطل عند وقوع الأخطاء</p>
+      <h3>تحديد نوع الخطأ Identifying the type of error </h3>
+      <p></p>
+      <pre>
+        <code>
+         try:
+            num = int(input("Enter number: "))
+            print(10 / num)
+
+         except ValueError:
+             print("Please enter a number")
+
+         except ZeroDivisionError:
+             print("Cannot divide by zero")
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775277398/p135_kmaqbg.png" class="images">
+      <p>هذا الكود يوضح التعامل مع أنواع مختلفة من الأخطاء Specific Exceptions في Python</p>
+      <p>try: يحتوي على الكود الذي قد يسبب خطأ: إدخال رقم وقسمة 10 عليه</p>
+      <p>except ValueError: تعالج الخطأ إذا أدخل المستخدم قيمة ليست رقمًا، وتطبع "Please enter a number"</p>
+      <p>except ZeroDivisionError: تعالج الخطأ إذا حاول المستخدم القسمة على صفر، وتطبع "Cannot divide by zero"</p>
+      <p>بهذه الطريقة يمكن معالجة الأخطاء بشكل محدد لكل نوع</p>
+
+      <h3>استخدام else</h3>
+      <p>ينفذ إذا لم يحدث خطأ</p>
+      <pre>
+        <code>
+         try:
+            num = int(input("Enter number: "))
+         except:
+            print("Error")
+         else:
+            print("Success:", num)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775277520/p136_ibdire.png" class="images">
+      <p>هذا الكود يوضح استخدام كتلة else مع التعامل مع الأخطاء في Python</p>
+      <p>try: يحتوي على الكود الذي قد يسبب خطأ، هنا تحويل الإدخال إلى رقم صحيح</p>
+      <p>except: تُنفذ إذا حدث أي خطأ، وتطبع "Error"</p>
+      <p>else: تُنفذ إذا لم يحدث أي خطأ، وتطبع "Success:" مع الرقم المدخل</p>
+      <p>بهذه الطريقة يمكن التمييز بين نجاح التنفيذ وحدوث الخطأ</p>
+      <h3>استخدام finally</h3>
+      <p>ينفذ دائمًا</p>
+      <pre>
+        <code>
+         try:
+             num = int(input("Enter number: "))
+         except:
+             print("Error")
+         finally:
+             print("Done")
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775277649/p137_pwnerl.png" class="images">
+      <p>هذا الكود يوضح استخدام كتلة finally مع التعامل مع الأخطاء في Python</p>
+      <p>try: يحتوي على الكود الذي قد يسبب خطأ (هنا تحويل الإدخال إلى عدد صحيح)</p>
+      <p>except: تُنفذ إذا حدث أي خطأ، وتطبع "Error"</p>
+      <p>finally: تُنفذ دائمًا سواء حدث خطأ أم لا، وتطبع "Done"</p>
+      <p>هذا مفيد لوضع كود يجب تنفيذه دائمًا، مثل إغلاق ملفات أو تحرير موارد</p>
+      <h3>استخدام حلقة مع التعامل مع الأخطاء Using a loop with error handling</h3>
+      <pre>
+        <code>
+         while True:
+             try:
+                 num = int(input("Enter number: "))
+                 print("Result:", 100 / num)
+                 break
+             except ValueError:
+                 print("Invalid input")
+             except ZeroDivisionError:
+                 print("Cannot divide by zero")
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775277765/p138_x2dbyg.png" class="images">
+      <p>هذا الكود يوضح استخدام حلقة مع التعامل مع الأخطاء Exception Handling لضمان إدخال صحيح في Python</p>
+      <p>while True: تنشئ حلقة لا نهائية تستمر حتى يتم إدخال رقم صحيح</p>
+      <p>try: يحتوي على إدخال الرقم وقسمة 100 عليه</p>
+      <p>except ValueError: تعالج الإدخال غير الرقمي وتطبع "Invalid input"</p>
+      <p>except ZeroDivisionError: تعالج محاولة القسمة على صفر وتطبع "Cannot divide by zero"</p>
+      <p>عند إدخال رقم صحيح وغير صفر، يتم تنفيذ القسمة وbreak للخروج من الحلقة</p>
+      <p>يضمن هذا الكود أن البرنامج لن يتوقف عند حدوث خطأ</p>
+    </details>
+  
+    <details>
+      <summary>التعامل مع التاريخ والوقت (Datetime)</summary>
+      <h3>استيراد المكتبة Library import</h3>
+      <pre>
+        <code>
+         import datetime
+        </code>
+      </pre>
+      <h3>الحصول على الوقت الحالي Get the current time</h3>
+      <pre>
+        <code>
+         import datetime
+
+         now = datetime.datetime.now()
+         print(now)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775278235/p139_ohjyul.png" class="images">
+      <p>هذا الكود يوضح استخدام وحدة datetime للحصول على التاريخ والوقت الحالي في Python</p>
+      <p>import datetime يستورد مكتبة التعامل مع التاريخ والوقت</p>
+      <p>()datetime.datetime.now ترجع التاريخ والوقت الحاليين كنصوص سنة، شهر، يوم، ساعة، دقيقة، ثانية، ميكروثانية</p>
+      <p>print(now) يعرض التاريخ والوقت الحالي على الشاشة</p>
+      <p>مثال للنتيجة: 2026-04-08 16:30:25.123456</p>
+      
+      <h3>الحصول على التاريخ فقط Get the date only</h3>
+      <pre>
+        <code>
+         today = datetime.date.today()
+         print(today)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775278401/p140_urxbmc.png" class="images">
+      <p>هذا الكود يوضح الحصول على تاريخ اليوم فقط باستخدام datetime في Python</p>
+      <p>()datetime.date.todayترجع التاريخ الحالي بدون الوقت، أي سنة، شهر، يوم</p>
+      <p>print(today) يعرض التاريخ الحالي على الشاشة</p>
+      <p>مثال للنتيجة: 2026-04-08</p>
+  
+
+      <h3>الحصول على الوقت فقط Just get the time</h3>
+      <pre>
+        <code>
+         now = datetime.datetime.now()
+         print(now.time())
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775278602/p141_hlegfp.png" class="images">
+      <p>هذا الكود يوضح الحصول على الوقت الحالي فقط باستخدام datetime في Python</p>
+      <p>()datetime.datetime.now ترجع التاريخ والوقت الحالي</p>
+      <p>()time تختار الوقت فقط ساعة، دقيقة، ثانية، ميكروثانية</p>
+      <p>print(now.time()) يعرض الوقت الحالي على الشاشة</p>
+      <p>مثال للنتيجة: 16:45:30.123456</p>
+      
+      <h3>الوصول إلى أجزاء التاريخ Accessing parts of history</h3>
+      <pre>
+        <code>
+          now = datetime.datetime.now()
+
+          print(now.year)
+          print(now.month)
+          print(now.day)
+          print(now.hour)
+          print(now.minute)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775278708/p142_wxznul.png" class="images">
+      <p>هذا الكود يوضح استخراج أجزاء محددة من التاريخ والوقت في Python باستخدام datetime</p>
+      <p>()now = datetime.datetime.now يحصل على التاريخ والوقت الحالي</p>
+      <p>now.year → السنة الحالية</p>
+      <p>now.month → رقم الشهر الحالي (1–12)</p>
+      <p>now.day → اليوم الحالي</p>
+      <p>now.hour → الساعة الحالية (0–23)</p>
+      <p>now.minute → الدقيقة الحالية (0–59)</p>
+      <p>مثال للنتيجة:</p>
+      <p>2026</p>
+      <p>4</p>
+      <p>8</p>
+      <p>16</p>
+      <p>50</p>
+
+
+
+      <h3>تنسيق التاريخ Format</h3>
+      <p>%Y ➜ السنة %m ➜ الشهر %d ➜ اليوم</p>
+      <pre>
+        <code>
+         now = datetime.datetime.now()
+
+         print(now.strftime("%Y-%m-%d"))
+         print(now.strftime("%H:%M:%S"))
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775278780/p143_g6nuli.png" class="images">
+      <p>هذا الكود يوضح استخدام ()strftime لتنسيق التاريخ والوقت في Python</p>
+      <p>now.strftime("%Y-%m-%d") تعرض التاريخ بصيغة سنة-شهر-يوم، مثل: 2026-04-08</p>
+      <p>now.strftime("%H:%M:%S") تعرض الوقت بصيغة ساعة:دقيقة:ثانية، مثل: 16:55:30</p>
+      <p>strftime() مفيدة لإنشاء تمثيل نصي من التاريخ والوقت بالشكل المطلوب</p>
+    
+      
+      <h3>إنشاء تاريخ معين Create a specific date</h3>
+      <pre>
+        <code>
+         import datetime
+
+         d = datetime.datetime(2025, 1, 1)
+         print(d)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775278854/p144_eav4b6.png" class="images">
+      <p>هذا الكود يوضح إنشاء تاريخ ووقت محدد باستخدام datetime في Python</p>
+      <p>datetime.datetime(2025, 1, 1) ينشئ كائن تاريخ ووقت يمثل 1 يناير 2025، والوقت الافتراضي يكون 00:00:00.</p>
+      <p>print(d) يعرض التاريخ والوقت:</p>
+      <p>2025-01-01 00:00:00</p>
+      
+      
+      <h3>حساب الفرق بين تاريخين Calculating the difference between two dates</h3>
+      <pre>
+        <code>
+         import datetime
+
+         d1 = datetime.datetime(2025, 1, 1)
+         d2 = datetime.datetime.now()
+
+         diff = d2 - d1
+         print(diff)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775278937/p145_iarfpa.png" class="images">
+      <p>هذا الكود يوضح حساب الفرق بين تاريخين باستخدام datetime في Python</p>
+      <p>d1 = datetime.datetime(2025, 1, 1) يمثل تاريخ محدد</p>
+      <p>()d2 = datetime.datetime.now يمثل التاريخ والوقت الحالي</p>
+      <p>diff = d2 - d1 يحسب الفرق بين التاريخين، والنتيجة تكون كائن timedelta يحتوي على عدد الأيام والثواني والفارق الزمني. print(diff) يعرض الفرق، مثال:</p>
+      <h3>إدخال المستخدم مع عرض التاريخ والوقت الحالي User input with current date and time display</h3>
+      <pre>
+        <code>
+         import datetime
+
+         name = input("Enter your name: ")
+
+         now = datetime.datetime.now()
+         date = now.strftime("%Y-%m-%d")
+         time = now.strftime("%H:%M:%S")
+
+         print(f"Hello {name}")
+         print("Date:", date)
+         print("Time:", time)
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775279089/p146_ftghk8.png" class="images">
+      <p>هذا الكود يوضح استخدام إدخال المستخدم مع عرض التاريخ والوقت الحالي في Python</p>
+      <p>name = input("Enter your name: ") يطلب من المستخدم إدخال اسمه</p>
+      <p>()now = datetime.datetime.now يحصل على التاريخ والوقت الحالي</p>
+      <p>date = now.strftime("%Y-%m-%d") يحول التاريخ إلى صيغة سنة-شهر-يوم</p>
+      <p>time = now.strftime("%H:%M:%S") يحول الوقت إلى صيغة ساعة:دقيقة:ثانية</p>
+      <p>print(f"Hello {name}") يرحب بالمستخدم باسم المدخل</p>
+      <p>print("Date:", date) و print("Time:", time) تعرض التاريخ والوقت</p>
+      <p>مثال للناتج:</p>
+      <p>Enter your name: Mubarak</p>
+      <p>Hello Mubarak</p>
+      <p>Date: 2026-04-08</p>
+      <p>Time: 17:10:25</p>
+      <hr>
+    </details>
+
+
+    <h1>اسكربتات بلغة بايثون</h1>
+    <details open>
+      <summary>Port Scanners</summary>
+      <p>يعتبر هذا الكود نموذجاً تعليمياً بسيطاً لما يُعرف بـ ماسح المنافذ Port Scanner وهو أداة برمجية تهدف إلى استكشاف الثغرات أو الخدمات النشطة على جهاز معين عبر شبكة الإنترنت. تعتمد الفكرة الجوهرية للسكربت على محاكاة عملية طرق الأبواب الرقمية حيث يقوم البرنامج بإنشاء اتصال برمجي  Socket ويحاول الوصول إلى سلسلة من المنافذ المتسلسلة تبدأ من 1 وتصل إلى 1024 ليرى أي منها سيستجيب لطلب الاتصال من الناحية التقنية، يستخدم الكود مكتبة socket  لإرسال طلبات اتصال من نوع TCP، ويعتمد تحديداً على الدالة connect_ex التي تعيد قيمة رقمية توضح حالة المحاولة فإذا كانت النتيجة صفراً، فهذا يعني أن المنفذ مفتوح ومستعد لاستقبال البيانات، مما يشير إلى وجود خدمة معينة تعمل خلف هذا المنفذ مثل موقع ويب أو قاعدة بيانات وبالرغم من بساطة هذا السكربت وبطئه النسبي كونه يعمل بشكل تسلسلي إلا أنه يمثل حجر الأساس في فهم كيفية عمل الشبكات وأدوات الفحص الأمني التي يستخدمها خبراء الحماية لتقييم قوة تحصين السيرفرات والتأكد من إغلاق المنافذ غير الضرورية لمنع الاختراقات.</p>
+      <a href="https://github.com/mu-b003/Python-scripts/blob/main/Port%20Scanners" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775137813/p2_wpvdpc.png" class="images">
+    </details>
+    
+    <details>
+      <summary>Simple Ping Sweep</summary>
+     <p>هذا الكود يمثل أداة برمجية بسيطة تُعرف بـ ماسح الشبكة Network Scanner  أو  Ping Sweeper، وهدفها الأساسي هو اكتشاف الأجهزة المتصلة والنشطة داخل شبكة محلية معينة. تعتمد فكرة السكربت على استغلال بروتوكول ICMP عبر أمر ping  الشهير؛ حيث يقوم البرنامج بإنشاء حلقة تكرارية تمر على جميع العناوين المحتملة في نطاق الشبكة  من 1 إلى 254 ويرسل لكل عنوان إشارة برمجية واحدة. من الناحية الوظيفية، يقوم الكود بدمج الجزء الثابت من عنوان الشبكة مع الرقم المتغير لكل جهاز ليحصل على عنوان IP كامل، ثم ينفذ أمر النظام لإرسال حزمة بيانات وانتظار الرد خلال ثانية واحدة كحد أقصى. إذا استجاب الجهاز المستهدف، فإن نظام التشغيل يعيد قيمة "صفر"، وهو ما يفسره السكربت بأن الجهاز نشط LIVE ويقوم بطباعة عنوانه للمستخدم. تكمن أهمية هذا الأسلوب في قدرته على رسم خريطة أولية للأجهزة المتصلة بالشبكة، مما يساعد مديري الأنظمة في مراقبة الاتصالات أو يساعد مختبري الاختراق في تحديد الأهداف المحتملة قبل البدء في عمليات فحص أكثر تعقيداً للمنافذ والثغرات.</p>
+     <a href="https://github.com/mu-b003/Python-scripts/blob/main/Simple%20Ping%20Sweep" target="_blank">رابط الاسكربت</a>
+     <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775138152/p3_jv7zee.png" class="images">
+    </details>
+     
+    <details>
+      <summary>SQL Injection Scanner</summary>
+      <p>يعتبر هذا الكود نموذجاً مبسطاً لأداة فحص آلية تهدف إلى اكتشاف ثغرات حقن الاستعلامات  SQL Injection في مواقع الويب. تعتمد الفكرة الأساسية للسكربت على مبدأ  اختبار الاستجابة للخطأ حيث يقوم البرنامج بحقن رموز برمجية خبيثة تُعرف بالـ  Payloads   داخل رابط الموقع المستهدف، مثل رمز الفاصلة العليا ' أو عبارات منطقية دائمة التحقق مثل ' OR '1'='1. الهدف من هذه المدخلات هو خداع قاعدة بيانات الموقع ومحاولة كسر منطق الاستعلام البرمجي الذي تعمل به. من الناحية العملية، يستخدم الكود مكتبة requests لإرسال هذه الرموز ومراقبة رد فعل السيرفر فبدلاً من الحصول على صفحة ويب طبيعية، يبحث السكربت في نص الاستجابة عن كلمات دلالية معينة مثل "SQL  syntax"  أو "mysql_fetch". وجود هذه الكلمات في رد الموقع يعني أن قاعدة البيانات قد ارتبكت وأظهرت خطأً تقنياً للمستخدم، وهو مؤشر قوي على أن الموقع لا يقوم بتصفية المدخلات بشكل آمن. وبالرغم من أن هذا السكربت يكتشف الأنواع الظاهرة فقط من الثغرات  Error-based SQLi إلا أنه يوضح بجلاء كيف يمكن للمهاجمين استغلال ضعف البرمجة للوصول إلى معلومات حساسة أو تجاوز أنظمة تسجيل الدخول.</p>
+      <a href="https://github.com/mu-b003/Python-scripts/blob/main/SQL%20Injection%20Scanner" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775138318/p4_bpdfjm.png" class="images">
+    </details>
+
+    <details>
+    <summary>XSS Scanner</summary>
+    <p>يُصنف هذا الكود كأداة فحص آلية بسيطة لاكتشاف ثغرات حقن النصوص البرمجية Cross-Site Scripting - XSS وهي واحدة من أكثر الثغرات شيوعاً في تطبيقات الويب. تتمحور فكرة السكربت حول اختبار مدى أمان الموقع عند التعامل مع مدخلات المستخدم حيث يقوم البرنامج بحقن أكواد جافا سكريبت JavaScript صغيرة داخل رابط الموقع مثل أمر وينتظر ليرى كيف سيتعامل المتصفح معها. يعتمد السكربت في عمله على مبدأ الانعكاس Reflection فهو يرسل الكود الخبيث Payload ضمن طلب HTTP عبر مكتبة requests ثم يفحص محتوى الصفحة الناتجة. إذا وجد البرنامج أن الكود الذي أرسله قد ظهر كما هو في نص استجابة الموقع فهذا يعني أن الموقع يرتكب خطأً فادحاً بإعادة عرض مدخلات المستخدم دون تنقيتها أو تشفيرها. هذا النوع من الثغرات يسمح للمهاجمين بتنفيذ أوامر برمجية داخل متصفحات الزوار الآخرين مما قد يؤدي لسرقة ملفات تعريف الارتباط Cookies أو السيطرة على جلسات المستخدمين وهو ما يحاول هذا الكود كشفه بشكل أولي ومبسط. </p>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/XSS%20Scanner" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775138415/p5_td4t8y.png" class="images">
+    </details>
+
+    <details>
+    <summary>Automation Scripts</summary>
+    <p>هذا الكود يمثل سكربت بسيطاً لـ أتمتة أوامر النظام System Commands Automation ويهدف إلى تنفيذ سلسلة من الأوامر التشغيلية دفعة واحدة بدلاً من إدخالها يدوياً في واجهة السطر البرمجي Terminal. تعتمد فكرة الكود على الربط بين لغة بايثون ونظام التشغيل الأساسي مثل Linux أو macOS حيث يتم تخزين مجموعة من الأوامر الاستكشافية في قائمة نصية ثم يقوم البرنامج بالمرور عليها وتنفيذها تتابعاً. من الناحية الوظيفية يستخدم الكود مكتبة os وتحديداً دالة os.system التي تعمل كجسر لنقل الأوامر من بيئة بايثون إلى صدفة النظام Shell. الأوامر المكتوبة في الكود مثل whoami لمعرفة المستخدم الحالي و pwd لتحديد المسار و ls -la لعرض الملفات هي أوامر قياسية تستخدم لجمع المعلومات الأساسية عن بيئة العمل. تكمن أهمية هذا الأسلوب في تسهيل مهام إدارة الأنظمة واختصار الوقت في فحص إعدادات الجهاز أو استخراج تقارير سريعة عن حالة النظام وهو يمثل الخطوة الأولى في بناء أدوات التحكم عن بُعد والبرمجيات التي تتفاعل مباشرة مع موارد الحاسوب.</p>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/Automation%20Scripts" target="_blank">رابط الاسكربت</a> 
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775138592/p6_s5dvlz.png" class="images">
+    </details>
+
+    <details>
+      <summary>Scan + Save Results</summary>
+      <p>يعبر هذا الكود عن أداة بسيطة لـ نسخ محتوى صفحات الويب Web Page Downloader وهي تقنية أساسية تُستخدم للأرشفة أو لتحليل بنية المواقع محلياً. تعتمد فكرة السكربت على محاكاة سلوك متصفح الإنترنت في طلب البيانات حيث يقوم البرنامج بإرسال طلب استدعاء للموقع عبر الرابط الذي يدخله المستخدم ثم يستقبل الشيفرة المصدرية الكاملة HTML التي يتكون منها الموقع. من الناحية التقنية يستخدم الكود مكتبة requests لإجراء عملية الاتصال والحصول على نص الاستجابة ثم ينتقل إلى مرحلة التخزين الفيزيائي باستخدام دوال التعامل مع الملفات في بايثون. يقوم السكربت بإنشاء ملف جديد بصيغة html على جهاز المستخدم وكتابة كافة البيانات المستلمة بداخله. تكمن أهمية هذه العملية في كونها الخطوة الأولى لمهندسي البرمجيات الراغبين في بناء أدوات الزحف الشبكي Web Crawling أو الباحثين الأمنيين الذين يحتاجون لتحليل الكود المصدري للمواقع بعيداً عن المتصفح لاكتشاف الروابط المخفية أو الثغرات البرمجية في بنية الصفحة.</p>
+       <a href="https://github.com/mu-b003/Python-scripts/blob/main/Scan%20%2B%20Save%20Results" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775138685/p7_j4nzzs.png" class="images">
+    </details>
+
+    <details>
+      <summary>Brute Force</summary>
+      <p>هذا الكود يمثل نموذجاً برمجياً لهجوم يُعرف بـ التخمين أو القوة الغاشمة (Brute Force Attack)، وتحديداً على صفحات تسجيل الدخول في المواقع الإلكترونية. تعتمد فكرة السكربت على محاولة اقتحام حساب معين (مثل حساب "admin") من خلال تجربة قائمة من كلمات المرور الشائعة أو المحتملة بشكل آلي وسريع، بدلاً من إدخالها يدوياً، وذلك أملاً في مطابقة الكلمة الصحيحة وتجاوز نظام الحماية. من الناحية التقنية، يستخدم الكود مكتبة requests لإرسال طلبات من نوع POST إلى رابط تسجيل الدخول، وهي الطلبات التي تحمل عادةً بيانات اسم المستخدم وكلمة المرور. في كل دورة داخل الحلقة التكرارية، يرسل البرنامج كلمة مرور مختلفة من القائمة المخزنة لديه، ثم يقوم بفحص نص الاستجابة القادم من السيرفر؛ فإذا وجد كلمة ترحيبية مثل "Welcome"، يستنتج السكربت أن عملية تسجيل الدخول قد نجحت وأن الكلمة المستخدمة هي الكلمة الصحيحة. يُبرز هذا الكود أهمية استخدام كلمات مرور معقدة وتفعيل خاصية "قفل الحساب" بعد عدد معين من المحاولات الفاشلة، حيث أن الأدوات البرمجية كهذه قادرة على تجربة آلاف الاحتمالات في وقت قياسي إذا لم توجد قيود أمنية برمجية تمنعها.</p>
+      <a href="https://github.com/mu-b003/Python-scripts/blob/main/Brute%20Force" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775138784/p8_tpdg6j.png" class="images">
+    </details>
+
+    <details>
+      <summary>Recon Script</summary>
+      <p>يعبر هذا الكود عن أداة برمجية بسيطة مخصصة لـ استعلامات سجلات الأسماء (DNS Lookup)، وهدفها الأساسي هو الربط بين أسماء النطاقات (مثل https://www.google.com/search?q=google.com) وعناوين البروتوكول الرقمية (IP addresses). تعتمد فكرة السكربت على وظيفة "المترجم" التي يقوم بها نظام أسماء النطاقات في الإنترنت، حيث يسهل على البشر استخدام الأسماء المكتوبة بينما يسهل على الآلات استخدام الأرقام. من الناحية التقنية، يستخدم الكود مكتبة socket لتنفيذ عمليتين متكاملتين؛ الأولى هي "التحويل الأمامي" عبر دالة gethostbyname للحصول على عنوان الـ IP الخاص بالنطاق المدخل. أما الثانية فهي "التحويل العكسي" (Reverse DNS) عبر دالة gethostbyaddr التي تحاول معرفة اسم المضيف المرتبط بهذا العنوان الرقمي. تكمن أهمية هذا السكربت في كونه أداة استكشافية أولية يستخدمها مهندسو الشبكات للتحقق من صحة ربط النطاقات بسيرفراتها، أو من قبل الباحثين الأمنيين لتحديد المواقع الجغرافية للسيرفرات ومعرفة مزودي الخدمة التابعين لها.</p>
+      <a href="https://github.com/mu-b003/Python-scripts/blob/main/Recon%20Script" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775138890/p9_t5nlkh.png" class="images">
+    </details>
+
+    <details>
+    <summary>Exploitation Scripts</summary>
+    <p>يعتبر هذا الكود نموذجاً توضيحياً لهجوم خطير يُعرف بـ حقن الأوامر (Command Injection)، وتتمحور فكرته حول استغلال ضعف في معالجة المدخلات داخل تطبيقات الويب التي تتفاعل مباشرة مع نظام التشغيل. تعتمد الفكرة على خداع الموقع لتنفيذ أوامر إضافية لم يكن من المفترض تنفيذها، وذلك عن طريق دمجها مع المدخلات المتوقعة باستخدام رموز خاصة مثل الفاصلة المنقوطة (;) التي تفصل بين الأوامر في أنظمة مثل Linux. من الناحية التقنية، يفترض السكربت وجود رابط يقوم بوظيفة شرعية (مثل عمل ping لعنوان IP)، ولكنه لا يقوم بتصفية المدخلات بشكل كافٍ. يقوم الكود بإرسال "حموله" (Payload) تحتوي على عنوان محلي متبوعاً بأمر نظام مثل whoami؛ فإذا كان الموقع مصاباً بهذه الثغرة، سيقوم السيرفر بتنفيذ الأمر الأول ثم يتبعه بتنفيذ الأمر المحقون ويعيد النتيجة للمهاجم. تكمن خطورة هذا النوع من الثغرات في أنها قد تمنح المهاجم سيطرة كاملة على السيرفر، حيث تتيح له استعراض الملفات، تعديل البيانات، أو حتى إغلاق النظام بالكامل، مما يجعل من تنقية المدخلات (Input Validation) حائط الصد الأول والأساسي للمبرمجين.</p>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/Exploitation%20Scripts" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775138986/p10_iib1ui.png" class="images">
+    </details>
+
+    <details>
+      <summary>SQL Injection Exploit</summary>
+      <p>يُصنف هذا الكود كأداة لاختبار نوع متقدم من هجمات حقن الاستعلامات يُعرف بـ حقن SQL القائم على الاتحاد (UNION-Based SQL Injection). تكمن الفكرة الجوهرية هنا في استغلال أمر UNION في لغة قواعد البيانات، والذي يُستخدم لدمج نتائج استعلامين مختلفين في جدول واحد؛ حيث يحاول المهاجم إجبار قاعدة البيانات على إظهار معلومات حساسة لا تظهر عادةً في الصفحة، مثل اسم قاعدة البيانات أو بيانات المستخدمين، عبر دمجها مع النتائج الطبيعية التي يعرضها الموقع. من الناحية التقنية، يقوم السكربت بحقن "حمولة" (Payload) تبدأ بكسر الاستعلام الأصلي باستخدام الفاصلة العليا ' ثم إضافة أمر UNION SELECT. وفي هذا المثال تحديداً، يحاول الكود استخراج اسم قاعدة البيانات الحالية باستخدام الدالة database()، مع استخدام null لضبط عدد الأعمدة حتى يتطابق مع الاستعلام الأصلي، وينتهي بـ -- لإهمال بقية الكود البرمجي الأصلي للسيرفر. تكمن خطورة هذا الهجوم في قدرته على استخراج كميات ضخمة من البيانات من جداول مختلفة داخل القاعدة، مما يجعله وسيلة فعالة جداً في عمليات تسريب البيانات (Data Exfiltration) إذا لم يتم تحصين الموقع باستخدام "الاستعلامات المُجهزة" (Parameterized Queries).</p>
+      <a href="https://github.com/mu-b003/Python-scripts/blob/main/SQL%20Injection%20Exploit" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775139101/p11_issziu.png" class="images">
+    </details>
+   
+    <details>
+    <summary>Brute Force Login</summary>
+    <p>يعتبر هذا الكود نموذجاً برمجياً لهجوم يُعرف بـ التخمين أو القوة الغاشمة (Brute Force Attack)، وتحديداً على صفحات تسجيل الدخول في المواقع الإلكترونية. تعتمد فكرة السكربت على محاولة اقتحام حساب معين (مثل حساب "admin") من خلال تجربة قائمة من كلمات المرور الشائعة أو المحتملة بشكل آلي وسريع، بدلاً من إدخالها يدوياً، وذلك أملاً في مطابقة الكلمة الصحيحة وتجاوز نظام الحماية. من الناحية التقنية، يستخدم الكود مكتبة requests لإرسال طلبات من نوع POST إلى رابط تسجيل الدخول، وهي الطلبات التي تحمل عادةً بيانات اسم المستخدم وكلمة المرور. في كل دورة داخل الحلقة التكرارية، يرسل البرنامج كلمة مرور مختلفة من القائمة المخزنة لديه، ثم يقوم بفحص نص الاستجابة القادم من السيرفر؛ فإذا وجد كلمة ترحيبية مثل "Welcome"، يستنتج السكربت أن عملية تسجيل الدخول قد نجحت وأن الكلمة المستخدمة هي الكلمة الصحيحة. يُبرز هذا الكود أهمية استخدام كلمات مرور معقدة وتفعيل خاصية "قفل الحساب" بعد عدد معين من المحاولات الفاشلة، حيث أن الأدوات البرمجية كهذه قادرة على تجربة آلاف الاحتمالات في وقت قياسي إذا لم توجد قيود أمنية برمجية تمنعها.</p>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/Brute%20Force%20Login" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775139212/p12_lh54y2.png" class="images">
+    </details>
+
+    <details>
+    <summary>Reverse Shell</summary>
+    <p>يمثل الكود الثاني نموذجاً برمجياً لما يُعرف بـ القشرة العكسية (Reverse Shell)، وهي تقنية تسمح للمهاجم بالتحكم في جهاز الضحية عن بُعد عبر الالتفاف على جدران الحماية. تكمن الفكرة الجوهرية هنا في قلب موازين الاتصال التقليدي؛ فبدلاً من أن يحاول المهاجم الاتصال بجهاز الضحية (وهو ما تمنعه معظم برامج الحماية عادةً)، يقوم جهاز الضحية نفسه بإنشاء الاتصال والخروج نحو جهاز المهاجم "طواعية". من الناحية الوظيفية، يستخدم السكربت مكتبة socket لفتح اتصال مباشر بعنوان الـ IP الخاص بالمهاجم، ثم يدخل في حلقة تكرارية لا تنتهي ينتظر فيها استقبال "أوامر" نصية. بمجرد وصول الأمر، يستخدم الكود مكتبة subprocess لتنفيذ هذا الأمر داخل نظام تشغيل الضحية وكأنه مكتوب محلياً، ثم يرسل نتيجة التنفيذ (مثل محتويات الملفات أو معلومات النظام) مرة أخرى إلى المهاجم. تُعد القشرة العكسية من أخطر الوسائل المستخدمة في الاختراقات لأنها تمنح المهاجم واجهة تحكم كاملة (Terminal) وتجعل من الصعب اكتشاف الاتصال كونه يظهر في الشبكة كحركة مرور عادية خارجة من الجهاز. </p>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/Reverse%20Shell" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775139299/p13_ci2tap.png" class="images">
+    </details>
+
+    <details>
+    <summary>File Upload Exploit</summary>
+    <p>يعبر هذا الكود الأخير عن هجوم سيبراني شديد الخطورة يُعرف باسم رفع الملفات الضار (Malicious File Upload)، وتحديداً رفع ما يسمى بـ Web Shell. تكمن الفكرة الجوهرية هنا في استغلال ميزة برمجية تسمح للمستخدمين برفع ملفات إلى الموقع، واستغلالها لإرسال ملف يحتوي على شيفرة برمجية خبيثة بلغة مثل PHP بدلاً من الصور أو الوثائق العادية. من الناحية التقنية، يستخدم الكود مكتبة requests لإرسال طلب من نوع POST إلى نموذج الرفع في الموقع المستهدف. يقوم السكربت بإنشاء ملف وهمي يحمل الاسم shell.php ويضع بداخله أمراً برمجياً قوياً (system($_GET['cmd']))؛ هذا الأمر يسمح للمهاجم بمجرد رفع الملف بنجاح، بتنفيذ أي أمر يريده على سيرفر الموقع مباشرة عبر المتصفح. تكمن خطورة هذه الثغرة في أنها تمنح المهاجم "موطئ قدم" دائم داخل السيرفر، مما قد يؤدي إلى سرقة كامل قواعد البيانات أو حتى مسح ملفات الموقع بالكامل، وهي تبرز أهمية قيام المطورين بفحص نوع الملفات المرفوعة بدقة وتغيير أسمائها وتخزينها في مسارات غير قابلة للتنفيذ.</p>
+      <a href="https://github.com/mu-b003/Python-scripts/blob/main/File%20Upload%20Exploit" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775139385/p14_trasyg.png" class="images">
+    </details>
+ 
+    <details>
+    <summary>OSINT Tools</summary>
+    <h5>Domain Info Script (WHOIS + IP)</h5>
+    <p>قال Gemini يمثل هذا الكود الأخير أداة استخباراتية لجمع المعلومات تُعرف بـ الاستعلام عن بيانات النطاق (WHOIS Lookup). تهدف الفكرة الأساسية من السكربت إلى الكشف عن "الهوية الرقمية" لأي موقع إلكتروني، من خلال سحب البيانات الرسمية المسجلة لدى المنظمات المسؤولة عن أسماء النطاقات، مما يساعد في معرفة ملكية الموقع وصلاحيته. من الناحية التقنية، يدمج الكود بين وظيفتين؛ الأولى تستخدم مكتبة socket لتحويل اسم النطاق إلى عنوان IP رقمي، والثانية تستخدم مكتبة whois المتخصصة للاتصال بقواعد بيانات سجلات الإنترنت. يقوم السكربت باستخراج تفاصيل حيوية مثل اسم الشركة المسجلة (Registrar)، تاريخ إنشاء الموقع، وتاريخ انتهاء صلاحية النطاق. تعتبر هذه الأداة ضرورية جداً في مرحلة "جمع المعلومات" (Reconnaissance) سواء لمسؤولي الشبكات الذين يتابعون تجديد نطاقاتهم، أو للباحثين الأمنيين الذين يحاولون تتبع أصول المواقع المشبوهة أو التأكد من مصداقية النطاقات قبل التفاعل معها.</p>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/Domain%20Info%20Script" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775139521/p15_ekph6l.png" class="images">
+    </details>
+
+    <details>
+    <summary>Subdomain Finder</summary>
+    <p>يعتبر هذا الكود نموذجاً لأداة استكشافية تُعرف بـ ماسح النطاقات الفرعية (Subdomain Scanner)، وهي أداة أساسية في مرحلة جمع المعلومات حول أي هدف تقني. تكمن الفكرة الجوهرية للسكربت في محاولة الكشف عن الأجزاء غير المعلنة أو المخفية من الموقع (مثل mail.example.com أو admin.example.com) التي قد تحتوي على لوحات تحكم أو خدمات حساسة لم تكن ظاهرة في الصفحة الرئيسية. من الناحية التقنية، يستخدم الكود طريقة "التخمين المنطقي"؛ حيث يمتلك قائمة مسبقة بالأسماء الشائعة للنطاقات الفرعية (مثل admin, ftp, test) ويقوم بدمجها مع النطاق الأساسي الذي يدخله المستخدم لتكوين رابط كامل. بعد ذلك، يستخدم مكتبة requests لإرسال طلب اتصال لهذا الرابط؛ فإذا نجح الاتصال ولم يواجه البرنامج خطأً، فهذا يعني أن النطاق الفرعي موجود ونشط فعلياً. تساعد هذه العملية الباحثين الأمنيين في توسيع نطاق الهجوم المحتمل (Attack Surface)، حيث أن النطاقات الفرعية غالباً ما تكون أقل حماية من النطاق الرئيسي، مما يجعلها نقطة دخول مثالية لاكتشاف الثغرات.</p>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/Subdomain%20Finder" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775139660/p16_iogdbn.png" class="images">
+    </details>
+     
+    <details>
+    <summary>Email OSINT</summary>
+    <p>يمثل هذا الكود الأخير أداة آلية لـ استخراج رسائل البريد الإلكتروني (Email Scraping) من المواقع الإلكترونية. تكمن الفكرة الجوهرية للسكربت في القدرة على قراءة المحتوى النصي الضخم لأي صفحة ويب والبحث بداخلها عن أي نص يطابق صياغة البريد الإلكتروني المتعارف عليها، وهو ما يوفر عناء البحث اليدوي في صفحات "اتصل بنا" أو السير الذاتية المنشورة. من الناحية التقنية، يعتمد السكربت على قوة التعبيرات النمطية (Regular Expressions - Regex) عبر مكتبة re؛ حيث يستخدم نمطاً برمجياً دقيقاً يبحث عن وجود علامة @ محاطة بنصوص ونقاط برمجية تمثل النطاق. يقوم البرنامج أولاً بجلب محتوى الموقع عبر مكتبة requests وتحويله إلى نص طويل، ثم يطبق دالة findall لاستخراج كافة العناوين المتطابقة وتخزينها في مجموعة (set) لضمان عدم تكرار نفس البريد. تُستخدم هذه الأدوات بشكل واسع في حملات التسويق الرقمي، أو من قبل الباحثين في المصادر المفتوحة (OSINT) لبناء قواعد بيانات الاتصال، لكنها تتطلب حذراً قانونياً وأخلاقياً لضمان عدم انتهاك خصوصية المستخدمين أو سياسات المواقع. </p>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/Email%20OSINT" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775139736/p17_sggf8f.png" class="images">
+    </details>
+     
+    <details>
+    <summary>Username Finder OSINT </summary>
+    <p>يُصنف هذا الكود كأداة لاستخبارات المصادر المفتوحة (OSINT)، وتحديداً لغرض تتبع البصمة الرقمية للمستخدمين عبر منصات التواصل الاجتماعي المختلفة. تعتمد الفكرة الجوهرية للسكربت على مبدأ "تعدد الحسابات بنفس الاسم"؛ حيث يقوم البرنامج بالبحث عن اسم مستخدم معين (Username) في عدة مواقع شهيرة (مثل GitHub وTwitter وInstagram) للتأكد مما إذا كان هذا الشخص يمتلك حسابات نشطة عليها أم لا. من الناحية التقنية، يستخدم الكود مكتبة requests لإرسال طلبات بروتوكول HTTP إلى روابط مباشرة تم إنشاؤها عبر دمج اسم المستخدم المطلوب مع العناوين الثابتة للمنصات. يعتمد السكربت في تقييمه على رمز حالة الاستجابة (HTTP Status Code)؛ فإذا كانت الاستجابة تحمل الرمز 200 (أي أن الصفحة موجودة)، فهذا يعني أن الحساب نشط وصحيح، أما إذا كانت النتيجة غير ذلك (مثل الرمز 404)، فيتجاوزها البرنامج. تكمن أهمية هذه الأداة في مساعدة المحققين الجنائيين الرقميين أو الباحثين الأمنيين في بناء ملف تعريفي كامل عن الأهداف، ومعرفة المنصات التي يتواجدون عليها لتسهيل عمليات جمع المعلومات اللاحقة. </p>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/Username%20Finder" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775139812/p18_ntlgnz.png" class="images">
+    </details>
+
+    <details>
+    <summary>Google Dork Automation</summary>
+    <p>يُجسد هذا الكود تقنية متقدمة في البحث الرقمي تُعرف باسم Google Dorking أو Google Hacking. تعتمد الفكرة الأساسية للسكربت على استخدام "أوامر بحث خاصة" (Advanced Search Operators) لتوجيه محرك بحث جوجل للعثور على ملفات أو صفحات حساسة لا تظهر عادةً في نتائج البحث العادية، مثل مستندات PDF المنسية، أو لوحات تحكم المدير، أو صفحات تسجيل الدخول غير المحمية. من الناحية الوظيفية، يقوم الكود بأتمتة عملية إنشاء روابط البحث؛ حيث يمتلك قائمة من الـ "Dorks" الجاهزة، مثل filetype:pdf للبحث عن المستندات، أو intitle:admin للبحث عن لوحات التحكم. يدمج السكربت هذه الأوامر مع اسم الموقع المستهدف ليولد روابط بحث مباشرة تأخذ المستخدم إلى نتائج جوجل العميقة. تكمن أهمية هذه التقنية في كونها أداة قوية جداً للاستخبارات المفتوحة (OSINT) واختبار الاختراق، حيث تتيح اكتشاف تسريبات البيانات أو الثغرات الأمنية الناتجة عن أخطاء في إعدادات الخصوصية دون الحاجة إلى التفاعل المباشر مع السيرفر أو اختراقه تقنياً، بل بالاعتماد فقط على ما قامت محركات البحث بفهرسته وتخزينه.</p>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/Google%20Dork%20Automation" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775139902/p19_hkd7fk.png" class="images">
+    </details>
+   
+    <details>
+    <summary>Password Cracking Tools</summary>
+    <h5>Dictionary Attack هجوم القاموس</h5>
+    <p>يمثل هذا الكود الأخير أداة تعليمية بسيطة لهجوم كسر كلمات المرور (Password Cracking) باستخدام طريقة "القائمة الجاهزة" أو Wordlist Attack. تكمن الفكرة الجوهرية للسكربت في محاولة تخمين كلمة مرور سرية من خلال مقارنتها بمجموعة من الكلمات الشائعة والمستخدمة بكثرة، بدلاً من تجربة تركيبات عشوائية من الأحرف، مما يجعل عملية التخمين أسرع وأكثر ذكاءً. من الناحية التقنية، يقوم السكربت بإنشاء حلقة تكرارية تمر على قائمة نصوص (wordlist) تحتوي على كلمات مرور افتراضية مثل "123456" أو "admin". في كل خطوة، يقارن البرنامج الكلمة الحالية بكلمة المرور المستهدفة؛ فإذا تطابقت القيمتان، يعلن البرنامج نجاح العملية ويقوم بطباعة الكلمة المكتشفة. يوضح هذا الكود المبدأ الذي تعمل به أدوات اختراق الحسابات والملفات المشفرة، ويؤكد على النصيحة الأمنية الذهبية بضرورة تجنب كلمات المرور الضعيفة والمنشرة، حيث يمكن للبرمجيات الآلية كشفها في أجزاء من الثانية.</p>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/Dictionary%20Attack" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775140011/p20_h4uwdo.png" class="images">
+    </details>
+
+    <details>
+    <summary>Brute Force</summary>  
+    <p>يُعد هذا الكود نموذجاً تعليمياً بسيطاً لهجوم حجب الخدمة (DoS - Denial of Service)، وتحديداً نوع يُعرف بـ HTTP Flood. تكمن الفكرة الجوهرية للسكربت في محاولة "إغراق" خادم الموقع (Server) بآلاف الطلبات المتتالية والسريعة في وقت قصير جداً، مما يؤدي إلى استهلاك موارد الخادم (مثل المعالج والذاكرة) بشكل كامل، وبالتالي يجعله عاجزاً عن الاستجابة للمستخدمين الحقيقيين أو يتسبب في توقفه عن العمل تماماً. من الناحية التقنية، يعتمد السكربت على حلقة تكرارية لا نهائية (while True) تقوم بإرسال طلبات GET متواصلة إلى رابط الموقع المستهدف باستخدام مكتبة requests. وبما أن الحاسوب يمكنه تنفيذ مئات الطلبات في الثانية الواحدة، فإن تراكم هذه الطلبات من جهاز واحد (أو عدة أجهزة في حالات الهجوم الموزع DDoS) يشكل ضغطاً هائلاً على بنية الموقع التحتية. يوضح هذا الكود المبدأ الأساسي للتعطيل الرقمي، ويبرز أهمية تقنيات الحماية مثل "تحديد معدل الطلبات" (Rate Limiting) وجدران حماية تطبيقات الويب (WAF) التي تعمل على اكتشاف هذه الأنماط المتكررة وحظرها تلقائياً لحماية استقرار المواقع. </p>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/Brute%20Force%202" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775140396/p21_wt27w3.png" class="images">
+    </details>
+ 
+    <details>
+    <summary>Login Cracker HTTP Brute Force</summary>  
+    <p>يعبر هذا الكود الأخير عن أداة برمجية قوية مخصصة لـ تخمين كلمات المرور (Brute Force Attack) باستخدام منهجية "التباديل والتوافيق" (Combinations)، وهي تختلف عن القوائم الجاهزة بأنها تولد الاحتمالات برمجياً لتغطية كافة الخيارات الممكنة. تكمن الفكرة الجوهرية للسكربت في محاولة كسر التشفير أو الدخول لحساب ما عبر تجربة كل دمج محتمل للأحرف والأرقام حتى العثور على المفتاح الصحيح. من الناحية التقنية، يستخدم الكود مكتبة itertools وتحديداً دالة product التي تقوم بمهمة "الضرب الديكارتي" لمجموعة من الأحرف. في هذا المثال، حدد المبرمج الأحرف الصغيرة (string.ascii_lowercase) والأرقام (string.digits) كقاعدة بيانات، ثم طلب من البرنامج توليد كافة الكلمات المكونة من 4 خانات (repeat=4). يقوم السكربت بمقارنة كل محاولة يتم توليدها بالهدف (target)؛ فإذا تطابقا، يتوقف البرنامج معلناً نجاح التخمين. يوضح هذا السكربت لماذا تعتبر كلمات المرور القصيرة (مثل 4 أو 6 خانات) غير آمنة إطلاقاً، حيث يمكن للحاسوب توليد وتجربة مئات الآلاف من هذه الاحتمالات في ثوانٍ معدودة، مما يجعل استخدام كلمات مرور طويلة ومعقدة ضرورة حتمية للوقاية.</p>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/HTTP%20Brute%20Force" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775140472/p22_a1xagv.png" class="images">
+    </details>
+ 
+    <details>
+    <summary>Hash Cracker</summary>
+    <p>يمثل هذا الكود الأخير أداة برمجية لـ كسر هاشات كلمات المرور (MD5 Hash Cracker) باستخدام هجوم القائمة الجاهزة (Wordlist Attack). تكمن الفكرة الجوهرية هنا في التعامل مع "البصمة الرقمية" لكلمة المرور بدلاً من النص الصريح؛ فالمواقع والأنظمة الآمنة لا تخزن كلمات المرور كما هي، بل تحولها إلى "هاش" (سلسلة نصية مشفرة غير قابلة للعكس) لحماية خصوصية المستخدمين. من الناحية التقنية، يستخدم الكود مكتبة hashlib المتخصصة في العمليات الحسابية للتشفير. يقوم البرنامج بأخذ كل كلمة من القائمة النصية (wordlist) وتحويلها إلى هاش بصيغة MD5 باستخدام دالة التجزئة، ثم يقارن النتيجة بالهاش المستهدف (target_hash) الذي أدخله المستخدم. فإذا تطابق الهاشان، فهذا يعني أن الكلمة الأصلية قد كُشفت. يبرز هذا السكربت جانباً مهماً في الأمن السيبراني: وهو أن الهاشات الضعيفة مثل MD5 لم تعد آمنة بما يكفي، حيث يمكن للحواسب الحديثة توليد ملايين الهاشات ومقارنتها في وقت قياسي، مما يجعل من الضروري استخدام خوارزميات أكثر تعقيداً لحماية بيانات المستخدمين. </p>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/Hash%20Cracker" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775140604/p23_ywmbdx.png" class="images">
+    </details>
+
+    <details>
+      <summary>Advanced فكرة Wordlist Generator</summary>
+      <p>يمثل هذا الكود الأخير أداة لتوليد تركيبات كلمات المرور المحتملة (Password Combination Generator)، وهو مكمل تقني لهجمات التخمين. تكمن الفكرة الجوهرية للسكربت في إنشاء قائمة مخصصة من الاحتمالات بناءً على معلومات معروفة عن الهدف (مثل الاسم أو أرقام مفضلة)، بدلاً من الاعتماد على قوائم كلمات مرور عشوائية أو عامة، مما يرفع من كفاءة عملية التخمين بشكل كبير. من الناحية التقنية، يستخدم الكود مكتبة itertools ودالة product لدمج العناصر المعطاة (الاسم "admin" والأرقام "123"). يقوم السكربت عبر حلقة تكرارية بتوليد كافة الاحتمالات الممكنة بأطوال مختلفة (من خانة واحدة إلى 3 خانات في هذا المثال). والنتيجة هي قائمة منظمة تحتوي على كل تبديل محتمل لهذه الرموز، مثل a, ad, a1, 123, admin123 وغيرها.تُستخدم هذه الأدوات في مرحلة "إعداد الهجوم"، حيث يجمع المهاجم معلومات من المصادر المفتوحة (OSINT) عن الضحية، ثم يستخدم سكربتات مماثلة لتوليد قائمة كلمات مرور ذكية (Smart Wordlist) تزيد من احتمالية النجاح، وهو ما يؤكد على ضرورة عدم استخدام معلومات شخصية أو أرقام متوقعة عند إنشاء كلمات المرور الخاصة بنا.  </p>
+      <a href="https://github.com/mu-b003/Python-scripts/blob/main/Wordlist%20Generator" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775140681/p24_ukjx3s.png" class="images">
+    </details>
+
+    <details>
+    <summary>Malware Analysis Tools</summary> 
+     <p>يعتبر هذا الكود نموذجاً برمجياً لأداة سحب البيانات الوصفية من الصور (Image Metadata Extractor)، وتحديداً بيانات الـ EXIF (Exchangeable Image File Format). تكمن الفكرة الجوهرية للسكربت في القدرة على كشف "المعلومات المخفية" التي تسجلها الكاميرات والهواتف الذكية تلقائياً داخل ملف الصورة عند التقاطها، والتي لا تظهر عند مجرد مشاهدة الصورة بالعين المجردة. من الناحية التقنية، يستخدم الكود مكتبة PIL (أو Pillow) المتخصصة في معالجة الصور. يقوم البرنامج بفتح ملف الصورة واستخراج قاموس البيانات المخزن داخلها، ثم يمر عبر حلقة تكرارية لتحويل الأكواد الرقمية (Tags) إلى أسماء مفهومة للبشر (مثل اسم نوع الكاميرا، إعدادات الإضاءة، وتاريخ الالتقاط). تكمن الأهمية الأمنية والتحقيقية لهذا السكربت في كونه أداة قوية في التحقيق الجنائي الرقمي؛ حيث يمكن لهذه البيانات أن تكشف عن الموقع الجغرافي الدقيق (إحداثيات GPS) لمكان التقاط الصورة، ونوع الجهاز المستخدم، وحتى البرنامج الذي استُخدم لتعديل الصورة، مما يجعل تصفية هذه البيانات (Metadata Scrubbing) خطوة ضرورية قبل مشاركة الصور الحساسة عبر الإنترنت لحماية الخصوصية. </p>
+     <a href="https://github.com/mu-b003/Python-scripts/blob/main/Hash%20Calculator" target="_blank">رابط الاسكربت</a>
+     <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775140789/p25_zt96wy.png" class="images">
+    </details>
+
+    <details>
+    <summary>Strings Extractor</summary>
+    <p>يُعد هذا الكود نموذجاً برمجياً لوظيفة أمنية وتقنية هامة تُعرف بـ استخراج النصوص من الملفات الثنائية (Binary Strings Extraction). تكمن الفكرة الجوهرية للسكربت في القدرة على فحص الملفات غير النصية (مثل ملفات البرامج التنفيذية .exe أو الصور أو الروابط البرمجية) للبحث عن أي نصوص مفهومة مخبأة داخل الشيفرة المعقدة للملف، وهو ما يشبه استخدام كشاف ضوئي للعثور على كلمات وسط ركام من البيانات الرقمية. </p>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/Strings%20Extractor" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775140901/p26_wh5axe.png" class="images">
+    </details>
+
+    <details>
+    <summary>File Type Analyzer</summary>  
+    <p>يُصنف هذا الكود كأداة للتحقيق في الهوية الحقيقية للملفات (File Type Identification)، وهو يهدف إلى كشف نوع الملف الفعلي بعيداً عن "الامتداد الظاهري" الذي قد يراه المستخدم (مثل .jpg أو .txt). تكمن الفكرة الجوهرية هنا في حماية النظام من ملفات مخادعة قد تبدو كصور ولكنها في الحقيقة برمجيات خبيثة قابلة للتنفيذ.</p>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/File%20Type%20Analyzer" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775140992/p27_w21tcn.png" class="images">
+    </details>
+
+    <details>
+    <summary>Simple Sandbox</summary>
+    <p>يُعد هذا الكود نموذجاً برمجياً مبسطاً لما يُعرف بـ البيئة المعزولة (Sandbox) أو أداة لتحليل البرمجيات في بيئة مراقبة. تكمن الفكرة الجوهرية للسكربت في محاولة تشغيل ملف مشبوه أو برنامج غير معروف الهوية لاختبار سلوكه، مع وضع قيود زمنية لضمان عدم خروج البرنامج عن السيطرة أو استهلاكه لموارد الجهاز بشكل دائم.</p>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/Simple%20Sandbox" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775141074/p28_qefgdq.png" class="images">
+    </details>
+
+    <details>
+    <p>يُعد هذا الكود نموذجاً برمجياً مبسطاً لما يُعرف بـ البيئة المعزولة (Sandbox) أو أداة لتحليل البرمجيات في بيئة مراقبة. تكمن الفكرة الجوهرية للسكربت في محاولة تشغيل ملف مشبوه أو برنامج غير معروف الهوية لاختبار سلوكه، مع وضع قيود زمنية لضمان عدم خروج البرنامج عن السيطرة أو استهلاكه لموارد الجهاز بشكل دائم.</p>
+    <summary>Network Behavior Monitor</summary>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/Network%20Behavior%20Monitor" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775141158/p29_twwk2u.png" class="images">
+    </details>
+
+    <details>
+    <summary>Packet Sniffers</summary>
+    <p>يمثل الكود الأخير أداة تقنية متقدمة تُعرف بـ شامّ الحزم (Packet Sniffer)، وهي أداة تسمح "بالتسمع" على حركة مرور البيانات داخل الشبكة. تكمن الفكرة الجوهرية للسكربت في القدرة على التقاط وفحص "طرود البيانات" (Packets) التي تنتقل بين الأجهزة عبر الشبكة، مما يتيح للمحلل رؤية ما يحدث "خلف الكواليس" في الاتصالات الرقمية.</p>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/Simple%20Packet%20Sniffer" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775141256/p30_srwb9d.png" class="images">
+    </details>
+
+    <details>
+    <summary>Packet Sniffer</summary>
+    <p>يُعد هذا الكود نموذجاً برمجياً لوظيفة تقنية هامة في إدارة الخوادم وأمن الشبكات تُعرف بـ فحص المنافذ المفتوحة (Port Scanner). تكمن الفكرة الجوهرية للسكربت في محاولة "طرق الأبواب الرقمية" لجهاز معين (IP Address) لمعرفة أي من هذه الأبواب (المنافذ) مفتوح ومستعد لاستقبال البيانات، وأيها مغلق أو محمي.</p>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/Packet%20Sniffer" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775141347/p31_gbxxdf.png" class="images">
+    </details>
+
+    <details>
+    <summary>HTTP Requests</summary>
+    <p>هذا السكريبت هو أداة "تنصت" برمجية تستخدم مكتبة Scapy لالتقاط حزم البيانات عبر المنفذ 80، ثم استخراج وتحليل روابط HTTP التي يزورها المستخدم وعرضها مباشرة.</p>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/HTTP%20Requests" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775141436/p32_dacvvb.png" class="images">
+    </details>
+
+    <details>
+    <summary>Extracting sensitive data</summary>
+    <p>هذا السكريبت هو محلل بيانات (Data Sniffer) يبحث داخل حزم الشبكة عن كلمات مفتاحية محددة (مثل كلمة المرور) لاستخراج بيانات تسجيل الدخول التي يتم إرسالها بشكل غير مشفر.</p>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/Sniffer" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775141530/p33_rmlv6b.png" class="images">
+    </details>
+
+    <details>
+    <summary>DNS Sniffer</summary>
+    <p>هذا السكريبت هو مراقب لطلبات DNS (DNS Sniffer) يقوم برصد وتحليل أسماء المواقع التي يحاول المستخدمون على الشبكة الاتصال بها عبر مراقبة المنفذ 53.</p>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/DNS%20Sniffer" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775141622/p34_mzbgve.png" class="images">
+    </details>
+
+    <details>
+    <summary>API Interaction Scripts</summary>
+    <p>هذا السكريبت يقوم بإرسال طلب استعلام (GET Request) إلى واجهة برمجة تطبيقات GitHub لجلب بيانات مستخدم معين بصيغة JSON وعرضها.</p>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/GET%20Request" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775141725/p35_f0huxw.png" class="images">
+    </details>
+
+    <details>
+    <summary>POST Request</summary>
+    <p>هذا السكريبت يقوم بمحاكاة عملية تسجيل دخول عن طريق إرسال بيانات (اسم مستخدم وكلمة مرور) إلى خادم ويب باستخدام طلب POST واستقبال الرد بصيغة JSON.</p>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/POST%20Request" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775141806/p36_rzznoc.png" class="images">
+    </details>
+ 
+    <details>
+    <summary>Headers Authorization</summary>
+    <p>هذا السكريبت يقوم بجلب بيانات محمية من API عن طريق إرسال طلب HTTP يتضمن مفتاح مصادقة (API Key) داخل ترويسات الطلب لإثبات الهوية.</p>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/Headers%20Authorization" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775141886/p37_shtop0.png" class="images">
+    </details>
+
+    <details>
+    <summary>JSON Parsing</summary>
+    <p>يقوم هذا السكريبت بجلب بيانات تقنية من API الخاص بـ GitHub، ثم يقوم بـ "تصفيتها" لاستخراج وعرض اسم المستخدم وعدد متابعيه بشكل منظم.</p>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/JSON%20Parsing" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775141973/p38_kcbcni.png" class="images">
+    </details>
+
+    <details>
+    <summary>Bruteforce API</summary>
+    <p>هذا السكريبت هو أداة تخمين (Brute Forcer) آلية تحاول تسجيل الدخول عبر تجربة قائمة كلمات مرور ومراقبة استجابة الخادم لاكتشاف الكلمة الصحيحة.</p>
+    <a href="https://github.com/mu-b003/Python-scripts/blob/main/Bruteforce%20API" target="_blank">رابط الاسكربت</a>
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775142236/p39_zxwr9t.png" class="images">
+    <hr>
+    </details>
+
+        
+
+
+    <!-- <div class="ad-container">
+      <div class="ad-box">
+        <span class="ad-label">إعلان</span>
+        <div class="ad-content">
+            <p>محتوى إعلاني مميز</p>
+            <a href="#" class="ad-button">اكتشف المزيد</a>
+        </div>
+      </div>
+     </div> -->
+
+    
+
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775131675/b1_onc1ll.png" class="images">
+    <details open>
+      <summary>Bash</summary>
+      <p>هي اختصار لـ "Bourne Again SHell"، وهي لغة أوامر نصية Scripting Language ومفسّر سطر أوامر Command Line Interpreter قوية تُستخدم بشكل أساسي في أنظمة التشغيل القائمة على Unix و Linux لإدارة النظام، أتمتة المهام، والتفاعل المباشر مع النواة</p>
+      <p>بمجرد فتح التيرمنال، أنت غالباً تستخدم Bash بالفعل. للتأكد من ذلك، يمكنك كتابة الأمر التالي:</p>
+      <p>echo $SHELL</p>
+      <p>إذا كانت النتيجة /bin/bash أو /usr/bin/bash فالباش يعمل حالياً.</p>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775569335/b20_ojotci.png" class="images">
+      <p>إذا كان التيرمنال الخاص بك يستخدم نوعاً آخر (مثل Zsh أو Fish)، يمكنك ببساطة كتابة:</p>
+      <p>bash</p>
+      <p>سيتحول المحث (Prompt) فوراً للعمل ببيئة Bash. وللخروج منها والعودة للصدّفة السابقة، اكتب exit.</p>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775569502/b21_huwtvs.png" class="images">
+      <pre>
+        <code>
+        #!/bin/bash
+        echo "Hello, World!"
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775569602/b22_nkib2z.png" class="images">
+      
+      <pre>#!/bin/bash:</pre>
+      <p> يُسمى "Shebang"، وهو يُخبر النظام بضرورة استخدام مفسر أوامر Bash لتنفيذ هذا الملف</p>
+      <p>echo: هو أمر برمجي يُستخدم لطباعة أو عرض النصوص والبيانات على الشاشة المخرجات</p>
+      <p>"Hello, World!": هو السلسلة النصية المراد طباعتها، وتوضع بين علامتي تنصيص للحفاظ على تنسيقها</p>
+      <p>قوم هذا السكربت البسيط عند تشغيله بإظهار عبارة الترحيب الشهيرة للمستخدم في واجهة الأوامر</p>
+      <p>يتطلب السكربت عادةً إعطاء ملفه صلاحية "التنفيذ" عبر الأمر chmod +x ليعمل بشكل صحيح</p>
+    </details>
+
+    <details>
+      <summary>المتغيرات (Variables)</summary>
+      <p>بدون مسافات حول = تستخدم $ لعرض القيمة</p>
+      <pre>
+        <code>
+         #!/bin/bash
+
+         name="Mubarak"
+         age=22
+
+         echo "My name is $name"
+         echo "I am $age years old"
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775569764/b23_xcvz8q.png" class="images">
+      <pre>#!/bin/bash:</pre>
+      <p> هو السطر التعريفي (Shebang) الذي يُحدد للمواد البرمجية في نظام التشغيل أن هذا الملف يجب تنفيذه باستخدام مفسر Bash</p>
+      <p>السطران name="Mubarak" و age=22 يقومان بتخزين القيم النصية والعددية داخل متغيرات لاستدعائها لاحقاً، مع ملاحظة عدم وجود مسافات حول علامة =</p>
+      <p>عند كتابة $name أو $age داخل نص، يفهم النظام أنك تريد استبدال اسم المتغير بالقيمة الفعلية المخزنة داخله (مثل Mubarak)</p>
+      <p>echo: يُستخدم لطباعة النصوص الناتجة على الشاشة، حيث يقوم في هذا السكربت بدمج النصوص الثابتة مع قيم المتغيرات</p>
+      <p>عند تشغيل هذا السكربت، ستظهر للمستخدم جملتان واضحتان: "My name is Mubarak" و "I am 22 years old"</p>
+
+    </details>
+
+    <details>
+      <summary>إدخال من المستخدم (User input)</summary>
+      <pre>
+        <code>
+         #!/bin/bash
+
+         echo "Enter your name:"
+         read name
+
+         echo "Welcome $name!"
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775569845/b24_ugutd9.png" class="images">
+      <pre>#!/bin/bash:</pre>
+      <p> يحدد مسار مفسر الأوامر (Bash) الذي سيقوم بقراءة وتنفيذ التعليمات البرمجية الموجودة في الملف</p>
+      <p>echo الأول: يقوم بطباعة نص توضيحي على الشاشة يطلب من المستخدم إدخال اسمه (Enter your name)</p>
+      <p>read name: هو أمر حيوي يقوم بوقف تنفيذ السكربت مؤقتاً لانتظار إدخال من المستخدم عبر لوحة المفاتيح، ثم يخزن ما يكتبه المستخدم في متغير يسمى name</p>
+      <p>يستخدم الأمر echo مرة أخرى لطباعة رسالة ترحيبية، حيث يتم استدعاء القيمة التي أدخلها المستخدم برمجياً باستخدام الرمز $</p>
+      <p>يمثل هذا الكود أبسط أشكال "إدخال البيانات ومعالجتها ثم إخراجها" (Input-Process-Output) في برمجة السكربتات</p>
+    </details>
+
+    <details>
+      <summary>الشروط (if)</summary>
+      <h3>الشروط (if)</h3>
+      <p>-gt أكبر</p>
+      <p>-lt أصغر</p>
+      <p>-eq يساوي</p>
+      <pre>
+        <code>
+         #!/bin/bash
+
+         echo "Enter a number:"
+         read num
+
+         if [ $num -gt 10 ]; then
+         echo "Number is greater than 10"
+         else
+         echo "Number is 10 or less"
+         fi
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775570092/b25_qm9dhs.png" class="images">
+      <p>يبدأ السكربت بطلب رقم من المستخدم عبر echo ويقوم بتخزينه في المتغير num باستخدام الأمر read</p>
+      <p>if: تبدأ الجملة الشرطية بـ ;if [ $num -gt 10 ] حيث أن الاختصار -gt يعني "أكبر من" (Greater Than)، وهي تختبر القيمة المدخلة</p>
+      <p>then: إذا كانت القيمة الموجودة في $num أكبر فعلياً من 10، يتم تنفيذ الأمر البرمجي الذي يلي كلمة then مباشرة</p>
+      <p>else: في حال كان الشرط خاطئاً (أي أن الرقم 10 أو أقل)، يتم الانتقال تلقائياً لتنفيذ الأوامر الموجودة تحت قسم else</p>
+      <p>fi: تنتهي جملة if دائماً بكلمة fi (وهي كلمة if مكتوبة بشكل معكوس)، لتعريف النظام بأن منطق المقارنة قد انتهى هنا</p>
+    </details>
+
+    <details>
+      <summary>الحلقات (Loops)</summary>
+      <h3>for loop</h3>
+      <pre>
+        <code>
+         #!/bin/bash
+
+         for i in 1 2 3 4 5
+         do
+         echo "Number: $i"
+         done
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775570340/b26_zlg5l0.png" class="images">
+      <p>for: تبدأ الحلقة بـ for i in 1 2 3 4 5 حيث يتم إنشاء متغير مؤقت اسمه i يأخذ قيمة جديدة من القائمة الموجودة (1 إلى 5) في كل دورة</p>
+      <p>do: كلمة do تعني "افعل"، وهي تشير إلى بداية الأوامر التي سيتم تكرارها طالما لم تنتهِ قائمة الأرقام المحددة</p>
+      <p>يقوم الأمر "echo "Number: $i بطباعة الكلمة متبوعة بالقيمة الحالية للمتغير i؛ لذا ستشاهد الأرقام تُطبع واحداً تلو الآخر في كل سطر</p>
+      <p>done: تُستخدم كلمة done لإعلام مفسر Bash بأن مجموعة الأوامر المطلوب تكرارها قد انتهت، ليعود البرنامج إلى البداية لاختيار الرقم التالي</p>
+      <p>تُغني هذه الطريقة عن كتابة أمر الطباعة يدوياً خمس مرات، مما يوفر الوقت ويقلل الأخطاء البرمجية عند التعامل مع بيانات كبيرة</p>
+      <h3>while loop</h3>
+      <p></p>
+      <pre>
+        <code>
+         #!/bin/bash
+
+         count=1
+
+         while [ $count -le 5 ]
+         do
+         echo "Count: $count"
+         ((count++))
+         done
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775570433/b27_wcoroc.png" class="images">
+      <p>يبدأ الكود بـ count=1 لضبط نقطة انطلاق العداد من الرقم واحد.</p>
+      <p>جملة while [ $count -le 5 ] تعني "استمر طالما أن العداد أقل من أو يساوي (Less than or Equal) الرقم 5".</p>
+      <p>do: تُحدد هذه الكلمة بداية الكتلة البرمجية التي سيتم تكرار تنفيذها طالما ظل الشرط محققاً.</p>
+      <p>((count++)): هذا السطر في غاية الأهمية، فهو يقوم بزيادة قيمة العداد بمقدار 1 في كل دورة؛ وبدونه سيدخل السكربت في "حلقة لانهائية" لأن الشرط سيظل دائماً صحيحاً.</p>
+      <p>done: تُنهي الحلقة وتُعيد البرنامج إلى سطر الشرط للتأكد مما إذا كان يجب التكرار مرة أخرى أم الخروج من الحلقة.</p>
+    </details>
+
+    <details>
+      <summary>التعامل مع الملفات (Handling files)</summary>
+      <h3>إنشاء وكتابة:</h3>
+      <pre>
+        <code>
+          #!/bin/bash
+
+          echo "Hello Bash" > file.txt
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775570611/b28_kkkval.png" class="images">
+      <pre>echo "Hello Bash":</pre>
+      <p> يقوم المحرك هنا بتجهيز النص "Hello Bash" للطباعة، لكنه لن يظهر على الشاشة هذه المرة</p>
+      <p>هذا الرمز يُخبر النظام: "لا تطبع النص على الشاشة، بل أرسله إلى مكان آخر"، وفي هذه الحالة هو ملف نصي</p>
+      <p>file.txt: إذا لم يكن الملف موجوداً، سيقوم السكربت بإنشائه تلقائياً، أما إذا كان موجوداً فسيقوم بمسح محتواه القديم وكتابة النص الجديد مكانه</p>
+      <p>يُسمى هذا الإجراء "Standard Output Redirection"، وهو وسيلة أساسية لحفظ نتائج الأوامر أو سجلات العمل (Logs) للرجوع إليها لاحقاً</p>
+      <p>إذا استخدمت > فستستبدل المحتوى، بينما إذا استخدمت >> فستضيف النص الجديد إلى نهاية الملف دون مسح القديم</p>
+      <h3>قراءة:</h3>
+      <pre>
+        <code>
+         #!/bin/bash
+
+         cat file.txt
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775570712/b29_gucoqa.png" class="images">
+      <p>cat: هو اختصار لكلمة (Concatenate)، ورغم أن اسمه يوحي بدمج الملفات، إلا أن استخدامه الأكثر شيوعاً هو عرض محتويات الملفات النصية</p>
+      <p>file.txt: يمثل اسم الملف الذي يرغب السكربت في الوصول إليه. يجب أن يكون الملف موجوداً في نفس المجلد الذي يُنفذ فيه السكربت ليعمل بنجاح</p>
+      <p>يقوم الأمر بفتح الملف وقراءة البيانات المخزنة داخله (مثل نص "Hello Bash" الذي كتبناه سابقاً) ثم دفعها مباشرة إلى شاشة الطرفية (Terminal)</p>
+      <p>بمجرد تشغيل السكربت، سيظهر لك محتوى الملف كنص عادي أمامك، مما يجعله أداة سريعة للتحقق من البيانات دون الحاجة لفتح محرر نصوص</p>
+      <p>يمكنك استخدام cat مع عدة ملفات في آن واحد (مثلاً cat file1.txt file2.txt) ليقوم بعرضها جميعاً خلف بعضها البعض كتسلسل واحد</p>
+      <h3>قراءة سطر بسطر:</h3>
+      <pre>
+        <code>
+         #!/bin/bash
+
+         while read line
+         do
+         echo "Line: $line"
+         done < file.txt
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775570877/b30_racfka.png" class="images">
+      <p>حلقة while read line: تقوم هذه الحلقة بقراءة الملف سطرًا واحدًا في كل دورة، وتخزن محتوى السطر الحالي داخل متغير يسمى line</p>
+      <p>بداية التنفيذ do: تبدأ تنفيذ الأوامر على السطر الذي تم التقاطه للتو من الملف</p>
+      <p>معالجة البيانات: الأمر echo "Line: $line" يعرض النص الموجود في السطر مسبوقاً بكلمة ":Line"، مما يساعدك على تمييز كل سطر بشكل منفصل</p>
+      <p>إعادة توجيه الإدخال < file.txt: العلامة < تخبر حلقة while بأن مصدر البيانات ليس لوحة المفاتيح، بل هو محتوى الملف file.txt</p>
+      <p>هذه الطريقة أفضل من استخدام cat داخل حلقة، لأنها تستهلك ذاكرة أقل وتتعامل مع الملفات الكبيرة بكفاءة عالية دون تحميل الملف بالكامل في الذاكرة دفعة واحدة</p>
+    </details>
+
+    <details>
+      <summary>التعامل مع المستخدمين والملفات (Handling users and files)</summary>
+      <pre>
+        <code>
+        #!/bin/bash
+
+        echo "Checking if file exists..."
+
+        if [ -f file.txt ]; then
+        echo "File exists"
+        else
+        echo "File not found"
+        fi
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775571008/b31_nybwmi.png" class="images">
+      <p>يبدأ السكربت بطباعة نص توضيحي "Checking if file exists..." ليُعلم المستخدم بالعملية التي تجري الآن.</p>
+      <p>[ -f file.txt ]: المعامل -f (اختصار لـ File) هو اختبار منطقي يتحقق من شيئين: أن الملف موجود، وأنه ملف عادي (وليس مجلداً).</p>
+      <p>إذا وجد السكربت الملف file.txt في المسار المحدد، سيقوم بتنفيذ الأمر الأول وطباعة "File exists".</p>
+      <p>else: إذا كان الملف مفقوداً أو تم حذفه، سينتقل السكربت تلقائياً لطباعة رسالة التنبيه "File not found".</p>
+      <p>يُستخدم هذا النمط بكثرة في "الأتمتة"، حيث لا يمكنك قراءة ملف أو تعديله قبل التأكد من وجوده فعلياً لمنع تعطل السكربت.</p>
+      <hr>
+    </details>
+
+
+
+    <h1>اسكربتات لغة باش</h1>
+    <details open>
+      <summary>Advanced Network Scanner</summary>
+      <p>يهدف هذا السكربت البرمجي المكتوب بلغة Bash إلى أتمتة عملية فحص الشبكات باستخدام أداة Nmap الشهيرة، حيث يبدأ باستقبال عنوان الهدف (IP أو Domain) كمتغير يتم تمريره عند تشغيل الملف ليقوم بعد ذلك بسلسلة من الفحوصات المتدرجة التي تبدأ بالفحص السريع للمنافذ الأكثر شيوعاً عبر الخيار -F. يتوسع السكربت لاحقاً ليشمل تحليل الخدمات النشطة وإصداراتها باستخدام -sV ومحاولة التعرف على نظام التشغيل الخاص بالهدف عبر الخيار -O ليعطي صورة متكاملة عن البيئة التقنية المستهدفة. وفي المرحلة الختامية ينفذ السكربت فحصاً شاملاً وعدوانياً بواسطة الخيار -A الذي يجمع بين اكتشاف الأنظمة والخدمات وتشغيل السكربتات المساعدة، مع توجيه وحفظ كافة النتائج النهائية في ملف نصي خارجي يسمى scan_result.txt لضمان توثيق البيانات وسهولة مراجعتها لاحقاً. </p>
+      <a href="https://github.com/mu-b003/Bash-scripts-/blob/main/Advanced%20Network%20Scanner" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775565294/b2_gbgafj.png" class="images">
+    </details>
+
+    <details>
+      <summary>Backup</summary>
+      <p>يعمل هذا السكربت كأداة ذكية للأتمتة تهدف إلى إنشاء نسخ احتياطية مؤرخة للملفات لضمان عدم ضياع البيانات وتسهيل تتبع التغييرات عبر الزمن. تبدأ العملية بتعريف متغير المصدر src الذي يحتوي على الملف المراد نسخه، يليه الجزء الأكثر إبداعاً وهو تكوين اسم ملف النسخة الاحتياطية باستخدام أمر النظام $(date +%Y%m%d)، والذي يقوم بدمج التاريخ الحالي (السنة والشهر واليوم) تلقائياً داخل اسم الملف ليصبح فريداً لكل يوم. بعد ذلك، يتم تنفيذ أمر النسخ cp الذي ينقل المحتويات من الملف الأصلي إلى الملف الجديد المسمى بالتاريخ، ثم يختتم السكربت عمله بطباعة رسالة تأكيدية للمستخدم توضح الاسم الدقيق للنسخة التي تم إنشاؤها بنجاح.</p>
+      <a href="https://github.com/mu-b003/Bash-scripts-/blob/main/Backup" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775565374/b3_fygyoq.png" class="images">
+    </details>
+
+    <details>
+      <summary>Full Backup Script</summary>
+      <p>يُقدم هذا السكربت حلاً احترافياً لأرشفة وضغط البيانات، حيث ينتقل من مجرد نسخ الملفات إلى تقليص حجمها وتجميعها في ملف واحد محمي زمنياً. يبدأ الكود بتحديد مسار البيانات المصدر SOURCE والوجهة النهائية للنسخ DEST داخل نظام الملفات، مع استخدام متغير التاريخ DATE لضمان الحصول على طابع زمني دقيق لكل عملية أرشفة. تكمن القوة الحقيقية في الأمر tar -czf؛ حيث يقوم الحرف c بإنشاء الأرشيف، وz بضغطه باستخدام خوارزمية gzip لتقليل المساحة التخزينية، بينما يحدد f اسم الملف الناتج. بهذه الطريقة، يتم تحويل مجلد كامل من البيانات إلى ملف واحد مضغوط بصيغة .tar.gz يحمل تاريخ اليوم، مما يسهل عملية النقل والتخزين طويل الأمد مع الحفاظ على هيكلية المجلدات الأصلية. </p>
+      <a href="https://github.com/mu-b003/Bash-scripts-/blob/main/Full%20Backup%20Script" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775565446/b4_vebnxp.png" class="images">
+    </details>
+
+    <details>
+      <summary>Log Cleanup Script</summary>
+      <p>صُمم هذا السكربت لأداء مهمة إدارة وصيانة مساحة التخزين عبر تنظيف سجلات النظام (Logs) القديمة بشكل آلي لمنع امتلاء القرص الصلب. يعتمد الكود بشكل أساسي على القوة البرمجية للأمر find للبحث داخل المجلد المحدد في المتغير LOG_DIR عن الملفات العادية فقط باستخدام الخيار -type f. الجزء الجوهري هنا هو المعامل -mtime +7 الذي يقوم بفلترة الملفات التي مر على آخر تعديل لها أكثر من سبعة أيام، مما يضمن الاحتفاظ بالسجلات الحديثة فقط وحذف ما تجاوز عمره أسبوعاً. بمجرد العثور على هذه الملفات القديمة، يقوم السكربت بتنفيذ الأمر rm -f عليها مباشرة عبر الخيار -exec لمسحها نهائياً دون طلب تأكيد من المستخدم، ثم يختتم العملية بطباعة كلمة "!Done" للإشارة إلى نجاح عملية التنظيف وتوفير المساحة. </p>
+      <a href="https://github.com/mu-b003/Bash-scripts-/blob/main/Log%20Cleanup%20Script" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775565589/b6_wzu5dg.png" class="images">
+    </details>
+
+    <details>
+      <summary>Multi-Service Health Checker</summary>
+      <p>يعمل هذا السكربت كأداة لمراقبة وإصلاح الخدمات (Service Monitoring and Self-healing) بشكل آلي، حيث يضمن بقاء الخدمات الحيوية للنظام قيد التشغيل دون تدخل بشري دائم.يبدأ الكود بتعريف مصفوفة services تضم قائمة بالخدمات المستهدفة (مثل خادم الويب وقواعد البيانات)، ثم يستخدم حلقة تكرار لفحص كل خدمة على حدة عبر الأمر systemctl is-active --quiet. السر البرمجي هنا يكمن في المتغير الخاص $? الذي يحفظ "حالة الخروج" (Exit Status) للأمر السابق؛ فإذا كانت القيمة لا تساوي صفراً (-ne 0) فهذا يعني أن الخدمة معطلة أو متوقفة. بمجرد اكتشاف تعطل الخدمة، يقوم السكربت بطباعة رسالة تحذيرية ثم ينفذ أمر إعادة التشغيل التلقائي sudo systemctl restart لإعادتها للعمل فوراً، بينما يكتفي بطباعة رسالة "OK" إذا كانت الخدمة تعمل بشكل سليم، مما يجعل هذا السكربت مثالياً لجدولته كمهام دورية (Cron Jobs) لضمان استقرار الخادم.</p>
+      <a href="https://github.com/mu-b003/Bash-scripts-/blob/main/Multi-Service%20Health%20Checker" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775565663/b7_oslrpt.png" class="images">
+    </details>
+    
+
+    <details>
+      <summary>Network IP Scanner</summary>
+      <p>يُعد هذا السكربت أداة ذكية لإجراء مسح للشبكة المحلية (IP Scanner) يدوياً، حيث يهدف لاكتشاف الأجهزة المتصلة والنشطة ضمن نطاق معين دون الحاجة لأدوات خارجية معقدة. يعتمد الكود على حلقة تكرار for تمر عبر الأرقام من 1 إلى 254 لبناء عنوان IP كامل لكل جهاز محتمل في الشبكة، ثم يستخدم أمر ping بإرسال حزمة واحدة فقط -c 1 مع مهلة زمنية قدرها ثانية واحدة -W 1. لضمان نظافة واجهة الأوامر، يتم توجيه مخرجات أمر الـ ping إلى "الثقب الأسود" في Linux وهو /dev/null. تكمن الفكرة الجوهرية في فحص حالة الخروج $?؛ فإذا كانت مساوية للصفر (-eq 0) فهذا يعني أن الجهاز استجاب للطلب وهو نشط حالياً، ليقوم السكربت عندها بطباعة عنوانه للمستخدم، مما يجعله وسيلة سريعة وفعالة لمراقبة الأجهزة المتصلة بشبكتك الخاصة.  </p>
+      <a href="https://github.com/mu-b003/Bash-scripts-/blob/main/Network%20IP%20Scanner" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775565727/b8_d0rmih.png" class="images">
+    </details>
+
+    <details>
+      <summary>Ping</summary>
+      <p>يقدم هذا السكربت أسلوباً تفاعلياً لاختبار اتصال المضيف (Host Connectivity Test)، حيث يجمع بين إدخال البيانات من المستخدم ومعالجتها منطقياً لتحديد حالة الشبكة. تبدأ الدورة البرمجية بطلب عنوان IP من المستخدم وتخزينه في المتغير ip باستخدام الأمر read لتخصيص عملية الفحص، يليه تنفيذ أمر ping -c 4 الذي يرسل أربع حزم بيانات لاستطلاع استجابة الطرف الآخر. تكمن الذكاء في السكربت في استخدام المتغير $? لفحص حالة نجاح العملية؛ فإذا عادت القيمة بـ 0 (أي استلم النظام ردوداً صحيحة)، يطبع السكربت "Host is UP" كدليل على سلامة الاتصال. أما في حال فشل الوصول للمضيف أو انقطاع المهلة الزمنية، فإن السكربت ينتقل تلقائياً لخانة else ليطبع رسالة التنبيه "Host is DOWN"، مما يوفر للمسؤول عن النظام تقريراً فورياً ومبسطاً عن حالة الاتصال دون الحاجة لتحليل مخرجات الشبكة المعقدة يدوياً. </p>
+      <a href="https://github.com/mu-b003/Bash-scripts-/blob/main/Ping" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775565786/b9_a4gjma.png" class="images">
+    </details>
+
+    <details>
+      <summary>Port Scanner</summary>
+      <p>يُعتبر هذا السكربت أداة ذكية لفحص حالة المنافذ (Port Scanning) باستخدام ميزات Bash الداخلية، دون الحاجة للاعتماد على أدوات خارجية مثل Telnet أو Netcat. تعتمد آلية العمل على استقبال عنوان IP ورقم المنفذ (Port) من المستخدم، ثم محاولة فتح اتصال عبر المسار الافتراضي /dev/tcp/$ip/$port؛ حيث يستخدم السكربت أمر timeout 1 لضمان عدم تعليق البرنامج في حال كان المنفذ لا يستجيب، مع توجيه أي أخطاء ناتجة إلى /dev/null للحفاظ على نظافة المخرجات. تتجلى الدقة البرمجية في فحص قيمة $?؛ فإذا نجح Bash في إنشاء الاتصال (قيمة 0)، يطبع السكربت "Port is OPEN" كإشارة إلى أن الخدمة نشطة، وفي حال الفشل أو انتهاء الوقت المخصص، يتم الانتقال لخيار else ليعلن أن المنفذ مغلق أو محمي بجدار ناري، مما يجعله وسيلة سريعة وفعالة لفحص الخدمات الشبكية يدوياً.</p>
+      <a href="https://github.com/mu-b003/Bash-scripts-/blob/main/Port%20Scanner" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775565845/b10_a47him.png" class="images">
+    </details>
+
+    <details>
+      <summary>Privilege Escalation Enumeration Script</summary>
+      <p>يُعد هذا السكربت أداة استطلاعية قوية تهدف إلى فحص احتمالات تصعيد الصلاحيات (Privilege Escalation) داخل نظام Linux، حيث يقوم بجمع معلومات حساسة قد يستغلها مدير النظام لسد الثغرات أو المختبر الأمني لاكتشاف نقاط الضعف. تبدأ عملية الفحص بتحديد الهوية الحالية للمستخدم عبر أمر whoami ومراجعة صلاحيات الـ SUDO الممنوحة له بواسطة sudo -l لمعرفة الأوامر التي يمكن تنفيذها بصلاحيات الجذر، يتبع ذلك البحث عن ملفات SUID الخطيرة باستخدام أمر find مع الفلتر -perm -4000؛ وهي ملفات تعمل بصلاحيات مالكها (غالباً الـ root) بغض النظر عن المستخدم الذي يقوم بتشغيلها، مما قد يمثل ثغرة أمنية كبيرة. كما يتفحص السكربت أذونات ملفات النظام الحساسة مثل /etc/passwd للتأكد من عدم وجود صلاحيات كتابة غير مصرح بها، ويختتم عمله بعرض أول 10 عمليات جارية في النظام باستخدام ps aux لإعطاء نظرة خاطفة على البرامج التي تعمل بخلفية النظام وصلاحياتها، مما يجعله مرجعاً سريعاً لتقييم الوضع الأمني العام للجهاز.</p>
+      <a href="https://github.com/mu-b003/Bash-scripts-/blob/main/Privilege%20Escalation%20Enumeration%20Script" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775565919/b11_nhmhg1.png" class="images">
+    </details>
+
+    <details>
+      <summary>Reconnaissance (Recon) Script</summary>
+      <p>يعمل هذا السكربت كأداة متكاملة للاستطلاع الرقمي (Reconnaissance)، حيث يقوم بجمع معلومات جوهرية عن أي هدف برمجياً لتسهيل عملية تحليل الشبكات أو اختبار الاختراق. تبدأ الرحلة بجلب عنوان IP الخاص بالهدف بطريقة ذكية عبر دمج أمر ping مع أدوات معالجة النصوص grep و awk لاستخلاص العنوان فقط، يتبعها استعلام DNS باستخدام nslookup لكشف سجلات النطاق وتوجيهاته. ثم ينتقل السكربت لمرحلة الكشف التقني عبر أداة nmap لفحص المنافذ الأكثر شيوعاً بشكل سريع، مما يعطي لمحة عن الخدمات النشطة على الخادم. وفي الختام، يستخدم السكربت أمر curl -I لجلب ترويسات بروتوكول HTTP (Headers)، وهي خطوة بالغة الأهمية لكشف نوع خادم الويب المستخدم، لغات البرمجة، والتقنيات الأمنية المفعلة، مما يوفر تقريراً أولياً شاملاً يختصر الكثير من البحث اليدوي. </p>
+      <a href="https://github.com/mu-b003/Bash-scripts-/blob/main/Reconnaissance%20(Recon)%20Script" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775566007/b12_srolwn.png" class="images">
+    </details>
+
+    <details>
+      <summary>Security Log Analyzer</summary>
+      <p>يعمل هذا السكربت كأداة لتحليل السجلات الأمنية (Log Analysis)، حيث يركز بشكل محدد على رصد محاولات الاختراق أو الدخول الفاشلة للنظام عبر فحص ملف auth.log. تبدأ العملية باستخدام أمر grep لاستخراج كافة السطور التي تحتوي على عبارة "Failed password" وحفظها في ملف وسيط، يليه استخدام wc -l لإعطاء إحصائية سريعة حول العدد الإجمالي للمحاولات الفاشلة. تكمن القوة التحليلية في السطر الأخير؛ حيث يستخدم أداة awk لاستخلاص عناوين الـ IP الخاصة بالمهاجمين، ثم يقوم بترتيبها sort وعدّ تكرار كل منها uniq -c ليعرض في النهاية قائمة مرتبة تنازلياً بأكثر العناوين عدوانية تجاه النظام. تساعد هذه الطريقة مسؤولي النظام على تحديد مصادر الهجمات (Brute Force) بسرعة لاتخاذ إجراءات الحماية مثل حظر تلك العناوين باستخدام الجدار الناري.  </p>
+      <a href="https://github.com/mu-b003/Bash-scripts-/blob/main/Security%20Log%20Analyzer" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775566066/b13_h1cxap.png" class="images">
+    </details>
+
+    <details>
+      <summary>Service Monitor & Auto-Restart Script</summary>
+      <p>يقدم هذا السكربت آلية بسيطة وفعالة لمراقبة استمرارية الخدمة (Service Continuity)، حيث يهدف إلى ضمان بقاء خدمة معينة، مثل SSH، تعمل بشكل دائم دون انقطاع. يعتمد الكود على استخدام أداة إدارة النظام systemctl مع الخيار is-active للتحقق من الحالة الحالية للخدمة، مع إضافة --quiet لإخفاء المخرجات التقنية غير الضرورية والتركيز فقط على نتيجة الفحص. يكمن جوهر المنطق البرمجي في اختبار متغير الحالة $?؛ فإذا كانت قيمته لا تساوي الصفر، يستنتج السكربت فوراً أن الخدمة متوقفة ويقوم بتنفيذ أمر إعادة التشغيل sudo systemctl restart. بهذه الطريقة، يتحول السكربت إلى "حارس آلي" للنظام، حيث يطبع رسائل واضحة للمسؤول توضح ما إذا كانت الخدمة تعمل بسلام أو إذا كان قد تم التدخل لإصلاح عطل مفاجئ، مما يقلل من وقت توقف الخدمات الحيوية بشكل كبير. </p>
+      <a href="https://github.com/mu-b003/Bash-scripts-/blob/main/Service%20Monitor%20%26%20Auto-Restart%20Script" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775566145/b14_jmgh00.png" class="images">
+    </details>
+
+    <details>
+      <summary>System Monitoring Script</summary>
+      <p>يعمل هذا السكربت كلوحة تحكم برمجية لمراقبة أداء النظام (System Monitoring)، حيث يجمع أهم البيانات الحيوية للجهاز ويعرضها بشكل منظم في مكان واحد. تبدأ العملية بكشف هوية المستخدم الحالي عبر whoami ومعرفة مدة تشغيل النظام دون انقطاع بواسطة أمر uptime. بعد ذلك، ينتقل السكربت لمراقبة الموارد الأساسية؛ فيستخدم أمر top لاستخلاص متوسط حمل المعالج (CPU Load)، وأمر free -h لعرض حالة الذاكرة العشوائية (RAM) بصيغة سهلة القراءة للبشر (مثل جيجابايت وميجابايت). يختتم السكربت جولته بفحص مساحة القرص الصلب باستخدام df -h لإظهار الأقسام المتاحة والمستخدمة، مما يجعله أداة مثالية للمسؤولين لمتابعة "صحة" الخادم بضغطة زر واحدة والتأكد من عدم وجود اختناقات في الموارد.  </p>
+      <a href="https://github.com/mu-b003/Bash-scripts-/blob/main/System%20Monitoring%20Script" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775566206/b15_sjrjya.png" class="images">
+    </details>
+
+    <details>
+      <summary>system commands</summary>
+      <p>يعمل هذا السكربت الأخير كأداة استكشافية سريعة لجمع المعلومات الأساسية حول البيئة الحالية لنظام Linux بمجرد تشغيله. يستخدم السكربت ثلاثة أوامر جوهرية؛ الأول هو whoami لتحديد اسم المستخدم النشط، والثاني هو pwd (Print Working Directory) لعرض المسار الكامل للمجلد الحالي الذي يتواجد فيه المستخدم، بينما يقوم الأمر الثالث ls بسرد قائمة بكافة الملفات والمجلدات الموجودة في ذلك الموقع. تكمن أهمية هذا النوع من السكربتات في توفير "لقطة" فورية للسياق البرمجي، مما يساعد المطورين أو مديري الأنظمة على التأكد من موقعهم وصلاحياتهم قبل البدء بتنفيذ عمليات أكثر تعقيداً، وهو ما يمثل حجر الأساس في فهم التعامل مع واجهة السطر الأوامر.  </p>
+      <a href="https://github.com/mu-b003/Bash-scripts-/blob/main/system%20commands" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775566268/b16_uytca6.png" class="images">
+      <hr>
+    </details>
+
+    
+
+
+    <!-- <div class="ad-container">
+     <div class="ad-box">
+        <span class="ad-label">إعلان</span>
+        <div class="ad-content">
+            <p>محتوى إعلاني مميز</p>
+            <a href="#" class="ad-button">اكتشف المزيد</a>
+        </div>
+     </div>
+     </div> -->
+
+
+    
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775131881/j1_zx2zt2.png" class="images">
+    <details open>
+      <summary>JavaScript</summary>
+      <p>هي لغة برمجة عالية المستوى، ديناميكية، ومفسرة، تُعد حجر الأساس لتطوير صفحات الويب التفاعلية     . تعمل بشكل أساسي داخل متصفحات الويب لإضافة التفاعلية، مثل الرسوم المتحركة، التحديث الفوري للمحتوى، والتحقق من صحة النماذج. تمكنت من السيطرة على تطوير المواقع وتوسعت لتشمل تطوير خوادم الويب Node.js</p>
+    </details>
+    
+    <details>
+      <summary>تشغيل (JavaScript)</summary>
+      <p>أسهل طريقة: افتح المتصفح Chrome اضغط F12 روح إلى Console واكتب:</p>
+      <pre>
+        <code>
+         console.log("Hello JavaScript");
+        </code>
+      </pre>
+        <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775384261/j2_nnic5x.png" class="images">
+        <p>console: هو "كائن" (Object) برمجي يوفر وصولاً إلى أدوات التحكم والمتصفح البرمجية</p>
+        <p>.()log: هي "دالة" (Method) تُستخدم لطباعة أو عرض البيانات والمعلومات في لوحة التحكم (Console)</p>
+        <p>"Hello JavaScript": هو النص المراد عرضه، ويوضع بين علامات تنصيص لأنه يُعامل كـ "سلسلة نصية" (String)</p>
+        <p>الأقواس (): تُستخدم لتغليف البيانات التي نمررها للدالة لتقوم بمعالجتها وطباعتها</p>
+        <p>الفصلة المنقوطة ;: تُستخدم لإنهاء العبارة البرمجية، وهي علامة تخبر المحرك أن الأمر قد اكتمل هنا</p>
+
+    </details>
+
+    <details>
+      <summary>المتغيرات (Variables)</summary>
+      <p>تستخدم لتخزين البيانات</p>
+      <pre>
+        <code>
+         let name = "Ali";
+         let age = 20;
+
+         console.log(name);
+         console.log(age);
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775384524/j3_k3d5cf.png" class="images">
+        <p>تعريف المتغيرات (let): قمت باستخدام الكلمة المحجوزة let لإنشاء "حاويات" في الذاكرة لتخزين البيانات</p>
+        <p>تخزين النصوص: المتغير name يحمل القيمة "Ali"، وهي سلسلة نصية (String) لأنها بين علامات تنصيص</p>
+        <p>تخزين الأرقام: المتغير age يحمل القيمة 20 كنوع عددي (Number)، ولا يحتاج لعلامات تنصيص</p>
+        <p>استدعاء القيم: عند كتابة console.log(name)، يبحث البرنامج عن القيمة المخزنة داخل الاسم name ويعرضها</p>
+        <p>النتيجة في الـ Console: سيظهر لك في لوحة التحكم الكلمة Ali في سطر، والرقم 20 في السطر الذي يليه</p>
+      <p>أنواع الإعلان:</p>
+      <pre>
+        <code>
+          let x = 10;     // متغير عادي (يتغير)
+          const y = 5;    // ثابت (لا يتغير)
+          var z = 3;      // قديم (تجنبه)
+        </code>
+      </pre>
+      <p>let (الخيار الافتراضي): يُستخدم عندما تعلم أن قيمة المتغير ستتغير لاحقاً (مثل عداد في حلقة تكرار). يتميز بأنه يحترم "النطاق الكتلي" (Block Scope)، أي أنه يعيش فقط داخل الأقواس {} التي كُتب فيها.</p>
+      <p>const (الأكثر أماناً): يُستخدم للقيم التي لن تتغير أبداً. البرمجة الحديثة تنصح باستخدام const دائماً إلا إذا كنت متأكداً أنك ستحتاج لتغيير القيمة، فهذا يمنع الأخطاء غير المقصودة.</p>
+      <p>var (الموضة القديمة): كانت الطريقة الوحيدة قديماً، لكن مشكلتها أنها قد تسبب أخطاءً منطقية لأنها لا تحترم النطاق الكتلي (Function Scoped)، مما يجعل تتبع الأخطاء صعباً في المشاريع الكبيرة.</p>
+    </details>
+
+    <details>
+      <summary>العمليات (Operators)</summary>
+      <pre>
+        <code>
+         let a = 10;
+         let b = 5;
+
+         console.log(a + b); // جمع
+         console.log(a - b); // طرح
+         console.log(a * b); // ضرب
+         console.log(a / b); // قسمة
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775384782/j4_upfopo.png" class="images">
+      <p>الجمع (+): سيجمع القيمة 10 مع 5 والنتيجة 15</p>
+      <p>الطرح (-): سيطرح 5 من 10 والنتيجة 5</p>
+      <p>الضرب (*): سيضرب 10 في 5 والنتيجة 50</p>
+      <p>القسمة (/): سيقسم 10 على 5 والنتيجة 2</p>
+    </details>
+
+    <details>
+      <summary>الشروط (If Statement)</summary>
+      <pre>
+        <code>
+         let age = 18;
+
+         if (age >= 18) {
+         console.log("مسموح الدخول");
+         } else {
+         console.log("ممنوع الدخول");
+         }
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775384998/j5_k2hhgn.png" class="images">
+      <p>الشرط (if): نضع بين القوسين (age >= 18) عملية مقارنة. يسأل البرنامج: "هل القيمة الموجودة في age أكبر من أو تساوي 18؟"</p>
+      <p>القيمة المنطقية (Boolean): نتيجة هذا السؤال تكون دائماً إما true (نعم) أو false (لا)</p>
+      <p>كتلة التنفيذ { }:</p>
+      <p>إذا كان الشرط صحيحاً (true)، يتم تنفيذ الكود الموجود داخل أقواس الـ if فقط</p>
+      <p>إذا كان الشرط خاطئاً (false)، يتجاهل البرنامج القوس الأول تماماً وينتقل فوراً إلى ما بعد else</p>
+
+      <pre>
+        <code>
+          let password = "1234";
+
+          if (password === "1234") {
+          console.log("تم تسجيل الدخول");
+          } else {
+          console.log("كلمة المرور خطأ");
+          }
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775385152/j6_i6hctl.png" class="images">
+      <p>المقارنة المتطابقة (===): هذا المعامل لا يتحقق فقط من "القيمة" (أنها 1234)، بل يتحقق أيضاً من "النوع" (أنها نص String وليست رقماً Number)</p>
+      <p>بنية الشرط: بما أن المتغير password يحتوي تماماً على النص "1234"، سيتحقق الشرط وتُنفذ جملة الترحيب</p>
+      <p>لنتيجة: سيظهر لك في الـ Console: تم تسجيل الدخول</p>
+    </details>
+
+    <details>
+      <summary>الحلقات (Loops)</summary>
+      <p>for loop</p>
+      <pre>
+        <code>
+         for (let i = 1; i <= 5; i++) {
+             console.log(i);
+         }
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775385275/j7_bs6amx.png" class="images">
+      <p>لبداية (let i = 1): هنا ننشئ "عداداً" ونبدأه من الرقم 1. يتم تنفيذ هذا الجزء مرة واحدة فقط في البداية</p>
+      <p>الشرط (i <= 5): قبل كل لفة، يسأل البرنامج: "هل i لا تزال أصغر من أو تساوي 5؟". إذا كان الجواب نعم، يستمر التكرار</p>
+      <p>التحديث (i++): بعد نهاية كل لفة، نزيد قيمة i بمقدار 1 (هذا ما تفعله ++)</p>
+      <h3>كيف تسير العملية؟</h3>
+      <p>اللفة 1: i هي 1، يطبع 1، ثم تصبح i هي 2</p>
+      <p>اللفة 2: i هي 2، يطبع 2، ثم تصبح i هي 3</p>
+      <p>... وهكذا حتى يصل إلى 5.</p>
+      <p>النهاية: عندما تصبح i هي 6، يفشل الشرط (6 <= 5 خطأ)، فيتوقف التكرار فوراً</p>
+      <pre>
+        <code>
+          for (let i = 1; i <= 10; i++) {
+              console.log("الرقم: " + i);
+          }
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775385468/j8_je8vh7.png" class="images">
+      <p>النطاق: الحلقة ستكرر الكود 10 مرات (من 1 إلى 10)</p>
+      <p>عامل الجمع (+): عندما يُستخدم مع نص ورقم، فإنه لا يقوم بعملية حسابية، بل يقوم بـ "لصق" الرقم بجانب النص ليصبح جملة واحدة</p>
+      <p>النتيجة: سيظهر في لوحة التحكم (Console) قائمة مرتبة تبدأ بـ الرقم: 1 وتنتهي بـ الرقم: 10</p>
+      <h3>while loop</h3>
+      <p>تستخدم عندما لا تعرف عدد التكرارات مسبقًا</p>
+      <pre>
+        <code>
+          let i = 0;
+
+          while (i < 5) {
+              console.log(i);
+              i++;
+          }
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775387175/j18_iajp4h.png" class="images">
+      <p>نقطة البداية (let i = 0): قمت بتعريف العداد خارج الحلقة</p>
+      <p>الشرط (i < 5): قبل كل دخول للحلقة، يسأل البرنامج: "هل i أقل من 5؟"</p>
+      <p>جسم الحلقة: يتم طباعة قيمة i الحالية</p>
+      <p>تحديث العداد (i++): هذا السطر هو الأهم؛ بدونه ستدخل في "حلقة لا نهائية" (Infinite Loop) لأن i ستبقى دائماً 0، مما قد يؤدي لتعليق المتصفح</p>
+      <p></p>
+      <h3>do...while loop</h3>
+      <p>ينفذ مرة واحدة على الأقل حتى لو الشرط خطأ</p>
+      <pre>
+        <code>
+       let i = 0;
+
+       do {
+          console.log(i);
+          i++;
+      } while (i < 5);
+      </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775387470/j19_ux25qg.png" class="images">
+      <p>نوافذ التنفيذ (do): البرنامج هنا ينفذ الكود الموجود داخل أقواس do أولاً دون النظر إلى الشرط</p>
+      <p>التحديث (i++): يتم زيادة العداد داخل جسم الحلقة</p>
+      <p>التحقق من الشرط (while): بعد تنفيذ الكود، يذهب البرنامج للتحقق من الشرط. إذا كان صحيحاً، يعود ويكرر العملية</p>
+       <h3>for...of loop</h3>
+       <p>تستخدم مع المصفوفات (Arrays)</p>
+       <pre>
+        <code>
+         let fruits = ["تفاح", "موز", "برتقال"];
+
+         for (let fruit of fruits) {
+             console.log(fruit);
+        }
+        </code>
+       </pre>
+       <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775387624/j20_cyyldt.png" class="images">
+      <p>المصفوفة (fruits): هي حاوية واحدة تخزن مجموعة من القيم (في هذه الحالة نصوص). لاحظ أنها تبدأ دائماً بـ [ وتنتهي بـ ]</p>
+      <p>حلقة for...of: هذه الحلقة مصممة خصيصاً للمرور على "عناصر" المصفوفات. بدلاً من التعامل مع أرقام وعدادات (i++) كما فعلنا سابقاً، هي تأخذ كل عنصر "بشكل تلقائي"</p>
+      <p>المتغير fruit: في كل لفة من الحلقة، تقوم جافا سكريبت بوضع قيمة العنصر القادم من المصفوفة داخل هذا المتغير</p>
+      <h5>كيف تعمل هذه الحلقة؟</h5>
+      <p>اللفة الأولى: المتغير fruit يأخذ قيمة "تفاح"، ويطبعها</p>
+      <p>اللفة الثانية: المتغير fruit ينتقل للعنصر التالي "موز"، ويطبعه</p>
+      <p>اللفة الثالثة: المتغير fruit يأخذ القيمة "برتقال"، ويطبعها</p>
+      <p>النهاية: عندما تفرغ المصفوفة، تتوقف الحلقة تلقائياً</p>
+
+    </details>
+
+    <details>
+      <summary>الدوال (Functions)</summary>
+      <pre>
+        <code>
+         function sayHello() {
+             console.log("Hello!");
+         }
+
+         sayHello();
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775385585/j9_r4u0dn.png" class="images">
+      <p>تعريف الدالة (Declaration): باستخدام الكلمة function ثم اسم من اختيارك sayHello. أنت هنا تخبر المتصفح: "احتفظ بهذا الكود لديك، سأحتاجه لاحقاً"</p>
+      <p>استدعاء الدالة (Calling): كتابة اسم الدالة متبوعاً بالأقواس sayHello(); هو الأمر الفعلي الذي يخبر المتصفح: "نفذ الكود الموجود داخل الصندوق الآن"</p>
+      <pre>
+        <code>
+         function add(a, b) {
+            return a + b;
+         }
+
+         console.log(add(5, 3));
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775385689/j10_sncuye.png" class="images">
+      <p>البارامترات (a, b): هي مجرد أسماء مؤقتة (مداخل) للمواد الخام التي ستحتاجها الدالة لتعمل</p>
+      <p>الكلمة المفتاحية return: هي أهم جزء هنا؛ فهي تخبر الدالة: "توقفي عن العمل هنا، وخذي هذه النتيجة معكِ إلى الخارج". بدون return ستكون نتيجة الدالة undefined</p>
+      <p>الاستدعاء add(5, 3): هنا قمت بتمرير القيم الحقيقية (Arguments). أخذت a قيمة 5، وأخذت b قيمة 3</p>
+      <p>الطباعة: جملة console.log استلمت الرقم 8 (الذي خرج من الدالة) وقامت بعرضه</p>
+    </details>
+
+    <details>
+      <summary>التعامل مع المستخدم (User interaction)</summary>
+      <pre>
+        <code>
+         let name = prompt("اكتب اسمك:");
+
+         console.log("مرحبا " + name);
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775385828/j11_wvpfwu.png" class="images">
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775385917/j12_kzzs23.png" class="images">
+      <p>دالة ()prompt: هي دالة مدمجة في المتصفح تقوم بإظهار نافذة صغيرة تحتوي على حقل إدخال وزر "موافق". النص الذي تضعه بين القوسين هو الرسالة التي ستظهر للمستخدم</p>
+      <p>تخزين القيمة: بمجرد أن يكتب المستخدم اسمه ويضغط "موافق"، يتم أخذ هذا النص وتخزينه داخل المتغير name</p>
+      <p>الدمج (Concatenation): استخدمت علامة + لربط كلمة "مرحبا" بالاسم الذي أدخله المستخدم، ليظهر الترحيب مخصصاً له</p>
+    </details>
+
+    <details>
+      <summary>المصفوفات (Arrays)</summary>
+      <pre>
+        <code>
+         let fruits = ["تفاح", "موز", "برتقال"];
+
+         console.log(fruits[0]); // تفاح
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775386046/j13_whxdzk.png" class="images">
+      <p>العد يبدأ من الصفر (Zero-based Indexing): هذه أهم قاعدة! الكمبيوتر لا يبدأ العد من 1 بل من 0</p>
+      <p>العنصر الأول (تفاح) مكانه هو 0</p>
+      <p>العنصر الثاني (موز) مكانه هو 1</p>
+      <p>العنصر الثالث (برتقال) مكانه هو 2</p>
+      <p>الأقواس المربعة []: تُستخدم للوصول إلى القيمة. كتابة fruits[0] تعني "يا جافا سكريبت، أعطني القيمة الموجودة في الخانة رقم صفر من مصفوفة الفواكه"</p>
+      <pre>
+        <code>
+          let numbers = [1, 2, 3];
+
+          numbers.push(4);
+
+          console.log(numbers);
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775386155/j14_pnkyh6.png" class="images">
+      <p>الدالة .()push: تقوم بإضافة العنصر الذي تضعه بين القوسين إلى نهاية المصفوفة مباشرة.</p>
+      <p>التعديل الديناميكي: المصفوفات في جافا سكريبت ليست ثابتة الحجم؛ يمكنك زيادتها أو تصغيرها في أي وقت أثناء تشغيل البرنامج.</p>
+      <p>النتيجة: عند طباعة numbers في النهاية، ستظهر لك المصفوفة كاملة: [1, 2, 3, 4]</p>
+    </details>
+
+    <details>
+      <summary> نظام تسجيل دخول (Login system)</summary>
+      <pre>
+        <code>
+        let username = prompt("ادخل اسم المستخدم:");
+        let password = prompt("ادخل كلمة المرور:");
+
+        if (username === "admin" && password === "1234") {
+        console.log("تم تسجيل الدخول بنجاح");
+        } else {
+        console.log("بيانات خاطئة");
+        }
+        </code>
+      </pre>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775386417/j15_mjj4ve.png" class="images">
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775386465/j16_k7rozt.png" class="images">
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775386500/j17_qwcznf.png" class="images">
+      <p>بوابة الـ && (AND): هذا المعامل صارم جداً. لكي يتم تنفيذ الكود داخل if (الدخول بنجاح)، يجب أن يكون الطرفين صحيحين في نفس الوقت</p>
+      <p>إذا كان الاسم صح والكلمة خطأ ← النتيجة false</p>
+      <p>إذا كان الاسم خطأ والكلمة صح ← النتيجة false</p>
+      <p>إذا كان كلاهما صح فقط ← النتيجة true</p>
+      <p>عملية التحقق: يقوم البرنامج بمقارنة النص الذي أدخله المستخدم في المتغيرين username و password بالقيم الثابتة التي حددتها أنت (admin و 1234)</p>
+    </details>
+    
+
+    <h3>اسكربتات بلغة جافا سكربت</h3>
+    <details open>
+      <summary>File Integrity Monitor</summary>
+      <p>يعمل هذا السكريبت كأداة مراقبة لسلامة البيانات من خلال استدعاء مكتبة `fs` البرمجية لمراقبة التغييرات التي تطرأ على ملف الإعدادات `config.json` بشكل مستمر ولحظي. بمجرد اكتشاف أي تعديل في محتوى الملف، يقوم الكود تلقائياً بتنفيذ دالة برمجية تستخرج طابع الوقت الدقيق لحالة الملف الجديدة وتقارنها بالحالة السابقة. من منظور الأمن السيبراني، يمثل هذا الكود نظام إنذار مبكر ضد الاختراق؛ حيث يطبع تنبيهاً فورياً في شاشة التحكم يكشف عن أي محاولة عبث أو تعديل غير مصرح به. تكمن قوة هذا السكريبت في توثيق الحوادث رقمياً عبر خاصية `mtime` التي تساعد في التحقيقات الجنائية لتحديد وقت وقوع الهجوم بدقة. وبذلك، يتحول هذا السطر البرمجي البسيط إلى حارس رقمي يضمن بقاء ملفات النظام الحساسة تحت الرقابة المستمرة لتعزيز استراتيجية الدفاع النشط.</p>
+      <a href="https://github.com/mu-b003/Javascript--Scripts-/blob/main/File%20Integrity%20Monitor" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775574235/j39_cche4a.png" class="images">
+    </details>
+
+    <details>
+      <summary>URL Defang</summary>
+      <p>يعمل هذا السكريبت كأداة أمنية تقنية تُعرف بـ **"إبطال مفعول الروابط" (URL Defanging)**، حيث يستخدم تعابير برمجية نمطية (Regex) لتعديل بنية الروابط الخبيثة ومنع النقر عليها بالخطأ. يقوم الكود باستبدال النقاط الحساسة في الرابط بوضعها داخل أقواس `[.]` وتغيير بروتوكول `http` إلى `hxxp` لتحويل الرابط من عنصر تفاعلي نشط إلى مجرد نص غير قابل للضغط. من منظور الأمن السيبراني، تكمن أهمية هذا الإجراء في حماية المحللين الأمنيين والمستخدمين أثناء تبادل معلومات التهديدات (Threat Intelligence)، حيث يمنع المتصفحات والبرامج من تحميل المواقع الضارة تلقائياً. وبذلك، يساهم السكريبت في تقليل مخاطر العدوى البرمجية عند تحليل الروابط المشبوهة داخل التقارير الأمنية، محولاً الرابط "المفترس" تقنياً إلى نسخة آمنة للعرض فقط.</p>
+      <a href="https://github.com/mu-b003/Javascript--Scripts-/blob/main/URL%20Defang" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775574379/j40_cmqvnl.png" class="images">
+    </details>
+
+    <details>
+      <summary>Extracting IP addresses from logs</summary>
+      <p>يؤدي هذا السكريبت دوراً محورياً في عمليات "تحليل سجلات النظام" (Log Analysis)، حيث يستخدم مكتبة `fs` لقراءة محتوى ملف السجلات `access.log` بالكامل ومعالجته برمجياً. يعتمد الكود على تعبير نمطي (Regex) دقيق مصمم خصيصاً لاكتشاف استخراج عناوين الـ IP من بين آلاف السطور النصية المزدحمة بالبيانات. من منظور الأمن السيبراني، يمثل هذا السكريبت أداة استخبارات تقنية تساعد المحللين في حصر جميع العناوين التي حاولت الوصول للنظام، مع تصفية المكرر منها باستخدام خاصية `new Set` لإنتاج قائمة نقية بالجهات المتصلة. وتتجلى أهمية هذه العملية في كشف محاولات الهجمات الموزعة (DDoS) أو رصد عمليات مسح المنافذ (Port Scanning)، مما يسمح لمسؤولي الأمن بتحديد العناوين المشبوهة وحظرها قبل تفاقم الهجوم. وبذلك، يحول السكريبت البيانات الخام الضخمة إلى معلومات استخباراتية منظمة تسهم بشكل مباشر في تعزيز جدار الحماية الرقمي للمنشأة.</p>
+      <a href="https://github.com/mu-b003/Javascript--Scripts-/blob/main/Extracting%20IP%20addresses%20from%20logs" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775574449/j41_sffyie.png" class="images">
+    </details>
+
+    <details>
+      <summary>Brute Force</summary>
+      <p>يجسد هذا السكريبت آلية دفاعية برمجية تُعرف بـ **"كشف محاولات التخمين" (Brute-Force Detection)**، حيث يقوم بتتبع عدد محاولات تسجيل الدخول الفاشلة لكل عنوان IP على حدة وحفظها داخل كائن برمجي. يعمل الكود من خلال دالة تراكمية تزيد عداد الأخطاء في كل مرة يفشل فيها المستخدم في الدخول، وعند تجاوز العتبة المحددة (أكثر من 5 محاولات)، يطلق السكريبت إنذاراً أمنياً فورياً يحذر من محاولة اختراق محتملة. من منظور الأمن السيبراني، يعد هذا السكريبت خط الدفاع الأول ضد هجمات القوة الغاشمة التي تستهدف كسر كلمات المرور عبر التجربة والخطأ، مما يسمح للنظام باتخاذ إجراءات وقائية لاحقة مثل حظر العنوان المشبوه مؤقتاً. تكمن أهمية هذا الأسلوب في القدرة على التمييز بين الخطأ البشري الطبيعي وبين السلوك الآلي الممنهج الذي تتبعه برمجيات الاختراق. وبذلك، يوفر السكريبت طبقة أمان حيوية تحمي حسابات المستخدمين من الوصول غير المصرح به وتمنع استنزاف موارد الخادم في عمليات التحقق المتكررة.</p>
+      <a href="https://github.com/mu-b003/Javascript--Scripts-/blob/main/Brute%20Force" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775574527/j42_fn3anv.png" class="images">
+    </details>
+
+    <details>
+      <summary>Password strength check</summary>
+      <p>يُطبق هذا السكريبت معياراً برمجياً صارماً للتحقق من **"قوة كلمات المرور" (Password Complexity Validation)**، حيث يستخدم تعبيراً نمطياً (Regex) معقداً لضمان استيفاء كلمة المرور لشروط أمنية دقيقة. يعمل الكود عبر سلسلة من "الفحوصات الاستشرافية" التي تفرض وجود أحرف صغيرة، وأحرف كبيرة، وأرقام، ورموز خاصة، بالإضافة إلى شرط الطول الأدنى الذي لا يقل عن 12 حرفاً. من منظور الأمن السيبراني، يمثل هذا السكريبت أداة وقائية حاسمة تمنع المستخدمين من إنشاء حسابات بكلمات مرور سهلة التوقع، مما يرفع بشكل كبير من "التكلفة الحسابية" لأي هجوم تخمين أو استخدام لقواميس كلمات المرور الجاهزة. وتتجلى أهمية هذا النهج في حماية الهوية الرقمية ومنع اختراق الحسابات عبر تقنيات الهندسة الاجتماعية أو القوة الغاشمة، حيث تظل كلمات المرور الطويلة والمتنوعة هي الحصن الأول ضد محاولات الوصول غير المشروع. وبذلك، يضمن السكريبت تطبيق سياسات أمنية قياسية تحول دون ضعف السلسلة الأمنية للنظام عند نقطة دخول المستخدم.</p>
+      <a href="https://github.com/mu-b003/Javascript--Scripts-/blob/main/Password%20strength%20check" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775574749/j43_qjs0ha.png" class="images">
+    </details>
+
+      <details>
+      <summary>Simple Port Scanner</summary>
+      <p>يعمل هذا السكريبت كأداة استطلاع تقنية تُعرف بـ **"ماسح المنافذ" (Port Scanner)**، حيث يستخدم مكتبة `net` لإنشاء اتصالات شبكية تجريبية عبر بروتوكول TCP مع عناوين محددة. يقوم الكود بمحاولة فتح "سوكت" (Socket) على قائمة من المنافذ الشهيرة (مثل 80 و443) والتحقق مما إذا كانت "مفتوحة" وتستجيب للطلبات خلال مهلة زمنية قصيرة. من منظور الأمن السيبراني، يمثل هذا السكريبت أداة مزدوجة الاستخدام؛ فهي تساعد مسؤولي النظام في "تدقيق الشبكة" (Network Auditing) للتأكد من إغلاق المنافذ غير الضرورية، بينما يستخدمها المهاجمون في مرحلة "جمع المعلومات" لاكتشاف الخدمات النشطة والثغرات المحتملة. وتبرز أهمية هذا الإجراء في كشف الأبواب الخلفية أو الخدمات الضعيفة التي قد تكون مدخلاً للاختراق، مما يسمح بتقليص "سطح الهجوم" (Attack Surface) للمنشأة. وبذلك، يحول السكريبت عملية فحص الشبكة المعقدة إلى مهمة مؤتمتة وسريعة تمنح رؤية واضحة حول مدى تحصين الجهاز أو الخادم.</p>
+      <a href="https://github.com/mu-b003/Javascript--Scripts-/blob/main/Simple%20Port%20Scanner" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775574807/j44_a2qpls.png" class="images">
+    </details>
+
+    <details>
+      <summary>HTTP Banner Grabbing</summary>
+      <p>يُنفذ هذا السكريبت تقنية أمنية تُعرف بـ **"بصمة الخادم" (Banner Grabbing)**، حيث يستخدم مكتبة `http` لإرسال طلب استعلام إلى موقع معين بهدف استخراج معلومات من "رأس الاستجابة" (HTTP Response Headers). يركز الكود تحديداً على جلب قيمة العنوان `server` الذي يكشف غالباً عن نوع وإصدار برمجيات الخادم المستخدمة (مثل Apache أو Nginx). من منظور الأمن السيبراني، تعتبر هذه العملية الخطوة الأولى في مرحلة "الاستطلاع" (Reconnaissance)، حيث تساعد المحللين على تحديد الأهداف ومعرفة ما إذا كان الخادم يعمل بإصدار قديم يحتوي على ثغرات معروفة. وتتجلى أهمية هذا الإجراء في "إدارة الثغرات"، حيث يُنصح أمنياً بإخفاء هذه المعلومات أو تمويهها لتقليل البيانات المتاحة للمهاجمين حول بنية النظام التحتية. وبذلك، يحول السكريبت طلب اتصال بسيط إلى أداة لكشف هوية التقنيات المشغلة للمواقع، مما يساهم في تقييم مستوى الأمان الخارجي للمنظمة.</p>
+      <a href="https://github.com/mu-b003/Javascript--Scripts-/blob/main/HTTP%20Banner%20Grabbing" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775574869/j45_fdvnnx.png" class="images">
+    </details>
+
+    <details>
+      <summary>Base64 (Data Exfiltration Simulation)</summary>
+      <p>يقوم هذا السكريبت بعملية **"ترميز البيانات" (Base64 Encoding)**، حيث يستخدم كائن `Buffer` المدمج في Node.js لتحويل النصوص العادية إلى صيغة نصية تعتمد على نظام 64 حرفاً لضمان نقلها بشكل آمن عبر الأنظمة المختلفة. من منظور الأمن السيبراني، يمثل هذا الكود وسيلة لتمويه البيانات وتجاوز مرشحات النصوص التي قد تمنع إرسال الرموز الخاصة، لكنه **لا يعتبر تشفيراً** لأنه يمكن فك ترميزه بسهولة تامة ولا يوفر أي خصوصية حقيقية للبيانات الحساسة. تبرز أهمية فهم هذا التمييز في منع الوقوع في خطأ أمني فادح وهو الاعتماد على "الترميز" بدلاً من "التشفير القوي" لحماية أسرار المستخدمين. وبذلك، يعمل السكريبت كأداة لتحويل صيغ البيانات لتسهيل معالجتها برمجياً، مع التذكير الدائم بضرورة استخدام خوارزميات تشفير حقيقية مثل AES عند التعامل مع بيانات حساسة فعلياً.</p>
+        <a href="https://github.com/mu-b003/Javascript--Scripts-/blob/main/Base64%20Data%20Exfiltration%20Simulation" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775575495/j46_vcvswo.png" class="images">
+    </details>
+
+    <details>
+      <summary>(Simple Directory Brute-forcer)</summary>
+      <p>ينفذ هذا السكريبت تقنية استطلاع هجومية تُعرف بـ **"اكتشاف المسارات المخفية" (Directory Brute Forcing)**، حيث يستخدم مكتبة `axios` لإرسال طلبات HTTP متتالية إلى موقع مستهدف لاختبار وجود مجلدات حساسة. يعمل الكود عبر محاولة الوصول إلى قائمة من المسارات الشائعة (مثل `admin` و `backup`) والتحقق من استجابة الخادم؛ فإذا كان رمز الحالة هو **200**، فهذا يعني أن المسار متاح وقابل للوصول. من منظور الأمن السيبراني، تكمن خطورة هذا الإجراء في كشف لوحات التحكم أو ملفات النسخ الاحتياطي التي قد لا تكون محمية بشكل كافٍ، مما يمنح المهاجم موطئ قدم داخل النظام. وتبرز أهمية هذا الفحص في مرحلة "البحث عن الثغرات" لتقييم مدى تعرض سطح الويب للمخاطر، مع التوصية الأمنية بضرورة تعطيل خاصية عرض المجلدات واستخدام جدران حماية تطبيقات الويب (WAF) لحظر مثل هذه المحاولات التكرارية. وبذلك، يحول السكريبت عملية البحث اليدوي المجهدة إلى أداة سريعة لاختبار متانة التكوينات الأمنية للمواقع.</p>
+      <a href="https://github.com/mu-b003/Javascript--Scripts-/blob/main/Simple%20Directory%20Brute-forcer" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775575556/j47_rwussk.png" class="images">
+    </details>
+
+    <details>
+      <summary>Extracting links from a web page</summary>
+      <p>ينفذ هذا السكريبت تقنية أتمتة تُعرف بـ **"الزحف للروابط" (Web Crawling/Link Extraction)**، حيث يستخدم مكتبة `axios` لجلب كامل الكود المصدري (HTML) لصفحة ويب معينة ومعالجتها برمجياً. يعتمد الكود على تعبير نمطي (Regex) مصمم خصيصاً للبحث عن وسم `href` واستخراج كافة الروابط التشعبية الموجودة داخل الصفحة. من منظور الأمن السيبراني، يمثل هذا السكريبت أداة أساسية في مرحلة "رسم خرائط الأهداف" (Target Mapping)، حيث يساعد المحللين على فهم بنية الموقع، واكتشاف الصفحات الخارجية المرتبطة به، أو تحديد نطاقات فرعية قد تكون هدفاً للفحص. وتتجلى أهمية هذه العملية في كشف روابط "التصيد الاحتيالي" أو الروابط الخبيثة التي قد تكون مخفية داخل كود الصفحة، مما يسهل عملية تحليل التهديدات وتوسيع نطاق الاختبار الأمني للموقع. وبذلك، يحول السكريبت عملية تتبع الروابط اليدوية إلى مهمة برمجية سريعة تمنح رؤية شاملة حول الاتصالات الخارجية والداخلية لأي موقع مستهدف.</p>
+      <a href="https://github.com/mu-b003/Javascript--Scripts-/blob/main/Extracting%20links%20from%20a%20web%20page" target="_blank">رابط الاسكربت</a>
+      <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775575609/j48_oqatvb.png" class="images">
+    </details>
+    </div>
+  </div>
+</div>
+</div>
+
+
+
+<div id="imageModal" class="modal">
+  <span class="close-btn">&times;</span>
+  <img class="modal-content" id="fullImage">
+</div>
+
+<script>
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("fullImage");
+  const closeBtn = document.querySelector(".close-btn");
+
+  
+  document.querySelectorAll('.images').forEach(img => {
+    img.onclick = function() {
+      modal.style.display = "block";
+      modalImg.src = this.src; 
+    }
+  });
+
+  
+  closeBtn.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+
+
+</body>
+</html>
