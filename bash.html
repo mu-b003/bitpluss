@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>bitpluss</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+ 
+<div class="logo">
+    <a href="index.html" style="text-decoration: none;">
+        <span style= " color: #ffffff; font-weight: bold; font-size: 18px; font-family: sans-serif;">BIT+</span>
+    </a>
+</div>  
+
+<nav>
+    <a href="https://github.com/mu-b003" target="_blank" rel="noopener noreferrer">GitHub</a>
+  </nav>
+</header>
+
+<!-- بداية حاوية الإعلانات الجانبية والمحتوى -->
+<div class="ads-wrapper-layout">
+
+    <!-- مساحة الإعلان الجانبية الأولى -->
+    <div class="sidebar-ad-zone">
+        <div class="ad-box-placeholder">مساحة إعلان جانبية</div>
+    </div>
+
+    <!-- حاوية المحتوى الرئيسي لدرس باش -->
+    <div class="content-container">
+      <div class="texi-title">
+       
+    <div class="main-box">
+      <div class="top-section">
+      <h3 class="main-title">باش</h3>
+      </div>
+
+    <div class="content-section">
+     
+    <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775131675/b1_onc1ll.png" class="images">
+        <details open>
+          <summary>Bash</summary>
+          <p>هي اختصار لـ "Bourne Again SHell"، وهي لغة أوامر نصية Scripting Language ومفسّر سطر أوامر Command Line Interpreter قوية تُستخدم بشكل أساسي في أنظمة التشغيل القائمة على Unix و Linux لإدارة النظام، أتمتة المهام، والتفاعل المباشر مع النواة</p>
+          <p>بمجرد فتح التيرمنال، أنت غالباً تستخدم Bash بالفعل. للتأكد من ذلك، يمكنك كتابة الأمر التالي:</p>
+          <p>echo $SHELL</p>
+          <p>إذا كانت النتيجة /bin/bash أو /usr/bin/bash فالباش يعمل حالياً.</p>
+          <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775569335/b20_ojotci.png" class="images">
+          <p>إذا كان التيرمنال الخاص بك يستخدم نوعاً آخر (مثل Zsh أو Fish)، يمكنك ببساطة كتابة:</p>
+          <p>bash</p>
+          <p>سيتحول المحث (Prompt) فوراً للعمل ببيئة Bash. وللخروج منها والعودة للصدّفة السابقة، اكتب exit.</p>
+          <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775569502/b21_huwtvs.png" class="images">
+          <pre>
+            <code>
+            #!/bin/bash
+            echo "Hello, World!"
+            </code>
+          </pre>
+          <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775569602/b22_nkib2z.png" class="images">
+          
+          <pre>#!/bin/bash:</pre>
+          <p> يُسمى "Shebang"، وهو يُخبر النظام بضرورة استخدام مفسر أوامر Bash لتنفيذ هذا الملف</p>
+          <p>echo: هو أمر برمجي يُستخدم لطباعة أو عرض النصوص والبيانات على الشاشة المخرجات</p>
+          <p>"Hello, World!": هو السلسلة النصية المراد طباعتها، وتوضع بين علامتي تنصيص للحفاظ على تنسيقها</p>
+          <p>قوم هذا السكربت البسيط عند تشغيله بإظهار عبارة الترحيب الشهيرة للمستخدم في واجهة الأوامر</p>
+          <p>يتطلب السكربت عادةً إعطاء ملفه صلاحية "التنفيذ" عبر الأمر chmod +x ليعمل بشكل صحيح</p>
+        </details>
+
+        <details>
+          <summary>المتغيرات (Variables)</summary>
+          <p>بدون مسافات حول = تستخدم $ لعرض القيمة</p>
+          <pre>
+            <code>
+             #!/bin/bash
+
+             name="Mubarak"
+             age=22
+
+             echo "My name is $name"
+             echo "I am $age years old"
+            </code>
+          </pre>
+          <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775569764/b23_xcvz8q.png" class="images">
+          <pre>#!/bin/bash:</pre>
+          <p> هو السطر التعريفي (Shebang) الذي يُحدد للمواد البرمجية في نظام التشغيل أن هذا الملف يجب تنفيذه باستخدام مفسر Bash</p>
+          <p>السطران name="Mubarak" و age=22 يقومان بتخزين القيم النصية والعددية داخل متغيرات لاستدعائها لاحقاً، مع ملاحظة عدم وجود مسافات حول علامة =</p>
+          <p>عند كتابة $name أو $age داخل نص، يفهم النظام أنك تريد استبدال اسم المتغير بالقيمة الفعلية المخزنة داخله (مثل Mubarak)</p>
+          <p>echo: يُستخدم لطباعة النصوص الناتجة على الشاشة، حيث يقوم في هذا السكربت بدمج النصوص الثابتة مع قيم المتغيرات</p>
+          <p>عند تشغيل هذا السكربت، ستظهر للمستخدم جملتان واضحتان: "My name is Mubarak" و "I am 22 years old"</p>
+
+        </details>
+
+        <details>
+          <summary>إدخال من المستخدم (User input)</summary>
+          <pre>
+            <code>
+             #!/bin/bash
+
+             echo "Enter your name:"
+             read name
+
+             echo "Welcome $name!"
+            </code>
+          </pre>
+          <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775569845/b24_ugutd9.png" class="images">
+          <pre>#!/bin/bash:</pre>
+          <p> يحدد مسار مفسر الأوامر (Bash) الذي سيقوم بقراءة وتنفيذ التعليمات البرمجية الموجودة في الملف</p>
+          <p>echo الأول: يقوم بطباعة نص توضيحي على الشاشة يطلب من المستخدم إدخال اسمه (Enter your name)</p>
+          <p>read name: هو أمر حيوي يقوم بوقف تنفيذ السكربت مؤقتاً لانتظار إدخال من المستخدم عبر لوحة المفاتيح، ثم يخزن ما يكتبه المستخدم في متغير يسمى name</p>
+          <p>يستخدم الأمر echo مرة أخرى لطباعة رسالة ترحيبية، حيث يتم استدعاء القيمة التي أدخلها المستخدم برمجياً باستخدام الرمز $</p>
+          <p>يمثل هذا الكود أبسط أشكال "إدخال البيانات ومعالجتها ثم إخراجها" (Input-Process-Output) في برمجة السكربتات</p>
+        </details>
+
+        <details>
+          <summary>الشروط (if)</summary>
+          <h3>الشروط (if)</h3>
+          <p>-gt أكبر</p>
+          <p>-lt أصغر</p>
+          <p>-eq يساوي</p>
+          <pre>
+            <code>
+             #!/bin/bash
+
+             echo "Enter a number:"
+             read num
+
+             if [ $num -gt 10 ]; then
+             echo "Number is greater than 10"
+             else
+             echo "Number is 10 or less"
+             fi
+            </code>
+          </pre>
+          <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775570092/b25_qm9dhs.png" class="images">
+          <p>يبدأ السكربت بطلب رقم من المستخدم عبر echo ويقوم بتخزينه في المتغير num باستخدام الأمر read</p>
+          <p>if: تبدأ الجملة الشرطية بـ ;if [ $num -gt 10 ] حيث أن الاختصار -gt يعني "أكبر من" (Greater Than)، وهي تختبر القيمة المدخلة</p>
+          <p>then: إذا كانت القيمة الموجودة في $num أكبر فعلياً من 10، يتم تنفيذ الأمر البرمجي الذي يلي كلمة then مباشرة</p>
+          <p>else: في حال كان الشرط خاطئاً (أي أن الرقم 10 أو أقل)، يتم الانتقال تلقائياً لتنفيذ الأوامر الموجودة تحت قسم else</p>
+          <p>fi: تنتهي جملة if دائماً بكلمة fi (وهي كلمة if مكتوبة بشكل معكوس)، لتعريف النظام بأن منطق المقارنة قد انتهى هنا</p>
+        </details>
+
+        <details>
+          <summary>الحلقات (Loops)</summary>
+          <h3>for loop</h3>
+          <pre>
+            <code>
+             #!/bin/bash
+
+             for i in 1 2 3 4 5
+             do
+             echo "Number: $i"
+             done
+            </code>
+          </pre>
+          <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775570340/b26_zlg5l0.png" class="images">
+          <p>for: تبدأ الحلقة بـ for i in 1 2 3 4 5 حيث يتم إنشاء متغير مؤقت اسمه i يأخذ قيمة جديدة من القائمة الموجودة (1 إلى 5) في كل دورة</p>
+          <p>do: كلمة do تعني "افعل"، وهي تشير إلى بداية الأوامر التي سيتم تكرارها طالما لم تنتهِ قائمة الأرقام المحددة</p>
+          <p>يقوم الأمر "echo "Number: $i بطباعة الكلمة متبوعة بالقيمة الحالية للمتغير i؛ لذا ستشاهد الأرقام تُطبع واحداً تلو الآخر في كل سطر</p>
+          <p>done: تُستخدم كلمة done لإعلام مفسر Bash بأن مجموعة الأوامر المطلوب تكرارها قد انتهت، ليعود البرنامج إلى البداية لاختيار الرقم التالي</p>
+          <p>تُغني هذه الطريقة عن كتابة أمر الطباعة يدوياً خمس مرات, مما يوفر الوقت ويقلل الأخطاء البرمجية عند التعامل مع بيانات كبيرة</p>
+          <h3>while loop</h3>
+          <p></p>
+          <pre>
+            <code>
+             #!/bin/bash
+
+             count=1
+
+             while [ $count -le 5 ]
+             do
+             echo "Count: $count"
+             ((count++))
+             done
+            </code>
+          </pre>
+          <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775570433/b27_wcoroc.png" class="images">
+          <p>يبدأ الكود بـ count=1 لضبط نقطة انطلاق العداد من الرقم واحد.</p>
+          <p>جملة while [ $count -le 5 ] تعني "استمر طالما أن العداد أقل من أو يساوي (Less than or Equal) الرقم 5".</p>
+          <p>do: تُحدد هذه الكلمة بداية الكتلة البرمجية التي سيتم تكرار تنفيذها طالما ظل الشرط محققاً.</p>
+          <p>((count++)): هذا السطر في غاية الأهمية، فهو يقوم بزيادة قيمة العداد بمقدار 1 في كل دورة؛ وبدونه سيدخل السكربت في "حلقة لانهائية" لأن الشرط سيظل دائماً صحيحاً.</p>
+          <p>done: تُنهي الحلقة وتُعيد البرنامج إلى سطر الشرط للتأكد مما إذا كان يجب التكرار مرة أخرى أم الخروج من الحلقة.</p>
+        </details>
+
+        <details>
+          <summary>التعامل مع الملفات (Handling files)</summary>
+          <h3>إنشاء وكتابة:</h3>
+          <pre>
+            <code>
+              #!/bin/bash
+
+              echo "Hello Bash" > file.txt
+            </code>
+          </pre>
+          <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775570611/b28_kkkval.png" class="images">
+          <pre>echo "Hello Bash":</pre>
+          <p> يقوم المحرك هنا بتجهيز النص "Hello Bash" للطباعة، لكنه لن يظهر على الشاشة هذه المرة</p>
+          <p>هذا الرمز يُخبر النظام: "لا تطبع النص على الشاشة، بل أرسله إلى مكان آخر"، وفي هذه الحالة هو ملف نصي</p>
+          <p>file.txt: إذا لم يكن الملف موجوداً، سيقوم السكربت بإنشائه تلقائياً، أما إذا كان موجوداً فسيقوم بمسح محتواه القديم وكتابة النص الجديد مكانه</p>
+          <p>يُسمى هذا الإجراء "Standard Output Redirection"، وهو وسيلة أساسية لحفظ نتائج الأوامر أو سجلات العمل (Logs) للرجوع إليها لاحقاً</p>
+          <p>إذا استخدمت > فستستبدل المحتوى، بينما إذا استخدمت >> فستضيف النص الجديد إلى نهاية الملف دون مسح القديم</p>
+          <h3>قراءة:</h3>
+          <pre>
+            <code>
+              #!/bin/bash
+
+              cat file.txt
+            </code>
+          </pre>
+          <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775570712/b29_gucoqa.png" class="images">
+          <p>cat: هو اختصار لكلمة (Concatenate)، ورغم أن اسمه يوحي بدمج الملفات، إلا أن استخدامه الأكثر شيوعاً هو عرض محتويات الملفات النصية</p>
+          <p>file.txt: يمثل اسم الملف الذي يرغب السكربت في الوصول إليه. يجب أن يكون الملف موجوداً في نفس المجلد الذي يُنفذ فيه السكربت ليعمل بنجاح</p>
+          <p>يقوم الأمر بفتح الملف وقراءة البيانات المخزنة داخله (مثل نص "Hello Bash" الذي كتبناه سابقاً) ثم دفعها مباشرة إلى شاشة الطرفية (Terminal)</p>
+          <p>بمجرد تشغيل السكربت, سيظهر لك محتوى الملف كنص عادي أمامك، مما يجعله أداة سريعة للتحقق من البيانات دون الحاجة لفتح محرر نصوص</p>
+          <p>يمكنك استخدام cat مع عدة ملفات في آن واحد (مثلاً cat file1.txt file2.txt) ليقوم بعرضها جميعاً خلف بعضها البعض كتسلسل واحد</p>
+          <h3>قراءة سطر بسطر:</h3>
+          <pre>
+            <code>
+              #!/bin/bash
+
+              while read line
+              do
+              echo "Line: $line"
+              done < file.txt
+            </code>
+          </pre>
+          <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775570877/b30_racfka.png" class="images">
+          <p>حلقة while read line: تقوم هذه الحلقة بقراءة الملف سطرًا واحدًا في كل دورة، وتخزن محتوى السطر الحالي داخل متغير يسمى line</p>
+          <p>بداية التنفيذ do: تبدأ تنفيذ الأوامر على السطر الذي تم التقاطه للتو من الملف</p>
+          <p>معالجة البيانات: الأمر echo "Line: $line" يعرض النص الموجود في السطر مسبوقاً بكلمة ":Line"، مما يساعدك على تمييز كل سطر بشكل منفصل</p>
+          <p>إعادة توجيه الإدخال < file.txt: العلامة < تخبر حلقة while بأن مصدر البيانات ليس لوحة المفاتيح، بل هو محتوى الملف file.txt</p>
+          <p>هذه الطريقة أفضل من استخدام cat داخل حلقة، لأنها تستهلك ذاكرة أقل وتتعامل مع الملفات الكبيرة بكفاءة عالية دون تحميل الملف بالكامل في الذاكرة دفعة واحدة</p>
+        </details>
+
+        <details>
+          <summary>التعامل مع المستخدمين والملفات (Handling users and files)</summary>
+          <pre>
+            <code>
+            #!/bin/bash
+
+            echo "Checking if file exists..."
+
+            if [ -f file.txt ]; then
+            echo "File exists"
+            else
+            echo "File not found"
+            fi
+            </code>
+          </pre>
+          <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775571008/b31_nybwmi.png" class="images">
+          <p>يبدأ السكربت بطباعة نص توضيحي "Checking if file exists..." ليُعلم المستخدم بالعملية التي تجري الآن.</p>
+          <p>[ -f file.txt ]: المعامل -f (اختصار لـ File) هو اختبار منطقي يتحقق من شيئين: أن الملف موجود، وأنه ملف عادي (وليس مجلداً).</p>
+          <p>إذا وجد السكربت الملف file.txt في المسار المحدد، سيقوم بتنفيذ الأمر الأول وطباعة "File exists".</p>
+          <p>else: إذا كان الملف مفقوداً أو تم حذفه، سينتقل السكربت تلقائياً لطباعة رسالة التنبيه "File not found".</p>
+          <p>يُسستخدم هذا النمط بكثرة في "الأتمتة"، حيث لا يمكنك قراءة ملف أو تعديله قبل التأكد من وجوده فعلياً لمنع تعطل السكربت.</p>
+          <hr>
+        </details>
+
+        <h1>اسكربتات لغة باش</h1>
+        <details open>
+          <summary>Advanced Network Scanner</summary>
+          <p>يهدف هذا السكربت البرمجي المكتوب بلغة Bash إلى أتمتة عملية فحص الشبكات باستخدام أداة Nmap الشهيرة، حيث يبدأ باستقبال عنوان الهدف (IP أو Domain) كمتغير يتم تمريره عند تشغيل الملف ليقوم بعد ذلك بسلسلة من الفحوصات المتدرجة التي تبدأ بالفحص السريع للمنافذ الأكثر شيوعاً عبر الخيار -F. يتوسع السكربت لاحقاً ليشمل تحليل الخدمات النشطة وإصداراتها باستخدام -sV ومحاولة التعرف على نظام التشغيل الخاص بالهدف عبر الخيار -O ليعطي صورة متكاملة عن البيئة التقنية المستهدفة. وفي المرحلة الختامية ينفذ السكربت فحصاً شاملاً وعدوانياً بواسطة الخيار -A الذي يجمع بين اكتشاف الأنظمة والخدمات وتشغيل السكربتات المساعدة، مع توجيه وحفظ كافة النتائج النهائية في ملف نصي خارجي يسمى scan_result.txt لضمان توثيق البيانات وسهولة مراجعتها لاحقاً. </p>
+          <a href="https://github.com/mu-b003/Bash-scripts-/blob/main/Advanced%20Network%20Scanner" target="_blank">رابط الاسكربت</a>
+          <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775565294/b2_gbgafj.png" class="images">
+        </details>
+
+        <details>
+          <summary>Backup</summary>
+          <p>يعمل هذا السكربت كأداة ذكية للأتمتة تهدف إلى إنشاء نسخ احتياطية مؤرخة للملفات لضمان عدم ضياع البيانات وتسهيل تتبع التغييرات عبر الزمن. تبدأ العملية بتعريف متغير المصدر src الذي يحتوي على الملف المراد نسخه، يليه الجزء الأكثر إبداعاً وهو تكوين اسم ملف النسخة الاحتياطية باستخدام أمر النظام $(date +%Y%m%d)، والذي يقوم بدمج التاريخ الحالي (السنة والشهر واليوم) تلقائياً داخل اسم الملف ليصبح فريداً لكل يوم. بعد ذلك، يتم تنفيذ أمر النسخ cp الذي ينقل المحتويات من الملف الأصلي إلى الملف الجديد المسمى بالتاريخ، ثم يختتم السكربت عمله بطباعة رسالة تأكيدية للمستخدم توضح الاسم الدقيق للنسخة التي تم إنشاؤها بنجاح.</p>
+          <a href="https://github.com/mu-b003/Bash-scripts-/blob/main/Backup" target="_blank">رابط الاسكربت</a>
+          <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775565374/b3_fygyoq.png" class="images">
+        </details>
+
+        <details>
+          <summary>Full Backup Script</summary>
+          <p>يُقدم هذا السكربت حلاً احترافياً لأرشفة وضغط البيانات، حيث ينتقل من مجرد نسخ الملفات إلى تقليص حجمها وتجميعها في ملف واحد محمي زمنياً. يبدأ الكود بتحديد مسار البيانات مصدر SOURCE والوجهة النهائية للنسخ DEST داخل نظام الملفات، مع استخدام متغير التاريخ DATE لضمان الحصول على طابع زمني دقيق لكل عملية أرشفة. تكمن القوة الحقيقية في الأمر tar -czf؛ حيث يقوم الحرف c بإنشاء الأرشيف، وz بضغطه باستخدام خوارزمية gzip لتقليل المساحة التخزينية، بينما يحدد f اسم الملف الناتج. بهذه الطريقة، يتم تحويل مجلد كامل من البيانات إلى ملف واحد مضغوط بصيغة .tar.gz يحمل تاريخ اليوم، مما يسهل عملية النقل والتخزين طويل الأمد مع الحفاظ على هيكلية المجلدات الأصلية. </p>
+          <a href="https://github.com/mu-b003/Bash-scripts-/blob/main/Full%20Backup%20Script" target="_blank">رابط الاسكربت</a>
+          <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775565446/b4_vebnxp.png" class="images">
+        </details>
+
+        <details>
+          <summary>Log Cleanup Script</summary>
+          <p>صُمم هذا السكربت لأداء مهمة إدارة وصيانة مساحة التخزين عبر تنظيف سجلات النظام (Logs) القديمة بشكل آلي لمنع امتلاء القرص الصلب. يعتمد الكود بشكل أساسي على القوة البرمجية للأمر find للبحث داخل المجلد المحدد في المتغير LOG_DIR عن الملفات العادية فقط باستخدام الخيار -type f. الجزء الجوهري هنا هو المعامل -mtime +7 الذي يقوم بفلترة الملفات التي مر على آخر تعديل لها أكثر من سبعة أيام، مما يضمن الاحتفاظ بالسجلات الحديثة فقط وحذف ما تجاوز عمره أسبوعاً. بمجرد العثور على هذه الملفات القديمة، يقوم السكربت بتنفيذ الأمر rm -f عليها مباشرة عبر الخيار -exec لمسحها نهائياً دون طلب تأكيد من المستخدم، ثم يختتم العملية بطباعة كلمة "!Done" للإشارة إلى نجاح عملية التنظيف وتوفير المساحة. </p>
+          <a href="https://github.com/mu-b003/Bash-scripts-/blob/main/Log%20Cleanup%20Script" target="_blank">رابط الاسكربت</a>
+          <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775565589/b6_wzu5dg.png" class="images">
+        </details>
+
+        <details>
+          <summary>Multi-Service Health Checker</summary>
+          <p>يعمل هذا السكربت كأداة لمراقبة وإصلاح الخدمات (Service Monitoring and Self-healing) بشكل آلي، حيث يضمن بقاء الخدمات الحيوية للنظام قيد التشغيل دون تدخل بشري دائم.يبدأ الكود بتعريف مصفوفة services تضم قائمة بالخدمات المستهدفة (مثل خادم الويب وقواعد البيانات)، ثم يستخدم حلقة تكرار لفحص كل خدمة على حدة عبر الأمر systemctl is-active --quiet. السر البرمجي هنا يكمن في المتغير الخاص $? الذي يحفظ "حالة الخروج" (Exit Status) للأمر السابق؛ فإذا كانت القيمة لا تساوي صفراً (-ne 0) فهذا يعني أن الخدمة معطلة أو متوقفة. بمجرد اكتشاف تعطل الخدمة، يقوم السكربت بطباعة رسالة تحذيرية ثم ينفذ أمر إعادة التشغيل التلقائي sudo systemctl restart لإعادتها للعمل فوراً، بينما يكتفي بطباعة رسالة "OK" إذا كانت الخدمة تعمل بشكل سليم، مما يجعل هذا السكربت مثالياً لجدولته كمهام دورية (Cron Jobs) لضمان استقرار الخادم.</p>
+          <a href="https://github.com/mu-b003/Bash-scripts-/blob/main/Multi-Service%20Health%20Checker" target="_blank">رابط الاسكربت</a>
+          <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775565663/b7_oslrpt.png" class="images">
+        </details>
+        
+        <details>
+          <summary>Network IP Scanner</summary>
+          <p>يُعد هذا السكربت أداة ذكية لإجراء مسح للشبكة المحلية (IP Scanner) يدوياً، حيث يهدف لاكتشاف الأجهزة المتصلة والنشطة ضمن نطاق معين دون الحاجة لأدوات خارجية معقدة. يعتمد الكود على حلقة تكرار for تمر عبر الأرقام من 1 إلى 254 لبناء عنوان IP كامل لكل جهاز محتمل في الشبكة، ثم يستخدم أمر ping بإرسال حزمة واحدة فقط -c 1 مع مهلة زمنية قدرها ثانية واحدة -W 1. لضمان نظافة واجهة الأوامر، يتم توجيه مخرجات أمر الـ ping إلى "الثقب الأسود" في Linux وهو</p>
+        </details>
+
+      </div>
+    </div>
+      </div>
+    </div>
+
+    <!-- مساحة الإعلان الجانبية الثانية -->
+    <div class="sidebar-ad-zone">
+        <div class="ad-box-placeholder">مساحة إعلان جانبية</div>
+    </div>
+
+</div> <!-- نهاية حاوية الإعلانات الجانبية والمحتوى -->
+
+<div id="imageModal" class="modal">
+  <span class="close-btn">&times;</span>
+  <img class="modal-content" id="fullImage">
+</div>
+
+<script>
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("fullImage");
+  const closeBtn = document.querySelector(".close-btn");
+
+  document.querySelectorAll('.images').forEach(img => {
+    img.onclick = function() {
+      modal.style.display = "block";
+      modalImg.src = this.src; 
+    }
+  });
+
+  closeBtn.onclick = function() {
+    modal.style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
+  }
+</script>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        
+        <div class="footer-right">
+            <span class="footer-brand">منصة +BIT</span>
+            <span class="footer-copyright">&copy; 2026 جميع الحقوق محفوظة.</span>
+        </div>
+
+        <div class="footer-left">
+            <a href="about.html">من نحن</a>
+            <a href="privacy-policy.html">سياسة الخصوصية</a>
+            <a href="contact.html">اتصل بنا</a>
+            <span class="footer-divider">|</span>
+            <a href="https://github.com" target="_blank" class="github-link">جيت هاب</a>
+        </div>
+        
+    </div>
+</footer>
+
+</body>
+</html>
