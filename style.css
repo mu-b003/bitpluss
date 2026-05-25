@@ -229,3 +229,55 @@ code, pre {
 
 
 
+
+
+/* 🔥 Fix Final Mobile Overflow */
+@media (max-width: 768px) {
+
+    /* منع أي سكرول أفقي نهائياً */
+    html, body {
+        overflow-x: hidden;
+        max-width: 100%;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
+    /* تحويل الصفحة عمودياً */
+    .ads-wrapper-layout {
+        flex-direction: column !important;
+        width: 100%;
+    }
+
+    /* إخفاء الجانبي بالكامل */
+    .sidebar-ad-zone {
+        display: none !important;
+    }
+
+    /* توسيع المحتوى */
+    .content-container {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 10px;
+    }
+
+    /* 🔥 أهم حل للمشكلة (النص الطويل) */
+    .vuln-text,
+    .info-card,
+    .vuln-card {
+        width: 100%;
+        max-width: 100%;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+        white-space: normal;
+    }
+
+    /* تحسين شكل النص العربي + الإنجليزي المختلط */
+    .vuln-text {
+        line-height: 1.8;
+        text-align: right;
+    }
+}
+
