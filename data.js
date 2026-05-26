@@ -318,7 +318,7 @@ sqlmap -u "http://target.com/product.php?id=1" -D database_name -T users --dump<
         </ul>
     `
 },
-
+//
 {
     "id": 6,
     "title": "Time-Based Blind SQL Injection",
@@ -8390,5 +8390,5 @@ Linux Exploit Suggester</code></pre>
         <p>Linux Sudo Misconfiguration vulnerabilities are considered extremely critical because improper privilege delegation may directly expose full administrative control.</p>
     `
 },
-
+//
 ];
