@@ -1,50 +1,45 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BIT+ | ملخصات الثغرات الأمنية</title>
     <link rel="stylesheet" href="bash-style.css">
-    <script src="cache.js"></script>
-    <script src="bash.js"></script>
-
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2368362978436357" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2368362978436357"
-     crossorigin="anonymous"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
+    
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2368362978436357" crossorigin="anonymous"></script>
 </head>
 <body>
 
 <header>
-    <nav>
-        <a href="https://github.com/mu-b003" target="_blank" rel="noopener noreferrer">GitHub</a>
-    </nav>
     <div class="logo">
-        <a href="index.html">+BIT</a>
+        <a href="index.html">BIT+</a>
     </div>
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
 </header>
 
-<div class="ads-wrapper-layout">
-    
 
+<div class="ads-wrapper-layout">
     <div class="content-container">
-        <h1 class="main-title">موسوعة ملخصات الثغرات الأمنية</h1>
-        <div class="subtitle">ابحث في الكاش المحلي للموقع للحصول على ملخص الثغرة فوراً + نظام لينكس سيتم تحميل باقي ملخصات الكورسات قريبا ايضا نسخة الهاتف تحت التحديث</div>
+        <h1 class="main-title">Encyclopedia of Security Vulnerabilities Summaries</h1>
+        <div class="subtitle">Search the site's local cache to get the vulnerability summary immediately. The remaining course summaries will be uploaded</div>
 
         <div class="search-box-container">
-            <input type="text" id="searchInput" class="search-input" placeholder="اكتب اسم الثغرة هنا للبحث الفوري..." oninput="searchVulnerabilities()">
+            <input type="text" id="searchInput" class="search-input" placeholder="Type the vulnerability name here for instant search..." oninput="searchVulnerabilities()">
         </div>
 
         <div id="resultsDisplayArea" class="results-display-area"></div>
     </div>
-
-    
 </div>
 
 <footer class="site-footer">
     <div class="footer-container">
         <div class="footer-right">
-            <span>منصة +BIT</span>
+            <span>منصة BI</span>
             <span>|</span>
             <span>&copy; 2026 جميع الحقوق محفوظة.</span>
         </div>
@@ -56,31 +51,36 @@
     </div>
 </footer>
 
-<script src="cache.js"></script>
+<script src="data.js"></script>
+<script src="data.js"></script>
 
 <script>
-// دالة البحث الذكي (تعمل مباشرة لأن cache.js تم تحميله بالفعل)
-function searchVulnerabilities() {
-    // التأكد من أن المصفوفة موجودة
-    if (typeof allVulnerabilities === 'undefined') return;
+// تهيئة البحث
+let fuse;
+window.onload = function() {
+    if (typeof allVulnerabilities !== 'undefined') {
+        const options = {
+            keys: ['title', 'summary', 'tags'],
+            threshold: 0.3,
+            ignoreLocation: true
+        };
+        fuse = new Fuse(allVulnerabilities, options);
+        displayResults(allVulnerabilities.slice(0, 3));
+    }
+};
 
-    var query = document.getElementById('searchInput').value.toLowerCase().trim();
-    var container = document.getElementById('resultsDisplayArea');
-    
+// دالة البحث الذكي
+function searchVulnerabilities() {
+    var query = document.getElementById('searchInput').value.trim();
     if (query === "") {
         displayResults(allVulnerabilities.slice(0, 3));
         return;
     }
-
-    var filtered = allVulnerabilities.filter(function(item) {
-        return item.title.toLowerCase().indexOf(query) > -1 || 
-               item.summary.toLowerCase().indexOf(query) > -1;
-    });
-
-    displayResults(filtered);
+    var results = fuse.search(query).map(result => result.item);
+    displayResults(results);
 }
 
-// دالة العرض
+// دالة العرض الأصلية الخاصة بك
 function displayResults(data) {
     var container = document.getElementById('resultsDisplayArea');
     container.innerHTML = ""; 
@@ -97,13 +97,6 @@ function displayResults(data) {
         container.appendChild(card);
     });
 }
-
-// تشغيل عند تحميل الصفحة
-window.onload = function() {
-    if (typeof allVulnerabilities !== 'undefined') {
-        displayResults(allVulnerabilities.slice(0, 3));
-    }
-};
 </script>
 </body>
 </html>
