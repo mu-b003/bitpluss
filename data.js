@@ -2,7 +2,7 @@ const allVulnerabilities = [
     
  {
     "id": 1,
-    "title": "local cach + Linux System Course",
+    "title": "local cach",
     "summary": `
 SQL Injection Authentication Bypass ,
 Blind SQL Injection , 
