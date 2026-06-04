@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | +BIT</title>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2368362978436357" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+        <a href="notes.html">Notes</a>
+    </nav>
+</header>
+
+<div class="ads-wrapper-layout">    
+<div class="content-container">
+    
+
+
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775131881/j1_zx2zt2.png" class="images">
+ 
+<details open>
+  <summary>JavaScript</summary>
+  <p>JavaScript is a high-level, dynamic, interpreted programming language, considered the cornerstone for developing interactive web pages. It works primarily inside web browsers to add interactivity, such as animations, instant content updates, and form validation. It managed to dominate website development and expanded to include web server development Node.js</p>
+</details>
+ 
+<details open>
+  <summary>Running JavaScript</summary>
+  <p>Easiest way: Open Chrome browser, press F12, go to Console and type:</p>
+  <pre>
+    <code>
+     console.log("Hello JavaScript");
+    </code>
+  </pre>
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775384261/j2_nnic5x.png" class="images">
+  <p>console: is a programming "object" that provides access to browser control and programming tools</p>
+  <p>.log(): is a "method" used to print or display data and information in the control panel (Console)</p>
+  <p>"Hello JavaScript": is the text to be displayed, placed between quotation marks because it is treated as a "string"</p>
+  <p>Parentheses (): used to wrap the data we pass to the function for it to process and print</p>
+  <p>Semicolon ;: used to end the programming statement, a sign that tells the engine the command is complete here</p>
+</details>
+ 
+<details>
+  <summary>Variables</summary>
+  <p>Used to store data</p>
+  <pre>
+    <code>
+     let name = "Ali";
+     let age = 20;
+ 
+     console.log(name);
+     console.log(age);
+    </code>
+  </pre>
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775384524/j3_k3d5cf.png" class="images">
+  <p>Defining variables (let): used the reserved word let to create "containers" in memory to store data</p>
+  <p>Storing texts: variable name holds the value "Ali", which is a string because it is between quotation marks</p>
+  <p>Storing numbers: variable age holds the value 20 as a numeric type (Number), does not need quotation marks</p>
+  <p>Calling values: when writing console.log(name), the program searches for the value stored inside the name and displays it</p>
+  <p>Result in Console: you will see the word Ali in one line, and the number 20 in the next line</p>
+ 
+  <p>Declaration types:</p>
+  <pre>
+    <code>
+      let x = 10;     // Regular variable (changes)
+      const y = 5;    // Constant (does not change)
+      var z = 3;      // Old (avoid it)
+    </code>
+  </pre>
+  <p>let (default choice): used when you know the variable's value will change later (like a counter in a loop). Distinguished by respecting "Block Scope", meaning it lives only inside the {} it was written in.</p>
+  <p>const (safer): used for values that will never change. Modern programming recommends always using const unless you are sure you will need to change the value, as this prevents unintentional errors.</p>
+  <p>var (old fashion): was the only method in the past, but its problem is it may cause logical errors because it does not respect Block Scope (Function Scoped), making error tracking difficult in large projects.</p>
+</details>
+ 
+<details>
+  <summary>Operators</summary>
+  <pre>
+    <code>
+     let a = 10;
+     let b = 5;
+ 
+     console.log(a + b); // addition
+     console.log(a - b); // subtraction
+     console.log(a * b); // multiplication
+     console.log(a / b); // division
+    </code>
+  </pre>
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775384782/j4_upfopo.png" class="images">
+  <p>Addition (+): will add value 10 with 5, result is 15</p>
+  <p>Subtraction (-): will subtract 5 from 10, result is 5</p>
+  <p>Multiplication (*): will multiply 10 by 5, result is 50</p>
+  <p>Division (/): will divide 10 by 5, result is 2</p>
+</details>
+ 
+<details>
+  <summary>Conditions (If Statement)</summary>
+  <pre>
+    <code>
+     let age = 18;
+ 
+     if (age >= 18) {
+     console.log("Entry allowed");
+     } else {
+     console.log("Entry denied");
+     }
+    </code>
+  </pre>
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775384998/j5_k2hhgn.png" class="images">
+  <p>Condition (if): we place between the parentheses (age >= 18) a comparison operation. The program asks: "Is the value in age greater than or equal to 18?"</p>
+  <p>Boolean value: the result of this question is always either true (yes) or false (no)</p>
+  <p>Execution block { }:</p>
+  <p>If the condition is true, the code inside the if brackets only is executed</p>
+  <p>If the condition is false, the program completely ignores the first bracket and immediately moves to what comes after else</p>
+ 
+  <pre>
+    <code>
+      let password = "1234";
+ 
+      if (password === "1234") {
+      console.log("Login successful");
+      } else {
+      console.log("Wrong password");
+      }
+    </code>
+  </pre>
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775385152/j6_i6hctl.png" class="images">
+  <p>Strict comparison (===): this operator does not only check the "value" (that it is 1234), but also checks the "type" (that it is a String text and not a Number)</p>
+  <p>Condition structure: since the variable password contains exactly the text "1234", the condition will be met and the welcome statement will be executed</p>
+  <p>Result: you will see in the Console: Login successful</p>
+</details>
+ 
+<details>
+  <summary>Loops</summary>
+  <p>for loop</p>
+  <pre>
+    <code>
+     for (let i = 1; i <= 5; i++) {
+         console.log(i);
+     }
+    </code>
+  </pre>
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775385275/j7_bs6amx.png" class="images">
+  <p>Start (let i = 1): here we create a "counter" and start it from number 1. This part executes only once at the beginning</p>
+  <p>Condition (i &lt;= 5): before each cycle, the program asks: "Is i still less than or equal to 5?". If the answer is yes, the iteration continues</p>
+  <p>Update (i++): after the end of each cycle, we increase the value of i by 1 (that is what ++ does)</p>
+  <h3>How does the process go?</h3>
+  <p>Cycle 1: i is 1, prints 1, then i becomes 2</p>
+  <p>Cycle 2: i is 2, prints 2, then i becomes 3</p>
+  <p>... and so on until it reaches 5.</p>
+  <p>End: when i becomes 6, the condition fails (6 &lt;= 5 is false), so the iteration immediately stops</p>
+ 
+  <pre>
+    <code>
+       for (let i = 1; i <= 10; i++) {
+           console.log("Number: " + i);
+       }
+    </code>
+  </pre>
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775385468/j8_je8vh7.png" class="images">
+  <p>Range: the loop will repeat the code 10 times (from 1 to 10)</p>
+  <p>Plus operator (+): when used with text and a number, it does not perform an arithmetic operation, but "concatenates" the number beside the text to become one sentence</p>
+  <p>Result: an ordered list will appear in the Console starting with Number: 1 and ending with Number: 10</p>
+ 
+  <h3>while loop</h3>
+  <p>Used when you don't know the number of iterations in advance</p>
+  <pre>
+    <code>
+       let i = 0;
+ 
+       while (i < 5) {
+           console.log(i);
+           i++;
+       }
+    </code>
+  </pre>
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775387175/j18_iajp4h.png" class="images">
+  <p>Starting point (let i = 0): you defined the counter outside the loop</p>
+  <p>Condition (i &lt; 5): before each entry into the loop, the program asks: "Is i less than 5?"</p>
+  <p>Loop body: the current value of i is printed</p>
+  <p>Counter update (i++): this line is the most important; without it you will enter an "Infinite Loop" because i will always remain 0, which may cause the browser to hang</p>
+ 
+  <h3>do...while loop</h3>
+  <p>Executes at least once even if the condition is false</p>
+  <pre>
+    <code>
+    let i = 0;
+ 
+    do {
+       console.log(i);
+       i++;
+   } while (i < 5);
+   </code>
+  </pre>
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775387470/j19_ux25qg.png" class="images">
+  <p>Execution window (do): the program here executes the code inside the do brackets first without looking at the condition</p>
+  <p>Update (i++): the counter is incremented inside the loop body</p>
+  <p>Checking the condition (while): after executing the code, the program goes to check the condition. If true, it goes back and repeats the process</p>
+ 
+  <h3>for...of loop</h3>
+  <p>Used with Arrays</p>
+  <pre>
+    <code>
+      let fruits = ["apple", "banana", "orange"];
+ 
+      for (let fruit of fruits) {
+          console.log(fruit);
+     }
+    </code>
+  </pre>
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775387624/j20_cyyldt.png" class="images">
+  <p>The array (fruits): is a single container that stores a set of values (in this case texts). Note it always starts with [ and ends with ]</p>
+  <p>for...of loop: this loop is specifically designed to pass through "elements" of arrays. Instead of dealing with numbers and counters (i++) as we did before, it takes each element "automatically"</p>
+  <p>Variable fruit: in each cycle of the loop, JavaScript places the value of the next element from the array inside this variable</p>
+  <h5>How does this loop work?</h5>
+  <p>First cycle: the variable fruit takes the value "apple" and prints it</p>
+  <p>Second cycle: the variable fruit moves to the next element "banana" and prints it</p>
+  <p>Third cycle: the variable fruit takes the value "orange" and prints it</p>
+  <p>End: when the array is empty, the loop stops automatically</p>
+</details>
+ 
+<details>
+  <summary>Functions</summary>
+  <pre>
+    <code>
+     function sayHello() {
+         console.log("Hello!");
+     }
+ 
+     sayHello();
+    </code>
+  </pre>
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775385585/j9_r4u0dn.png" class="images">
+  <p>Function declaration: using the word function then a name of your choice sayHello. Here you tell the browser: "Keep this code with you, I will need it later"</p>
+  <p>Calling the function: writing the function name followed by parentheses sayHello(); is the actual command that tells the browser: "Execute the code inside the box now"</p>
+ 
+  <pre>
+    <code>
+     function add(a, b) {
+        return a + b;
+     }
+ 
+     console.log(add(5, 3));
+    </code>
+  </pre>
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775385689/j10_sncuye.png" class="images">
+  <p>Parameters (a, b): are just temporary names (inputs) for the raw materials the function will need to work</p>
+  <p>Keyword return: this is the most important part here; it tells the function: "Stop working here, and take this result with you to the outside". Without return the function result will be undefined</p>
+  <p>Call add(5, 3): here you passed the actual values (Arguments). a took value 5, and b took value 3</p>
+  <p>Printing: the console.log statement received the number 8 (which came out of the function) and displayed it</p>
+</details>
+ 
+<details>
+  <summary>User interaction</summary>
+  <pre>
+    <code>
+     let name = prompt("Write your name:");
+ 
+     console.log("Welcome " + name);
+    </code>
+  </pre>
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775385828/j11_wvpfwu.png" class="images">
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775385917/j12_kzzs23.png" class="images">
+  <p>prompt() function: is a built-in browser function that displays a small window containing an input field and an "OK" button. The text you put between the parentheses is the message that will appear to the user</p>
+  <p>Storing the value: as soon as the user types their name and presses "OK", this text is taken and stored inside the variable name</p>
+  <p>Concatenation: used the + sign to link the word "Welcome" with the name entered by the user, so the greeting appears customized for them</p>
+</details>
+ 
+<details>
+  <summary>Arrays</summary>
+  <pre>
+    <code>
+     let fruits = ["apple", "banana", "orange"];
+ 
+     console.log(fruits[0]); // apple
+    </code>
+  </pre>
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775386046/j13_whxdzk.png" class="images">
+  <p>Counting starts from zero (Zero-based Indexing): this is the most important rule! The computer does not start counting from 1 but from 0</p>
+  <p>First element (apple) its position is 0</p>
+  <p>Second element (banana) its position is 1</p>
+  <p>Third element (orange) its position is 2</p>
+  <p>Square brackets []: used to access the value. Writing fruits[0] means "JavaScript, give me the value at position zero of the fruits array"</p>
+ 
+  <pre>
+    <code>
+       let numbers = [1, 2, 3];
+ 
+       numbers.push(4);
+ 
+       console.log(numbers);
+    </code>
+  </pre>
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775386155/j14_pnkyh6.png" class="images">
+  <p>The .push() function: adds the element you place between the parentheses directly to the end of the array.</p>
+  <p>Dynamic modification: arrays in JavaScript are not fixed in size; you can increase or decrease them at any time while the program is running.</p>
+  <p>Result: when printing numbers at the end, you will see the complete array: [1, 2, 3, 4]</p>
+</details>
+ 
+<details>
+  <summary>Login system</summary>
+  <pre>
+    <code>
+    let username = prompt("Enter username:");
+    let password = prompt("Enter password:");
+ 
+    if (username === "admin" && password === "1234") {
+    console.log("Login successful");
+    } else {
+    console.log("Wrong credentials");
+    }
+    </code>
+  </pre>
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775386417/j15_mjj4ve.png" class="images">
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775386465/j16_k7rozt.png" class="images">
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775386500/j17_qwcznf.png" class="images">
+  <p>The && (AND) gate: this operator is very strict. For the code inside if to be executed (successful login), both sides must be true at the same time</p>
+  <p>If name is correct and password wrong → result is false</p>
+  <p>If name is wrong and password correct → result is false</p>
+  <p>Only if both are correct → result is true</p>
+  <p>Verification process: the program compares the text entered by the user in variables username and password with the fixed values you specified (admin and 1234)</p>
+</details>
+ 
+ 
+<h4>JavaScript Scripts</h4>
+ 
+<details>
+  <summary>File Integrity Monitor</summary>
+  <p>This script works as a data integrity monitoring tool by calling the `fs` programming library to continuously and instantly monitor changes occurring to the configuration file `config.json`. As soon as any modification in the file content is detected, the code automatically executes a programming function that extracts the exact time stamp of the new file state and compares it with the previous state. From a cybersecurity perspective, this code represents an early warning system against intrusion; where it prints an immediate alert in the control screen that reveals any attempt of tampering or unauthorized modification. The strength of this script lies in digitally documenting incidents through the `mtime` property that helps in forensic investigations to accurately determine the time of the attack. Thus, this simple programming line transforms into a digital guard that ensures sensitive system files remain under continuous surveillance to strengthen the active defense strategy.</p>
+  <a href="https://github.com/mu-b003/Javascript--Scripts-/blob/main/File%20Integrity%20Monitor" target="_blank">Script link</a>
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775574235/j39_cche4a.png" class="images">
+</details>
+ 
+<details>
+  <summary>URL Defang</summary>
+  <p>This script works as a technical security tool known as "URL Defanging", where it uses regular programming expressions (Regex) to modify the structure of malicious links and prevent accidentally clicking on them. The code replaces sensitive dots in the URL by placing them inside brackets `[.]` and changes the `http` protocol to `hxxp` to transform the link from an active interactive element to mere non-clickable text. From a cybersecurity perspective, the importance of this procedure lies in protecting security analysts and users while exchanging threat intelligence, as it prevents browsers and programs from automatically loading malicious sites. Thus, the script contributes to reducing the risks of software infection when analyzing suspicious links inside security reports, technically transforming the "predatory" link into a safe display-only version.</p>
+  <a href="https://github.com/mu-b003/Javascript--Scripts-/blob/main/URL%20Defang" target="_blank">Script link</a>
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775574379/j40_cmqvnl.png" class="images">
+</details>
+ 
+<details>
+  <summary>Extracting IP addresses from logs</summary>
+  <p>This script plays a pivotal role in "Log Analysis" operations, where it uses the `fs` library to read the entire content of the log file `access.log` and process it programmatically. The code relies on a precise regular expression (Regex) specifically designed to discover and extract IP addresses from among thousands of crowded text lines of data. From a cybersecurity perspective, this script represents a technical intelligence tool that helps analysts identify all addresses that attempted to access the system, with filtering duplicates using the `new Set` property to produce a clean list of connected parties. The importance of this operation appears in revealing Distributed Denial of Service (DDoS) attacks or detecting Port Scanning operations, which allows security administrators to identify suspicious addresses and block them before the attack escalates. Thus, the script transforms large raw data into organized intelligence information that directly contributes to strengthening the organization's digital firewall.</p>
+  <a href="https://github.com/mu-b003/Javascript--Scripts-/blob/main/Extracting%20IP%20addresses%20from%20logs" target="_blank">Script link</a>
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775574449/j41_sffyie.png" class="images">
+</details>
+ 
+<details>
+  <summary>Brute Force</summary>
+  <p>This script embodies a defensive programming mechanism known as "Brute-Force Detection", where it tracks the number of failed login attempts for each IP address separately and saves them inside a programming object. The code works through an accumulative function that increments the error counter each time a user fails to log in, and when the specified threshold is exceeded (more than 5 attempts), the script immediately fires a security alert warning of a potential intrusion attempt. From a cybersecurity perspective, this script is the first line of defense against brute force attacks that target breaking passwords through trial and error, which allows the system to take subsequent preventive measures like temporarily blocking the suspicious address. The importance of this approach lies in the ability to distinguish between normal human error and the systematic automated behavior followed by intrusion software. Thus, the script provides a vital security layer that protects user accounts from unauthorized access and prevents server resource exhaustion in repeated verification operations.</p>
+  <a href="https://github.com/mu-b003/Javascript--Scripts-/blob/main/Brute%20Force" target="_blank">Script link</a>
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775574527/j42_fn3anv.png" class="images">
+</details>
+ 
+<details>
+  <summary>Password strength check</summary>
+  <p>This script applies a strict programming standard for verifying "Password Complexity Validation", where it uses a complex regular expression (Regex) to ensure the password meets precise security conditions. The code works through a series of "foresight checks" that enforce the presence of lowercase letters, uppercase letters, numbers, special symbols, plus a minimum length requirement of no less than 12 characters. From a cybersecurity perspective, this script represents a critical preventive tool that prevents users from creating accounts with easily guessable passwords, significantly raising the "computational cost" of any guessing attack or use of ready-made password dictionaries. The importance of this approach appears in protecting digital identity and preventing account breaches through social engineering techniques or brute force, as long and diverse passwords remain the first fortress against unauthorized access attempts. Thus, the script ensures the implementation of standard security policies that prevent the weakening of the system's security chain at the user entry point.</p>
+  <a href="https://github.com/mu-b003/Javascript--Scripts-/blob/main/Password%20strength%20check" target="_blank">Script link</a>
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775574749/j43_qjs0ha.png" class="images">
+</details>
+ 
+<details>
+  <summary>Simple Port Scanner</summary>
+  <p>This script works as a technical reconnaissance tool known as a "Port Scanner", where it uses the `net` library to create experimental network connections via the TCP protocol with specific addresses. The code attempts to open a "socket" on a list of famous ports (like 80 and 443) and check whether they are "open" and responding to requests within a short time limit. From a cybersecurity perspective, this script represents a dual-use tool; it helps system administrators in "Network Auditing" to ensure unnecessary ports are closed, while attackers use it in the "information gathering" phase to discover active services and potential vulnerabilities. The importance of this procedure appears in discovering backdoors or weak services that may be an entry point for intrusion, which allows reducing the "Attack Surface" of the organization. Thus, the script transforms the complex network scanning process into an automated and quick task that provides a clear view of how well a device or server is fortified.</p>
+  <a href="https://github.com/mu-b003/Javascript--Scripts-/blob/main/Simple%20Port%20Scanner" target="_blank">Script link</a>
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775574807/j44_a2qpls.png" class="images">
+</details>
+ 
+<details>
+  <summary>HTTP Banner Grabbing</summary>
+  <p>This script executes a security technique known as "Banner Grabbing", where it uses the `http` library to send a query request to a specific site with the goal of extracting information from the "HTTP Response Headers". The code specifically focuses on fetching the value of the `server` header which usually reveals the type and version of server software used (like Apache or Nginx). From a cybersecurity perspective, this process is considered the first step in the "Reconnaissance" phase, where it helps analysts identify targets and know whether the server is running an old version containing known vulnerabilities. The importance of this procedure appears in "vulnerability management", where it is security-advised to hide or disguise this information to reduce the data available to attackers about the system's technical infrastructure. Thus, the script transforms a simple connection request into a tool for revealing the identity of technologies running websites, which contributes to assessing the external security level of the organization.</p>
+  <a href="https://github.com/mu-b003/Javascript--Scripts-/blob/main/HTTP%20Banner%20Grabbing" target="_blank">Script link</a>
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775574869/j45_fdvnnx.png" class="images">
+</details>
+ 
+<details>
+  <summary>Base64 (Data Exfiltration Simulation)</summary>
+  <p>This script performs "Base64 Encoding", where it uses the `Buffer` object built into Node.js to convert regular texts to a text format based on a system of 64 characters to ensure their safe transfer across different systems. From a cybersecurity perspective, this code represents a means of disguising data and bypassing text filters that may prevent sending special symbols, but it is not considered encryption because it can be easily decoded and does not provide any real privacy for sensitive data. The importance of understanding this distinction appears in preventing falling into a grave security error which is relying on "encoding" instead of "strong encryption" to protect user secrets. Thus, the script works as a tool to convert data formats to facilitate programmatic processing, with constant reminders of the necessity to use real encryption algorithms like AES when dealing with actually sensitive data.</p>
+  <a href="https://github.com/mu-b003/Javascript--Scripts-/blob/main/Base64%20Data%20Exfiltration%20Simulation" target="_blank">Script link</a>
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775575495/j46_vcvswo.png" class="images">
+</details>
+ 
+<details>
+  <summary>Simple Directory Brute-forcer</summary>
+  <p>This script executes an offensive reconnaissance technique known as "Directory Brute Forcing", where it uses the `axios` library to send sequential HTTP requests to a target site to test the existence of sensitive directories. The code works by attempting to access a list of common paths (like `admin` and `backup`) and checking the server response; if the status code is 200, this means the path is available and accessible. From a cybersecurity perspective, the danger of this procedure lies in revealing control panels or backup files that may not be sufficiently protected, giving the attacker a foothold inside the system. The importance of this check appears in the "vulnerability discovery" phase to assess the extent of web surface exposure to risks, with the security recommendation of the necessity to disable folder viewing and use Web Application Firewalls (WAF) to block such repetitive attempts. Thus, the script transforms the tedious manual search process into a quick tool for testing the robustness of website security configurations.</p>
+  <a href="https://github.com/mu-b003/Javascript--Scripts-/blob/main/Simple%20Directory%20Brute-forcer" target="_blank">Script link</a>
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775575556/j47_rwussk.png" class="images">
+</details>
+ 
+<details>
+  <summary>Extracting links from a web page</summary>
+  <p>This script executes an automation technique known as "Web Crawling/Link Extraction", where it uses the `axios` library to fetch the complete source code (HTML) of a specific web page and process it programmatically. The code relies on a regular expression (Regex) specifically designed to search for the `href` tag and extract all hyperlinks present inside the page. From a cybersecurity perspective, this script represents a fundamental tool in the "Target Mapping" phase, where it helps analysts understand site structure, discover external pages linked to it, or identify subdomains that may be a scanning target. The importance of this process appears in revealing phishing links or malicious links that may be hidden inside page code, which facilitates the process of threat analysis and expanding the scope of website security testing. Thus, the script transforms the tedious manual link tracking process into a quick programming task that provides a comprehensive view of any target site's external and internal connections.</p>
+  <a href="https://github.com/mu-b003/Javascript--Scripts-/blob/main/Extracting%20links%20from%20a%20web%20page" target="_blank">Script link</a>
+  <img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1775575609/j48_oqatvb.png" class="images">
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+</div>
+
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-right">
+            <span>BIT+ Platform</span>
+            <span>|</span>
+            <span>&copy; 2026 All rights reserved.</span>
+        </div>
+        <div class="footer-left">
+            <a href="about.html">About Us</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </div>
+</footer>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const overlay = document.createElement("div");
+    overlay.style.cssText = `
+        display:none;
+        position:fixed;
+        inset:0;
+        background:rgba(0,0,0,.9);
+        z-index:99999;
+        justify-content:center;
+        align-items:center;
+        cursor:pointer;
+    `;
+
+    const img = document.createElement("img");
+    img.style.cssText = `
+        max-width:95%;
+        max-height:95vh;
+        object-fit:contain;
+    `;
+
+    overlay.appendChild(img);
+    document.body.appendChild(overlay);
+
+    document.querySelectorAll(".images").forEach(image => {
+        image.style.cursor = "zoom-in";
+
+        image.addEventListener("click", function () {
+            img.src = this.src;
+            overlay.style.display = "flex";
+        });
+    });
+
+    overlay.addEventListener("click", function () {
+        overlay.style.display = "none";
+    });
+
+});
+</script>
+</body>
+</html>
+
+
