@@ -303,3 +303,33 @@ code, pre {
         font-size:13px;
     }
 }
+
+
+
+
+
+
+
+
+
+.banner-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px 0; /* مسافة أعلى وأسفل البانر */
+    background-color: #f8f9fa; /* لون خلفية خفيف لتمييز منطقة الإعلان */
+}
+
+.banner-placeholder {
+    width: 728px;
+    height: 90px;
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    color: #666;
+    font-family: sans-serif;
+    /* هذا يضمن عدم كسر التصميم على الشاشات الصغيرة */
+    max-width: 100%; 
+}
