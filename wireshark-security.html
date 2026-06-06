@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireshark — Cybersecurity Course</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Wireshark course — learn packet capture, traffic analysis, filters, and network forensics from scratch.">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+        <a href="notes.html">Notes</a>
+    </nav>
+</header>
+
+<div class="ads-wrapper-layout">
+<div class="content-container">
+
+<details open>
+  <summary>Introduction — What is Wireshark?</summary>
+  <p>Wireshark is the world's most popular network protocol analyzer. It lets you capture and inspect every packet traveling through a network interface in real time. Originally called Ethereal, it was created by Gerald Combs in 1998 and is now maintained by hundreds of contributors worldwide.</p>
+  <h3>What Can Wireshark Do?</h3>
+  <p>Capture live network traffic — Analyze hundreds of protocols — Filter packets with precision — Reconstruct TCP streams — Detect attacks and anomalies — Export and share capture files — Decrypt encrypted traffic (with keys).</p>
+  <h3>Who Uses Wireshark?</h3>
+  <p>Network engineers troubleshooting connectivity — Penetration testers analyzing traffic — Security analysts investigating incidents — CTF players solving network challenges — Developers debugging application protocols.</p>
+  <h3>Installation</h3>
+  <pre>
+# Linux (Debian/Ubuntu)
+sudo apt install wireshark
+sudo usermod -aG wireshark $USER   — Add yourself to wireshark group
+# Log out and back in for group change to take effect
+
+# macOS
+brew install --cask wireshark
+
+# Windows
+# Download installer from https://www.wireshark.org/download.html
+# Installs WinPcap/Npcap automatically for packet capture
+  </pre>
+  <h3>Two Ways to Use Wireshark</h3>
+  <p>GUI (Wireshark) — Full graphical interface with visual protocol dissection and color coding.</p>
+  <p>CLI (TShark) — Command-line version — same engine, scriptable and perfect for servers and automation.</p>
+</details>
+
+<details open>
+  <summary>The Wireshark Interface</summary>
+  <h3>Main Window Layout</h3>
+  <p>When you open Wireshark and start a capture, the screen is divided into three main panels plus a toolbar and filter bar.</p>
+  <h3>Packet List Panel (Top)</h3>
+  <p>Shows every captured packet as one row. Columns displayed by default:</p>
+  <pre>
+No.        — Packet number in the capture
+Time       — Timestamp (seconds since capture started)
+Source     — Source IP or MAC address
+Destination — Destination IP or MAC address
+Protocol   — Highest-layer protocol detected
+Length     — Packet size in bytes
+Info       — Quick summary of the packet content
+  </pre>
+  <h3>Packet Details Panel (Middle)</h3>
+  <p>Shows the full protocol breakdown of the selected packet — expandable tree of every layer from Physical to Application.</p>
+  <pre>
+Frame 42: 74 bytes on wire
+  Ethernet II
+    Source: 00:1a:2b:3c:4d:5e
+    Destination: ff:ff:ff:ff:ff:ff
+  Internet Protocol Version 4
+    Source: 192.168.1.5
+    Destination: 8.8.8.8
+  Transmission Control Protocol
+    Source Port: 54321
+    Destination Port: 80
+  Hypertext Transfer Protocol
+    GET /index.html HTTP/1.1
+  </pre>
+  <h3>Packet Bytes Panel (Bottom)</h3>
+  <p>Raw packet data in hexadecimal on the left and ASCII on the right. When you click a field in the Details panel, the corresponding bytes are highlighted here.</p>
+  <h3>Color Coding</h3>
+  <p>Wireshark color-codes packets by protocol and status by default:</p>
+  <pre>
+Light green    — TCP traffic
+Light blue     — UDP traffic
+Dark blue      — DNS traffic
+Black          — TCP errors (bad checksum, out of order)
+Red            — Errors and problems
+Yellow/orange  — Routing protocols (OSPF, BGP)
+Purple         — TCP SYN/FIN segments
+  </pre>
+  <p>Customize colors: View → Coloring Rules</p>
+  <h3>Interface Selection</h3>
+  <p>On the start screen, Wireshark shows all available network interfaces with a live traffic sparkline. Choose the correct one:</p>
+  <pre>
+eth0 / Ethernet   — Wired connection
+wlan0 / Wi-Fi     — Wireless connection
+lo / Loopback     — Local traffic (127.0.0.1) — useful for debugging
+any               — Capture on all interfaces at once (Linux)
+  </pre>
+</details>
+
+<details>
+  <summary>Capturing Traffic</summary>
+  <h3>Starting a Capture</h3>
+  <p>Double-click an interface on the start screen — or go to Capture → Start. Wireshark immediately begins capturing all packets on that interface.</p>
+  <h3>Capture Options — Before You Start</h3>
+  <p>Go to Capture → Options to configure:</p>
+  <pre>
+Interface      — Which NIC to capture on
+Promiscuous Mode — Capture all traffic, not just yours (enabled by default)
+Capture Filter — Filter packets at capture time (faster, saves disk space)
+Output File    — Save directly to a .pcap file
+Ring Buffer    — Auto-rotate files (useful for long captures)
+Snaplen        — Max bytes captured per packet (default: 262144)
+  </pre>
+  <h3>Promiscuous Mode vs Monitor Mode</h3>
+  <p>Promiscuous Mode — Captures all Ethernet frames on the segment, including traffic not addressed to your MAC. Works on wired and WiFi (only sees encrypted 802.11 frames on WiFi).</p>
+  <p>Monitor Mode — WiFi only. Captures raw 802.11 frames including management and control frames. Requires a compatible wireless adapter.</p>
+  <pre>
+# Enable monitor mode on Linux
+sudo airmon-ng start wlan0
+# Then capture in Wireshark on wlan0mon interface
+  </pre>
+  <h3>Saving and Opening Captures</h3>
+  <pre>
+Save capture:   File → Save As → .pcap or .pcapng
+Open capture:   File → Open — or drag and drop a .pcap file
+Merge captures: File → Merge — combine multiple .pcap files
+
+Common file formats:
+.pcap    — Standard libpcap format — compatible with most tools
+.pcapng  — Next-generation format — supports metadata and comments
+  </pre>
+  <h3>Capturing with TShark (CLI)</h3>
+  <pre>
+# List available interfaces
+tshark -D
+
+# Capture on interface eth0
+sudo tshark -i eth0
+
+# Capture and save to file
+sudo tshark -i eth0 -w capture.pcap
+
+# Capture only 100 packets then stop
+sudo tshark -i eth0 -c 100 -w output.pcap
+
+# Capture with a filter
+sudo tshark -i eth0 -f "port 80" -w http_traffic.pcap
+  </pre>
+</details>
+
+<details>
+  <summary>Display Filters</summary>
+  <h3>Display Filters vs Capture Filters</h3>
+  <p>Capture Filters — Applied during capture — uses BPF syntax — only matching packets are recorded. Cannot be changed after capture starts.</p>
+  <p>Display Filters — Applied after capture — uses Wireshark's own syntax — hides packets without deleting them. Can be changed anytime.</p>
+  <p>Display filters are more powerful and flexible — most analysis uses them.</p>
+  <h3>Filter Syntax Basics</h3>
+  <pre>
+protocol              — Filter by protocol
+field == value        — Equality
+field != value        — Not equal
+field > value         — Greater than
+field contains value  — Contains string
+field matches regex   — Regular expression match
+!filter               — NOT
+filter1 && filter2    — AND
+filter1 || filter2    — OR
+(filter1) && (filter2) — Grouping
+  </pre>
+  <h3>Protocol Filters</h3>
+  <pre>
+http         — All HTTP traffic
+https / tls  — All TLS/HTTPS traffic
+dns          — All DNS traffic
+tcp          — All TCP traffic
+udp          — All UDP traffic
+icmp         — All ICMP (ping) traffic
+arp          — All ARP traffic
+ftp          — FTP traffic
+ssh          — SSH traffic
+smtp         — Email (SMTP)
+smb          — SMB / Windows file sharing
+dhcp         — DHCP traffic
+  </pre>
+  <h3>IP and Port Filters</h3>
+  <pre>
+ip.addr == 192.168.1.5           — Any traffic to/from this IP
+ip.src == 192.168.1.5            — Only traffic FROM this IP
+ip.dst == 192.168.1.5            — Only traffic TO this IP
+ip.addr == 192.168.1.0/24        — Entire subnet
+
+tcp.port == 80                   — TCP port 80 (either direction)
+tcp.srcport == 443               — Source port 443
+tcp.dstport == 22                — Destination port 22
+udp.port == 53                   — UDP port 53
+
+tcp.port == 80 || tcp.port == 443  — HTTP and HTTPS
+  </pre>
+  <h3>TCP Flags Filters</h3>
+  <pre>
+tcp.flags.syn == 1               — SYN packets (connection start)
+tcp.flags.fin == 1               — FIN packets (connection close)
+tcp.flags.rst == 1               — RST packets (connection reset)
+tcp.flags.push == 1              — PSH flag set
+tcp.flags == 0x002               — Only SYN (no other flags)
+tcp.flags == 0x012               — SYN+ACK (server response)
+
+# Find all TCP connection attempts
+tcp.flags.syn == 1 && tcp.flags.ack == 0
+  </pre>
+  <h3>Content and String Filters</h3>
+  <pre>
+http.request.method == "GET"           — HTTP GET requests
+http.request.method == "POST"          — HTTP POST requests
+http.response.code == 200             — HTTP 200 OK
+http.response.code == 404             — HTTP 404 Not Found
+http.host contains "google"           — HTTP host header
+http.request.uri contains "login"     — URI contains login
+http.cookie contains "session"        — Cookie header
+
+dns.qry.name == "google.com"          — DNS query for google.com
+dns.qry.name contains "evil"          — Suspicious DNS queries
+
+frame contains "password"             — Any packet containing "password"
+tcp contains "User-Agent"             — TCP stream with User-Agent string
+  </pre>
+  <h3>Useful Filter Combinations</h3>
+  <pre>
+# All traffic except your own machine
+ip.addr != 192.168.1.100
+
+# HTTP traffic between two specific hosts
+ip.addr == 192.168.1.5 && http
+
+# Large packets (possible data exfiltration)
+frame.len > 1400
+
+# Retransmissions (network problems)
+tcp.analysis.retransmission
+
+# All DNS responses
+dns.flags.response == 1
+
+# Packets with errors
+tcp.analysis.flags
+  </pre>
+</details>
+
+<details>
+  <summary>Following Streams and Reassembly</summary>
+  <h3>Follow TCP Stream</h3>
+  <p>The most powerful analysis feature — Wireshark reassembles an entire TCP conversation and shows it as readable text. Essential for reading HTTP sessions, credentials, commands, and application data.</p>
+  <pre>
+How to use:
+1. Find any packet from the TCP session you want to read
+2. Right-click → Follow → TCP Stream
+3. Wireshark opens a window showing the full conversation
+   — Red text  = data sent by the client
+   — Blue text = data sent by the server
+  </pre>
+  <h3>Follow UDP Stream</h3>
+  <pre>
+Right-click any UDP packet → Follow → UDP Stream
+Useful for: DNS, DHCP, SNMP, VoIP (RTP), game traffic
+  </pre>
+  <h3>Follow HTTP Stream</h3>
+  <pre>
+Right-click any HTTP packet → Follow → HTTP Stream
+Shows the complete HTTP request and response including headers and body.
+  </pre>
+  <h3>What to Look For in Streams</h3>
+  <pre>
+HTTP streams   — Credentials in POST bodies, cookies, tokens
+FTP streams    — Plaintext username and password (USER / PASS)
+Telnet streams — Everything in plaintext — keystrokes visible
+SMTP streams   — Email content, credentials
+HTTP Basic Auth — Base64 encoded credentials in Authorization header
+  </pre>
+  <h3>Decode Base64 Credentials</h3>
+  <pre>
+# If you see in HTTP stream:
+Authorization: Basic dXNlcjpwYXNzd29yZA==
+
+# Decode in terminal:
+echo "dXNlcjpwYXNzd29yZA==" | base64 -d
+# Output: user:password
+  </pre>
+  <h3>Export Objects</h3>
+  <p>Wireshark can extract files transferred over the network:</p>
+  <pre>
+File → Export Objects → HTTP    — Extract files from HTTP traffic
+File → Export Objects → SMB     — Extract files from SMB shares
+File → Export Objects → FTP     — Extract files from FTP transfers
+File → Export Objects → TFTP    — Extract TFTP files
+  </pre>
+</details>
+
+<details>
+  <summary>Statistics and Analysis Tools</summary>
+  <h3>Statistics Menu</h3>
+  <p>Wireshark's Statistics menu provides high-level views of your capture — essential for getting oriented in a large capture file before diving into individual packets.</p>
+  <h3>Capture File Properties</h3>
+  <pre>
+Statistics → Capture File Properties
+Shows: File size, capture duration, total packets,
+       average packets/sec, average bytes/sec
+  </pre>
+  <h3>Protocol Hierarchy</h3>
+  <pre>
+Statistics → Protocol Hierarchy
+Shows a tree of all protocols in the capture with
+packet counts and percentages.
+Useful for: Spotting unusual protocols, getting an overview
+  </pre>
+  <h3>Conversations</h3>
+  <pre>
+Statistics → Conversations
+Lists all unique communication pairs with:
+— IP addresses or MAC addresses
+— Bytes transferred in each direction
+— Duration of conversation
+Useful for: Finding who is talking to whom, spotting large data transfers
+  </pre>
+  <h3>Endpoints</h3>
+  <pre>
+Statistics → Endpoints
+Lists every unique IP/MAC with total traffic volume.
+Useful for: Finding the most active hosts, detecting port scanners
+  </pre>
+  <h3>IO Graph</h3>
+  <pre>
+Statistics → IO Graph
+Plots traffic volume over time.
+Useful for: Spotting traffic spikes, DDoS patterns, periodic beaconing
+  </pre>
+  <h3>Flow Graph</h3>
+  <pre>
+Statistics → Flow Graph
+Shows a sequence diagram of packet exchanges between hosts.
+Useful for: Visualizing TCP handshakes, protocol exchanges
+  </pre>
+  <h3>DNS Statistics</h3>
+  <pre>
+Statistics → DNS
+Shows all DNS queries and responses with response codes.
+Useful for: Spotting DNS tunneling, failed lookups, suspicious domains
+  </pre>
+  <h3>HTTP Statistics</h3>
+  <pre>
+Statistics → HTTP → Requests       — All HTTP requests by URI
+Statistics → HTTP → Load Distribution — Traffic per server
+Statistics → HTTP → Response Code  — Count by HTTP status code
+  </pre>
+</details>
+
+<details>
+  <summary>Detecting Attacks with Wireshark</summary>
+  <h3>Port Scanning Detection</h3>
+  <p>A port scan sends many connection attempts from one source to many ports in a short time. Look for:</p>
+  <pre>
+Filter: ip.src == [scanner IP] && tcp.flags.syn == 1
+
+Signs of a SYN scan:
+— Many SYN packets from one IP to sequential ports
+— Target replies with RST/ACK (closed) or SYN/ACK (open)
+— Scanner never completes the three-way handshake
+
+Signs of a Connect scan:
+— Full three-way handshakes immediately followed by RST
+  </pre>
+  <h3>ARP Spoofing Detection</h3>
+  <p>ARP Spoofing (Man-in-the-Middle) poisons the ARP cache to redirect traffic through the attacker.</p>
+  <pre>
+Filter: arp
+
+Signs of ARP spoofing:
+— Multiple ARP replies for the same IP from different MACs
+— Gratuitous ARP replies (not preceded by a request)
+— One MAC claiming to be both the gateway and another host
+
+Wireshark will show a warning:
+"Duplicate IP address detected" in the Expert Info
+  </pre>
+  <h3>Cleartext Credentials</h3>
+  <pre>
+# Find HTTP Basic Auth
+http.authorization
+
+# Find FTP credentials
+ftp.request.command == "USER" || ftp.request.command == "PASS"
+
+# Find Telnet (all plaintext)
+telnet
+
+# Find SMTP AUTH
+smtp.req.command == "AUTH"
+
+# Search raw packet content
+frame contains "password"
+frame contains "passwd"
+frame contains "Authorization"
+  </pre>
+  <h3>DNS Tunneling Detection</h3>
+  <p>Attackers use DNS to exfiltrate data or create C2 channels — DNS queries carry encoded data in subdomains.</p>
+  <pre>
+Filter: dns
+
+Signs of DNS tunneling:
+— Unusually long DNS query names (50+ characters)
+— High frequency of DNS queries to the same domain
+— DNS TXT record queries (not normal for browsing)
+— Encoded subdomains: aGVsbG8.evil.com (base64-like)
+— DNS responses with large TXT payloads
+
+Filter for TXT queries:
+dns.qry.type == 16
+  </pre>
+  <h3>DDoS / Flood Detection</h3>
+  <pre>
+# SYN Flood — many SYN with no response
+tcp.flags == 0x002
+
+# UDP Flood — high volume UDP
+udp && frame.len > 1000
+
+# ICMP Flood (ping flood)
+icmp.type == 8
+
+Use Statistics → IO Graph to visualize the spike
+Use Statistics → Conversations to find the source
+  </pre>
+  <h3>Suspicious Beaconing (Malware C2)</h3>
+  <p>Malware checks in with its command-and-control server at regular intervals — this creates periodic traffic patterns.</p>
+  <pre>
+Signs:
+— Regular outbound connections at fixed time intervals
+— Same destination IP/domain repeatedly
+— Small consistent payload sizes
+— Unusual ports or protocols
+
+Use Statistics → IO Graph and look for repeating spikes
+Use Statistics → Conversations → sort by packets to find repeated connections
+  </pre>
+  <h3>Nmap Scan Signatures</h3>
+  <pre>
+# SYN Scan — half-open connections
+tcp.flags == 0x002 && tcp.window_size <= 1024
+
+# NULL Scan — no flags
+tcp.flags == 0x000
+
+# FIN Scan
+tcp.flags == 0x001
+
+# Xmas Scan — FIN+PSH+URG
+tcp.flags == 0x029
+
+# OS detection probes — unusual window sizes and options
+tcp.options && ip.ttl < 5
+  </pre>
+</details>
+
+<details>
+  <summary>Decrypting Traffic</summary>
+  <h3>Decrypting HTTPS / TLS</h3>
+  <p>TLS encrypts all HTTPS traffic — Wireshark shows only encrypted bytes by default. But there are two ways to decrypt it.</p>
+  <h3>Method 1 — RSA Private Key (Server Key)</h3>
+  <pre>
+Works when: RSA key exchange is used (not forward-secret ciphers like ECDHE)
+
+Steps:
+1. Edit → Preferences → Protocols → TLS
+2. Click Edit next to "RSA keys list"
+3. Add: IP, Port, Protocol (http), and the server's private key file (.pem)
+4. Click OK — encrypted packets now show decrypted content
+  </pre>
+  <h3>Method 2 — SSLKEYLOGFILE (Most Reliable)</h3>
+  <p>Browsers and applications can log TLS session keys to a file — Wireshark uses these to decrypt traffic. Works even with ECDHE (forward secrecy).</p>
+  <pre>
+# Set environment variable before starting the browser
+export SSLKEYLOGFILE=~/ssl-keys.log    # Linux/macOS
+set SSLKEYLOGFILE=C:\ssl-keys.log      # Windows CMD
+
+# Start Firefox or Chrome — they will write keys to the file
+firefox &
+
+# In Wireshark:
+Edit → Preferences → Protocols → TLS
+Set "(Pre)-Master-Secret log filename" to your ssl-keys.log file
+  </pre>
+  <h3>Decrypting WPA2 WiFi</h3>
+  <pre>
+Requirements: You must have captured the WPA2 four-way handshake
+              and know the WiFi password.
+
+Steps:
+1. Edit → Preferences → Protocols → IEEE 802.11
+2. Enable "Enable decryption"
+3. Click Edit next to "Decryption Keys"
+4. Add key type: wpa-pwd
+   Key format:  password:SSID
+   Example:     MyPassword:HomeNetwork
+5. Wireshark decrypts all captured WiFi frames
+  </pre>
+</details>
+
+<details>
+  <summary>TShark — Command Line Analysis</summary>
+  <h3>Why TShark?</h3>
+  <p>TShark is Wireshark's command-line engine. Perfect for remote servers, automation, scripting, and processing large capture files without a GUI.</p>
+  <h3>Reading a Capture File</h3>
+  <pre>
+tshark -r capture.pcap                     — Read and print all packets
+tshark -r capture.pcap -Y "http"           — Apply display filter
+tshark -r capture.pcap -Y "ip.src==192.168.1.5"
+  </pre>
+  <h3>Extracting Specific Fields</h3>
+  <pre>
+# Print source IP, destination IP, and protocol
+tshark -r capture.pcap -T fields \
+       -e ip.src -e ip.dst -e _ws.col.Protocol
+
+# Extract all HTTP hosts
+tshark -r capture.pcap -Y http.request \
+       -T fields -e http.host -e http.request.uri
+
+# Extract DNS queries
+tshark -r capture.pcap -Y dns.flags.response==0 \
+       -T fields -e dns.qry.name
+
+# Extract all usernames from FTP
+tshark -r capture.pcap -Y 'ftp.request.command=="USER"' \
+       -T fields -e ftp.request.arg
+
+# List all unique IPs
+tshark -r capture.pcap -T fields -e ip.src | sort -u
+  </pre>
+  <h3>Capture with Filters</h3>
+  <pre>
+# Capture only HTTP traffic
+sudo tshark -i eth0 -f "port 80" -w http.pcap
+
+# Capture only traffic to/from a specific IP
+sudo tshark -i eth0 -f "host 192.168.1.5" -w host.pcap
+
+# Capture DNS only
+sudo tshark -i eth0 -f "port 53" -w dns.pcap
+  </pre>
+  <h3>Follow a TCP Stream</h3>
+  <pre>
+# Follow stream number 0
+tshark -r capture.pcap -q -z follow,tcp,ascii,0
+
+# Follow HTTP stream
+tshark -r capture.pcap -q -z follow,http,ascii,0
+  </pre>
+  <h3>Statistics via TShark</h3>
+  <pre>
+# Protocol hierarchy
+tshark -r capture.pcap -q -z io,phs
+
+# All conversations
+tshark -r capture.pcap -q -z conv,ip
+
+# HTTP requests summary
+tshark -r capture.pcap -q -z http,tree
+
+# Endpoints
+tshark -r capture.pcap -q -z endpoints,ip
+  </pre>
+  <h3>Export Objects</h3>
+  <pre>
+# Export all HTTP objects to a folder
+tshark -r capture.pcap --export-objects http,./exported_files/
+  </pre>
+</details>
+
+<details>
+  <summary>Practical Analysis Workflows</summary>
+  <h3>Workflow 1 — First Look at an Unknown Capture</h3>
+  <pre>
+1. Statistics → Capture File Properties
+   — How long? How many packets? What time?
+
+2. Statistics → Protocol Hierarchy
+   — What protocols are present? Anything unusual?
+
+3. Statistics → Conversations (IP tab)
+   — Who is talking to whom? Any unexpected hosts?
+
+4. Statistics → Endpoints
+   — Which IPs are most active?
+
+5. Apply filters for interesting protocols
+   — http, dns, ftp, smb, telnet
+
+6. Follow streams on interesting sessions
+  </pre>
+  <h3>Workflow 2 — CTF Network Challenge</h3>
+  <pre>
+1. Open the .pcap file
+2. Check Protocol Hierarchy for unusual protocols
+3. Filter for HTTP → follow streams → look for flags in URLs, cookies, bodies
+4. Filter for DNS → look for long subdomain names (DNS tunnel)
+5. Filter for FTP → follow stream → check credentials and transferred files
+6. File → Export Objects → HTTP → extract files
+7. Check for frame contains "flag" or frame contains "HTB{"
+  </pre>
+  <h3>Workflow 3 — Incident Response</h3>
+  <pre>
+1. Identify the compromised host IP
+2. Filter: ip.addr == [victim IP]
+3. Look for outbound connections to unknown IPs
+4. Check Statistics → Conversations for data volume
+5. Filter for DNS: ip.src == [victim IP] && dns
+   — Any suspicious domains queried?
+6. Filter for large outbound transfers: ip.src == [victim IP] && frame.len > 1000
+7. Look for beaconing: Statistics → IO Graph
+8. Follow suspicious TCP streams
+9. Export any transferred files
+  </pre>
+  <h3>Workflow 4 — Credential Hunting</h3>
+  <pre>
+# Step 1 — Find cleartext protocols
+Filter: ftp || telnet || http || smtp || pop || imap
+
+# Step 2 — Check HTTP POST requests
+Filter: http.request.method == "POST"
+→ Follow TCP Stream → look in body for username/password fields
+
+# Step 3 — Check HTTP Basic Auth
+Filter: http.authorization
+→ Copy the Base64 value → decode it
+
+# Step 4 — Check FTP
+Filter: ftp
+→ Follow TCP Stream → USER and PASS appear in plaintext
+
+# Step 5 — Search raw content
+Filter: frame contains "password" || frame contains "passwd"
+  </pre>
+</details>
+
+<details>
+  <summary>Wireshark Cheat Sheet</summary>
+  <h3>Essential Keyboard Shortcuts</h3>
+  <pre>
+Ctrl+E          — Start / Stop capture
+Ctrl+K          — Capture options
+Ctrl+W          — Close capture file
+Ctrl+S          — Save capture
+Ctrl+F          — Find packet
+Ctrl+G          — Go to packet number
+Ctrl+R          — Find next
+Ctrl+Shift+R    — Find previous
+Ctrl+M          — Mark/unmark packet
+Ctrl+T          — Set/unset time reference
+Ctrl+Alt+F      — Apply as filter (selected)
+Space           — Scroll to next packet
+  </pre>
+  <h3>Most Used Display Filters</h3>
+  <pre>
+http                              — All HTTP
+http.request.method == "POST"     — POST requests
+http.response.code == 200         — Successful responses
+dns                               — All DNS
+dns.qry.name contains "evil"      — Suspicious DNS
+tcp.flags.syn == 1                — SYN packets
+tcp.flags.rst == 1                — RST packets
+tcp.analysis.retransmission       — Retransmissions
+ip.addr == 192.168.1.5            — Specific host
+ip.src == 192.168.1.5             — Traffic from host
+frame contains "password"         — Password in packet
+ftp.request.command == "PASS"     — FTP passwords
+http.authorization                — Basic Auth headers
+arp                               — ARP traffic
+icmp                              — Ping traffic
+frame.len > 1400                  — Large packets
+  </pre>
+  <h3>Capture Filters (BPF Syntax)</h3>
+  <pre>
+host 192.168.1.5         — Traffic to/from host
+src host 192.168.1.5     — From this host
+dst host 192.168.1.5     — To this host
+port 80                  — Port 80 traffic
+not port 22              — Exclude SSH
+net 192.168.1.0/24       — Entire subnet
+tcp                      — TCP only
+udp                      — UDP only
+icmp                     — ICMP only
+port 80 or port 443      — HTTP and HTTPS
+host 192.168.1.5 and port 80  — Host AND port
+  </pre>
+  <h3>Right-Click Menu — Quick Actions</h3>
+  <pre>
+Apply as Filter → Selected        — Filter for this exact value
+Apply as Filter → Not Selected    — Exclude this value
+Follow → TCP Stream               — Read full conversation
+Follow → UDP Stream               — Read UDP conversation
+Follow → HTTP Stream              — Read HTTP session
+Mark/Unmark Packet                — Highlight for reference
+Copy → Value                      — Copy field value
+Export Packet Bytes               — Save raw bytes
+  </pre>
+  <h3>TShark Quick Reference</h3>
+  <pre>
+tshark -D                         — List interfaces
+tshark -i eth0                    — Capture live
+tshark -r file.pcap               — Read file
+tshark -Y "filter"                — Apply display filter
+tshark -f "filter"                — Apply capture filter
+tshark -w output.pcap             — Write to file
+tshark -T fields -e field.name    — Extract specific fields
+tshark -q -z follow,tcp,ascii,N   — Follow stream N
+tshark -q -z io,phs               — Protocol hierarchy
+tshark -q -z conv,ip              — IP conversations
+  </pre>
+</details>
+
+</div>
+</div>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-right">
+            <span>BIT+ Platform</span>
+            <span>|</span>
+            <span>&copy; 2026 All rights reserved.</span>
+        </div>
+        <div class="footer-left">
+            <a href="about.html">About Us</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
