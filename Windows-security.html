@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Windows — Cybersecurity Course</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Windows security course — learn how to secure, manage, and harden Windows systems from the ground up.">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+        <a href="notes.html">Notes</a>
+    </nav>
+</header>
+
+<div class="ads-wrapper-layout">
+<div class="content-container">
+
+<details open>
+  <summary>Introduction — Windows and Cybersecurity</summary>
+  <p>Windows is the most widely used operating system in the world — which also makes it the most targeted by attackers. Understanding how Windows works internally is essential for any cybersecurity professional, whether you are defending systems or testing them.</p>
+  <h3>What You Will Learn</h3>
+  <p>Windows architecture — User accounts and permissions — Active Directory — Registry — Event Logs — Common attacks — Hardening techniques — and essential security tools built into Windows.</p>
+  <h3>Requirements</h3>
+  <p>Basic familiarity with using Windows. No prior security experience needed.</p>
+</details>
+
+<details open>
+  <summary>Windows Architecture</summary>
+  <h3>How Windows is Structured</h3>
+  <p>Windows is divided into two main zones: User Mode and Kernel Mode. Understanding this separation is fundamental to understanding privilege escalation attacks.</p>
+  <h3>Kernel Mode</h3>
+  <p>The core of the OS — has full access to hardware and memory. Runs: Windows Kernel (ntoskrnl.exe), Hardware Abstraction Layer (HAL), and Kernel-mode drivers. A crash here causes a Blue Screen of Death (BSOD).</p>
+  <h3>User Mode</h3>
+  <p>Where applications and services run — restricted access to hardware. Must request resources through system calls. Runs: Win32 subsystem, services, and user applications.</p>
+  <h3>Key System Processes</h3>
+  <pre>
+smss.exe       — Session Manager — first user-mode process
+csrss.exe      — Client/Server Runtime — manages Win32 console
+winlogon.exe   — Handles login/logout and Ctrl+Alt+Delete
+services.exe   — Service Control Manager — manages all services
+lsass.exe      — Local Security Authority — handles authentication
+  </pre>
+  <p>Attackers often disguise malware as these processes — always check the full path. Legitimate processes live in C:\Windows\System32\</p>
+  <h3>Windows Registry</h3>
+  <p>A hierarchical database storing system and application configuration. Five root keys:</p>
+  <pre>
+HKEY_LOCAL_MACHINE (HKLM)  — System-wide settings
+HKEY_CURRENT_USER  (HKCU)  — Current user settings
+HKEY_CLASSES_ROOT  (HKCR)  — File associations
+HKEY_USERS         (HKU)   — All user profiles
+HKEY_CURRENT_CONFIG (HKCC) — Hardware profile
+  </pre>
+  <p>Malware commonly uses Registry for persistence. Key autorun location: HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Run</p>
+</details>
+
+<details open>
+  <summary>User Accounts and Permissions</summary>
+  <h3>Account Types</h3>
+  <p>Administrator — Full control over the system. Can install software, modify system files, and manage other users.</p>
+  <p>Standard User — Limited permissions. Cannot install system-wide software or change system settings.</p>
+  <p>Guest — Minimal access. Disabled by default in modern Windows.</p>
+  <p>SYSTEM — The most privileged built-in account. Used by the OS itself. More powerful than Administrator.</p>
+  <h3>UAC — User Account Control</h3>
+  <p>A security feature that prompts for confirmation before allowing privileged actions — even for Administrators. Prevents malware from silently escalating privileges.</p>
+  <pre>
+UAC Levels:
+Always notify          — Highest security
+Notify app changes     — Default setting
+Notify app changes (no dimming)
+Never notify           — Disabled — dangerous!
+  </pre>
+  <h3>NTFS Permissions</h3>
+  <p>Every file and folder on NTFS has an Access Control List (ACL) defining who can do what.</p>
+  <pre>
+Full Control   — Read, write, modify, delete, change permissions
+Modify         — Read, write, modify, delete
+Read & Execute — View and run files
+Read           — View only
+Write          — Create and modify only
+  </pre>
+  <h3>Principle of Least Privilege</h3>
+  <p>Always give users and processes the minimum permissions they need to do their job — nothing more. This limits the damage if an account is compromised.</p>
+  <h3>Useful Commands</h3>
+  <pre>
+net user                        — List all local users
+net user username /add          — Create a new user
+net localgroup administrators   — List admin group members
+whoami /priv                    — Show current user privileges
+icacls C:\folder                — Show folder permissions
+  </pre>
+</details>
+
+<details>
+  <summary>Active Directory</summary>
+  <h3>What is Active Directory?</h3>
+  <p>Active Directory (AD) is Microsoft's directory service for managing users, computers, and resources in a network. Used in almost every corporate environment — making it a primary target for attackers.</p>
+  <h3>Core Components</h3>
+  <p>Domain — A logical grouping of network objects (users, computers, printers) sharing the same AD database.</p>
+  <p>Domain Controller (DC) — The server that runs Active Directory. Handles authentication and policy enforcement.</p>
+  <p>Organizational Unit (OU) — A container inside a domain for organizing objects and applying Group Policies.</p>
+  <p>Forest — The top-level container — a collection of one or more domains sharing a schema.</p>
+  <h3>Authentication — Kerberos</h3>
+  <p>Windows domains use Kerberos for authentication. The process uses tickets instead of passwords over the network:</p>
+  <pre>
+1. User logs in → sends credentials to the KDC (Key Distribution Center)
+2. KDC issues a TGT (Ticket Granting Ticket)
+3. User presents TGT to request a Service Ticket
+4. Service Ticket is presented to the target service
+5. Access granted — password never sent over the network
+  </pre>
+  <h3>Common AD Attacks</h3>
+  <p>Pass-the-Hash — Attacker uses a stolen NTLM hash to authenticate without knowing the plaintext password.</p>
+  <p>Kerberoasting — Attacker requests service tickets and cracks them offline to get service account passwords.</p>
+  <p>Golden Ticket — Attacker forges a TGT using the KRBTGT hash — gives unlimited domain access.</p>
+  <p>DCSync — Attacker mimics a Domain Controller to pull password hashes from AD.</p>
+  <h3>Basic Defense</h3>
+  <p> Use tiered administration — separate accounts for different privilege levels.</p>
+  <p> Enable Protected Users security group for privileged accounts.</p>
+  <p> Monitor for abnormal Kerberos ticket requests (Event ID 4769).</p>
+  <p> Regularly audit AD group memberships.</p>
+</details>
+
+<details>
+  <summary>Windows Firewall and Network Security</summary>
+  <h3>Windows Defender Firewall</h3>
+  <p>Built-in stateful firewall that filters inbound and outbound traffic based on rules. Supports three profiles:</p>
+  <pre>
+Domain Profile   — When connected to a corporate domain network
+Private Profile  — Home or trusted network
+Public Profile   — Untrusted networks (coffee shops, airports)
+  </pre>
+  <h3>Managing Firewall via CMD</h3>
+  <pre>
+— Check firewall status
+netsh advfirewall show allprofiles
+
+— Block an inbound port
+netsh advfirewall firewall add rule name="Block Port 23" ^
+      dir=in action=block protocol=TCP localport=23
+
+— Allow an application
+netsh advfirewall firewall add rule name="Allow MyApp" ^
+      dir=in action=allow program="C:\MyApp\app.exe"
+
+— Reset all rules to default
+netsh advfirewall reset
+  </pre>
+  <h3>Dangerous Open Ports to Watch</h3>
+  <pre>
+445   — SMB  — targeted by WannaCry and EternalBlue
+3389  — RDP  — Remote Desktop — common brute-force target
+23    — Telnet — unencrypted — disable immediately
+21    — FTP  — unencrypted — replace with SFTP
+135   — RPC  — often exploited in older Windows
+  </pre>
+  <h3>NetStat — Check Active Connections</h3>
+  <pre>
+netstat -ano              — All connections with PID
+netstat -ano | find "LISTENING"   — Open ports only
+netstat -ano | find ":4444"       — Check a specific port
+  </pre>
+</details>
+
+<details>
+  <summary>Windows Event Logs</summary>
+  <h3>What are Event Logs?</h3>
+  <p>Windows records system activity in Event Logs — essential for detecting attacks and investigating incidents. Accessed via Event Viewer (eventvwr.msc).</p>
+  <h3>Main Log Categories</h3>
+  <p>Application — Events from applications and programs.</p>
+  <p>Security — Login attempts, privilege use, object access. Most important for security.</p>
+  <p>System — Events from Windows system components and drivers.</p>
+  <p>PowerShell/Microsoft-Windows-PowerShell — PowerShell command execution — critical for detecting attacks.</p>
+  <h3>Critical Security Event IDs</h3>
+  <pre>
+4624  — Successful login
+4625  — Failed login attempt
+4634  — Account logged off
+4648  — Login using explicit credentials (RunAs)
+4672  — Special privileges assigned to new login
+4688  — New process created (process tracking)
+4698  — Scheduled task created
+4720  — User account created
+4732  — User added to a security group
+4771  — Kerberos pre-authentication failed
+7045  — New service installed
+  </pre>
+  <h3>Querying Logs via PowerShell</h3>
+  <pre>
+# Find all failed logins
+Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4625} |
+    Select-Object TimeCreated, Message | Format-List
+
+# Find new processes in the last hour
+Get-WinEvent -FilterHashtable @{
+    LogName='Security'; Id=4688;
+    StartTime=(Get-Date).AddHours(-1)
+}
+  </pre>
+  <h3>Golden Rules</h3>
+  <p> Enable audit policies — many events are off by default.</p>
+  <p> Forward logs to a centralized SIEM (Splunk, ELK, Wazuh).</p>
+  <p> Set log size large enough to retain history — attackers clear logs after intrusion.</p>
+</details>
+
+<details>
+  <summary>Common Windows Attacks</summary>
+  <h3>Pass-the-Hash (PtH)</h3>
+  <p>The attacker captures an NTLM hash from memory (using Mimikatz) and uses it directly to authenticate — without cracking the password.</p>
+  <pre>
+Defense:
+ Enable Protected Users group
+ Disable NTLM where possible — enforce Kerberos
+ Use Credential Guard (Windows 10/11 Enterprise)
+  </pre>
+  <h3>Mimikatz</h3>
+  <p>A famous post-exploitation tool that extracts plaintext passwords, hashes, and Kerberos tickets from Windows memory (LSASS process).</p>
+  <pre>
+Defense:
+ Enable LSA Protection: 
+   reg add HKLM\SYSTEM\CurrentControlSet\Control\Lsa /v RunAsPPL /t REG_DWORD /d 1
+ Enable Windows Defender Credential Guard
+ Restrict local administrator accounts
+  </pre>
+  <h3>Lateral Movement</h3>
+  <p>After gaining initial access, the attacker moves to other machines using tools like PsExec, WMI, or SMB with stolen credentials.</p>
+  <pre>
+Defense:
+ Use unique local admin passwords on every machine (LAPS)
+ Restrict SMB and RPC access between workstations
+ Monitor Event ID 4688 for suspicious process creation
+  </pre>
+  <h3>Persistence Techniques</h3>
+  <p>Attackers use these common methods to survive reboots:</p>
+  <pre>
+Registry Run Keys   — HKLM\...\CurrentVersion\Run
+Scheduled Tasks     — schtasks /create
+Services            — sc create
+Startup Folder      — C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Startup
+WMI Subscriptions   — Triggered on system events
+  </pre>
+  <h3>Living off the Land (LOL)</h3>
+  <p>Attackers use built-in Windows tools to avoid detection — no malware needed.</p>
+  <pre>
+PowerShell  — Download and execute payloads
+WMI         — Remote execution and persistence
+CertUtil    — Download files from the internet
+Regsvr32    — Execute remote scripts
+Mshta       — Run HTML applications
+Rundll32    — Execute DLL payloads
+  </pre>
+</details>
+
+<details>
+  <summary>Windows Hardening</summary>
+  <h3>What is Hardening?</h3>
+  <p>Reducing the attack surface of a Windows system by disabling unnecessary features, applying secure settings, and enforcing security policies.</p>
+  <h3>Essential Hardening Steps</h3>
+  <p>1. Keep Windows Updated — Enable Windows Update and apply patches immediately. Most attacks exploit known vulnerabilities.</p>
+  <p>2. Disable Unnecessary Services</p>
+  <pre>
+# List running services
+Get-Service | Where-Object {$_.Status -eq "Running"}
+
+# Disable a service
+Set-Service -Name "Telnet" -StartupType Disabled
+  </pre>
+  <p>3. Disable SMBv1 — The protocol exploited by WannaCry.</p>
+  <pre>
+Set-SmbServerConfiguration -EnableSMB1Protocol $false -Force
+  </pre>
+  <p>4. Enable Windows Defender and all protection features.</p>
+  <pre>
+Set-MpPreference -DisableRealtimeMonitoring $false
+Set-MpPreference -EnableControlledFolderAccess Enabled
+  </pre>
+  <p>5. Disable RDP if not needed — or restrict it to specific IPs.</p>
+  <pre>
+# Disable RDP
+Set-ItemProperty -Path 'HKLM:\System\CurrentControlSet\Control\Terminal Server' `
+                 -Name "fDenyTSConnections" -Value 1
+  </pre>
+  <p>6. Enable Audit Policies</p>
+  <pre>
+auditpol /set /category:"Logon/Logoff" /success:enable /failure:enable
+auditpol /set /category:"Account Logon" /success:enable /failure:enable
+auditpol /set /category:"Process Creation" /success:enable
+  </pre>
+  <p>7. Use AppLocker or Windows Defender Application Control to whitelist allowed applications.</p>
+  <h3>CIS Benchmarks</h3>
+  <p>The Center for Internet Security publishes free hardening guides for every Windows version. Follow the CIS Benchmark for your OS version as a baseline.</p>
+</details>
+
+<details>
+  <summary>PowerShell for Security</summary>
+  <h3>Why PowerShell?</h3>
+  <p>PowerShell is the most powerful built-in tool for Windows administration and security — used by both defenders and attackers. Knowing it is essential.</p>
+  <h3>Useful Security Commands</h3>
+  <pre>
+# List all local users
+Get-LocalUser
+
+# List all local groups
+Get-LocalGroup
+
+# Show members of Administrators group
+Get-LocalGroupMember -Group "Administrators"
+
+# List running processes with their paths
+Get-Process | Select-Object Name, Id, Path | Format-Table
+
+# Find recently modified files
+Get-ChildItem C:\ -Recurse -ErrorAction SilentlyContinue |
+    Where-Object { $_.LastWriteTime -gt (Get-Date).AddDays(-1) }
+
+# Check scheduled tasks
+Get-ScheduledTask | Where-Object {$_.State -ne "Disabled"}
+
+# List installed services and their binary paths
+Get-WmiObject Win32_Service | Select-Object Name, PathName, StartMode
+  </pre>
+  <h3>PowerShell Logging — Detect Attacks</h3>
+  <pre>
+# Enable Script Block Logging via Registry
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows\PowerShell\ScriptBlockLogging" ^
+        /v EnableScriptBlockLogging /t REG_DWORD /d 1 /f
+
+# View PowerShell logs
+Get-WinEvent -LogName "Microsoft-Windows-PowerShell/Operational" |
+    Select-Object TimeCreated, Message | Format-List
+  </pre>
+  <h3>Execution Policy</h3>
+  <pre>
+Restricted       — No scripts allowed (default)
+RemoteSigned     — Local scripts OK, remote must be signed
+AllSigned        — All scripts must be signed
+Unrestricted     — All scripts run — dangerous!
+Bypass           — Nothing is blocked — used by attackers
+
+# Check current policy
+Get-ExecutionPolicy
+
+# Set policy
+Set-ExecutionPolicy RemoteSigned -Scope LocalMachine
+  </pre>
+</details>
+
+<details>
+  <summary>Windows Defender and Built-in Security Tools</summary>
+  <h3>Windows Defender Antivirus</h3>
+  <p>Built-in real-time protection against malware. In Windows 10/11 it is a full enterprise-grade AV — keep it enabled.</p>
+  <pre>
+# Run a quick scan
+Start-MpScan -ScanType QuickScan
+
+# Run a full scan
+Start-MpScan -ScanType FullScan
+
+# Update signatures
+Update-MpSignature
+
+# Check protection status
+Get-MpComputerStatus
+  </pre>
+  <h3>Windows Defender Firewall with Advanced Security</h3>
+  <p>The full firewall management console — accessed via wf.msc. Supports inbound/outbound rules, connection security rules, and monitoring.</p>
+  <h3>Credential Guard</h3>
+  <p>Uses virtualization to isolate LSASS — prevents Mimikatz from extracting credentials. Available on Windows 10/11 Enterprise and Windows Server 2016+.</p>
+  <h3>Secure Boot</h3>
+  <p>A UEFI feature that verifies the bootloader signature before loading Windows — prevents bootkits and rootkits from loading before the OS.</p>
+  <h3>BitLocker</h3>
+  <p>Full disk encryption built into Windows Pro and Enterprise. Encrypts the entire drive — protects data if the physical device is stolen.</p>
+  <pre>
+# Check BitLocker status
+manage-bde -status
+
+# Enable BitLocker
+Enable-BitLocker -MountPoint "C:" -RecoveryPasswordProtector
+  </pre>
+  <h3>Sysinternals Suite</h3>
+  <p>Microsoft's free toolkit — essential for security analysis and incident response.</p>
+  <pre>
+Process Explorer  — Advanced Task Manager — shows parent processes and DLLs
+Autoruns          — Shows every program that runs at startup
+TCPView           — Real-time network connections per process
+Process Monitor   — Logs all file system, registry, and network activity
+PsExec            — Remote command execution
+Strings           — Extract readable strings from binary files
+  </pre>
+</details>
+
+<details>
+  <summary>Security Checklist — Windows Hardening</summary>
+  <h3>Before Deploying Any Windows System</h3>
+  <p> Windows Update is enabled and all patches applied</p>
+  <p> SMBv1 is disabled</p>
+  <p> RDP is disabled or restricted to specific IPs with NLA enabled</p>
+  <p> Windows Defender Antivirus and Firewall are enabled</p>
+  <p> UAC is set to default or higher — never disabled</p>
+  <p> All unnecessary services are disabled</p>
+  <p> Audit policies are enabled for Logon, Account Logon, and Process Creation</p>
+  <p> Event log sizes are configured to retain adequate history</p>
+  <p> Local Administrator account is renamed or disabled</p>
+  <p> LAPS is deployed to manage local admin passwords</p>
+  <p> PowerShell Script Block Logging is enabled</p>
+  <p> Credential Guard is enabled on supported hardware</p>
+  <p> BitLocker is enabled on all endpoints</p>
+  <p> LSA Protection (PPL) is enabled</p>
+  <p> Logs are forwarded to a centralized SIEM</p>
+</details>
+
+</div>
+</div>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-right">
+            <span>BIT+ Platform</span>
+            <span>|</span>
+            <span>&copy; 2026 All rights reserved.</span>
+        </div>
+        <div class="footer-left">
+            <a href="about.html">About Us</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
