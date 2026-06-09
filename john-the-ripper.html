@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John the Ripper — Cybersecurity Course</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="John the Ripper course — learn password cracking, hash identification, wordlist attacks, rule-based cracking, and ZIP/SSH key cracking.">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+        <a href="notes.html">Notes</a>
+    </nav>
+</header>
+
+<div class="ads-wrapper-layout">
+<div class="content-container">
+
+<details open>
+  <summary>Introduction — What is John the Ripper?</summary>
+  <p>John the Ripper (JtR) is one of the most famous and widely used password cracking tools in cybersecurity. Originally developed by Solar Designer in 1996, it is designed to detect weak passwords and crack password hashes using multiple attack modes. It is an essential tool for penetration testers, CTF players, and security auditors.</p>
+  <h3>What Can John Do?</h3>
+  <p>Crack password hashes — Auto-detect hash types — Wordlist attacks — Brute force attacks — Rule-based mangling — Crack ZIP, RAR, PDF, SSH keys, Office documents — Crack Linux/Windows password files — Incremental mode (pure brute force).</p>
+  <h3>John vs Hashcat</h3>
+  <pre>
+John the Ripper:
+  — CPU-based (also supports GPU in jumbo)
+  — Easier to use — auto-detects hash types
+  — Built-in file converters (zip2john, ssh2john...)
+  — Better for beginners and quick cracking
+  — Great for CTF challenges
+
+Hashcat:
+  — GPU-based — much faster on large wordlists
+  — Requires manual hash type specification
+  — More attack modes and rules
+  — Better for serious cracking at scale
+  — Industry standard for professional use
+
+Use John for: quick cracks, CTF, file hashes, convenience
+Use Hashcat for: large wordlists, GPU speed, serious cracking
+  </pre>
+  <h3>Editions</h3>
+  <pre>
+John the Ripper (Community Edition)
+  — Free and open-source
+  — Limited hash support
+  — Available in most Linux repos
+
+John the Ripper Jumbo (Recommended)
+  — Community-enhanced version
+  — Supports 400+ hash and cipher types
+  — Includes all *2john conversion tools
+  — Always use this version
+  </pre>
+  <h3>Installation</h3>
+  <pre>
+# Kali Linux (Jumbo pre-installed)
+john --version
+
+# Ubuntu/Debian
+sudo apt install john
+
+# Install Jumbo from source (full version)
+git clone https://github.com/openwall/john.git
+cd john/src
+./configure
+make -j$(nproc)
+sudo make install
+
+# The john binary will be at:
+john/run/john
+
+# macOS
+brew install john-jumbo
+
+# Check version and features
+john --list=formats | wc -l    — count supported hash types
+  </pre>
+</details>
+
+<details>
+  <summary>Hash Identification</summary>
+  <h3>Why Identify the Hash First?</h3>
+  <p>Before cracking, you must know what type of hash you are dealing with. John can auto-detect many types, but identifying it manually helps you choose the right approach and avoids wasting time on wrong formats.</p>
+  <h3>Common Hash Examples</h3>
+  <pre>
+MD5:
+  5f4dcc3b5aa765d61d8327deb882cf99
+  — 32 hex characters
+  — Very fast to crack — NOT secure
+
+SHA1:
+  5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8
+  — 40 hex characters
+  — Fast to crack — NOT secure
+
+SHA256:
+  ef92b778bafe771e89245b89ecbc08a44a4e166c06659911881f383d4473e94f
+  — 64 hex characters
+  — Slower but still crackable
+
+SHA512:
+  $6$rounds=5000$saltsalt$hash...
+  — 128 hex characters
+
+bcrypt:
+  $2a$12$R9h/cIPz0gi.URNNX3kh2OPST9/PgBkqquzi.Ss7KIUgO2t0jWMUW
+  — Starts with $2a$ or $2b$
+  — Intentionally slow — very hard to crack
+
+MD5crypt (Linux /etc/shadow):
+  $1$salt$hash
+  — Starts with $1$
+
+SHA512crypt (Linux /etc/shadow):
+  $6$salt$hash
+  — Starts with $6$
+
+NTLM (Windows):
+  b4b9b02e6f09a9bd760f388b67351e2b
+  — 32 hex — looks like MD5 but different algorithm
+
+NTLMv2:
+  username::domain:challenge:hash
+  — Multi-field format
+
+MySQL 4.x:
+  606717496665bcba
+  — 16 hex characters
+
+MySQL 5.x:
+  *2470C0C06DEE42FD1618BB99005ADCA2EC9D1E19
+  — Starts with *
+  </pre>
+  <h3>Hash Identification Tools</h3>
+  <pre>
+# hashid — identify a hash
+hashid '5f4dcc3b5aa765d61d8327deb882cf99'
+
+# Output:
+Analyzing '5f4dcc3b5aa765d61d8327deb882cf99'
+[+] MD2
+[+] MD5
+[+] MD4
+
+# hash-identifier (older tool)
+hash-identifier
+# Paste the hash when prompted
+
+# Name-That-Hash (modern, more accurate)
+pip3 install name-that-hash
+nth --text '5f4dcc3b5aa765d61d8327deb882cf99'
+
+# John auto-detect (just run it)
+john hash.txt
+# John will print: Loaded 1 password hash (MD5 [MD5 128/128 SSE4.1 4x3])
+  </pre>
+  <h3>John's Hash Format Names</h3>
+  <pre>
+# List ALL formats John supports
+john --list=formats
+
+# List formats matching a keyword
+john --list=formats | grep -i md5
+john --list=formats | grep -i sha
+john --list=formats | grep -i bcrypt
+john --list=formats | grep -i ntlm
+john --list=formats | grep -i zip
+
+# Common format names for --format flag:
+raw-md5        — Plain MD5
+raw-sha1       — Plain SHA1
+raw-sha256     — Plain SHA256
+raw-sha512     — Plain SHA512
+bcrypt         — bcrypt ($2a$, $2b$)
+sha512crypt    — Linux SHA512 ($6$)
+md5crypt       — Linux MD5 ($1$)
+nt             — Windows NTLM
+lm             — Windows LM hashes
+mssql          — Microsoft SQL Server
+mysql-sha1     — MySQL 5.x
+zip            — ZIP password
+rar            — RAR password
+pdf            — PDF password
+ssh            — SSH private key passphrase
+  </pre>
+</details>
+
+<details>
+  <summary>Basic Cracking — First Steps</summary>
+  <h3>Preparing the Hash File</h3>
+  <pre>
+# John reads hashes from a plain text file
+# One hash per line
+
+# Single hash
+echo "5f4dcc3b5aa765d61d8327deb882cf99" > hash.txt
+
+# With username (username:hash format)
+echo "admin:5f4dcc3b5aa765d61d8327deb882cf99" > hash.txt
+
+# Multiple hashes
+cat > hashes.txt << 'END'
+alice:5f4dcc3b5aa765d61d8327deb882cf99
+bob:e10adc3949ba59abbe56e057f20f883e
+charlie:25f9e794323b453885f5181f1b624d0b
+END
+  </pre>
+  <h3>Auto-Detection Crack</h3>
+  <pre>
+# John tries to auto-detect the hash type
+john hash.txt
+
+# Output:
+Loaded 1 password hash (MD5 [MD5 128/128 SSE4.1 4x3])
+Press 'q' or Ctrl-C to abort, almost any other key for status
+password         (admin)
+1g 0:00:00:00 DONE (2024-01-15 10:00) 100.0g/s 102400p/s
+  </pre>
+  <h3>Specify Hash Format Manually</h3>
+  <pre>
+# Always specify --format when you know the hash type
+# Avoids wrong auto-detection and speeds up cracking
+
+john --format=raw-md5 hash.txt
+john --format=raw-sha1 hash.txt
+john --format=raw-sha256 hash.txt
+john --format=bcrypt hash.txt
+john --format=sha512crypt hash.txt
+john --format=nt hash.txt         — Windows NTLM
+  </pre>
+  <h3>Show Cracked Passwords</h3>
+  <pre>
+# Show results after cracking
+john --show hash.txt
+
+# Show with specific format
+john --show --format=raw-md5 hash.txt
+
+# Output:
+admin:password
+alice:123456
+2 password hashes cracked, 1 left
+
+# John saves results to ~/.john/john.pot
+# You can view it directly:
+cat ~/.john/john.pot
+  </pre>
+  <h3>Resuming an Interrupted Session</h3>
+  <pre>
+# If you stop a crack with Ctrl+C, resume it:
+john --restore
+
+# Resume a named session
+john --restore=mysession
+
+# Start a named session (so you can resume it later)
+john --session=mysession --wordlist=rockyou.txt hash.txt
+  </pre>
+</details>
+
+<details>
+  <summary>Attack Modes</summary>
+  <h3>Mode 1 — Wordlist Attack</h3>
+  <p>The most common and effective attack. John tries every word in a wordlist as the password. Fast and often successful against weak passwords.</p>
+  <pre>
+# Basic wordlist attack
+john --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
+
+# With explicit format
+john --wordlist=/usr/share/wordlists/rockyou.txt \
+     --format=raw-md5 \
+     hash.txt
+
+# Common wordlists:
+/usr/share/wordlists/rockyou.txt                         — 14M passwords
+/usr/share/seclists/Passwords/Common-Credentials/        — Various
+/usr/share/seclists/Passwords/Leaked-Databases/          — Leaked DBs
+/usr/share/wordlists/metasploit/unix_passwords.txt       — Unix passwords
+  </pre>
+  <h3>Mode 2 — Wordlist + Rules</h3>
+  <p>Rules transform each word in the wordlist — adding numbers, capitalizing letters, appending symbols — dramatically increasing coverage without a larger wordlist.</p>
+  <pre>
+# Use built-in rules
+john --wordlist=rockyou.txt --rules hash.txt
+
+# Use a specific rule set
+john --wordlist=rockyou.txt --rules=best64 hash.txt
+john --wordlist=rockyou.txt --rules=jumbo hash.txt
+john --wordlist=rockyou.txt --rules=KoreLogic hash.txt
+
+# List all available rule sets
+john --list=rules
+
+# Common rules:
+# best64      — 64 most effective transformations
+# jumbo       — Large comprehensive ruleset
+# KoreLogic   — Professional pentest rules
+# T0XlC       — Popular community rules
+# NT          — Rules tuned for NTLM hashes
+
+# What rules DO to your wordlist:
+password → Password     (capitalize)
+password → PASSWORD     (uppercase)
+password → password1    (append number)
+password → password!    (append symbol)
+password → drowssap     (reverse)
+password → p4ssw0rd     (leet speak)
+password → Password123! (combine transforms)
+  </pre>
+  <h3>Mode 3 — Incremental (Brute Force)</h3>
+  <p>Tries every possible character combination. Very slow but finds any password if given enough time. Use only for short passwords.</p>
+  <pre>
+# Full incremental brute force (ALL printable characters)
+john --incremental hash.txt
+
+# Digits only (fastest — for numeric PINs)
+john --incremental=digits hash.txt
+
+# Lowercase letters only
+john --incremental=lower hash.txt
+
+# Uppercase letters only
+john --incremental=upper hash.txt
+
+# All letters (upper + lower)
+john --incremental=alpha hash.txt
+
+# Alphanumeric
+john --incremental=alnum hash.txt
+
+# Set minimum and maximum password length
+john --incremental --min-length=4 --max-length=6 hash.txt
+
+# Estimated time for brute force (MD5):
+# 4 chars lowercase: seconds
+# 6 chars lowercase: minutes
+# 8 chars lowercase: hours
+# 8 chars all printable: years
+  </pre>
+  <h3>Mode 4 — Single Crack Mode</h3>
+  <p>Uses information from the username, GECOS fields, and home directory to generate candidate passwords. Very fast and often finds obvious passwords like username123.</p>
+  <pre>
+# Format: username:hash
+echo "alice:5f4dcc3b5aa765d61d8327deb882cf99" > hash.txt
+
+john --single hash.txt
+
+# John tries:
+# alice, Alice, ALICE, alice1, alice123,
+# alice!, Alice1, eCILA (reversed), and more
+# Based on the username "alice"
+  </pre>
+  <h3>Mode 5 — External Mode</h3>
+  <p>Uses custom C-like code to generate candidates. Advanced usage — for custom character sets and patterns.</p>
+  <pre>
+# Use a predefined external mode
+john --external=double hash.txt
+
+# List available external modes
+john --list=externals
+  </pre>
+  <h3>Combining Modes</h3>
+  <pre>
+# Recommended attack order (from fastest to slowest):
+# 1. Single crack (seconds)
+john --single hash.txt
+
+# 2. Wordlist with rules (minutes)
+john --wordlist=rockyou.txt --rules=best64 hash.txt
+
+# 3. Large wordlist (minutes to hours)
+john --wordlist=rockyou.txt hash.txt
+
+# 4. Wordlist with heavy rules (hours)
+john --wordlist=rockyou.txt --rules=jumbo hash.txt
+
+# 5. Incremental short length (hours to days)
+john --incremental --max-length=6 hash.txt
+  </pre>
+</details>
+
+<details>
+  <summary>Rules — Transforming Wordlists</summary>
+  <h3>What Are Rules?</h3>
+  <p>Rules are transformation instructions that John applies to every word in a wordlist. A single rule can turn one word into dozens of candidates — making your wordlist attack much more powerful without increasing the wordlist size.</p>
+  <h3>Built-in Rule Sets</h3>
+  <pre>
+# List all rule sets
+john --list=rules
+
+# Key rule sets:
+best64      — 64 most effective rules — good starting point
+jumbo       — Thousands of rules — comprehensive
+KoreLogic   — Professional rules used in pentests
+T0XlC       — Popular community ruleset
+NT          — Tuned for NTLM — Windows passwords
+d3ad0ne     — Aggressive rules for tough hashes
+dive        — Very large ruleset
+  </pre>
+  <h3>Understanding Rule Syntax</h3>
+  <pre>
+Rules are defined in john.conf under [List.Rules:RuleName]
+Each line is one rule — applied to every word in the wordlist
+
+Common rule commands:
+:         — Do nothing (pass word as-is)
+l         — Lowercase entire word
+u         — Uppercase entire word
+c         — Capitalize first letter
+C         — Lowercase first, uppercase rest
+r         — Reverse the word
+d         — Duplicate the word
+f         — Reflect (word + reversed word)
+$X        — Append character X
+^X        — Prepend character X
+[         — Delete first character
+]         — Delete last character
+D N       — Delete character at position N
+sXY       — Substitute all X with Y (s = substitute)
+@X        — Purge all instances of X
+T N       — Toggle case of character at position N
+  </pre>
+  <h3>Writing Custom Rules</h3>
+  <pre>
+# Edit john.conf to add custom rules
+sudo nano /etc/john/john.conf
+# Or the jumbo location:
+sudo nano /usr/share/john/john.conf
+
+# Add your rule set at the end:
+[List.Rules:MyCustomRules]
+:               — Original word
+c               — Capitalize
+l               — Lowercase
+u               — Uppercase
+r               — Reversed
+$1              — Append 1
+$2              — Append 2
+$123            — Append 123
+$!              — Append !
+$@              — Append @
+c$1             — Capitalize + append 1
+c$!             — Capitalize + append !
+$1$2$3          — Append 123
+^1              — Prepend 1
+ss$             — Replace s with $
+sa@             — Replace a with @
+se3             — Replace e with 3
+si1             — Replace i with 1
+so0             — Replace o with 0
+
+# Use your custom rules:
+john --wordlist=rockyou.txt --rules=MyCustomRules hash.txt
+  </pre>
+  <h3>Common Transformation Examples</h3>
+  <pre>
+Word: "password"
+
+Rule: c           → Password
+Rule: u           → PASSWORD
+Rule: r           → drowssap
+Rule: d           → passwordpassword
+Rule: $1          → password1
+Rule: $123        → password123
+Rule: $!          → password!
+Rule: ^1          → 1password
+Rule: c$1         → Password1
+Rule: c$!         → Password!
+Rule: se3         → pa$$word  (wait — s substitutes)
+Rule: sa@         → p@ssword
+Rule: so0         → passw0rd
+Rule: si1         → pass1word
+Rule: ss$         → pa$$word
+  </pre>
+</details>
+
+<details>
+  <summary>Cracking Linux and Windows Hashes</summary>
+  <h3>Linux Password Hashes — /etc/shadow</h3>
+  <pre>
+# /etc/shadow format:
+# username:$type$salt$hash:lastchange:min:max:warn:inactive:expire
+
+# Hash type prefixes:
+$1$   — MD5crypt
+$2a$  — bcrypt
+$5$   — SHA-256crypt
+$6$   — SHA-512crypt (most common modern Linux)
+$y$   — yescrypt (newest)
+
+# Example shadow entry:
+alice:$6$rounds=5000$salt$hash...:18000:0:99999:7:::
+
+# Extract and crack:
+sudo cat /etc/shadow > shadow.txt
+john --format=sha512crypt shadow.txt
+john --format=sha512crypt --wordlist=rockyou.txt shadow.txt
+
+# Combine /etc/passwd and /etc/shadow (unshadow)
+unshadow /etc/passwd /etc/shadow > unshadowed.txt
+john unshadowed.txt
+john --wordlist=rockyou.txt unshadowed.txt
+  </pre>
+  <h3>Windows Password Hashes — NTLM</h3>
+  <pre>
+# Windows stores passwords as NTLM hashes in the SAM database
+# Extract with: secretsdump.py, mimikatz, or from Metasploit
+
+# NTLM hash format:
+# username:RID:LM_hash:NT_hash:::
+
+# Example:
+Administrator:500:aad3b435b51404eeaad3b435b51404ee:b4b9b02e6f09a9bd760f388b67351e2b:::
+
+# Save just the NT hash
+echo "b4b9b02e6f09a9bd760f388b67351e2b" > ntlm.txt
+
+# Crack NTLM hash
+john --format=nt ntlm.txt
+john --format=nt --wordlist=rockyou.txt ntlm.txt
+john --format=nt --wordlist=rockyou.txt --rules ntlm.txt
+
+# Crack from full secretsdump output
+john --format=nt --wordlist=rockyou.txt secretsdump.txt
+
+# LM hashes (older Windows — very weak)
+john --format=lm lm_hashes.txt
+  </pre>
+  <h3>Active Directory — NTLMv2 Hashes</h3>
+  <pre>
+# NTLMv2 captured with Responder during MITM
+# Format: username::domain:challenge:hash:blob
+
+# Save Responder hash to file
+cat /usr/share/responder/logs/SMB-NTLMv2-SSP-192.168.1.5.txt > ntlmv2.txt
+
+# Crack NTLMv2
+john --format=netntlmv2 ntlmv2.txt
+john --format=netntlmv2 --wordlist=rockyou.txt ntlmv2.txt
+
+# NTLMv1
+john --format=netntlm ntlmv1.txt
+  </pre>
+  <h3>Kerberos Hashes — Kerberoasting</h3>
+  <pre>
+# Kerberos TGS hashes captured during Kerberoasting
+# Format: $krb5tgs$23$*user*realm*service*hash
+
+# Save Kerberoast hash to file
+echo '$krb5tgs$23$*...' > kerb.txt
+
+# Crack
+john --format=krb5tgs --wordlist=rockyou.txt kerb.txt
+
+# AS-REP Roasting (no pre-auth required)
+echo '$krb5asrep$23$...' > asrep.txt
+john --format=krb5asrep --wordlist=rockyou.txt asrep.txt
+  </pre>
+</details>
+
+<details>
+  <summary>Cracking Files — zip2john, ssh2john, and More</summary>
+  <h3>The *2john Tools</h3>
+  <p>John comes with a set of conversion tools that extract the hash from protected files and convert it into a format John can crack. This is one of John's biggest advantages over other tools.</p>
+  <pre>
+# Location of *2john tools (Jumbo):
+/usr/share/john/
+ls /usr/share/john/*2john*
+
+# Available converters:
+zip2john       — ZIP archives
+rar2john       — RAR archives
+7z2john        — 7-Zip archives
+pdf2john       — PDF documents
+ssh2john       — SSH private keys
+office2john    — Microsoft Office (docx, xlsx, pptx)
+keepass2john   — KeePass databases
+bitlocker2john — BitLocker encrypted drives
+gpg2john       — GPG/PGP keys
+truecrypt2john — TrueCrypt volumes
+luks2john      — LUKS disk encryption
+radius2john    — RADIUS authentication
+  </pre>
+  <h3>ZIP File Cracking</h3>
+  <pre>
+# Step 1 — Extract hash from ZIP
+zip2john protected.zip > zip_hash.txt
+
+# The hash file looks like:
+# protected.zip:$zip2$...
+
+# Step 2 — Crack the hash
+john zip_hash.txt
+john --wordlist=rockyou.txt zip_hash.txt
+john --wordlist=rockyou.txt --rules zip_hash.txt
+
+# Step 3 — Show the password
+john --show zip_hash.txt
+
+# Step 4 — Extract the ZIP
+unzip -P [cracked_password] protected.zip
+  </pre>
+  <h3>RAR File Cracking</h3>
+  <pre>
+# Extract hash
+rar2john protected.rar > rar_hash.txt
+
+# Crack
+john --wordlist=rockyou.txt rar_hash.txt
+john --show rar_hash.txt
+  </pre>
+  <h3>SSH Private Key Cracking</h3>
+  <pre>
+# SSH key with passphrase
+# (id_rsa, id_ecdsa, id_ed25519)
+
+# Step 1 — Convert key to John format
+ssh2john id_rsa > ssh_hash.txt
+
+# Step 2 — Crack
+john ssh_hash.txt
+john --wordlist=rockyou.txt ssh_hash.txt
+john --wordlist=rockyou.txt --rules ssh_hash.txt
+
+# Step 3 — Show cracked passphrase
+john --show ssh_hash.txt
+
+# Step 4 — Use the key
+ssh -i id_rsa user@target.com
+# Enter the cracked passphrase when prompted
+  </pre>
+  <h3>Microsoft Office Document Cracking</h3>
+  <pre>
+# Extract hash from Office file
+office2john protected.docx > office_hash.txt
+office2john protected.xlsx > office_hash.txt
+office2john protected.pptx > office_hash.txt
+
+# Crack
+john --wordlist=rockyou.txt office_hash.txt
+john --show office_hash.txt
+  </pre>
+  <h3>PDF Cracking</h3>
+  <pre>
+# Extract hash from PDF
+pdf2john protected.pdf > pdf_hash.txt
+
+# Crack
+john --wordlist=rockyou.txt pdf_hash.txt
+john --show pdf_hash.txt
+  </pre>
+  <h3>KeePass Database Cracking</h3>
+  <pre>
+# Extract hash from KeePass .kdbx file
+keepass2john database.kdbx > keepass_hash.txt
+
+# Crack master password
+john --wordlist=rockyou.txt keepass_hash.txt
+john --wordlist=rockyou.txt --rules keepass_hash.txt
+
+# Show result
+john --show keepass_hash.txt
+  </pre>
+  <h3>7-Zip Cracking</h3>
+  <pre>
+# Extract hash
+7z2john protected.7z > sevenzip_hash.txt
+
+# Crack (7z is slow — CPU intensive)
+john --wordlist=rockyou.txt sevenzip_hash.txt
+  </pre>
+</details>
+
+<details>
+  <summary>Advanced Techniques</summary>
+  <h3>Custom Wordlist Generation — Mask Attack</h3>
+  <pre>
+# John doesn't have native mask attack like Hashcat
+# But you can generate masks with other tools and pipe
+
+# Generate all 6-digit PINs
+crunch 6 6 0123456789 > pins.txt
+john --wordlist=pins.txt hash.txt
+
+# Generate passwords with pattern: Word + 2 digits
+crunch 6 10 -t %%%%@@ > pattern.txt
+# % = lowercase, @ = number
+
+# Use prince processor for better wordlist generation
+# (included in John Jumbo)
+john --wordlist=rockyou.txt --prince hash.txt
+  </pre>
+  <h3>Loopback Mode</h3>
+  <pre>
+# Use previously cracked passwords as the new wordlist
+# Very useful — people often reuse similar passwords
+
+# First crack some passwords
+john --wordlist=rockyou.txt hash.txt
+
+# Then use cracked passwords as input with rules
+john --loopback hash.txt
+john --loopback --rules=jumbo hash.txt
+
+# This feeds john.pot (cracked passwords) back as wordlist
+  </pre>
+  <h3>Pot File Management</h3>
+  <pre>
+# John saves ALL cracked hashes to:
+~/.john/john.pot
+
+# View all ever-cracked passwords
+cat ~/.john/john.pot
+
+# Show cracked from a specific hash file
+john --show hash.txt
+
+# Show cracked with format
+john --show --format=raw-md5 hash.txt
+
+# Clear the pot file (start fresh)
+rm ~/.john/john.pot
+
+# Use a different pot file
+john --pot=custom.pot --wordlist=rockyou.txt hash.txt
+
+# Skip already-cracked hashes
+# John does this automatically using the pot file
+  </pre>
+  <h3>Distributing Cracking — Fork</h3>
+  <pre>
+# Use multiple CPU cores (processes)
+# Split work across N processes
+
+# Use 4 CPU cores
+john --fork=4 --wordlist=rockyou.txt hash.txt
+
+# Check progress of all processes
+john --status
+  </pre>
+  <h3>MPI (Multi-Machine Cracking)</h3>
+  <pre>
+# For cluster cracking across multiple machines
+# Requires John built with MPI support
+
+mpirun -np 8 john --wordlist=rockyou.txt hash.txt
+# -np = number of processes across all nodes
+  </pre>
+  <h3>Cracking with Masks (via Jumbo)</h3>
+  <pre>
+# John Jumbo supports mask mode similar to Hashcat
+# ?l = lowercase, ?u = uppercase, ?d = digit, ?s = symbol
+
+# Crack 8-char password: 4 lowercase + 4 digits
+john --mask='?l?l?l?l?d?d?d?d' hash.txt
+
+# Crack with known prefix
+john --mask='Password?d?d?d' hash.txt
+
+# Custom charset
+john --mask='?1?1?1?1?1?1' --1='abcdef0123456789' hash.txt
+  </pre>
+  <h3>Benchmarking</h3>
+  <pre>
+# Benchmark all formats on your system
+john --test
+
+# Benchmark a specific format
+john --test --format=raw-md5
+john --test --format=bcrypt
+john --test --format=sha512crypt
+
+# Example output:
+Raw-MD5:      12345678 c/s real (CPU speed)
+bcrypt:       2345 c/s real (much slower by design)
+sha512crypt:  456789 c/s real
+  </pre>
+</details>
+
+<details>
+  <summary>Practical CTF Workflows</summary>
+  <h3>Workflow 1 — Unknown Hash</h3>
+  <pre>
+# You found a hash: 5f4dcc3b5aa765d61d8327deb882cf99
+
+# Step 1 — Identify the hash type
+nth --text '5f4dcc3b5aa765d61d8327deb882cf99'
+hashid '5f4dcc3b5aa765d61d8327deb882cf99'
+
+# Step 2 — Save to file
+echo "5f4dcc3b5aa765d61d8327deb882cf99" > hash.txt
+
+# Step 3 — Try wordlist first (fast)
+john --format=raw-md5 --wordlist=/usr/share/wordlists/rockyou.txt hash.txt
+
+# Step 4 — If not found, try with rules
+john --format=raw-md5 --wordlist=rockyou.txt --rules=best64 hash.txt
+
+# Step 5 — Show result
+john --show --format=raw-md5 hash.txt
+  </pre>
+  <h3>Workflow 2 — Linux Shadow File</h3>
+  <pre>
+# You got access to /etc/passwd and /etc/shadow
+
+# Step 1 — Combine them
+unshadow /etc/passwd /etc/shadow > unshadowed.txt
+
+# Step 2 — Quick wordlist attack
+john --wordlist=rockyou.txt unshadowed.txt
+
+# Step 3 — Rules for complex passwords
+john --wordlist=rockyou.txt --rules=jumbo unshadowed.txt
+
+# Step 4 — Check what was cracked
+john --show unshadowed.txt
+  </pre>
+  <h3>Workflow 3 — Windows NTLM from Secretsdump</h3>
+  <pre>
+# You ran secretsdump.py and got:
+# Administrator:500:aad3b435b51404eeaad3b435b51404ee:b4b9b02e6f09a9bd760f388b67351e2b:::
+# user1:1001:aad3b435b51404eeaad3b435b51404ee:e10adc3949ba59abbe56e057f20f883e:::
+
+# Save the file
+cat secretsdump_output.txt > ntlm_hashes.txt
+
+# Crack all NT hashes
+john --format=nt --wordlist=rockyou.txt ntlm_hashes.txt
+john --format=nt --wordlist=rockyou.txt --rules ntlm_hashes.txt
+
+# Show cracked
+john --show --format=nt ntlm_hashes.txt
+  </pre>
+  <h3>Workflow 4 — Protected ZIP in CTF</h3>
+  <pre>
+# Found a password-protected ZIP file
+
+# Step 1 — Extract hash
+zip2john secret.zip > zip_hash.txt
+
+# Step 2 — Crack with rockyou
+john --wordlist=rockyou.txt zip_hash.txt
+
+# Step 3 — If not found, try rules
+john --wordlist=rockyou.txt --rules=best64 zip_hash.txt
+
+# Step 4 — Try short brute force
+john --incremental=alnum --max-length=5 zip_hash.txt
+
+# Step 5 — Show password
+john --show zip_hash.txt
+
+# Step 6 — Extract the ZIP
+unzip -P [password] secret.zip
+  </pre>
+  <h3>Workflow 5 — SSH Key with Passphrase</h3>
+  <pre>
+# Found an id_rsa file — needs passphrase
+
+# Step 1 — Convert
+python3 /usr/share/john/ssh2john.py id_rsa > ssh_hash.txt
+# Or if in PATH:
+ssh2john id_rsa > ssh_hash.txt
+
+# Step 2 — Crack
+john --wordlist=rockyou.txt ssh_hash.txt
+
+# Step 3 — Try rules if needed
+john --wordlist=rockyou.txt --rules ssh_hash.txt
+
+# Step 4 — Show passphrase
+john --show ssh_hash.txt
+
+# Step 5 — Connect
+chmod 600 id_rsa
+ssh -i id_rsa user@target.com
+  </pre>
+  <h3>Workflow 6 — Kerberoasting Hash</h3>
+  <pre>
+# Captured TGS hash from Kerberoasting
+
+# Step 1 — Save hash to file
+echo '$krb5tgs$23$*svc_account$DOMAIN.LOCAL$...' > kerb.txt
+
+# Step 2 — Crack
+john --format=krb5tgs --wordlist=rockyou.txt kerb.txt
+
+# Step 3 — Apply rules (service accounts often have predictable passwords)
+john --format=krb5tgs --wordlist=rockyou.txt --rules=best64 kerb.txt
+
+# Step 4 — Show result
+john --show --format=krb5tgs kerb.txt
+  </pre>
+</details>
+
+<details>
+  <summary>John the Ripper Cheat Sheet</summary>
+  <h3>Core Commands</h3>
+  <pre>
+john hash.txt                        — Auto-detect and crack
+john --format=TYPE hash.txt          — Specify hash type
+john --wordlist=FILE hash.txt        — Wordlist attack
+john --rules hash.txt                — Default rules
+john --rules=RULESET hash.txt        — Specific ruleset
+john --incremental hash.txt          — Brute force all chars
+john --incremental=TYPE hash.txt     — Brute force charset
+john --single hash.txt               — Single crack mode
+john --show hash.txt                 — Show cracked passwords
+john --restore                       — Resume last session
+john --session=NAME ...              — Named session
+  </pre>
+  <h3>Format and Configuration</h3>
+  <pre>
+john --list=formats                  — List all hash formats
+john --list=formats | grep TYPE      — Find specific format
+john --list=rules                    — List all rule sets
+john --test                          — Benchmark all formats
+john --test --format=TYPE            — Benchmark one format
+  </pre>
+  <h3>Performance</h3>
+  <pre>
+john --fork=N hash.txt               — Use N CPU cores
+john --min-length=N                  — Minimum password length
+john --max-length=N                  — Maximum password length
+john --pot=FILE                      — Custom pot file
+john --loopback hash.txt             — Use pot as wordlist
+  </pre>
+  <h3>File Conversion Tools</h3>
+  <pre>
+zip2john file.zip > hash.txt
+rar2john file.rar > hash.txt
+7z2john file.7z > hash.txt
+ssh2john id_rsa > hash.txt
+pdf2john file.pdf > hash.txt
+office2john file.docx > hash.txt
+keepass2john db.kdbx > hash.txt
+unshadow /etc/passwd /etc/shadow > hash.txt
+  </pre>
+  <h3>Common Format Names</h3>
+  <pre>
+raw-md5        — MD5
+raw-sha1       — SHA1
+raw-sha256     — SHA256
+raw-sha512     — SHA512
+bcrypt         — bcrypt ($2a$/$2b$)
+md5crypt       — Linux MD5 ($1$)
+sha512crypt    — Linux SHA512 ($6$)
+nt             — Windows NTLM
+lm             — Windows LM
+netntlmv2      — NTLMv2 (Responder)
+krb5tgs        — Kerberoast
+krb5asrep      — AS-REP Roast
+zip            — ZIP password
+ssh            — SSH key passphrase
+  </pre>
+  <h3>Recommended Attack Order</h3>
+  <pre>
+1. john --single hash.txt
+   — Uses username info — very fast
+
+2. john --wordlist=rockyou.txt hash.txt
+   — Most common passwords — fast
+
+3. john --wordlist=rockyou.txt --rules=best64 hash.txt
+   — With transformations — medium speed
+
+4. john --wordlist=rockyou.txt --rules=jumbo hash.txt
+   — Heavy rules — slower but thorough
+
+5. john --incremental=alnum --max-length=6 hash.txt
+   — Last resort — short brute force
+
+# Always check results:
+john --show hash.txt
+  </pre>
+</details>
+
+</div>
+</div>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-right">
+            <span>BIT+ Platform</span>
+            <span>|</span>
+            <span>&copy; 2026 All rights reserved.</span>
+        </div>
+        <div class="footer-left">
+            <a href="about.html">About Us</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
