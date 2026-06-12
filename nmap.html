@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>nmap</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+        <ul class="menu">
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    
+        
+
+
+
+
+
+
+<main class="content">
+<div class="content-wrapper">
+<h3>Nmap (Network Mapper)</h3>
+
+<p>Nmap (Network Mapper) is one of the most popular network scanning tools used for host discovery, port scanning, service detection, and security assessment.</p>
+
+<p>It is widely used by network administrators, security professionals, and penetration testers.</p>
+
+<h4>Why Use Nmap?</h4>
+
+<p>Nmap helps identify systems, open ports, running services, and operating systems on a network.</p>
+
+<p>It is often the first tool used during reconnaissance and enumeration.</p>
+
+<h4>Common Uses</h4>
+
+<p>• Host Discovery</p>
+
+<p>• Port Scanning</p>
+
+<p>• Service Enumeration</p>
+
+<p>• Operating System Detection</p>
+
+<p>• Vulnerability Assessment</p>
+
+<p>• Network Mapping</p>
+
+<h4>Basic Syntax</h4>
+
+<pre class="code-box"><code>nmap [options] target</code></pre>
+
+<p>Example:</p>
+
+<pre class="code-box"><code>nmap 192.168.1.10</code></pre>
+
+<h4>Host Discovery</h4>
+
+<p>Identify live hosts on a network.</p>
+
+<pre class="code-box"><code>nmap -sn 192.168.1.0/24</code></pre>
+
+<p>The <code>-sn</code> option performs host discovery without port scanning.</p>
+
+<h4>Port Scanning</h4>
+
+<h5>Default Scan</h5>
+
+<pre class="code-box"><code>nmap 192.168.1.10</code></pre>
+
+<p>Scans the most common ports.</p>
+
+<h5>Scan Specific Ports</h5>
+
+<pre class="code-box"><code>nmap -p 80,443 192.168.1.10</code></pre>
+
+<h5>Scan All Ports</h5>
+
+<pre class="code-box"><code>nmap -p- 192.168.1.10</code></pre>
+
+<p>Scans all 65535 TCP ports.</p>
+
+<h4>Common Scan Types</h4>
+
+<h5>TCP Connect Scan</h5>
+
+<pre class="code-box"><code>nmap -sT 192.168.1.10</code></pre>
+
+<p>Completes the full TCP handshake.</p>
+
+<h5>SYN Scan</h5>
+
+<pre class="code-box"><code>nmap -sS 192.168.1.10</code></pre>
+
+<p>Also known as a Half-Open Scan.</p>
+
+<p>One of the most commonly used scan types.</p>
+
+<h5>UDP Scan</h5>
+
+<pre class="code-box"><code>nmap -sU 192.168.1.10</code></pre>
+
+<p>Scans UDP services.</p>
+
+<h4>Service Version Detection</h4>
+
+<p>Identify running services and versions.</p>
+
+<pre class="code-box"><code>nmap -sV 192.168.1.10</code></pre>
+
+<p>Example output:</p>
+
+<pre class="code-box"><code>22/tcp open  ssh   OpenSSH 9.2
+80/tcp open  http  Apache 2.4.58</code></pre>
+
+<h4>Operating System Detection</h4>
+
+<p>Attempt to identify the target operating system.</p>
+
+<pre class="code-box"><code>nmap -O 192.168.1.10</code></pre>
+
+<h4>Aggressive Scan</h4>
+
+<p>Combines several features:</p>
+
+<p>• OS Detection</p>
+
+<p>• Version Detection</p>
+
+<p>• Script Scanning</p>
+
+<p>• Traceroute</p>
+
+<pre class="code-box"><code>nmap -A 192.168.1.10</code></pre>
+
+<h4>Nmap Scripting Engine (NSE)</h4>
+
+<p>NSE allows Nmap to perform advanced enumeration and security checks.</p>
+
+<p>List available scripts:</p>
+
+<pre class="code-box"><code>ls /usr/share/nmap/scripts</code></pre>
+
+<h5>Run Default Scripts</h5>
+
+<pre class="code-box"><code>nmap -sC 192.168.1.10</code></pre>
+
+<h5>Run a Specific Script</h5>
+
+<pre class="code-box"><code>nmap --script smb-os-discovery 192.168.1.10</code></pre>
+
+<h4>Common NSE Categories</h4>
+
+<p>• auth</p>
+
+<p>• discovery</p>
+
+<p>• default</p>
+
+<p>• safe</p>
+
+<p>• version</p>
+
+<p>• vuln</p>
+
+<h4>Timing Options</h4>
+
+<p>Nmap provides timing templates.</p>
+
+<pre class="code-box"><code>-T0 Paranoid
+-T1 Sneaky
+-T2 Polite
+-T3 Normal
+-T4 Aggressive
+-T5 Insane</code></pre>
+
+<p>Example:</p>
+
+<pre class="code-box"><code>nmap -T4 192.168.1.10</code></pre>
+
+<h4>Output Formats</h4>
+
+<h5>Normal Output</h5>
+
+<pre class="code-box"><code>nmap -oN scan.txt target</code></pre>
+
+<h5>XML Output</h5>
+
+<pre class="code-box"><code>nmap -oX scan.xml target</code></pre>
+
+<h5>All Formats</h5>
+
+<pre class="code-box"><code>nmap -oA scan target</code></pre>
+
+<h4>Common Port States</h4>
+
+<pre class="code-box"><code>open
+closed
+filtered
+unfiltered
+open|filtered
+closed|filtered</code></pre>
+
+<h5>Open</h5>
+
+<p>A service is actively listening.</p>
+
+<h5>Closed</h5>
+
+<p>The port is reachable but no service is listening.</p>
+
+<h5>Filtered</h5>
+
+<p>A firewall or filter is blocking the scan.</p>
+
+<h4>Useful Nmap Commands</h4>
+
+<h5>Quick Scan</h5>
+
+<pre class="code-box"><code>nmap target</code></pre>
+
+<h5>Full TCP Scan</h5>
+
+<pre class="code-box"><code>nmap -p- target</code></pre>
+
+<h5>Service Detection</h5>
+
+<pre class="code-box"><code>nmap -sV target</code></pre>
+
+<h5>Default Scripts</h5>
+
+<pre class="code-box"><code>nmap -sC target</code></pre>
+
+<h5>Common Enumeration Scan</h5>
+
+<pre class="code-box"><code>nmap -sC -sV target</code></pre>
+
+<h5>Full Enumeration Scan</h5>
+
+<pre class="code-box"><code>nmap -p- -sC -sV target</code></pre>
+
+<h4>Nmap Workflow</h4>
+
+<p>1- Discover live hosts.</p>
+
+<p>2- Identify open ports.</p>
+
+<p>3- Enumerate services.</p>
+
+<p>4- Detect service versions.</p>
+
+<p>5- Run NSE scripts.</p>
+
+<p>6- Analyze findings.</p>
+
+<p>7- Identify attack surfaces.</p>
+
+<h4>What Should a Penetration Tester Check?</h4>
+
+<p>• Open ports</p>
+
+<p>• Running services</p>
+
+<p>• Service versions</p>
+
+<p>• Misconfigurations</p>
+
+<p>• Default credentials</p>
+
+<p>• SMB shares</p>
+
+<p>• Web services</p>
+
+<p>• Potential vulnerabilities</p>
+
+<h4>Common Ports to Remember</h4>
+
+<pre class="code-box"><code>21   FTP
+22   SSH
+23   Telnet
+25   SMTP
+53   DNS
+80   HTTP
+88   Kerberos
+110  POP3
+135  RPC
+139  NetBIOS
+143  IMAP
+389  LDAP
+443  HTTPS
+445  SMB
+3306 MySQL
+3389 RDP
+5432 PostgreSQL
+5985 WinRM</code></pre>
+
+<h4>Important Note</h4>
+
+<p>Nmap is primarily an enumeration tool.</p>
+
+<p>The quality of a penetration test often depends on how well the tester performs enumeration.</p>
+
+<p>Most successful attacks begin with information gathered using Nmap.</p>  
+</div>
+</main>
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
