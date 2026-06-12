@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>http headers</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+        <ul class="menu">
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    
+        
+
+
+
+
+
+
+<main class="content">
+<div class="content-wrapper">
+<h3>HTTP Headers</h3>
+
+<p>HTTP Headers are key-value pairs sent between the client and the server.</p>
+
+<p>They provide additional information about the request or response.</p>
+
+<h4>Why Are Headers Important?</h4>
+
+<p>Headers help servers and browsers understand how data should be processed.</p>
+
+<p>They are also heavily used during web application security testing.</p>
+
+<h4>Header Format</h4>
+
+<pre class="code-box"><code>Header-Name: Value</code></pre>
+
+<p>Example:</p>
+
+<pre class="code-box"><code>Host: example.com
+User-Agent: Mozilla/5.0
+Accept: application/json</code></pre>
+
+<h4>Common Request Headers</h4>
+
+<h5>Host</h5>
+
+<p>Specifies the target website or virtual host.</p>
+
+<pre class="code-box"><code>Host: example.com</code></pre>
+
+<h5>User-Agent</h5>
+
+<p>Identifies the browser or client making the request.</p>
+
+<pre class="code-box"><code>User-Agent: Mozilla/5.0</code></pre>
+
+<h5>Accept</h5>
+
+<p>Specifies the content types accepted by the client.</p>
+
+<pre class="code-box"><code>Accept: application/json</code></pre>
+
+<h5>Accept-Language</h5>
+
+<p>Specifies the preferred language.</p>
+
+<pre class="code-box"><code>Accept-Language: en-US</code></pre>
+
+<h5>Cookie</h5>
+
+<p>Sends stored cookies to the server.</p>
+
+<pre class="code-box"><code>Cookie: session=abc123</code></pre>
+
+<h5>Authorization</h5>
+
+<p>Used for authentication.</p>
+
+<pre class="code-box"><code>Authorization: Bearer TOKEN</code></pre>
+
+<h5>Referer</h5>
+
+<p>Indicates the previous page visited by the user.</p>
+
+<pre class="code-box"><code>Referer: https://google.com</code></pre>
+
+<h5>Origin</h5>
+
+<p>Specifies the origin of the request.</p>
+
+<p>Important when testing CORS policies.</p>
+
+<pre class="code-box"><code>Origin: https://example.com</code></pre>
+
+<h5>Content-Type</h5>
+
+<p>Defines the format of the data being sent.</p>
+
+<pre class="code-box"><code>Content-Type: application/json</code></pre>
+
+<h5>Content-Length</h5>
+
+<p>Specifies the size of the request body.</p>
+
+<pre class="code-box"><code>Content-Length: 120</code></pre>
+
+<h4>Common Response Headers</h4>
+
+<h5>Server</h5>
+
+<p>Identifies the web server software.</p>
+
+<pre class="code-box"><code>Server: Apache/2.4.57</code></pre>
+
+<h5>Set-Cookie</h5>
+
+<p>Creates a cookie in the user's browser.</p>
+
+<pre class="code-box"><code>Set-Cookie: session=abc123</code></pre>
+
+<h5>Content-Type</h5>
+
+<p>Defines the type of content returned.</p>
+
+<pre class="code-box"><code>Content-Type: text/html</code></pre>
+
+<h5>Content-Length</h5>
+
+<p>Specifies the size of the response body.</p>
+
+<pre class="code-box"><code>Content-Length: 2048</code></pre>
+
+<h5>Location</h5>
+
+<p>Used during redirects.</p>
+
+<pre class="code-box"><code>Location: /login</code></pre>
+
+<h4>Security Headers</h4>
+
+<h5>Strict-Transport-Security (HSTS)</h5>
+
+<p>Forces browsers to use HTTPS.</p>
+
+<pre class="code-box"><code>Strict-Transport-Security: max-age=31536000</code></pre>
+
+<h5>Content-Security-Policy (CSP)</h5>
+
+<p>Helps prevent Cross-Site Scripting (XSS).</p>
+
+<pre class="code-box"><code>Content-Security-Policy: default-src 'self'</code></pre>
+
+<h5>X-Frame-Options</h5>
+
+<p>Protects against Clickjacking attacks.</p>
+
+<pre class="code-box"><code>X-Frame-Options: DENY</code></pre>
+
+<h5>X-Content-Type-Options</h5>
+
+<p>Prevents MIME type sniffing.</p>
+
+<pre class="code-box"><code>X-Content-Type-Options: nosniff</code></pre>
+
+<h5>Referrer-Policy</h5>
+
+<p>Controls how much referrer information is shared.</p>
+
+<pre class="code-box"><code>Referrer-Policy: strict-origin</code></pre>
+
+<h4>What Should a Penetration Tester Check?</h4>
+
+<p>When intercepting traffic with Burp Suite, pay close attention to:</p>
+
+<p>• Cookies</p>
+<p>• Authorization headers</p>
+<p>• Host header manipulation</p>
+<p>• CORS-related headers</p>
+<p>• Missing security headers</p>
+<p>• Sensitive information disclosure</p>
+
+<h4>Example Request</h4>
+
+<pre class="code-box"><code>GET /profile HTTP/1.1
+Host: example.com
+User-Agent: Mozilla/5.0
+Cookie: session=abc123
+Accept: application/json</code></pre>
+</div>
+</main>
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
