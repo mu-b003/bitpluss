@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>http</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+        <ul class="menu">
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    
+        
+
+
+
+
+
+
+<main class="content">
+    <div class="content-wrapper">
+      <h3>HTTP (HyperText Transfer Protocol)</h3>
+      <p>HTTP is the protocol responsible for transferring data between a web browser (Client) and a web server (Server).</p>
+      <p>When you enter a website URL such as:</p>        
+        <pre class="code-box"><code>https://example.com</code></pre>
+        <p>the browser sends an HTTP Request to the server, and the server responds with an HTTP Response.</p>
+        <h3>How Does HTTP Work?</h3>
+        <p>1- The user requests a web page.</p>
+        <p>2- The browser sends an HTTP Request.</p>
+        <p>3- The server processes the request.</p>
+        <p>4- The server sends an HTTP Response.</p>
+        <p>5- The browser displays the result.</p>
+        <h3>Example</h3>
+        <pre class="code-box">
+        <code>Client ------ Request ------> Server</code>
+        <code>Client <----- Response ------ Server</code>
+        </pre>
+<h3>Components of an HTTP Request</h3>
+
+<p>Every HTTP request consists of several parts.</p>
+
+<h3>1. Request Line</h3>
+
+<p>The Request Line contains:</p>
+
+<pre class="code-box"><code>METHOD PATH VERSION</code></pre>
+
+<p>Example:</p>
+
+<pre class="code-box"><code>GET /profile HTTP/1.1</code></pre>
+
+<p>Meaning:</p>
+
+<p><strong>GET</strong> = Request method</p>
+<p><strong>/profile</strong> = Requested resource</p>
+<p><strong>HTTP/1.1</strong> = HTTP version</p>
+<h3>2. Headers</h3>
+<p>Headers contain additional information about the request.</p>
+
+<pre class="code-box"><code>Host: example.com
+User-Agent: Chrome
+Cookie: session=abc123</code></pre>
+
+<h3>3. Body</h3>
+<p>The Body contains data sent to the server.</p>
+
+<pre class="code-box"><code>{
+  "username": "admin",
+  "password": "123456"
+}</code></pre>
+
+<h3>Components of an HTTP Response</h3>
+
+<h4>Status Line</h4>
+<p>Example:</p>
+
+<pre class="code-box"><code>HTTP/1.1 200 OK</code></pre>
+
+<h4>Headers</h4>
+<p>Example:</p>
+
+<pre class="code-box"><code>Content-Type: text/html
+Content-Length: 1024</code></pre>
+
+<h4>Body</h4>
+<p>Contains the page content or returned data.</p>
+
+<pre class="code-box"><code>&lt;h1&gt;Welcome&lt;/h1&gt;</code></pre>
+
+<h3>Common HTTP Methods</h3>
+
+<h4>GET</h4>
+<p>Used to retrieve data.</p>
+
+<pre class="code-box"><code>GET /products</code></pre>
+
+<p>A GET request should not modify data on the server.</p>
+
+<h4>POST</h4>
+<p>Used to create new data.</p>
+
+<pre class="code-box"><code>POST /register</code></pre>
+
+<p>Practical example:</p>
+
+<pre class="code-box"><code>{
+  "username": "mubarak",
+  "password": "123456"
+}</code></pre>
+
+<h4>PUT</h4>
+<p>Used to update an entire resource.</p>
+
+<pre class="code-box"><code>PUT /users/5</code></pre>
+
+<h4>PATCH</h4>
+<p>Used to update part of a resource.</p>
+
+<pre class="code-box"><code>PATCH /users/5</code></pre>
+
+<p>Example payload:</p>
+
+<pre class="code-box"><code>{
+  "email": "new@email.com"
+}</code></pre>
+
+<h4>DELETE</h4>
+<p>Used to remove data.</p>
+
+<pre class="code-box"><code>DELETE /users/5</code></pre>
+
+<h4>HEAD</h4>
+<p>Similar to GET but returns no response body.</p>
+
+<p>Commonly used to determine:</p>
+
+<p>• File size</p>
+<p>• File type</p>
+<p>• Whether a resource exists</p>
+
+<h4>OPTIONS</h4>
+<p>Returns the methods allowed on a resource.</p>
+
+<pre class="code-box"><code>OPTIONS /api/users</code></pre>
+
+<p>Response:</p>
+
+<pre class="code-box"><code>Allow: GET, POST, PUT</code></pre>
+
+<h4>TRACE</h4>
+<p>Returns the request exactly as received by the server.</p>
+<p>Often disabled for security reasons.</p>
+
+<h4>CONNECT</h4>
+<p>Used to establish a tunnel, commonly for HTTPS connections.</p>
+
+<h3>HTTP Status Codes</h3>
+
+<p>HTTP status codes are divided into five categories.</p>
+
+<h4>1xx Informational</h4>
+<p><strong>100 Continue</strong> — Continue sending the request.</p>
+
+<h4>2xx Success</h4>
+<p><strong>200 OK</strong> — The request was successful.</p>
+<p><strong>201 Created</strong> — A new resource was created successfully.</p>
+<p><strong>204 No Content</strong> — The request succeeded but no data is returned.</p>
+
+<h4>3xx Redirection</h4>
+<p><strong>301 Moved Permanently</strong> — Permanent redirection.</p>
+<p><strong>302 Found</strong> — Temporary redirection.</p>
+<p><strong>304 Not Modified</strong> — The content has not changed since the last request.</p>
+
+<h4>4xx Client Errors</h4>
+<p><strong>400 Bad Request</strong> — Invalid request.</p>
+<p><strong>401 Unauthorized</strong> — Authentication required.</p>
+<p><strong>403 Forbidden</strong> — Access denied.</p>
+<p><strong>404 Not Found</strong> — Resource not found.</p>
+<p><strong>405 Method Not Allowed</strong> — Method not allowed.</p>
+<p><strong>408 Request Timeout</strong> — Request timed out.</p>
+<p><strong>429 Too Many Requests</strong> — Rate limit exceeded.</p>
+
+<h4>5xx Server Errors</h4>
+<p><strong>500 Internal Server Error</strong> — Generic server error.</p>
+<p><strong>502 Bad Gateway</strong> — Invalid gateway response.</p>
+<p><strong>503 Service Unavailable</strong> — Service unavailable.</p>
+<p><strong>504 Gateway Timeout</strong> — Gateway timeout.</p>
+</div>
+</main>
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
