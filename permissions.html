@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>permission</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+        <ul class="menu">
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    
+        
+
+
+
+
+
+
+<main class="content">
+<div class="content-wrapper">
+<h3>Linux Permissions</h3>
+
+<p>Linux permissions are used to control who can access files and directories and what actions they can perform.</p>
+
+<p>Every file and directory has permissions assigned to the owner, group, and others.</p>
+
+<h4>Why Are Permissions Important?</h4>
+
+<p>Permissions help protect files from unauthorized access and modification.</p>
+
+<p>They are a fundamental part of Linux security.</p>
+
+<h4>Permission Structure</h4>
+
+<p>Example:</p>
+
+<pre class="code-box"><code>-rwxr-xr--</code></pre>
+
+<p>Breakdown:</p>
+
+<pre class="code-box"><code>- rwx r-x r--
+  |   |   |
+  |   |   └── Others
+  |   └────── Group
+  └────────── Owner</code></pre>
+
+<h4>Permission Types</h4>
+
+<h5>Read (r)</h5>
+
+<p>Allows viewing the contents of a file.</p>
+
+<p>For directories, allows listing files.</p>
+
+<pre class="code-box"><code>r = 4</code></pre>
+
+<h5>Write (w)</h5>
+
+<p>Allows modifying a file.</p>
+
+<p>For directories, allows creating and deleting files.</p>
+
+<pre class="code-box"><code>w = 2</code></pre>
+
+<h5>Execute (x)</h5>
+
+<p>Allows executing a file as a program.</p>
+
+<p>For directories, allows entering the directory.</p>
+
+<pre class="code-box"><code>x = 1</code></pre>
+
+<h4>Permission Groups</h4>
+
+<h5>Owner (u)</h5>
+
+<p>The user who owns the file.</p>
+
+<h5>Group (g)</h5>
+
+<p>Users belonging to the assigned group.</p>
+
+<h5>Others (o)</h5>
+
+<p>All other users on the system.</p>
+
+<h4>Viewing Permissions</h4>
+
+<pre class="code-box"><code>ls -l</code></pre>
+
+<p>Example output:</p>
+
+<pre class="code-box"><code>-rwxr-xr-- 1 user users 1024 notes.txt</code></pre>
+
+<p>Meaning:</p>
+
+<pre class="code-box"><code>Owner  = rwx
+Group  = r-x
+Others = r--</code></pre>
+
+<h4>Numeric Permissions</h4>
+
+<p>Linux permissions can be represented using numbers.</p>
+
+<pre class="code-box"><code>r = 4
+w = 2
+x = 1</code></pre>
+
+<p>Examples:</p>
+
+<pre class="code-box"><code>7 = rwx = 4+2+1
+6 = rw- = 4+2
+5 = r-x = 4+1
+4 = r-- = 4</code></pre>
+
+<h4>Common Permission Values</h4>
+
+<pre class="code-box"><code>777 = rwxrwxrwx
+755 = rwxr-xr-x
+744 = rwxr--r--
+700 = rwx------
+644 = rw-r--r--
+600 = rw-------</code></pre>
+
+<h4>Changing Permissions</h4>
+
+<h5>chmod</h5>
+
+<p>Used to modify file permissions.</p>
+
+<p>Example:</p>
+
+<pre class="code-box"><code>chmod 755 script.sh</code></pre>
+
+<p>Result:</p>
+
+<pre class="code-box"><code>Owner  = rwx
+Group  = r-x
+Others = r-x</code></pre>
+
+<h4>Symbolic Mode</h4>
+
+<p>Add execute permission:</p>
+
+<pre class="code-box"><code>chmod +x script.sh</code></pre>
+
+<p>Remove write permission:</p>
+
+<pre class="code-box"><code>chmod -w file.txt</code></pre>
+
+<p>Give owner full permissions:</p>
+
+<pre class="code-box"><code>chmod u+rwx file.txt</code></pre>
+
+<h4>Changing Ownership</h4>
+
+<h5>chown</h5>
+
+<p>Changes file ownership.</p>
+
+<pre class="code-box"><code>chown user file.txt</code></pre>
+
+<p>Change owner and group:</p>
+
+<pre class="code-box"><code>chown user:developers file.txt</code></pre>
+
+<h5>chgrp</h5>
+
+<p>Changes group ownership.</p>
+
+<pre class="code-box"><code>chgrp developers file.txt</code></pre>
+
+<h4>Directory Permissions</h4>
+
+<p>Directory permissions behave differently from file permissions.</p>
+
+<pre class="code-box"><code>r = List files
+w = Create/Delete files
+x = Enter directory</code></pre>
+
+<h4>Special Permissions</h4>
+
+<h5>SUID (Set User ID)</h5>
+
+<p>Allows a file to run with the permissions of its owner.</p>
+
+<p>Example:</p>
+
+<pre class="code-box"><code>-rwsr-xr-x</code></pre>
+
+<p>Find SUID files:</p>
+
+<pre class="code-box"><code>find / -perm -4000 2>/dev/null</code></pre>
+
+<h5>SGID (Set Group ID)</h5>
+
+<p>Allows execution with group permissions.</p>
+
+<pre class="code-box"><code>-rwxr-sr-x</code></pre>
+
+<h5>Sticky Bit</h5>
+
+<p>Only the file owner can delete files inside the directory.</p>
+
+<p>Common example:</p>
+
+<pre class="code-box"><code>/tmp</code></pre>
+
+<pre class="code-box"><code>drwxrwxrwt</code></pre>
+
+<h4>Permission Examples</h4>
+
+<p>Private file:</p>
+
+<pre class="code-box"><code>chmod 600 secrets.txt</code></pre>
+
+<p>Public script:</p>
+
+<pre class="code-box"><code>chmod 755 script.sh</code></pre>
+
+<p>Private directory:</p>
+
+<pre class="code-box"><code>chmod 700 projects</code></pre>
+
+<h4>What Should a Penetration Tester Check?</h4>
+
+<p>• World-writable files</p>
+
+<p>• Weak file permissions</p>
+
+<p>• Sensitive files readable by everyone</p>
+
+<p>• Misconfigured SUID binaries</p>
+
+<p>• Misconfigured SGID binaries</p>
+
+<p>• Writable system directories</p>
+
+<p>• Privilege escalation opportunities</p>
+
+<h4>Useful Commands</h4>
+
+<pre class="code-box"><code>ls -l
+chmod
+chown
+chgrp
+find / -perm -4000
+find / -perm -2000
+stat file.txt</code></pre>
+
+<h4>Common Permission Values to Remember</h4>
+
+<pre class="code-box"><code>777 → Everyone can do everything
+755 → Common for scripts and directories
+644 → Common for files
+700 → Private directories
+600 → Sensitive files</code></pre>    
+</div>
+</main>  
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
