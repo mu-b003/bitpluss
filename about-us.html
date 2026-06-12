@@ -1,0 +1,83 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>about-us</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+    <main class="content">
+        <div class="content-wrapper">
+             <h2>About Us</h2>
+            <p>
+                BIT+ is a cybersecurity notes platform designed to help students,
+                aspiring penetration testers, and security enthusiasts learn faster
+                through clear and practical summaries.
+            </p>
+
+            <p>
+                The platform provides structured notes covering web security,
+                Linux, Active Directory, networking fundamentals, common
+                vulnerabilities, and security tools used in real-world environments.
+            </p>
+
+            <p>
+                Whether you are preparing for certifications, studying penetration
+                testing, or reviewing technical concepts, BIT+ aims to provide
+                concise and easy-to-understand learning resources.
+            </p>
+        </div>
+    </main>
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved.
+        <a href="about-us.html">About Us</a> |
+        <a href="privacy-policy.html">Privacy Policy</a> |
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
