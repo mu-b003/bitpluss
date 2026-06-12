@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>wireshark</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+        <ul class="menu">
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    
+        
+
+
+
+
+
+
+<main class="content">
+<div class="content-wrapper">
+<h3>Wireshark</h3>
+
+<p>Wireshark is the world's most widely used network protocol analyzer.</p>
+
+<p>It allows security professionals to capture, inspect, and analyze network traffic in real time.</p>
+
+<p>Wireshark is commonly used for network troubleshooting, incident response, digital forensics, and penetration testing.</p>
+
+<h4>Why Use Wireshark?</h4>
+
+<p>Wireshark helps analysts understand what is happening on a network by examining individual packets.</p>
+
+<p>It can reveal communication between systems, protocols in use, authentication attempts, and potential security issues.</p>
+
+<h4>How Wireshark Works</h4>
+
+<p>1- Capture network traffic.</p>
+
+<p>2- Display captured packets.</p>
+
+<p>3- Analyze protocols and data.</p>
+
+<p>4- Identify network behavior.</p>
+
+<p>5- Investigate security events.</p>
+
+<h4>Traffic Flow</h4>
+
+<pre class="code-box"><code>Device A
+   |
+   | Network Traffic
+   |
+   v
+Wireshark
+   |
+   v
+Packet Analysis</code></pre>
+
+<h4>Main Components</h4>
+
+<h5>Packet List Pane</h5>
+
+<p>Displays all captured packets.</p>
+
+<p>Each packet contains:</p>
+
+<p>• Source Address</p>
+
+<p>• Destination Address</p>
+
+<p>• Protocol</p>
+
+<p>• Packet Length</p>
+
+<p>• Additional Information</p>
+
+<h5>Packet Details Pane</h5>
+
+<p>Displays protocol information for the selected packet.</p>
+
+<p>Example:</p>
+
+<pre class="code-box"><code>Ethernet
+IP
+TCP
+HTTP</code></pre>
+
+<h5>Packet Bytes Pane</h5>
+
+<p>Displays the raw packet data in hexadecimal and ASCII format.</p>
+
+<h4>Capturing Traffic</h4>
+
+<p>Select a network interface and start capturing packets.</p>
+
+<p>Common interfaces:</p>
+
+<p>• Ethernet</p>
+
+<p>• Wi-Fi</p>
+
+<p>• VPN Interfaces</p>
+
+<p>• Loopback Interface</p>
+
+<h4>Important Protocols</h4>
+
+<h5>HTTP</h5>
+
+<pre class="code-box"><code>tcp.port == 80</code></pre>
+
+<p>Used for web traffic.</p>
+
+<h5>HTTPS</h5>
+
+<pre class="code-box"><code>tcp.port == 443</code></pre>
+
+<p>Encrypted web traffic.</p>
+
+<h5>DNS</h5>
+
+<pre class="code-box"><code>dns</code></pre>
+
+<p>Domain name resolution.</p>
+
+<h5>TCP</h5>
+
+<pre class="code-box"><code>tcp</code></pre>
+
+<p>Reliable transport protocol.</p>
+
+<h5>UDP</h5>
+
+<pre class="code-box"><code>udp</code></pre>
+
+<p>Connectionless transport protocol.</p>
+
+<h5>ICMP</h5>
+
+<pre class="code-box"><code>icmp</code></pre>
+
+<p>Used by ping and network diagnostics.</p>
+
+<h4>Display Filters</h4>
+
+<p>Display filters allow analysts to focus on specific traffic.</p>
+
+<h5>Filter by IP Address</h5>
+
+<pre class="code-box"><code>ip.addr == 192.168.1.10</code></pre>
+
+<h5>Filter by Source IP</h5>
+
+<pre class="code-box"><code>ip.src == 192.168.1.10</code></pre>
+
+<h5>Filter by Destination IP</h5>
+
+<pre class="code-box"><code>ip.dst == 192.168.1.20</code></pre>
+
+<h5>Filter by TCP Port</h5>
+
+<pre class="code-box"><code>tcp.port == 22</code></pre>
+
+<h5>Filter by HTTP Requests</h5>
+
+<pre class="code-box"><code>http.request</code></pre>
+
+<h5>Filter by DNS Queries</h5>
+
+<pre class="code-box"><code>dns</code></pre>
+
+<h4>Following Streams</h4>
+
+<p>Wireshark can reconstruct entire conversations.</p>
+
+<p>Example:</p>
+
+<pre class="code-box"><code>Right Click Packet
+→ Follow
+→ TCP Stream</code></pre>
+
+<p>This allows viewing complete communications between systems.</p>
+
+<h4>TCP Three-Way Handshake</h4>
+
+<p>Wireshark is commonly used to analyze TCP connections.</p>
+
+<pre class="code-box"><code>Client ---- SYN ----> Server
+
+Client <-- SYN/ACK -- Server
+
+Client ---- ACK ----> Server</code></pre>
+
+<h4>DNS Analysis</h4>
+
+<p>Wireshark can identify:</p>
+
+<p>• DNS Queries</p>
+
+<p>• DNS Responses</p>
+
+<p>• Suspicious Domains</p>
+
+<p>• DNS Tunneling Activity</p>
+
+<h4>HTTP Analysis</h4>
+
+<p>Inspect HTTP requests and responses.</p>
+
+<p>Example:</p>
+
+<pre class="code-box"><code>GET /login HTTP/1.1
+
+Host: example.com</code></pre>
+
+<p>Useful for understanding web application behavior.</p>
+
+<h4>Credential Discovery</h4>
+
+<p>In insecure protocols, credentials may appear in plaintext.</p>
+
+<p>Examples:</p>
+
+<pre class="code-box"><code>FTP
+
+Telnet
+
+HTTP</code></pre>
+
+<p>Always analyze captured traffic responsibly and within authorized environments.</p>
+
+<h4>Exporting Objects</h4>
+
+<p>Wireshark can extract files transferred across the network.</p>
+
+<p>Examples:</p>
+
+<p>• Images</p>
+
+<p>• Documents</p>
+
+<p>• Executables</p>
+
+<p>• Web Content</p>
+
+<h4>Useful Statistics</h4>
+
+<p>Wireshark provides network statistics such as:</p>
+
+<p>• Protocol Hierarchy</p>
+
+<p>• Conversations</p>
+
+<p>• Endpoints</p>
+
+<p>• Flow Graphs</p>
+
+<p>• Packet Length Distribution</p>
+
+<h4>Common Use Cases</h4>
+
+<p>• Network Troubleshooting</p>
+
+<p>• Malware Analysis</p>
+
+<p>• Incident Response</p>
+
+<p>• Digital Forensics</p>
+
+<p>• Penetration Testing</p>
+
+<p>• Protocol Analysis</p>
+
+<h4>What Should a Penetration Tester Look For?</h4>
+
+<p>• Plaintext Credentials</p>
+
+<p>• Authentication Traffic</p>
+
+<p>• Sensitive Data Exposure</p>
+
+<p>• Misconfigured Services</p>
+
+<p>• Network Enumeration Activity</p>
+
+<p>• Malware Communications</p>
+
+<p>• Internal Network Information</p>
+
+<p>• DNS Activity</p>
+
+<h4>Useful Filters to Remember</h4>
+
+<pre class="code-box"><code>http
+
+https
+
+dns
+
+tcp
+
+udp
+
+icmp
+
+arp
+
+ftp
+
+smtp
+
+ip.addr == 192.168.1.10
+
+tcp.port == 80
+
+http.request</code></pre>
+
+<h4>Common Shortcuts</h4>
+
+<pre class="code-box"><code>Ctrl + E   → Start/Stop Capture
+
+Ctrl + F   → Find Packet
+
+Ctrl + H   → Packet History
+
+Ctrl + Shift + E → Export Objects</code></pre>
+
+<h4>Important Note</h4>
+
+<p>Wireshark is a packet analyzer, not an exploitation tool.</p>
+
+<p>Its strength lies in visibility and understanding network communications.</p>
+
+<p>Many security issues can be identified simply by analyzing traffic and recognizing abnormal behavior.</p>  
+</div>
+</main>    
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
