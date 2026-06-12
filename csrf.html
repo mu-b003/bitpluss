@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>csrf</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+        <ul class="menu">
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    
+        
+
+
+
+
+
+
+<main class="content">
+<div class="content-wrapper">
+<h3>Cross-Site Request Forgery (CSRF)</h3>
+
+<p>Cross-Site Request Forgery (CSRF) is a web vulnerability that forces a victim's browser to perform unwanted actions on a web application where the victim is already authenticated.</p>
+
+<p>The attack abuses the trust that a website places in a user's browser.</p>
+
+<h4>Why Is CSRF Dangerous?</h4>
+
+<p>An attacker may be able to:</p>
+
+<p>• Change account settings</p>
+<p>• Change passwords</p>
+<p>• Transfer funds</p>
+<p>• Send messages</p>
+<p>• Perform actions as the victim</p>
+
+<h4>How CSRF Works</h4>
+
+<p>1- The victim logs into a website.</p>
+
+<p>2- The website creates a session cookie.</p>
+
+<p>3- The victim visits an attacker-controlled website.</p>
+
+<p>4- The attacker's page sends a request to the target website.</p>
+
+<p>5- The browser automatically includes the victim's cookies.</p>
+
+<p>6- The target website processes the request as if it came from the victim.</p>
+
+<h4>Example Scenario</h4>
+
+<p>The victim is logged into:</p>
+
+<pre class="code-box"><code>https://bank.com</code></pre>
+
+<p>The application uses cookies for authentication.</p>
+
+<p>The attacker creates a malicious page that submits:</p>
+
+<pre class="code-box"><code>POST /transfer
+amount=1000
+account=attacker</code></pre>
+
+<p>If protections are missing, the transfer may be executed using the victim's session.</p>
+
+<h4>Why Cookies Matter</h4>
+
+<p>Browsers automatically send cookies with requests.</p>
+
+<pre class="code-box"><code>Cookie: session=abc123</code></pre>
+
+<p>CSRF attacks rely on this behavior.</p>
+
+<h4>Conditions Required for CSRF</h4>
+
+<p>• The victim must be authenticated.</p>
+
+<p>• Authentication relies on automatically sent credentials.</p>
+
+<p>• The application does not properly verify requests.</p>
+
+<h4>Example Vulnerable Request</h4>
+
+<pre class="code-box"><code>POST /change-email
+
+email=attacker@example.com</code></pre>
+
+<p>If no CSRF protection exists, an attacker may trigger this request from another website.</p>
+
+<h4>GET-Based CSRF Example</h4>
+
+<pre class="code-box"><code>https://example.com/delete?id=10</code></pre>
+
+<p>If sensitive actions use GET requests, exploitation may become easier.</p>
+
+<h4>CSRF Attack Example</h4>
+
+<p>Malicious HTML page:</p>
+
+<pre class="code-box"><code>&lt;form action="https://example.com/change-email"
+method="POST"&gt;
+
+  &lt;input type="hidden"
+  name="email"
+  value="attacker@example.com"&gt;
+
+&lt;/form&gt;</code></pre>
+
+<p>The browser may automatically submit the request with the victim's session cookie.</p>
+
+<h4>CSRF Tokens</h4>
+
+<p>The most common defense against CSRF.</p>
+
+<p>The application generates a unique random token for each user session.</p>
+
+<p>Example:</p>
+
+<pre class="code-box"><code>&lt;input type="hidden"
+name="csrf_token"
+value="a8f9c7e123"&gt;</code></pre>
+
+<p>The server validates the token before processing the request.</p>
+
+<h4>SameSite Cookies</h4>
+
+<p>The SameSite attribute controls whether cookies are sent with cross-site requests.</p>
+
+<p>Example:</p>
+
+<pre class="code-box"><code>Set-Cookie:
+session=abc123;
+SameSite=Strict</code></pre>
+
+<p>Possible values:</p>
+
+<p>• Strict</p>
+
+<p>• Lax</p>
+
+<p>• None</p>
+
+<h4>Origin Header</h4>
+
+<p>The Origin header identifies the source of a request.</p>
+
+<pre class="code-box"><code>Origin: https://example.com</code></pre>
+
+<p>Applications may validate this header to help prevent CSRF attacks.</p>
+
+<h4>Referer Header</h4>
+
+<p>The Referer header indicates the page that initiated the request.</p>
+
+<pre class="code-box"><code>Referer: https://example.com/profile</code></pre>
+
+<p>Some applications validate it as an additional defense.</p>
+
+<h4>Impact of CSRF</h4>
+
+<p>• Account takeover assistance</p>
+
+<p>• Unauthorized transactions</p>
+
+<p>• Configuration changes</p>
+
+<p>• Data modification</p>
+
+<p>• Unauthorized actions</p>
+
+<h4>Preventing CSRF</h4>
+
+<h5>CSRF Tokens</h5>
+
+<p>Use unpredictable anti-CSRF tokens.</p>
+
+<h5>SameSite Cookies</h5>
+
+<p>Restrict cross-site cookie usage.</p>
+
+<h5>Origin Validation</h5>
+
+<p>Verify the Origin header.</p>
+
+<h5>Referer Validation</h5>
+
+<p>Verify the Referer header when appropriate.</p>
+
+<h5>Re-authentication</h5>
+
+<p>Require password confirmation for sensitive actions.</p>
+
+<h4>What Should a Penetration Tester Check?</h4>
+
+<p>• Are CSRF tokens implemented?</p>
+
+<p>• Are CSRF tokens validated?</p>
+
+<p>• Are tokens predictable?</p>
+
+<p>• Can tokens be reused?</p>
+
+<p>• Are sensitive actions protected?</p>
+
+<p>• Is SameSite configured correctly?</p>
+
+<p>• Are Origin and Referer validated?</p>
+
+<p>• Can requests be executed from another website?</p>
+
+<h4>CSRF Testing Workflow</h4>
+
+<p>1- Identify state-changing functionality.</p>
+
+<p>2- Capture the request using Burp Suite.</p>
+
+<p>3- Check for CSRF protections.</p>
+
+<p>4- Analyze token implementation.</p>
+
+<p>5- Attempt to reproduce the request from another origin.</p>
+
+<p>6- Verify whether the action succeeds.</p>
+
+<h4>Important Note</h4>
+
+<p>CSRF attacks target authenticated users.</p>
+
+<p>Unlike XSS, the attacker does not need to execute JavaScript on the vulnerable website.</p>
+
+<p>The attack relies on the browser automatically sending authentication credentials.</p>
+</div>
+</main>    
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
