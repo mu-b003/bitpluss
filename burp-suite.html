@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>burp suite</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+        <ul class="menu">
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    
+        
+
+
+
+
+
+
+<main class="content">
+<div class="content-wrapper">
+<h3>Burp Suite</h3>
+
+<p>Burp Suite is one of the most popular web application security testing tools.</p>
+
+<p>It acts as an intercepting proxy between the browser and the target web application, allowing security testers to inspect, modify, and analyze HTTP/HTTPS traffic.</p>
+
+<h4>Why Use Burp Suite?</h4>
+
+<p>Burp Suite helps penetration testers understand how web applications work and identify security vulnerabilities.</p>
+
+<p>It is widely used in web application penetration testing and bug bounty hunting.</p>
+
+<h4>How Burp Suite Works</h4>
+
+<p>1- Configure the browser to use Burp Suite as a proxy.</p>
+
+<p>2- The browser sends requests through Burp Suite.</p>
+
+<p>3- Burp Suite intercepts the traffic.</p>
+
+<p>4- The tester can inspect or modify requests.</p>
+
+<p>5- Burp Suite forwards the traffic to the server.</p>
+
+<p>6- The server responds through Burp Suite.</p>
+
+<h4>Traffic Flow</h4>
+
+<pre class="code-box"><code>Browser
+   |
+   v
+Burp Suite
+   |
+   v
+Web Server
+
+Web Server
+   |
+   v
+Burp Suite
+   |
+   v
+Browser</code></pre>
+
+<h4>Main Components</h4>
+
+<h5>Proxy</h5>
+
+<p>The Proxy is the core feature of Burp Suite.</p>
+
+<p>It intercepts and displays HTTP and HTTPS requests and responses.</p>
+
+<p>Common uses:</p>
+
+<p>• Intercept Requests</p>
+
+<p>• Modify Parameters</p>
+
+<p>• Analyze Responses</p>
+
+<p>• Test Authentication</p>
+
+<h5>Intercept</h5>
+
+<p>Allows requests to be stopped before reaching the server.</p>
+
+<p>The tester can edit requests and then forward them.</p>
+
+<h4>Example Request</h4>
+
+<pre class="code-box"><code>GET /profile?id=5 HTTP/1.1
+Host: example.com</code></pre>
+
+<p>The tester may modify it to:</p>
+
+<pre class="code-box"><code>GET /profile?id=10 HTTP/1.1
+Host: example.com</code></pre>
+
+<h5>HTTP History</h5>
+
+<p>Displays all requests and responses passing through Burp Suite.</p>
+
+<p>This helps identify application functionality and attack surfaces.</p>
+
+<h5>Repeater</h5>
+
+<p>Allows sending the same request multiple times with modifications.</p>
+
+<p>Useful for manual testing.</p>
+
+<p>Common uses:</p>
+
+<p>• IDOR Testing</p>
+
+<p>• Authorization Testing</p>
+
+<p>• Parameter Manipulation</p>
+
+<p>• API Testing</p>
+
+<h5>Intruder</h5>
+
+<p>Automates sending multiple requests with different payloads.</p>
+
+<p>Useful for testing input handling and discovering hidden functionality.</p>
+
+<p>Common uses:</p>
+
+<p>• Parameter Fuzzing</p>
+
+<p>• Content Discovery</p>
+
+<p>• Authentication Testing</p>
+
+<p>• Input Validation Testing</p>
+
+<h5>Decoder</h5>
+
+<p>Encodes and decodes data.</p>
+
+<p>Supported formats include:</p>
+
+<p>• URL Encoding</p>
+
+<p>• Base64</p>
+
+<p>• Hex</p>
+
+<p>• HTML Encoding</p>
+
+<h5>Comparer</h5>
+
+<p>Compares requests or responses to identify differences.</p>
+
+<h5>Logger</h5>
+
+<p>Records traffic and testing activity.</p>
+
+<h5>Extensions</h5>
+
+<p>Burp Suite supports plugins that extend functionality.</p>
+
+<p>Popular extensions:</p>
+
+<p>• Autorize</p>
+
+<p>• JWT Editor</p>
+
+<p>• Hackvertor</p>
+
+<p>• Active Scan++</p>
+
+<h4>Common Testing Activities</h4>
+
+<h5>Parameter Testing</h5>
+
+<p>Modify parameters to identify vulnerabilities.</p>
+
+<p>Example:</p>
+
+<pre class="code-box"><code>?id=5</code></pre>
+
+<p>Change to:</p>
+
+<pre class="code-box"><code>?id=6</code></pre>
+
+<h5>Cookie Testing</h5>
+
+<p>Analyze and modify session cookies.</p>
+
+<pre class="code-box"><code>Cookie: session=abc123</code></pre>
+
+<h5>Header Testing</h5>
+
+<p>Inspect and modify HTTP headers.</p>
+
+<pre class="code-box"><code>Authorization: Bearer TOKEN</code></pre>
+
+<h5>API Testing</h5>
+
+<p>Inspect JSON requests and responses.</p>
+
+<pre class="code-box"><code>{
+  "username":"admin"
+}</code></pre>
+
+<h4>Common Vulnerabilities Found Using Burp Suite</h4>
+
+<p>• XSS</p>
+
+<p>• SQL Injection</p>
+
+<p>• IDOR</p>
+
+<p>• CSRF</p>
+
+<p>• Authentication Issues</p>
+
+<p>• Authorization Issues</p>
+
+<p>• JWT Vulnerabilities</p>
+
+<p>• API Security Issues</p>
+
+<h4>Useful Features for Penetration Testers</h4>
+
+<h5>Request Editing</h5>
+
+<p>Modify requests before sending them.</p>
+
+<h5>Response Analysis</h5>
+
+<p>Inspect server responses.</p>
+
+<h5>Session Handling</h5>
+
+<p>Manage authentication sessions.</p>
+
+<h5>Scope Control</h5>
+
+<p>Limit testing to specific targets.</p>
+
+<h4>Burp Suite Workflow</h4>
+
+<p>1- Configure browser proxy settings.</p>
+
+<p>2- Intercept traffic.</p>
+
+<p>3- Explore application functionality.</p>
+
+<p>4- Identify interesting requests.</p>
+
+<p>5- Send requests to Repeater.</p>
+
+<p>6- Test parameters and authorization.</p>
+
+<p>7- Analyze responses.</p>
+
+<p>8- Document findings.</p>
+
+<h4>Common Keyboard Shortcuts</h4>
+
+<pre class="code-box"><code>Ctrl + R → Send to Repeater
+
+Ctrl + I → Send to Intruder
+
+Ctrl + Shift + D → Send to Decoder</code></pre>
+
+<h4>What Should a Penetration Tester Focus On?</h4>
+
+<p>• Parameters</p>
+
+<p>• Cookies</p>
+
+<p>• Authorization Headers</p>
+
+<p>• Hidden Functionality</p>
+
+<p>• Access Controls</p>
+
+<p>• API Endpoints</p>
+
+<p>• HTTP Methods</p>
+
+<p>• Input Validation</p>
+
+<p>• Session Management</p>
+
+<h4>Common Files to Watch For</h4>
+
+<pre class="code-box"><code>robots.txt
+
+sitemap.xml
+
+.env
+
+config.json
+
+backup.zip
+
+admin.php</code></pre>
+
+<h4>Important Note</h4>
+
+<p>Burp Suite is not a vulnerability scanner by itself.</p>
+
+<p>Its true power comes from understanding HTTP, web applications, and how to manually test security controls.</p>
+
+<p>Most web vulnerabilities are discovered through careful analysis using Burp Suite's Proxy, Repeater, and Intruder tools.</p>
+</div>
+</main>  
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
