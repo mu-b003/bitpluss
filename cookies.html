@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>cookies</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+        <ul class="menu">
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    
+        
+
+
+
+
+
+
+<main class="content">
+    <div class="content-wrapper">
+<h3>Cookies</h3>
+
+<p>Cookies are small pieces of data stored by the browser and sent to the server with future requests.</p>
+
+<p>They are commonly used to maintain user sessions, store preferences, and track user activity.</p>
+
+<h4>How Cookies Work</h4>
+
+<p>1- The server sends a cookie to the browser.</p>
+
+<pre class="code-box"><code>Set-Cookie: session=abc123</code></pre>
+
+<p>2- The browser stores the cookie.</p>
+
+<p>3- The browser automatically includes the cookie in future requests.</p>
+
+<pre class="code-box"><code>Cookie: session=abc123</code></pre>
+
+<h4>Why Are Cookies Used?</h4>
+
+<p>• User Authentication</p>
+<p>• Session Management</p>
+<p>• User Preferences</p>
+<p>• Analytics and Tracking</p>
+
+<h4>Cookie Structure</h4>
+
+<pre class="code-box"><code>Set-Cookie: session=abc123</code></pre>
+
+<p>Explanation:</p>
+
+<pre class="code-box"><code>session  → Cookie Name
+abc123   → Cookie Value</code></pre>
+
+<h4>Cookie Attributes</h4>
+
+<h5>Expires</h5>
+
+<p>Defines when the cookie will expire.</p>
+
+<pre class="code-box"><code>Set-Cookie: session=abc123; Expires=Wed, 31 Dec 2026 23:59:59 GMT</code></pre>
+
+<h5>Max-Age</h5>
+
+<p>Defines the lifetime of the cookie in seconds.</p>
+
+<pre class="code-box"><code>Set-Cookie: session=abc123; Max-Age=3600</code></pre>
+
+<h5>Domain</h5>
+
+<p>Specifies which domain can access the cookie.</p>
+
+<pre class="code-box"><code>Set-Cookie: session=abc123; Domain=example.com</code></pre>
+
+<h5>Path</h5>
+
+<p>Limits the cookie to a specific path.</p>
+
+<pre class="code-box"><code>Set-Cookie: session=abc123; Path=/admin</code></pre>
+
+<h5>Secure</h5>
+
+<p>The cookie is only sent over HTTPS connections.</p>
+
+<pre class="code-box"><code>Set-Cookie: session=abc123; Secure</code></pre>
+
+<h5>HttpOnly</h5>
+
+<p>Prevents JavaScript from accessing the cookie.</p>
+
+<p>Helps reduce the risk of cookie theft through XSS attacks.</p>
+
+<pre class="code-box"><code>Set-Cookie: session=abc123; HttpOnly</code></pre>
+
+<h5>SameSite</h5>
+
+<p>Controls whether the cookie is sent with cross-site requests.</p>
+
+<pre class="code-box"><code>Set-Cookie: session=abc123; SameSite=Strict</code></pre>
+
+<p>Possible values:</p>
+
+<p>• Strict</p>
+<p>• Lax</p>
+<p>• None</p>
+
+<h4>Session Cookies vs Persistent Cookies</h4>
+
+<h5>Session Cookies</h5>
+
+<p>Exist only while the browser is open.</p>
+
+<p>Deleted when the browser is closed.</p>
+
+<h5>Persistent Cookies</h5>
+
+<p>Remain stored until their expiration date.</p>
+
+<p>Used for "Remember Me" functionality.</p>
+
+<h4>Example Authentication Flow</h4>
+
+<p>User logs in:</p>
+
+<pre class="code-box"><code>POST /login</code></pre>
+
+<p>Server response:</p>
+
+<pre class="code-box"><code>Set-Cookie: session=abc123; HttpOnly; Secure</code></pre>
+
+<p>Future requests:</p>
+
+<pre class="code-box"><code>GET /profile
+Cookie: session=abc123</code></pre>
+
+<h4>Cookies and Security</h4>
+
+<p>Cookies often contain session identifiers.</p>
+
+<p>If an attacker steals a valid session cookie, they may be able to impersonate the user.</p>
+
+<h4>Common Cookie Attacks</h4>
+
+<h5>Session Hijacking</h5>
+
+<p>Stealing a user's session cookie to gain unauthorized access.</p>
+
+<h5>Session Fixation</h5>
+
+<p>Forcing a victim to use a known session ID.</p>
+
+<h5>Cross-Site Scripting (XSS)</h5>
+
+<p>JavaScript can steal cookies that are not protected with HttpOnly.</p>
+
+<h5>Cross-Site Request Forgery (CSRF)</h5>
+
+<p>Abuses automatically sent cookies to perform actions on behalf of the victim.</p>
+
+<h4>What Should a Penetration Tester Check?</h4>
+
+<p>• Are session cookies predictable?</p>
+<p>• Is the Secure flag enabled?</p>
+<p>• Is the HttpOnly flag enabled?</p>
+<p>• Is SameSite configured correctly?</p>
+<p>• Are sensitive values stored inside cookies?</p>
+<p>• Can cookies be modified by the user?</p>
+<p>• Are session IDs rotated after login?</p>
+
+<h4>Example Cookie Header</h4>
+
+<pre class="code-box"><code>Cookie: session=abc123;
+role=user;
+theme=dark</code></pre>
+</div>
+</main>
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
