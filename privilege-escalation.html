@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>privilege escalation</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+        <ul class="menu">
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    
+        
+
+
+
+
+
+
+<main class="content">
+<div class="content-wrapper">
+<h3>Linux Privilege Escalation</h3>
+
+<p>Privilege Escalation is the process of gaining higher privileges on a system than those originally assigned to a user.</p>
+
+<p>In penetration testing, it is often performed after obtaining initial access to a machine.</p>
+
+<h4>Why Is Privilege Escalation Important?</h4>
+
+<p>Many compromised accounts have limited permissions.</p>
+
+<p>Privilege escalation allows an attacker to gain administrative or root access.</p>
+
+<h4>Types of Privilege Escalation</h4>
+
+<h5>Vertical Privilege Escalation</h5>
+
+<p>Gaining higher privileges than the current user.</p>
+
+<pre class="code-box"><code>user → root</code></pre>
+
+<h5>Horizontal Privilege Escalation</h5>
+
+<p>Accessing resources belonging to another user with similar privileges.</p>
+
+<pre class="code-box"><code>user1 → user2</code></pre>
+
+<h4>Initial Enumeration</h4>
+
+<p>Enumeration is the most important step in privilege escalation.</p>
+
+<p>Always gather as much information as possible.</p>
+
+<h5>Current User</h5>
+
+<pre class="code-box"><code>whoami</code></pre>
+
+<h5>User Information</h5>
+
+<pre class="code-box"><code>id</code></pre>
+
+<h5>Hostname</h5>
+
+<pre class="code-box"><code>hostname</code></pre>
+
+<h5>Operating System</h5>
+
+<pre class="code-box"><code>uname -a</code></pre>
+
+<pre class="code-box"><code>cat /etc/os-release</code></pre>
+
+<h4>Sudo Privileges</h4>
+
+<p>Check whether the user can execute commands with sudo.</p>
+
+<pre class="code-box"><code>sudo -l</code></pre>
+
+<p>Example:</p>
+
+<pre class="code-box"><code>(ALL) NOPASSWD: /usr/bin/vim</code></pre>
+
+<p>This may allow privilege escalation.</p>
+
+<h4>SUID Binaries</h4>
+
+<p>SUID files execute with the permissions of their owner.</p>
+
+<p>If owned by root, they may provide a path to root access.</p>
+
+<p>Find SUID files:</p>
+
+<pre class="code-box"><code>find / -perm -4000 2>/dev/null</code></pre>
+
+<p>Example:</p>
+
+<pre class="code-box"><code>-rwsr-xr-x root root /usr/bin/passwd</code></pre>
+
+<h4>SGID Binaries</h4>
+
+<p>SGID files execute with group permissions.</p>
+
+<p>Find SGID files:</p>
+
+<pre class="code-box"><code>find / -perm -2000 2>/dev/null</code></pre>
+
+<h4>Writable Files and Directories</h4>
+
+<p>Misconfigured permissions may allow privilege escalation.</p>
+
+<p>Find writable directories:</p>
+
+<pre class="code-box"><code>find / -writable 2>/dev/null</code></pre>
+
+<h4>Scheduled Tasks (Cron Jobs)</h4>
+
+<p>Cron jobs execute commands automatically.</p>
+
+<p>Misconfigured jobs may allow attackers to execute code as root.</p>
+
+<p>View scheduled tasks:</p>
+
+<pre class="code-box"><code>crontab -l</code></pre>
+
+<pre class="code-box"><code>cat /etc/crontab</code></pre>
+
+<h4>Running Processes</h4>
+
+<p>Identify services running as root.</p>
+
+<pre class="code-box"><code>ps aux</code></pre>
+
+<h4>Environment Variables</h4>
+
+<p>Misconfigured environment variables can sometimes be abused.</p>
+
+<pre class="code-box"><code>env</code></pre>
+
+<h4>Password and Configuration Files</h4>
+
+<p>Look for sensitive files containing credentials.</p>
+
+<pre class="code-box"><code>/etc/passwd
+/etc/shadow
+config.php
+.env</code></pre>
+
+<h4>Kernel Exploits</h4>
+
+<p>Outdated kernels may contain local privilege escalation vulnerabilities.</p>
+
+<p>Check kernel version:</p>
+
+<pre class="code-box"><code>uname -r</code></pre>
+
+<p>Always verify exploit compatibility before testing.</p>
+
+<h4>PATH Hijacking</h4>
+
+<p>Applications sometimes execute commands without specifying full paths.</p>
+
+<p>This may allow attackers to execute malicious binaries.</p>
+
+<p>Check PATH:</p>
+
+<pre class="code-box"><code>echo $PATH</code></pre>
+
+<h4>NFS Misconfigurations</h4>
+
+<p>Improper NFS exports may allow unauthorized file access or privilege escalation.</p>
+
+<p>Check exports:</p>
+
+<pre class="code-box"><code>cat /etc/exports</code></pre>
+
+<h4>Capabilities</h4>
+
+<p>Linux capabilities grant specific privileges without full root access.</p>
+
+<p>List capabilities:</p>
+
+<pre class="code-box"><code>getcap -r / 2>/dev/null</code></pre>
+
+<h4>Automated Enumeration Tools</h4>
+
+<p>Common tools used during privilege escalation:</p>
+
+<p>• LinPEAS</p>
+
+<p>• LinEnum</p>
+
+<p>• Linux Smart Enumeration (LSE)</p>
+
+<p>• pspy</p>
+
+<h4>Privilege Escalation Workflow</h4>
+
+<p>1- Identify the current user.</p>
+
+<p>2- Enumerate the system.</p>
+
+<p>3- Check sudo permissions.</p>
+
+<p>4- Search for SUID and SGID binaries.</p>
+
+<p>5- Look for writable files and directories.</p>
+
+<p>6- Inspect cron jobs.</p>
+
+<p>7- Check capabilities.</p>
+
+<p>8- Review running services.</p>
+
+<p>9- Search for credentials.</p>
+
+<p>10- Evaluate possible escalation paths.</p>
+
+<h4>Common Commands</h4>
+
+<pre class="code-box"><code>whoami
+id
+sudo -l
+uname -a
+ps aux
+env
+find / -perm -4000 2>/dev/null
+find / -perm -2000 2>/dev/null
+find / -writable 2>/dev/null
+getcap -r / 2>/dev/null</code></pre>
+
+<h4>What Should a Penetration Tester Check?</h4>
+
+<p>• Sudo misconfigurations</p>
+
+<p>• SUID binaries</p>
+
+<p>• SGID binaries</p>
+
+<p>• Writable files</p>
+
+<p>• Writable directories</p>
+
+<p>• Cron jobs</p>
+
+<p>• PATH hijacking opportunities</p>
+
+<p>• Exposed credentials</p>
+
+<p>• Linux capabilities</p>
+
+<p>• Kernel vulnerabilities</p>
+
+<h4>Important Note</h4>
+
+<p>Successful privilege escalation is usually the result of thorough enumeration.</p>
+
+<p>Most privilege escalation opportunities are discovered during information gathering rather than exploitation.</p>
+</div>
+</main>
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
