@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ldap</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+        <ul class="menu">
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    
+        
+
+
+
+
+
+
+<main class="content">
+<div class="content-wrapper">
+<h3>LDAP (Lightweight Directory Access Protocol)</h3>
+
+<p>LDAP (Lightweight Directory Access Protocol) is a protocol used to access, query, and manage directory services.</p>
+
+<p>In Active Directory environments, LDAP is commonly used to retrieve information about users, groups, computers, and other domain objects.</p>
+
+<h4>Why Is LDAP Important?</h4>
+
+<p>LDAP is one of the primary methods used to interact with Active Directory.</p>
+
+<p>Many enumeration, administration, and penetration testing activities rely on LDAP.</p>
+
+<h4>What Can LDAP Store?</h4>
+
+<p>• Users</p>
+
+<p>• Groups</p>
+
+<p>• Computers</p>
+
+<p>• Organizational Units (OUs)</p>
+
+<p>• Printers</p>
+
+<p>• Shared Resources</p>
+
+<p>• Security Information</p>
+
+<h4>LDAP Structure</h4>
+
+<p>LDAP organizes information in a hierarchical structure called the Directory Information Tree (DIT).</p>
+
+<pre class="code-box"><code>DC=company,DC=local
+│
+├── OU=IT
+│   ├── CN=John Smith
+│   └── CN=Server01
+│
+├── OU=HR
+│   └── CN=Jane Doe
+│
+└── OU=Finance</code></pre>
+
+<h4>LDAP Components</h4>
+
+<h5>Domain Component (DC)</h5>
+
+<p>Represents parts of the domain name.</p>
+
+<p>Example:</p>
+
+<pre class="code-box"><code>DC=company,DC=local</code></pre>
+
+<h5>Organizational Unit (OU)</h5>
+
+<p>Used to organize directory objects.</p>
+
+<p>Example:</p>
+
+<pre class="code-box"><code>OU=IT</code></pre>
+
+<h5>Common Name (CN)</h5>
+
+<p>Represents the object's name.</p>
+
+<p>Example:</p>
+
+<pre class="code-box"><code>CN=John Smith</code></pre>
+
+<h4>Distinguished Name (DN)</h4>
+
+<p>A Distinguished Name uniquely identifies an object in LDAP.</p>
+
+<p>Example:</p>
+
+<pre class="code-box"><code>CN=John Smith,OU=IT,DC=company,DC=local</code></pre>
+
+<h4>LDAP Ports</h4>
+
+<pre class="code-box"><code>389  LDAP
+636  LDAPS (LDAP over SSL/TLS)</code></pre>
+
+<h4>LDAP Authentication</h4>
+
+<p>LDAP supports authentication before allowing access to directory information.</p>
+
+<p>Common authentication methods:</p>
+
+<p>• Anonymous Bind</p>
+
+<p>• Simple Bind</p>
+
+<p>• Kerberos Authentication</p>
+
+<p>• NTLM Authentication</p>
+
+<h4>LDAP Bind</h4>
+
+<p>A Bind operation is used to authenticate to the LDAP server.</p>
+
+<p>Example:</p>
+
+<pre class="code-box"><code>ldap://dc.company.local</code></pre>
+
+<h4>LDAP Operations</h4>
+
+<h5>Bind</h5>
+
+<p>Authenticate to the LDAP server.</p>
+
+<h5>Search</h5>
+
+<p>Query directory objects.</p>
+
+<h5>Add</h5>
+
+<p>Create new directory objects.</p>
+
+<h5>Modify</h5>
+
+<p>Update existing objects.</p>
+
+<h5>Delete</h5>
+
+<p>Remove directory objects.</p>
+
+<h4>LDAP Search Example</h4>
+
+<p>Search for all users:</p>
+
+<pre class="code-box"><code>(objectClass=user)</code></pre>
+
+<p>Search for all computers:</p>
+
+<pre class="code-box"><code>(objectClass=computer)</code></pre>
+
+<p>Search for a specific user:</p>
+
+<pre class="code-box"><code>(sAMAccountName=john)</code></pre>
+
+<h4>Common LDAP Attributes</h4>
+
+<pre class="code-box"><code>cn
+mail
+memberOf
+sAMAccountName
+userPrincipalName
+description
+pwdLastSet</code></pre>
+
+<h4>Example LDAP Entry</h4>
+
+<pre class="code-box"><code>CN=John Smith
+OU=IT
+DC=company
+DC=local
+
+mail=john@company.local
+sAMAccountName=john</code></pre>
+
+<h4>LDAP in Active Directory</h4>
+
+<p>Active Directory stores most domain information within LDAP-accessible directories.</p>
+
+<p>Administrators and security tools frequently query LDAP for information gathering.</p>
+
+<h4>Common LDAP Enumeration Targets</h4>
+
+<p>• Users</p>
+
+<p>• Groups</p>
+
+<p>• Domain Controllers</p>
+
+<p>• Service Accounts</p>
+
+<p>• Organizational Units</p>
+
+<p>• Group Policy Objects (GPOs)</p>
+
+<p>• Domain Trusts</p>
+
+<h4>Anonymous LDAP Access</h4>
+
+<p>Some LDAP servers allow anonymous queries.</p>
+
+<p>This may expose valuable information to attackers.</p>
+
+<h4>Common LDAP Security Issues</h4>
+
+<h5>Anonymous Bind Enabled</h5>
+
+<p>Allows unauthenticated users to query directory information.</p>
+
+<h5>Weak Access Controls</h5>
+
+<p>Users can access more information than necessary.</p>
+
+<h5>Excessive Information Disclosure</h5>
+
+<p>Sensitive details exposed through LDAP queries.</p>
+
+<h5>Insecure LDAP</h5>
+
+<p>Using LDAP instead of LDAPS may expose credentials on the network.</p>
+
+<h4>LDAP Enumeration Tools</h4>
+
+<p>Common tools include:</p>
+
+<p>• ldapsearch</p>
+
+<p>• BloodHound</p>
+
+<p>• PowerView</p>
+
+<p>• SharpHound</p>
+
+<p>• ldapdomaindump</p>
+
+<h4>Example ldapsearch Command</h4>
+
+<pre class="code-box"><code>ldapsearch -x
+-h 192.168.1.10
+-b "DC=company,DC=local"</code></pre>
+
+<h4>What Should a Penetration Tester Check?</h4>
+
+<p>• Anonymous LDAP access</p>
+
+<p>• User enumeration</p>
+
+<p>• Service accounts</p>
+
+<p>• Domain Admins membership</p>
+
+<p>• Kerberos-related information</p>
+
+<p>• Delegation settings</p>
+
+<p>• Sensitive attributes</p>
+
+<p>• Domain trusts</p>
+
+<p>• GPO information</p>
+
+<h4>Useful Commands</h4>
+
+<pre class="code-box"><code>ldapsearch
+
+ldapdomaindump
+
+Get-ADUser
+
+Get-ADGroup
+
+Get-ADComputer</code></pre>
+
+<h4>Common Terms to Remember</h4>
+
+<pre class="code-box"><code>LDAP   = Lightweight Directory Access Protocol
+
+DN     = Distinguished Name
+
+DC     = Domain Component
+
+OU     = Organizational Unit
+
+CN     = Common Name
+
+DIT    = Directory Information Tree
+
+LDAPS  = LDAP over SSL/TLS</code></pre>
+
+<h4>Important Note</h4>
+
+<p>LDAP is one of the most important enumeration sources in Active Directory.</p>
+
+<p>Many attack paths begin with information gathered through LDAP before moving to Kerberoasting, BloodHound analysis, privilege escalation, and lateral movement.</p>
+</div>
+</main>
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
