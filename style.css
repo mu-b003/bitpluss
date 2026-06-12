@@ -1,0 +1,250 @@
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Segoe UI, sans-serif;
+    background:white;
+    color:#555555;
+}
+
+/* Top Bar */
+
+.topbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 68px;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 1px solid #334155;
+    z-index: 1000;
+}
+
+.logo a{
+    color:#0e5bd8;
+    text-decoration:none;
+    font-size:24px;
+    font-weight:bold;
+}
+
+nav{
+    display:flex;
+    gap:10px;
+}
+
+nav a{
+    color:#0e5bd8;
+    text-decoration:none;
+    border:1px solid #64748b;
+    padding:8px 15px;
+    border-radius:6px;
+}
+
+/* Layout */
+
+.docs-layout{
+    display:flex;
+    min-height:calc(100vh - 70px);
+    margin-top:70px;
+}
+/* Sidebar */
+
+.sidebar{
+    width:280px;
+    background:white;
+    border-right:1px solid #bdc0c4;
+    padding:20px;
+    overflow-y:auto;
+    position:sticky;
+    top:70px;
+    height:calc(100vh - 70px);
+}
+
+.sidebar h2{
+    margin-bottom:20px;
+}
+
+.sidebar input{
+    width:100%;
+    padding:10px;
+    border:1px solid #334155;
+    border-radius:6px;
+    background:white;
+    color:#333333; /* تم تعديل اللون من white إلى رمادي غامق */
+    margin-bottom:20px;
+}
+
+/* Menu */
+
+.menu{
+    list-style:none;
+}
+
+.menu li{
+    margin-bottom:8px;
+}
+
+details{
+    width:100%;
+}
+
+summary{
+    cursor:pointer;
+    padding:10px;
+    border-radius:6px;
+    color:#333333; /* تم تعديل اللون من white إلى رمادي غامق */
+}
+
+summary:hover{
+    background:#f0f0f0; /* تم تعديل الخلفية لترى التأثير */
+}
+
+details[open] summary{
+    color:#60a5fa;
+    font-weight:bold;
+}
+
+.submenu{
+    list-style:none;
+    margin-top:5px;
+    padding-left:15px;
+}
+
+.submenu li{
+    margin:4px 0;
+}
+
+.submenu a{
+    display:block;
+    text-decoration:none;
+    color:#555555; /* تم تعديل اللون من cbd5e1 (كان غير مرئي) إلى رمادي */
+    padding:8px;
+    border-radius:6px;
+}
+
+.submenu a:hover{
+    background:#ebecf0;
+    color:#0e5bd8; /* تم تعديل اللون ليصبح مرئياً عند التحديد */
+}
+
+/* Content */
+
+.content{
+    flex:1;
+    padding:35px;
+}
+
+.content h1{
+    max-width:900px;
+    width:100%;
+    margin:0 auto 20px auto;
+    font-size:52px;
+}
+
+.content p{
+    max-width:900px;
+    width:100%;
+    margin:0 auto 30px auto;
+    color:#555555; /* تم تعديل اللون من white إلى رمادي غامق */
+    line-height:1.8;
+    word-wrap:break-word;
+}
+
+.hero-image{
+    width:100%;
+    max-width:900px;
+    border-radius:10px;
+    display:block;
+    margin:0 auto 30px auto;
+}
+
+
+
+/* تنسيق الشاشات الصغيرة (الهواتف) */
+@media screen and (max-width: 768px) {
+    .docs-layout {
+        flex-direction: column; /* تحويل التخطيط من أعمدة إلى صفوف */
+        margin-top: 68px;
+    }
+
+    .sidebar {
+        width: 100%; /* الجانب يأخذ عرض الشاشة بالكامل */
+        height: auto; /* ارتفاع تلقائي حسب المحتوى */
+        position: relative; /* إلغاء التثبيت */
+        top: 0;
+        border-right: none;
+        border-bottom: 1px solid #bdc0c4;
+    }
+
+    .content {
+        padding: 20px; /* تقليل الهوامش في الموبايل */
+    }
+
+    .content h1 {
+        font-size: 32px; /* تصغير حجم الخط ليتناسب مع الشاشة */
+    }
+
+    .topbar {
+        padding: 0 10px;
+    }
+}
+
+
+
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #64748b;
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer a {
+    color: #0e5bd8;
+    text-decoration: none;
+    margin: 0 5px; /* مسافة صغيرة جداً حول الروابط */
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+
+.content-wrapper {
+    max-width: 900px; /* اضبط هذا الرقم ليتناسب مع عرض الصورة في موقعك */
+    margin: 0 auto;   /* لتوسيط المحتوى */
+}
+
+.hero-image {
+    display: block;
+    width: 100%;      /* تجعل الصورة تأخذ كامل عرض الحاوية */
+    height: auto;
+}
+
+.code-box {
+    background-color: #2d2d2d;
+    color: #f8f8f2;
+    padding: 15px;
+    border-radius: 0 0 8px 8px; /* زوايا دائرية من الأسفل فقط لتبدو متصلة */
+    border-left: 5px solid #0e5bd8;
+    margin-top: 0;    /* إزالة المسافة بين الصورة والكود */
+    width: 100%;      /* ضمان مطابقة الكود لعرض الحاوية */
+    box-sizing: border-box; /* لضمان عدم خروج الحواف بسبب الـ padding */
+}
