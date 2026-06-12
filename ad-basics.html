@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ad basics</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+        <ul class="menu">
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+        </ul>
+
+    </aside>
+
+    
+        
+
+
+
+
+
+
+<main class="content">
+<div class="content-wrapper">
+<h3>Active Directory (AD) Basics</h3>
+
+<p>Active Directory (AD) is a directory service developed by Microsoft for managing users, computers, groups, and resources within a Windows domain environment.</p>
+
+<p>It is the most widely used identity and access management solution in enterprise networks.</p>
+
+<h4>Why Is Active Directory Important?</h4>
+
+<p>Most corporate networks rely on Active Directory for authentication and authorization.</p>
+
+<p>Understanding AD is essential for system administrators, blue teamers, and penetration testers.</p>
+
+<h4>What Does Active Directory Manage?</h4>
+
+<p>• Users</p>
+
+<p>• Computers</p>
+
+<p>• Groups</p>
+
+<p>• Printers</p>
+
+<p>• Shared Folders</p>
+
+<p>• Security Policies</p>
+
+<p>• Authentication Services</p>
+
+<h4>Active Directory Components</h4>
+
+<h5>Domain</h5>
+
+<p>A domain is a logical group of users, computers, and resources managed together.</p>
+
+<p>Example:</p>
+
+<pre class="code-box"><code>company.local</code></pre>
+
+<h5>Domain Controller (DC)</h5>
+
+<p>A server responsible for authenticating users and enforcing security policies.</p>
+
+<p>The Domain Controller stores the Active Directory database.</p>
+
+<h5>Forest</h5>
+
+<p>A forest is the top-level container in Active Directory.</p>
+
+<p>It can contain one or more domains.</p>
+
+<h5>Tree</h5>
+
+<p>A collection of related domains within a forest.</p>
+
+<p>Example:</p>
+
+<pre class="code-box"><code>company.local
+sales.company.local
+hr.company.local</code></pre>
+
+<h5>Organizational Unit (OU)</h5>
+
+<p>A container used to organize users, computers, and groups.</p>
+
+<p>Example:</p>
+
+<pre class="code-box"><code>IT
+HR
+Finance</code></pre>
+
+<h4>Active Directory Structure</h4>
+
+<pre class="code-box"><code>Forest
+ └── Domain
+      ├── OU: IT
+      ├── OU: HR
+      ├── Users
+      └── Computers</code></pre>
+
+<h4>Users</h4>
+
+<p>User accounts represent individuals who can authenticate to the domain.</p>
+
+<p>Example:</p>
+
+<pre class="code-box"><code>john.smith</code></pre>
+
+<h4>Groups</h4>
+
+<p>Groups simplify permission management.</p>
+
+<p>Instead of assigning permissions to individual users, permissions are assigned to groups.</p>
+
+<p>Examples:</p>
+
+<pre class="code-box"><code>Domain Admins
+IT Support
+HR Team</code></pre>
+
+<h4>Computers</h4>
+
+<p>Computers joined to the domain receive centralized management and authentication.</p>
+
+<p>Example:</p>
+
+<pre class="code-box"><code>PC-001
+SERVER-01</code></pre>
+
+<h4>Authentication in Active Directory</h4>
+
+<p>Authentication verifies a user's identity before granting access.</p>
+
+<h5>Kerberos</h5>
+
+<p>The default authentication protocol used in Active Directory.</p>
+
+<p>It uses tickets instead of sending passwords across the network.</p>
+
+<h5>NTLM</h5>
+
+<p>An older authentication protocol still found in some environments.</p>
+
+<p>Kerberos is preferred whenever possible.</p>
+
+<h4>Kerberos Overview</h4>
+
+<p>1- User logs in.</p>
+
+<p>2- Domain Controller verifies credentials.</p>
+
+<p>3- Ticket Granting Ticket (TGT) is issued.</p>
+
+<p>4- User requests access to services.</p>
+
+<p>5- Service tickets are issued.</p>
+
+<p>6- Access is granted.</p>
+
+<h4>Group Policy (GPO)</h4>
+
+<p>Group Policy Objects are used to centrally manage security settings and configurations.</p>
+
+<p>Examples:</p>
+
+<p>• Password Policies</p>
+
+<p>• Desktop Restrictions</p>
+
+<p>• Software Installation</p>
+
+<p>• Security Configurations</p>
+
+<h4>DNS in Active Directory</h4>
+
+<p>DNS is critical for Active Directory operations.</p>
+
+<p>Domain members use DNS to locate Domain Controllers and services.</p>
+
+<h4>Common Active Directory Ports</h4>
+
+<pre class="code-box"><code>53   DNS
+88   Kerberos
+135  RPC
+139  NetBIOS
+389  LDAP
+445  SMB
+636  LDAPS
+3268 Global Catalog</code></pre>
+
+<h4>LDAP</h4>
+
+<p>Lightweight Directory Access Protocol (LDAP) is used to query and manage Active Directory objects.</p>
+
+<p>Example:</p>
+
+<pre class="code-box"><code>ldap://dc.company.local</code></pre>
+
+<h4>SMB</h4>
+
+<p>Server Message Block (SMB) is used for file sharing and network resource access.</p>
+
+<p>It commonly operates on port 445.</p>
+
+<h4>Common Active Directory Accounts</h4>
+
+<h5>Administrator</h5>
+
+<p>Built-in administrative account.</p>
+
+<h5>Guest</h5>
+
+<p>Limited-access account, usually disabled.</p>
+
+<h5>krbtgt</h5>
+
+<p>Special account used by Kerberos for ticket generation.</p>
+
+<h4>What Should a Penetration Tester Know?</h4>
+
+<p>• Domain structure</p>
+
+<p>• Domain Controllers</p>
+
+<p>• Kerberos authentication</p>
+
+<p>• LDAP</p>
+
+<p>• SMB</p>
+
+<p>• Group Policy</p>
+
+<p>• Active Directory users and groups</p>
+
+<p>• Common AD services and ports</p>
+
+<h4>Useful Windows Commands</h4>
+
+<pre class="code-box"><code>whoami
+
+hostname
+
+ipconfig /all
+
+net user
+
+net group
+
+net localgroup
+
+systeminfo
+
+nltest /dsgetdc:company.local</code></pre>
+
+<h4>Common Terms to Remember</h4>
+
+<pre class="code-box"><code>AD   = Active Directory
+DC   = Domain Controller
+OU   = Organizational Unit
+GPO  = Group Policy Object
+LDAP = Lightweight Directory Access Protocol
+SMB  = Server Message Block
+TGT  = Ticket Granting Ticket</code></pre>
+
+<h4>Important Note</h4>
+
+<p>Active Directory is one of the most common targets during internal penetration tests.</p>
+
+<p>A strong understanding of AD fundamentals is required before learning Kerberos attacks, BloodHound, Pass-the-Hash, Kerberoasting, and Active Directory Privilege Escalation.</p>
+</div>
+</main>  
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+</script>
+
+</body>
+</html>
