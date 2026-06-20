@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>http</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+        <ul class="menu">
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <hr>
+            <h3>SOC Analyzer Notes</h3>
+
+            <li>
+                <details open>
+                    <summary>Home Lab SOC Lab Setup</summary>
+
+                    <ul class="submenu">
+                        <li><a href="soc-lab-setup.html">VMware Setup</a></li>
+                        <li><a href="kali-linux-attacker.html">Kali Linux Attacker Machin</a></li>
+                        <li><a href="ubuntu-server-victim.html">Ubuntu Server Victim</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <!-- <li>
+                <details open>
+                    <summary> Windows</summary>
+
+                    <ul class="submenu">
+                        <li><a href="event-logs.html">Event Logs</a></li>
+                        <li><a href=" failed-logons.html">Failed Logons</a></li>
+                        <li><a href="sysmon.html">Sysmon</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-logs.html">Linux Logs</a></li>
+                        <li><a href="ssh-logs.html">SSH Logs</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <li>
+                <details>
+                    <summary>Detection</summary>
+
+                    <ul class="submenu">
+                        <li><a href="sigma-rules.html">Sigma Rules</a></li>
+                        <li><a href="mitre-att&ck.html">MITRE ATT&CK</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <li>
+                <details>
+                    <summary>Incident Response</summary>
+
+                    <ul class="submenu">
+                        <li><a href="incident-response-lifecycle.html">Incident Response Lifecycle</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+           -->
+        </ul>
+
+    </aside>
+<main class="content">
+<div class="content-wrapper">
+<h3>Ubuntu Server</h3>
+<p>go to :<a href="https://ubuntu.com/download/server?utm_source=chatgpt.com" target="_blank">Ubuntu Server Download</a></p>
+<p>Download Ubuntu Server 24.04 LTS</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1781872867/p1_j04lii.png" class="hero-image" alt="">
+<p>Download 3GB</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1781873027/p2_cz2mjx.png" class="hero-image" alt="">
+<p>Wait until it's complete</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1781873172/p3_zrjd7c.png" class="hero-image" alt="">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1781874277/p4_qi958g.png" class="hero-image" alt="">
+<p>After the download process is complete, go and open the virtual machine.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1781874717/p5_deieyy.png" class="hero-image" alt="">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1781882810/p1_awevm4.png" class="hero-image" alt="">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1781882858/p2_wvnull.png" class="hero-image" alt="">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1781882882/p3_ewavm9.png" class="hero-image" alt="">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1781882904/p4_r6lh0a.png" class="hero-image" alt="">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1781883038/p5_zny92i.png" class="hero-image" alt="">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1781883085/p6_lum7mq.png" class="hero-image" alt="">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1781883120/p7_kus9bl.png" class="hero-image" alt="">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1781883175/p8_wgvwap.png" class="hero-image" alt="">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1781883198/p9_l3t42d.png" class="hero-image" alt="">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1781883241/p10_gxkmml.png" class="hero-image" alt="">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1781883291/p11_xrsrsg.png" class="hero-image" alt="">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1781883351/p12_ujiecr.png" class="hero-image" alt="">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1781883380/p13_ab29bk.png" class="hero-image" alt="">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1781883427/p14_whi8fw.png" class="hero-image" alt="">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1781883448/p15_toy2ak.png" class="hero-image" alt="">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1781883468/p16_guofox.png" class="hero-image" alt="">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1781883490/p17_f4sznh.png" class="hero-image" alt="">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1781883512/p18_jkvrh1.png" class="hero-image" alt="">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1781883532/p19_kbfdsr.png" class="hero-image" alt="">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1781883571/p20_yh3tks.png" class="hero-image" alt="">
+<p>login: *****</p>
+<p>password: *****</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1781883593/p21_fqtlmt.png" class="hero-image" alt="">
+<p>ip a</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1781883614/p22_fi4lmg.png" class="hero-image" alt="">
+</div>
+</main>
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+// 1. اختيار كل الصور التي تحمل الكلاس
+const images = document.querySelectorAll('.hero-image');
+
+// 2. تطبيق حدث الضغط على كل صورة على حدة
+images.forEach(image => {
+  image.addEventListener('click', function() {
+    // 3. إزالة الكلاس expanded من أي صور أخرى إذا كانت مفتوحة (اختياري)
+    images.forEach(img => {
+      if (img !== this) img.classList.remove('expanded');
+    });
+    
+    // 4. تفعيل أو إلغاء التأثير للصورة المضغوطة
+    this.classList.toggle('expanded');
+  });
+});
+</script>
+</body>
+</html>
