@@ -248,3 +248,54 @@ footer a:hover {
     width: 100%;      /* ضمان مطابقة الكود لعرض الحاوية */
     box-sizing: border-box; /* لضمان عدم خروج الحواف بسبب الـ padding */
 }
+
+
+
+
+
+.content-wrapper {
+    max-width: 900px; /* اضبط هذا الرقم ليتناسب مع عرض الصورة في موقعك */
+    margin: 0 auto;   /* لتوسيط المحتوى */
+}
+
+.hero-image {
+    display: block;
+    width: 100%;      /* تجعل الصورة تأخذ كامل عرض الحاوية */
+    height: auto;
+}
+
+.code-box {
+    background-color: #2d2d2d;
+    color: #f8f8f2;
+    padding: 15px;
+    border-radius: 0 0 8px 8px; /* زوايا دائرية من الأسفل فقط لتبدو متصلة */
+    border-left: 5px solid #0e5bd8;
+    margin-top: 0;    /* إزالة المسافة بين الصورة والكود */
+    width: 100%;      /* ضمان مطابقة الكود لعرض الحاوية */
+    box-sizing: border-box; /* لضمان عدم خروج الحواف بسبب الـ padding */
+}
+
+
+
+
+
+
+
+.hero-image {
+  cursor: pointer;
+  transition: all 0.4s ease; /* تأثير حركة سلس */
+  position: relative;
+  z-index: 1;
+}
+
+/* الكلاس الذي سنضيفه عند الضغط */
+.hero-image.expanded {
+  position: fixed; /* لتصبح فوق كل العناصر */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.5); /* تكبير الصورة وتوسيطها */
+  z-index: 9999; /* لضمان ظهورها فوق كل شيء */
+  box-shadow: 0 0 20px rgba(0,0,0,0.5); /* إضافة ظل لتبدو كبطاقة منبثقة */
+  cursor: zoom-out;
+}
+
