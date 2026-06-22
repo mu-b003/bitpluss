@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>http</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+        <ul class="menu">
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux Basics</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <hr>
+            <h3>SOC Analyzer Notes</h3>
+
+            <li>
+                <details open>
+                    <summary>Home Lab SOC Lab Setup</summary>
+
+                    <ul class="submenu">
+                        <li><a href="soc-lab-setup.html">VMware Setup</a></li>
+                        <li><a href="kali-linux-attacker.html">Kali Linux Attacker Machin</a></li>
+                        <li><a href="ubuntu-server-victim.html">Ubuntu Server Victim</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <!-- <li>
+                <details open>
+                    <summary> Windows</summary>
+
+                    <ul class="submenu">
+                        <li><a href="event-logs.html">Event Logs</a></li>
+                        <li><a href=" failed-logons.html">Failed Logons</a></li>
+                        <li><a href="sysmon.html">Sysmon</a></li>
+                    </ul>
+
+                </details>
+            </li>-->
+
+              <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="failed-login-analyzer.html">Failed Login Analyzer</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <!--  <li>
+                <details>
+                    <summary>Detection</summary>
+
+                    <ul class="submenu">
+                        <li><a href="sigma-rules.html">Sigma Rules</a></li>
+                        <li><a href="mitre-att&ck.html">MITRE ATT&CK</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <li>
+                <details>
+                    <summary>Incident Response</summary>
+
+                    <ul class="submenu">
+                        <li><a href="incident-response-lifecycle.html">Incident Response Lifecycle</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+           -->
+        </ul>
+
+    </aside>
+<main class="content">
+<div class="content-wrapper">
+<h3>SOC-Failed-Login-Incident-Response</h3>
+<p>Open the terminal and type ip a to find the IP address. As it appears in the terminal, the IP address is 192.168.150.129 on the victim's machine.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1782105187/l1.1.1_mapnvi.png" class="hero-image" alt="">
+<p>Also, open the terminal on the attacker's Kali machine and type ip a. The IP address that appears in the terminal is 192.168.150.130.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1782105501/l.2.2_mzwth9.png" class="hero-image" alt="">
+<p>We type the command ping to confirm the connection to the victim's device: ping -c 192.168.150.129</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1782105650/l.3.3_recy9o.png" class="hero-image" alt="">
+<p>Use `sudo apt update` to update the list of packages available in the system repositories to ensure you have the latest version of the software.</p>
+<p>`sudo apt install openssh-server -y` is the basic command for installing an SSH server.</p>
+<p>The openssh-server package is responsible for allowing the device to accept SSH connections from other devices.</p>
+<p>-y is short for automatic yes approval</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1782105898/l4_zzfsti.png" class="hero-image" alt="">
+<p>`sudo systemctl enable ssh --now` This command performs two functions: `enable` makes the service start automatically when the system boots, and `--now` starts the service immediately without requiring a restart.</p>
+<p>`sudo systemctl status ssh` This command is used to verify that the service is working correctly.</p>
+<p>Statuses: Read service status active, listening</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1782106040/l5_snuire.png" class="hero-image" alt="">
+<p>We use Secure Copy SCP to transfer files securely via the SSH protocol.</p>
+<p>sudo soc-analyst@192.168.150.129:/var/log/auth.log ~/auth_capture.log</p>
+<p>Here we specify the user and their device: soc-analyst@192.168.150.129</p>
+<p>var/log/auth.log/ is the source path of the file located on the victim's device.</p>
+<p>Log files are the most important system log files in Linux. This file contains details of successful and failed logins.</p>
+<p>The path where the file is saved within your Kali device is ~/auth_capture.log. It is saved in home.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1782106154/l6_gy24ng.png" class="hero-image" alt="">
+<p>We use `ls -l` to display folders and files; here we want to find the location of the auth_capture.log file.</p>
+<p>The `mkdir project` command creates a folder because we will be moving the auth_capture.log file to this `project` folder.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1782106268/l7_fe7c25.png" class="hero-image" alt="">
+<p>mv auth_capture.log project/ to move the file to the folder</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1782106379/l8_himw0u.png" class="hero-image" alt="">
+<p>We run the command `sudo tail -f /var/log/auth.log` to monitor live logs on the victim's machine.</p>
+<p>The tail tool displays the end of the file, the last line.</p>
+<p>-f (follow) This command option continues to monitor the file and display any new updates that appear in it in real time.</p>
+<p>var/log/auth.log/ This is the authentication log file that contains login events.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1782106493/l9_wdzutg.png" class="hero-image" alt="">
+<p>In this step, we prepare for the brute force attack or dictionary attack.</p>
+<p>We create a file, for example, named touch passwords.txt lgt thvy</p>
+<p>After creating the file, we use the nano passwords.txt command to open it. Then, we write a list of passwords. Enter incorrect passwords because we want to perform a failed login test.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1782106587/l10_ufojgj.png" class="hero-image" alt="">
+<p>For example, we write random passwords, provided they are incorrect.</p>
+<p>password</p>
+<p>123456</p>
+<p>user</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1782106916/l11_pjzya6.png" class="hero-image" alt="">
+<p>At this stage, we execute a brute-force attack using the Hydra tool.</p>
+<p>hydra -lsoc-analyst -P passwords.txt ssh://192.168.150.129 -t 4 pV</p>
+<p>-l soc-analyst Target username</p>
+<p>-P passwords.txt Specifies the dictionary file containing the passwords that Hydra will try.</p>
+<p>ssh://192.168.150.129 Specify the SHH service and the target device's address</p>
+<p>-t 4 is the number of parallel attempts, and we chose 4 to increase the attack speed simultaneously.</p>
+<p>-V (verbos mode) to display the system's every attempt in detail</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1782107120/l12_crc1zl.png" class="hero-image" alt="">
+<p>The outputs inside the orange box are the direct result of the brute-force attack we performed using Hydra</p>
+<p>Authentication failure: This line is repeated several times and means that the system rejected login attempts because the password is incorrect.</p>
+<p>Password check failed for user soc-analyst. This line confirms that the system attempted to verify the password for user soc-analyst and failed each time.</p>
+<p>Failed password for soc-analyst from 192.168.150.130. Here, the source of the attack is identified (and the IP address of the target device is 192.168.150.130) and the username of the target.</p>
+<p>Activating IPv4 penalty... for penalty: failed authentication. Here, the system blocked the IP for 17 seconds. This is the most important security point in the log. The system detected an attack with multiple failed attempts in a short period of time.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1782107243/l13_exya6t.png" class="hero-image" alt="">
+<p>In this step, we want to speed up the analysis, so we will create and name a file named failed_login_analyzer.py</p>
+<p>touch faile_login_analyzer.py</p>
+<p>Open this file to write the script inside: nano failed_login_analyzer.py</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1782107368/l14_o8jpdx.png" class="hero-image" alt="">
+<p>Currently, we might not need this script for this task, but if there is a large amount of data, it can be difficult to handle manually, so using a script like this could be very helpful.</p>
+<p><a href="https://github.com/mu-b003/SOC-Failed-Login-Incident-Response/blob/main/scripts/failed_login_analyzer.py" target="_blank">analyzer.py</a></p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1782107466/l15_nwpesa.png" class="hero-image" alt="">
+<p>python3 failed_login_analyzer.py --log auth_capture.log --threshold 5 --output report.cvs</p>
+<p>The Python3 interpreter that requests the operating system to run the Python file.</p>
+<p>failed_login_analyzer.py is the name of the script we programmed; it's the file that contains the programming logic.</p>
+<p>--log auth_capture.log This is an argument parameter that tells the script the path to the log file we want to parse.</p>
+<p>--threshold 5 This is a parameter that determines the level of risk. The script tells us if it finds any IP address with 5 or more failed attempts and classifies it as a high risk (HIGH).</p>
+<p>--output report.csv This parameter specifies the filename that Script will create to save the final results.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1782107603/l16_bsxvle.png" class="hero-image" alt="">
+<p>In this step, we will take a defensive measure on the victim's device to secure the system.</p>
+<p>The command `sudo ufw status` is used to check the firewall's status. As you can see, the result shows `Status: inactive`, meaning the firewall was inactive, which exposed the system to the attacks we previously carried out.</p>
+<p>`sudo ufw enable` This command activates the firewall, and as you can see, immediately after executing it, the message "Firewall is active and enabled on system startup" appears.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1782107743/l17_c3auw8.png" class="hero-image" alt="">
+<p>sudo ufw deny from 192.168.150.130</p>
+<p>This step is the incident response step. After identifying the attacker's IP address, we issue a command to the firewall to permanently block that IP. The result is a "Rule added"—a blocking rule that prevents any future communication from this attacker.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1782107832/l18_lq7jsg.png" class="hero-image" alt="">
+<p>sudo ufw status numbered</p>
+<p>This command displays a list of all UFW firewall rules, and the result shows leader number 3 DENY IN for IP address 192.168.150.130</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1782107937/l19_f68ypn.png" class="hero-image" alt="">
+<p>`sudo nano /etc/ssh/sshd_config` opens the configuration file by typing this command to implement certain security practices to reduce the attack surface.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1782108027/l20_dq3grk.png" class="hero-image" alt="">
+<p>Changing the default SSH port from 22 to 2222 prevents automated attacks that only search for default ports.</p>
+<p>The change "permitRootLogin no" is very important as it prevents an attacker from attempting to log in directly with root privileges.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1782108145/l21_acirix.png" class="hero-image" alt="">
+<p>`sudo ufw allow 2222/tcp` tells the firewall to open the new port to allow incoming SSH connections.</p>
+<p>`sudo ufw delete allow 22/tcp` This command deletes the old permission that allowed connections over the default port 22.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1782108313/l22_ceqcyo.png" class="hero-image" alt="">
+<p>`sudo systemctl restart ssh` This command restarts the SSH service on the system and activates the changes we made in the configuration file.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1782108417/l23_swnd34.png" class="hero-image" alt="">
+
+
+
+
+
+
+
+
+
+</div>
+</main>
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+// 1. اختيار كل الصور التي تحمل الكلاس
+const images = document.querySelectorAll('.hero-image');
+
+// 2. تطبيق حدث الضغط على كل صورة على حدة
+images.forEach(image => {
+  image.addEventListener('click', function() {
+    // 3. إزالة الكلاس expanded من أي صور أخرى إذا كانت مفتوحة (اختياري)
+    images.forEach(img => {
+      if (img !== this) img.classList.remove('expanded');
+    });
+    
+    // 4. تفعيل أو إلغاء التأثير للصورة المضغوطة
+    this.classList.toggle('expanded');
+  });
+});
+</script>
+</body>
+</html>
