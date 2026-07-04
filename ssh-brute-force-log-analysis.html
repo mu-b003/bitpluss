@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SSH Brute Force Log Analysis</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+          <ul class="menu">
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <hr>
+            <h3>SOC Analyzer Notes</h3>
+
+            <li>
+                <details>
+                    <summary>Home Lab SOC Lab Setup</summary>
+
+                    <ul class="submenu">
+                        <li><a href="soc-lab-setup.html">VMware Setup</a></li>
+                        <li><a href="kali-linux-attacker.html">Kali Linux Attacker Machin</a></li>
+                        <li><a href="ubuntu-setup.html">Ubuntu Desktop Victim</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <li>
+                <details>
+                    <summary>Logs Analysts</summary>
+
+                    <ul class="submenu">
+                        <li><a href="login-failuer-analyzer.html">Login Failuer Analyzer</a></li>
+                        <li><a href="ssh-brute-force-log-analysis.html">SSH Brute Force Log Analysis</a></li>
+                    </ul>
+
+                </details>
+            </li>
+        </ul>
+
+    </aside>
+<main class="content">
+<div class="content-wrapper">
+<h3> brute-force Detection</h3>
+<p>For this practical task we will capture a brute-force attack We will follow a scenario to generate the attack and then analyze it Have you set up the labs If not you can do so via this <a href="https://bitpluss.com/soc-lab-setup" target="_blank">link.</a></p>
+<hr>
+<p>The `ip a` command is the first one we use to find the victim's IP address, as we will need it later when launching the attack. and the  Victim (ubuntu) ip is 192.168.150.129</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783169538/b1_xgzakx.png" class="hero-image" alt="">
+<p>The command `sudo systemctl status ssh` is used to check the status of the SSH server service as you can see from the results it is running.</p>
+<p>We have obtained the information we needed—specifically the victim's IP address and the status of the SSH service Now that we have what we need the next step is to execute the attack the goal is to generate log entries within the log file.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783169538/b2_gswqf0.png" class="hero-image" alt="">
+<p>Go to the Kali machine the preparations for the attack begin here Use the command `touch passwords.txt` to create an empty file, then use the command `nano passwords.txt` to open the file and enter the passwords.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783169571/b3_zzjwjd.png" class="hero-image" alt="">
+<p>Enter password you can type whatever you like provided they are all incorrect so that you do not succeed in logging in later.</p>
+<p>mustang6667,
+mustang65ch1do,
+mustang6561,
+mustang654,
+mustang652,
+mustang645
+</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783169571/b4_dlhwzh.png" class="hero-image" alt="">
+<p>'hydra -l developer -P passwords.txt ssh://192.168.150.129'  this is the step where the attack is executed using the Hydra tool.</p>
+<p>'hydra' The command to run the Hydra tool.</p>
+<p>'-l developer' The username used for testing</p>
+<p>'-P passwords.txt' Password file name</p>
+<p>'ssh://192.168.150.129' Targeting the SSH service on the device with the address 192.168.150.129 </p>
+<p>Thus we have generated the required number of records in the authentication records file In the next step we will begin the analysis process as SOC analysts.</p>
+<p>The results indicate that the Hydra tool failed to log in And this is exactly what we need.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783169602/b5_ofh1wu.png" class="hero-image" alt="">
+<p>With this in mind think like an SOC analyst performing an analysis.</p>
+<p>'sudo grep "Faile password" /var/log/auth.log | awk '{print $1, $2, $3, $(NF-3)}'</p>
+<p>The `sudo` command runs a command with administrator privileges</p>
+<p>This command aims to retrieve the timestamps of failed login attempts along with the originating IP addresses.</p>
+<p>The `sudo` command runs a command with administrator privileges.</p>
+<p>The `grep "Failed password"` command searches for lines containing the phrase Failed password</p>
+<p>'/var/log/auth.log' The authentication log file that records SSH and sudo events</p>
+<p>'awk' to select specific fields</p>
+<p>'$1' Date and Time</p>
+<p>'$2' Device Name</p>
+<p>'$3' Program or process name: sshd-session[...]</p>
+<p>'$(NF-3)'The third field from the end </p>
+<p>Based on the results we conclude that all failed login attempts originated from a single IP address within a very short timeframe indicating a brute-force attack pattern.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783169601/b6_pnbvck.png" class="hero-image" alt="">
+<p>The command `sudo grep "Failed password" /var/log/auth.log` displays all failed login attempts to the SSH server.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783169601/b7_w8jbs4.png" class="hero-image" alt="">
+<p>This project demonstrated how SSH brute-force attempts can be generated in a controlled lab environment and analyzed using Linux authentication logs. By reviewing failed login events, identifying the source IP, and interpreting SSH log entries, the activity followed a basic SOC Level 1 investigation workflow. For the complete technical report, commands used, evidence, and project files, please visit the GitHub repository.</p>
+<p>Technical <a href="https://github.com/mu-b003/ssh-brute-force-log-analysis-/blob/main/report/SSH_Brute_Force_Log_Analysis_Report.md" target="_blank">Report</a></p>
+<p>GitHub <a href="https://github.com/mu-b003/ssh-brute-force-log-analysis-" target="_blank">Repository</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+</main>
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+// 1. اختيار كل الصور التي تحمل الكلاس
+const images = document.querySelectorAll('.hero-image');
+
+// 2. تطبيق حدث الضغط على كل صورة على حدة
+images.forEach(image => {
+  image.addEventListener('click', function() {
+    // 3. إزالة الكلاس expanded من أي صور أخرى إذا كانت مفتوحة (اختياري)
+    images.forEach(img => {
+      if (img !== this) img.classList.remove('expanded');
+    });
+    
+    // 4. تفعيل أو إلغاء التأثير للصورة المضغوطة
+    this.classList.toggle('expanded');
+  });
+});
+</script>
+</body>
+</html>
