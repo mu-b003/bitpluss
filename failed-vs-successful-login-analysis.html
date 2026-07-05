@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Failed vs Successful Login Analysis</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+          <ul class="menu">
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <hr>
+            <h3>SOC Analyzer Notes</h3>
+
+            <li>
+                <details>
+                    <summary>Home Lab SOC Lab Setup</summary>
+
+                    <ul class="submenu">
+                        <li><a href="soc-lab-setup.html">VMware Setup</a></li>
+                        <li><a href="kali-linux-attacker.html">Kali Linux Attacker Machin</a></li>
+                        <li><a href="ubuntu-setup.html">Ubuntu Desktop Victim</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <li>
+                <details>
+                    <summary>Logs Analysts</summary>
+
+                    <ul class="submenu">
+                        <li><a href="login-failuer-analyzer.html">Login Failuer Analyzer</a></li>
+                        <li><a href="ssh-brute-force-log-analysis.html">SSH Brute Force Log Analysis</a></li>
+                         <li><a href="ssh-authentication-log-analysis.html">SSH Authentication Log Analysis</a></li>
+                        <li><a href="failed-vs-successful-login-analysis.html">Failed vs Successful Login Analysis</a></li>
+                    </ul>
+
+                </details>
+            </li>
+        </ul>
+
+    </aside>
+<main class="content">
+<div class="content-wrapper">
+<h3>Failed vs Successful Login Analysis</h3>
+<p>This is a task you can perform practically in a virtual lab in this task we execute an attack to generate logs If you do not have a virtual lab you can set one up by visiting the <a href="https://bitpluss.com/soc-lab-setup" target="_blank">link.</a></p>
+<p>We use the `ip a` command to find the victim's device ip address which we will need later when executing the attack. and the ip is 192.168.150.129</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783192611/f1_jdpopx.png" class="hero-image" alt="">
+<p>The command `sudo systemctl status ssh` is used to check the status of the SSH service and the results indicate that it is running.</p>
+<p>We now have what we need the victim's IP address and have confirmed that the SSH service is running.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783192611/f2_xwmlhw.png" class="hero-image" alt="">
+<p>From here we will begin preparing an attack aimed at generating records.</p>
+<p>'ssh IT-support@192.168.150.129'</p>
+<p>Try logging in manually enter an incorrect password twice then enter the correct password on the third attempt. After successfully logging in wait a moment then log out.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783192611/f3_a8wlqi.png" class="hero-image" alt="">
+<p>We previously carried out a manual attack two attempts failed and one succeeded This time we want to generate logs within the authentication files so we will prepare a password list to execute a brute force attack.</p>
+<p>Open the file by typing the command `nano passwords.txt`.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783192612/f4_pmalgt.png" class="hero-image" alt="">
+<p>Enter incorrect passwords and finally enter the correct user password.</p>
+<p>passwords.txt,
+mustang4evr,
+mustang4carm141,
+mustang4989,
+mustang49,
+mustang47,
+mustang4445,
+mustang438,
+mustang43,
+mustang429,
+mustang4215,
+mustang4111,
+mustang4077,
+mustang40!,
+mustang3998,
+mustang3876,
+mustang37890,
+mustang377,
+mustang374,
+mustang36,
+mustang351,
+mustang350,
+mustang35.,
+mustang3428,
+mustang342,
+mustang338,
+mustang326,</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783192612/s5_essrch.png" class="hero-image" alt="">
+<p>'hydra -l IT-support -P passwords.txt ssh://192.168.150.129'</p>
+<p>We used Hydra to execute a brute-force attack using the 'IT-support' user account; the results show that Hydra successfully logged in.</p>
+<p>We have generated a sufficient number of records that we will need later.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783192674/s6_ta5heh.png" class="hero-image" alt="">
+<p>Here we begin the analysis Think like an SOS analyst.</p>
+<p>sudo grep -E "Failed password|Accepted password" /var/log/auth.log</p>
+<p>We used the command to extract failed and successful login attempts and it revealed a successful login by the user "IT-support".</p>
+<hr>
+<p>The results also show two failed attempts and one successful one this is considered a normal scenario for the first part.</p>
+<p>12:30:07 Failed password</p>
+<p>12:30:15 Failed password</p>
+<p>12:30:24 Accepted password</p>
+<hr>
+<p>In the second part after 12:36:51 something different began to appear observe this in the results.</p>
+<p>A large number of messages appearing in less than a minute is not normal behavior indicating a brute force attack.Then, Hydra successfully logged in.</p>
+<p>12:36:51</p>
+<p>12:36:52</p>
+<p>12:36:55</p>
+<p>12:36:56</p>
+<p>12:36:57</p>
+<p>12:36:58</p>
+<p>12:37:08</p>
+<p>12:37:09</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783192673/s7_fcssvz.png" class="hero-image" alt="">
+<p>sudo grep -a "Failed password" /var/log/auth.log | awk '{for(i=1;i<=NF;i++) if($i=="from") print $(i+1)}' | sort | uniq -c | sort -nr</p>
+<p>This command is used to extract the number of failed login attempts per IP address from the authentication log.</p>
+<p>grep -a "Failed password" /var/log/auth.log</p>
+<p>Search for failed login attempts</p>
+<p>awk '{for(i=1;i<=NF;i++) if($i=="from") print $(i+1)}'</p>
+<p>Extracting the IP address</p>
+<p>'awk' iterates over each word in the line.</p>
+<p>'sort' Sorting results </p>
+<p>'uniq -c' Counting repetitions</p>
+<p>'sort -nr' Sort by number</p>
+<p>The result indicates that the IP address 192.168.150.128 made 304 failed login attempts.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783192673/s8_wedfel.png" class="hero-image" alt="">
+<p>sudo grep -a "Accepted password" /var/log/auth.log | awk '{for(i=1;i<=NF;i++) if($i=="from") print $(i+1)}' | sort | uniq -c | sort -nr</p>
+<p>This command is the counterpart to the previous one, but it counts successful login attempts instead of failed ones.</p>
+<p>The results indicate that the IP address 192.168.150.128 successfully logged in twice.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783192673/s9_qv1vdj.png" class="hero-image" alt="">
+<p>Technical<a href="https://github.com/mu-b003/failed-vs-successful-login-analysis-/blob/main/report/incident-report.md" target="_blank"> Report</a></p>
+<p>GitHub <a href="https://github.com/mu-b003/failed-vs-successful-login-analysis-" target="_blank">Repository</a></p>
+</div>
+</main>
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+// 1. اختيار كل الصور التي تحمل الكلاس
+const images = document.querySelectorAll('.hero-image');
+
+// 2. تطبيق حدث الضغط على كل صورة على حدة
+images.forEach(image => {
+  image.addEventListener('click', function() {
+    // 3. إزالة الكلاس expanded من أي صور أخرى إذا كانت مفتوحة (اختياري)
+    images.forEach(img => {
+      if (img !== this) img.classList.remove('expanded');
+    });
+    
+    // 4. تفعيل أو إلغاء التأثير للصورة المضغوطة
+    this.classList.toggle('expanded');
+  });
+});
+</script>
+</body>
+</html>
