@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suspicious IP Detection</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+          <ul class="menu">
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <hr>
+            <h3>SOC Analyzer Notes</h3>
+
+            <li>
+                <details>
+                    <summary>Home Lab SOC Lab Setup</summary>
+
+                    <ul class="submenu">
+                        <li><a href="soc-lab-setup.html">VMware Setup</a></li>
+                        <li><a href="kali-linux-attacker.html">Kali Linux Attacker Machin</a></li>
+                        <li><a href="ubuntu-setup.html">Ubuntu Desktop Victim</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <li>
+                <details>
+                    <summary>Logs Analysts</summary>
+
+                    <ul class="submenu">
+                        <li><a href="login-failuer-analyzer.html">Login Failuer Analyzer</a></li>
+                        <li><a href="ssh-brute-force-log-analysis.html">SSH Brute Force Log Analysis</a></li>
+                         <li><a href="ssh-authentication-log-analysis.html">SSH Authentication Log Analysis</a></li>
+                        <li><a href="failed-vs-successful-login-analysis.html">Failed vs Successful Login Analysis</a></li>
+                        <li><a href="suspicious-ip-detection.html">Suspicious IP Detection</a></li>
+                    </ul>
+
+                </details>
+            </li>
+        </ul>
+
+    </aside>
+<main class="content">
+<div class="content-wrapper">
+<h3>Suspicious IP Detection</h3>
+<p>You can carry out this task practically in an isolated virtual lab if you do not have one you can set up your own lab using the provided <a href="https://bitpluss.com/soc-lab-setup" target="_blank">link.</a></p>
+<p>In this task we will analyze system logs to identify a suspicious IP address and then launch an attack against the victim's machine to generate logs.</p>
+<p>The first step is to gather some information about the victim before launching the attack We use the `ip a` command to identify the victim's IP address and the results show that the address is 192.168.150.129.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783192900/s1_bmyafz.png" class="hero-image" alt="">
+<p>The command `sudo systemctl status ssh` is used to check the status of the SSH service and the results indicate that it is running.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783192900/s2_udnbum.png" class="hero-image" alt="">
+<p>In this step we carry out a manual attack by entering each user's password incorrectly.</p>
+<p>ssh admin@192.168.150.129</p>
+<p>ssh developer@192.168.150.129</p>
+<p>ssh IT-support@192.168.150.129</p>
+<p>We will stop here this is all we need to analyze in the log file.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783192899/s3_joufop.png" class="hero-image" alt="">
+<p>At this stage you are acting as an SOC analyst</p>
+<p>sudo grep "Failed password" /var/log/auth.log</p>
+<p>This command searches the authentication log file for all failed login attempts.</p>
+<p>The results show failed login attempts using the non-existent username "admin" as well as failed login attempts via the users "developer" and "IT-support"</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783192901/s4_o1duk7.png" class="hero-image" alt="">
+<p>sudo grep "Failed password" /var/log/auth.log | grep -oE "from [0-9.]+" | sort | uniq -c</p>
+<p>It is used to count the number of failed login attempts per IP address.</p>
+<p>As we can see, there are 9 failed attempts from IP 192.168.150.128.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783192899/s5_ir31qi.png" class="hero-image" alt="">
+<p>sudo grep "Failed password" /var/log/auth.log | grep -oE "for [a-zA-Z0-9-]+" | sort | uniq -c</p>
+<p>The purpose of this command is to count the number of failed login attempts for each username.</p>
+<p>As we can see the results show three failed attempts using the 'developer' user three failed attempts using the 'IT-support' user and three failed attempts using a non existent user (admin).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783193009/s6_qgwdb3.png" class="hero-image" alt="">
+<p>'sudo grep "Failed password for root" /var/log/auth.log'</p>
+<p>Its purpose is to look for any failed login attempts to the root account via SSH.</p>
+<p>The results also show that there are no failed or successful login attempts via root.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783193008/s7_uliukl.png" class="hero-image" alt="">
+<p>sudo grep "Invalid user" /var/log/auth.log</p>
+<p>Its function is to search the authentication log '/var/log/auth.log' for all attempts targeting users that do not exist on the system.</p>
+<p>This type of result indicates a reconnaissance process or the beginning of a username and password guessing attack.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783193008/s8_tll1ju.png" class="hero-image" alt="">
+<p>sudo iptables -A INPUT -s 192.168.150.128 -j DROP</p>
+<p>After identifying the IP address responsible for the failed login attempts we are applying a ban to that IP (192.168.150.128) However there is an error regarding the IP we blocked when applying the ban you should block the attacker's machine IP.
+<p>This adds a rule to the iptables firewall to block all inbound packets from a specific IP address.</p>
+</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783193008/s9_m0bcfr.png" class="hero-image" alt="">
+<p>This is an optional step if you want to lift the IP ban as you will need to run tests between the two devices later on.</p>
+<p>We have completed this task You can find a report detailing everything I did on my GitHub via this <a href="https://github.com/mu-b003/suspicious-ip-detection-/blob/main/report/Suspicious_IP_Detection_Report.md" target="_blank">link</a> and the project folders via this <a href="https://github.com/mu-b003/suspicious-ip-detection-/tree/main" target="_blank">link</a></p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783193008/s10_zf1imn.png" class="hero-image" alt=""> 
+
+</div>
+</main>
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+// 1. اختيار كل الصور التي تحمل الكلاس
+const images = document.querySelectorAll('.hero-image');
+
+// 2. تطبيق حدث الضغط على كل صورة على حدة
+images.forEach(image => {
+  image.addEventListener('click', function() {
+    // 3. إزالة الكلاس expanded من أي صور أخرى إذا كانت مفتوحة (اختياري)
+    images.forEach(img => {
+      if (img !== this) img.classList.remove('expanded');
+    });
+    
+    // 4. تفعيل أو إلغاء التأثير للصورة المضغوطة
+    this.classList.toggle('expanded');
+  });
+});
+</script>
+</body>
+</html>
