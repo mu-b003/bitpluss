@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security investigation</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+          <ul class="menu">
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <hr>
+            <h3>SOC Analyzer Notes</h3>
+
+            <li>
+                <details>
+                    <summary>Home Lab SOC Lab Setup</summary>
+
+                    <ul class="submenu">
+                        <li><a href="soc-lab-setup.html">VMware Setup</a></li>
+                        <li><a href="kali-linux-attacker.html">Kali Linux Attacker Machin</a></li>
+                        <li><a href="ubuntu-setup.html">Ubuntu Desktop Victim</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <li>
+                <details>
+                    <summary>Logs Analysts</summary>
+
+                    <ul class="submenu">
+                        <li><a href="login-failuer-analyzer.html">Login Failuer Analyzer</a></li>
+                        <li><a href="ssh-brute-force-log-analysis.html">SSH Brute Force Log Analysis</a></li>
+                         <li><a href="ssh-authentication-log-analysis.html">SSH Authentication Log Analysis</a></li>
+                        <li><a href="failed-vs-successful-login-analysis.html">Failed vs Successful Login Analysis</a></li>
+                        <li><a href="suspicious-ip-detection.html">Suspicious IP Detection</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Security investigation</summary>
+
+                    <ul class="submenu">
+                        <li><a href="incident-response-case-study.html">Incident Response Case Study</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+
+
+        </ul>
+
+    </aside>
+<main class="content">
+<div class="content-wrapper">
+<h3>Incident Response Case Study</h3>
+<p>This is a task you can carry out practically in your own isolated lab We will follow an attack scenario targeting an isolated virtual environment with the aim of generating logs and subsequently analyzing them.</p>
+<p>'sudo apt update' The Command This command is used to update the list of available packages from system repositories without actually installing anything.The displayed results indicate that the system connected to the Ubuntu repositories, fetched the package lists, and found six packages that can be upgraded.</p>
+<p>Command: `sudo apt upgrade -y` This command is used to install actual updates for upgradable packages; the `-y` option automatically answers "yes" to any prompts from the system. The results indicate that only two packages (`gnome-shell` and `gnome-shell-common`) were successfully upgraded, while four others remain un-upgraded due to the "phasing" mechanism (a gradual rollout of the update).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783966815/i1_i6k2kb.png" class="hero-image" alt="">
+<p>Command: `sudo systemctl enable ssh` This command is used to configure the SSH service to start automatically whenever the system boots. The resulting output indicates that the service has been successfully linked to systemd to ensure it starts automatically in the future.</p>
+<p>Command: `sudo systemctl start ssh` This command is used to start the SSH service immediately in the current session. No messages appeared in the output, indicating that the service started without any issues.</p>
+<p>Command: `sudo systemctl status ssh` This command is used to check the current status of the SSH service (whether it is running or stopped, and for how long).The output indicates that the service has been active (running) for 7 minutes and has successfully started listening on port 22 for both IPv4 and IPv6.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783966815/i2_k0dske.png" class="hero-image" alt="">
+<p>Command: `sudo adduser Omar` This command is used to create a new user named "Omar" on the system and automatically generate a dedicated home directory for him. The output indicates that the system warned the entered password was too short and weak (fewer than 8 characters); however, it allowed the process to proceed despite the warning, and the user "Omar" was successfully created after confirming the information by entering "y".</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783966815/i3_msvxdl.png" class="hero-image" alt="">
+<p>Command: `id Omar` This command is used to display the User ID (UID), Group ID (GID), and the groups to which the user "Omar" belongs. The results indicate that Omar has a UID of 1002 and a GID of 1002, and is a member of only two groups: his own group ("Omar") and the "users" group.</p>
+<p>Command: `groups Omar` This command is used to display the names of the groups to which the user belongs in a direct and concise manner. The results indicate the following: Omar belongs only to the `Omar` and `users` groups; this means he is not part of the `sudo` group and does not possess administrative privileges.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783966815/i4_cjksph.png" class="hero-image" alt="">
+<p>Command: `sudo truncate -s 0 /var/log/auth.log` This command is used to completely clear the contents of the `auth.log` file and set its size to zero, without deleting the file itself.The results showed no error messages, meaning all previous logs in this file have effectively been erased.</p>
+<p>Command: `sudo systemctl restart ssh`This command is used to restart the SSH service (stopping and then starting it).The results showed no issues, meaning the service was restarted successfully.</p>
+<p>Command: `sudo systemctl status ssh`This command is used to verify that the service has resumed operation following the restart.The displayed results indicate that the service has been active (running) for just 17 seconds with a new process ID (PID 5716) and has resumed listening on port 22.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783966815/i5_nzsk0x.png" class="hero-image" alt="">
+<p>Command: nmap -sV 192.168.81.130 This command is used to scan a specific device on the network (in this case, 192.168.81.130) to identify open ports, services, and their versions.The results indicate that the target device is active and has two open ports: port 22 (SSH service running OpenSSH 10.2p1) and port 80 (Apache 2.4.66 web service), and that the operating system is Linux (Ubuntu).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783966929/i6_kbiw73.png" class="hero-image" alt="">
+<p>Command: `touch passwords.txt`This command is used to create a new, empty text file named `passwords.txt`.There was no output, meaning the file was successfully created immediately.</p>
+<p>Command: `nano passwords.txt` This command is used to open the file in the `nano` text editor for editing and entering content.The result is an empty editing screen ready for input.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783966929/i7_rxftth.png" class="hero-image" alt="">
+<p>There is nothing new here; this content was manually written inside the `passwords.txt` file.  The content indicates that the attacker prepared a list of common, weak passwords (e.g., 123456, 123abc, abc123, password, admin) to use later in an attempt to guess the password for Omar's account.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783966928/i8_j31cal.png" class="hero-image" alt="">
+<p>Command: `hydra -l Omar -P passwords.txt ssh://192.168.81.130` This command is used to execute an automated brute-force attack against the SSH service by attempting to log in with the username "Omar" and testing each password listed in the `passwords.txt` file, one by one. The resulting output indicates that the tool successfully found the correct password for the "Omar" account, displaying the message "1 valid password found."</p>
+<p>Command: ssh Omar@192.168.81.130 This command is used to actually connect to the target machine via the SSH protocol using the "Omar" account. The resulting output indicates that the login was successful using the discovered password and that access to the target machine (Ubuntu 26.04 LTS) was achieved.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783966928/i9_fw5yef.png" class="hero-image" alt="">
+<p>Command: `whoami`Used to verify the identity of the current user in the session. Result: `Omar` — meaning the session is effectively under the name "Omar.</p>
+<p>Command: hostname Used to identify the name of the currently connected machine. Result: it-team-VMware-Virtual-Platform — the name of the victim machine.</p>
+<p>Command: pwd Used to determine the current path within the file system. Result: /home/Omar — meaning the user is inside their own home directory.</p>
+<p>Command: `id` Used to display the current user's permission details. Result: The same as seen previously (uid=1002, and only two groups).</p>
+<p>Command: `groups` Used to display the groups to which the current user belongs. Result: `Omar users` — confirming that the user does not belong to the `sudo` group.</p>
+<p>Command: `sudo -l` Used to determine whether the current user can execute commands with sudo privileges. Result: Explicit denial — "Omar may not run sudo on this host," meaning the attacker has accessed the system using an account with limited privileges.</p>
+<p>Command: `ls -la` Used to display all files (including hidden ones) within the current directory in detail. Result: Displays the contents of Omar's home directory—standard default system files (such as `.bashrc`, `.profile`, `.cache`, etc.)—with no additional, unusual files.</p>
+<p>The command `cat /etc/passwd` is used to display a list of all users defined on the system. The output (continued in the next image) shows all default system accounts as well as actual user accounts.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783966928/i10_alidtg.png" class="hero-image" alt="">
+<p>This is a continuation of the previous command, without a new one. The significant results appearing at the end of the log indicate the presence of three actual users on the machine: it-team (the primary/administrator user), Noor, and Omar (the compromised account).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783966987/i11_vtbwo2.png" class="hero-image" alt="">
+<p>Command: `cat /etc/os-release` Used to view details about the installed operating system and its version. Result: The system is Ubuntu 26.04 LTS ("Resolute Raccoon").</p>
+<p>Command: `uname -a` Used to display detailed information about the system kernel and architecture. Result: Linux kernel version 7.0.0-27-generic with x86_64 architecture.</p>
+<p>Command: `last` It is typically used to display the system's recent login history. Result: The command is not installed on this machine; a message appeared indicating that it must be installed first (`apt install wtmpdb`).</p>
+<p>Command: `history` This is used to display a list of all commands previously entered by the user during the current session. Result: It displays 13 previous commands executed by the attacker (the same commands explained in the previous images); this is crucial as it easily reveals all the attacker's steps to the investigator.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783966988/i12_ylddvo.png" class="hero-image" alt="">
+<p>Command: `touch notes.txt` Used to create a new, empty file named `notes.txt`. Result: No output, meaning the file was created successfully.</p>
+<p>The command: `echo "Incident Test" > notes.txt` It is used to write specific text directly into a file (overwriting any existing content). The result: No output appears on the screen, but the phrase is actually written into the file.</p>
+<p>Command: `cat notes.txt` Used to display the file's content on the screen. Result: The phrase "Incident Test" appeared, indicating that the attacker was merely testing their ability to write to and read from the system.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783966987/i13_i88xnf.png" class="hero-image" alt="">
+<p>Command: `cd /root` This is used to attempt to navigate to the directory belonging to the `root` user (the system's administrative root). Result: An explicit "Permission denied" error, indicating that the attacker lacks the necessary privileges to access this sensitive directory.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783966987/i14_ww7qdb.png" class="hero-image" alt="">
+<p>Command: `cat /etc/shadow` Used to attempt to read the file containing encrypted passwords for all system users (a highly sensitive file). Result: "Permission denied"—meaning the attempt failed because the file is protected and readable only by the root user.</p>
+<p>Command: exit Used to terminate the current session and log out of the SSH connection. Result: The connection is successfully closed, returning control to the local terminal of the Kali machine.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783966987/i15_tvnj5f.png" class="hero-image" alt="">
+<p>Command: `grep "Failed password" /var/log/auth.log` This command is used to search the authentication log file for all lines containing the phrase "Failed password"—indicating failed login attempts. Result: Five failed login attempts were found; all involved the user "Omar" and originated from the same address (192.168.81.129), confirming a systematic brute-force attack against this account.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783967049/i16_lp64uv.png" class="hero-image" alt="">
+<p>Command: grep "Failed password" /var/log/auth.log | wc -l This command is used to count the number of lines (i.e., the number of failed attempts) instead of displaying them all. Result: Exactly 5 failed attempts.</p>
+<p>Command: `grep "Accepted password" /var/log/auth.log` This is used to search for all successful login attempts. Result: Two successful logins by user "Omar" from the same attacking address appeared, at two different times.</p>
+<p>Command: grep "Accepted password" /var/log/auth.log | wc -l Used to count the number of successful logins. Result: 2 successful logins.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783967049/i17_gvj6sb.png" class="hero-image" alt="">
+<p>Command: `grep sshd /var/log/auth.log` This command is used to search the log specifically for lines related to the SSH service, allowing you to trace its entire activity from start to finish. The output tells the full story: an initial connection attempt that was interrupted, followed by five consecutive failed attempts by the user "Omar," a successful login, the system imposing a 20-second penalty delay on the attacker's address due to repeated failures (`srclimit_penalise`), a second successful login, and finally, a normal logout.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783967048/i18_liu8np.png" class="hero-image" alt="">
+<p>The command `grep "Omar" /var/log/auth.log` is used to search for all lines specifically mentioning the username "Omar," regardless of the event type. The result displays all details of this account's activity, including failed attempts, failed password checks (`unix_chkpwd`), the opening of two successful sessions (IDs 7 and 9), and their subsequent closures.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783967049/i19_puvq4h.png" class="hero-image" alt="">
+<p>The command `grep "192.168.81.129" /var/log/auth.log` is used to search for all lines specifically associated with the attacker's IP address, regardless of the username. The result is the complete chronological sequence of the attack, filtered by this address, confirming that all suspicious events originated from a single source.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783967048/i20_obdmvl.png" class="hero-image" alt="">
+<p>Command: `touch incident_evidence.log` Used to create a new, empty file to store incident evidence. Result: No output, indicating the file was created successfully.</p>
+<p>The command `grep "192.168.81.129" /var/log/auth.log > incident_evidence.log` is used to save all logs associated with the attacker's address directly into an evidence file, rather than simply displaying them on the screen. The result: No output appears on the screen, but the data is actually saved within the file.</p>
+<p>Command: `cat incident_evidence.log` This is used to verify the success of the save operation by displaying the file's contents.Result: The same log content appeared, confirming that the evidence file is now ready and contains all information related to this attack.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783967098/i21_fsespw.png" class="hero-image" alt="">
+<p>The command `grep "192.168.81.129" /var/log/auth.log | head -1` is used to display only the first line of the search results—that is, the first event recorded for this address. The result: The first event was a connection attempt that was interrupted.</p>
+<p>The command `grep "192.168.81.129" /var/log/auth.log | tail -1` is used to display only the last line—that is, the most recent event recorded for this address. The result: The last event was user Omar disconnecting (a normal logout).</p>
+<p>Command: grep "192.168.81.129" /var/log/auth.log Used to display all events in full, without filtering. Result: The same complete list as shown in the previous images.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783967099/i22_wxtfh6.png" class="hero-image" alt="">
+<p>Command: grep "Failed password" /var/log/auth.log (As before) Used to display failed login attempts. Result: The same 5 attempts for Omar.</p>
+<p>Command: grep "Accepted password" /var/log/auth.log (As before) Used to display successful login attempts. Result: The same two successful logins for Omar.</p>
+<p>Command: `grep "session closed" /var/log/auth.log` This is used to display all instances of session closures on the system for any user. Result: Closed sessions appeared for several users (root via sudo and CRON, Omar, gdm-greeter), indicating that this encompasses general system activity, not just the attacker's activity.</p>
+<p>The command `grep "session opened" /var/log/auth.log` is used to display all instances of sessions being opened on the system. The result showed open sessions for `root`, `Omar` (twice), `gdm-greeter`, and `it-team`, providing a comprehensive overview of everyone who logged into the system during that period.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783967096/i23_jqsm39.png" class="hero-image" alt="">
+<p>Command: `last` Used to display the system login history (presumably since the system was installed). Result: Several local sessions for `it-team` (tty2) appeared, along with a single session for user `Omar` via the network (pts/1) from address 192.168.81.129 at 19:45; this session was still active ("still logged in") at the time the screenshot was taken.</p>
+<p>Command: `last Omar` Used to filter the previous result and display sessions for the user "Omar" only. Result: Confirms the single session for "Omar" originating from the attacking address.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783967096/i24_q7x19i.png" class="hero-image" alt="">
+<p>Command: `grep -oP '(?<=from )(\d{1,3}\.){3}\d{1,3}' /var/log/auth.log | sort -u` This is used to extract all unique IP addresses appearing after the word "from" in the log (i.e., all sources that attempted to connect), while removing duplicates. The result is a single address: 192.168.81.129, meaning all suspicious activity originated from just one source.</p>
+<p>The command `grep "Failed password" /var/log/auth.log | awk '{for(i=1;i<=NF;i++) if($i=="from") print $(i+1)}' | sort | uniq -c | sort -nr` is used to count the occurrences of each IP address specifically in failed attempts and to sort them in descending order by frequency. The result is `5 192.168.81.129`, meaning this address alone is responsible for all five failed attempts.</p>
+<p>The command `grep "Failed password" /var/log/auth.log | awk '{print $(NF-5)}' | sort | uniq` is used to specifically extract the username targeted by the failed attempts. The result is just "Omar"—meaning the attack targeted one specific account.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783967096/i25_z0li6z.png" class="hero-image" alt="">
+<p>The command `grep sudo /var/log/auth.log` is used to display all instances of `sudo` usage on the system, revealing who executed administrative commands and when. The results showed that the user `it-team` used `sudo` to perform tasks such as restarting SSH, checking its status, and installing the `wtmpdb` tool—representing legitimate administrative activity by the technical team, rather than the attacker.</p>
+<p>Command: `grep "authentication failure" /var/log/auth.log` This is used to search for all instances of authentication failure (in a format different from "Failed password"). Result: The same 5 authentication failures for user "Omar" from address 192.168.81.129; this confirms—from another part of the log—the same number of failed attempts.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783967150/i26_utzqlu.png" class="hero-image" alt="">
+<p>Command: `grep -Ei "adduser|useradd|new user" /var/log/syslog` This command is used to search the system log (`syslog`) for any new user creation events on the machine, using multiple keywords. Result: It clearly shows that the user "Omar" was created using the `adduser` tool, detailing the entire process—UID/GID selection, creation of a private group, creation of the home directory (`/home/Omar`), copying of default configuration files from `/etc/skel`, and addition to the `users` group. This accurately documents the date and time the account—which was subsequently targeted in the attack—was created.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783967150/i27_menapc.png" class="hero-image" alt="">
+<p>Technical <a href="https://github.com/mu-b003/incident-response-case-study-/tree/main/reports" target="_blank">Report</a></p>
+<p>GitHub <a href="https://github.com/mu-b003/incident-response-case-study-/tree/main" target="_blank">Repository</a></p>
+
+</div>
+</main>
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+// 1. اختيار كل الصور التي تحمل الكلاس
+const images = document.querySelectorAll('.hero-image');
+
+// 2. تطبيق حدث الضغط على كل صورة على حدة
+images.forEach(image => {
+  image.addEventListener('click', function() {
+    // 3. إزالة الكلاس expanded من أي صور أخرى إذا كانت مفتوحة (اختياري)
+    images.forEach(img => {
+      if (img !== this) img.classList.remove('expanded');
+    });
+    
+    // 4. تفعيل أو إلغاء التأثير للصورة المضغوطة
+    this.classList.toggle('expanded');
+  });
+});
+</script>
+</body>
+</html>
