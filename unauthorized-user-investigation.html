@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unauthorized User Investigation</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+          <ul class="menu">
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <hr>
+            <h3>SOC Analyzer Notes</h3>
+
+            <li>
+                <details>
+                    <summary>Home Lab SOC Lab Setup</summary>
+
+                    <ul class="submenu">
+                        <li><a href="soc-lab-setup.html">VMware Setup</a></li>
+                        <li><a href="kali-linux-attacker.html">Kali Linux Attacker Machin</a></li>
+                        <li><a href="ubuntu-setup.html">Ubuntu Desktop Victim</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <li>
+                <details>
+                    <summary>Logs Analysts</summary>
+
+                    <ul class="submenu">
+                        <li><a href="login-failuer-analyzer.html">Login Failuer Analyzer</a></li>
+                        <li><a href="ssh-brute-force-log-analysis.html">SSH Brute Force Log Analysis</a></li>
+                         <li><a href="ssh-authentication-log-analysis.html">SSH Authentication Log Analysis</a></li>
+                        <li><a href="failed-vs-successful-login-analysis.html">Failed vs Successful Login Analysis</a></li>
+                        <li><a href="suspicious-ip-detection.html">Suspicious IP Detection</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Security investigation</summary>
+
+                    <ul class="submenu">
+                        <li><a href="incident-response-case-study.html">Incident Response Case Study</a></li>
+                        <li><a href="unauthorized-user-investigation.html">Unauthorized User Investigation</a></li>
+
+                    </ul>
+
+                </details>
+            </li>
+
+
+
+        </ul>
+
+    </aside>
+<main class="content">
+<div class="content-wrapper">
+<h3>Unauthorized User Investigation</h3>
+<p>Command: `sudo apt update` This command is used to update the list of available packages from system repositories without actually installing anything. The output indicates that the system found 204 packages eligible for upgrade. Command: `sudo apt install openssh-server -y` This command is used to install the SSH server on the machine, enabling remote connections to it. he o tput indicates that the installation was successful; `openssh-client` was upgraded, and `openssh-server` was installed along with its dependencies.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969094/u1_kw9qyd.png" class="hero-image" alt="">
+<p>Command: `sudo systemctl restart ssh` This command is used to restart the SSH service after installation, ensuring it activates with the new settings. The output showed no error messages, indicating the service restarted smoothly.Command: `sudo systemctl status ssh` This command is used to check the status of the SSH service after the restart. The output indicates that the service has been "active (running)" for just 31 seconds and is actively listening on port 22 (IPv4 and IPv6), even though its "preset" status is "disabled."</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969094/u2_tmiwsh.png" class="hero-image" alt="">
+<p>Command: `sudo adduser Omar` This command is used to create a new user named "Omar" on the system. The output indicates that the system warned that the password was too short (fewer than 8 characters) but allowed the process to proceed; the user "Omar" was successfully created after the information was confirmed. Command: `cut -d: -f1 /etc/passwd` This command is used to extract only the first column (usernames) from the `/etc/passwd` file. The output displays a list of all usernames defined on the system (the beginning of the list shows default system accounts).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969094/u3_nxeau1.png" class="hero-image" alt="">
+<p>This continues the output of the command `cut -d: -f1 /etc/passwd` from u3 (the list extends further down). The significant result appearing at the end of the output indicates the presence of the username "Omar" among the system users—which is expected, given that it was just created. However, its presence here confirms that the investigation should proceed from the premise that this account is the focus of suspicion.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969094/u4_pu8bbx.png" class="hero-image" alt="">
+<p>Command: `sudo usermod -aG sudo Omar` This command is used to add the user "Omar" to the `sudo` group, thereby granting him full administrative privileges on the system. No error messages appeared, indicating the operation was successful; Omar now possesses root privileges via `sudo`. This is a highly sensitive step from a security perspective, as it paved the way for Omar to later create the hidden "door" account.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969161/u3.1_f6uo79.png" class="hero-image"alr="">
+<p>Command: `sudo truncate -s 0 /var/log/auth.log` This command is used to completely empty the contents of the authentication log file (`auth.log`) and reduce its size to zero, without deleting the file itself. The results showed no error messages, meaning all previous logs in the file were effectively erased—a highly concerning indicator, as it implies that someone (with administrative privileges) attempted to cover their tracks by wiping the login logs.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969094/u5_hoolht.png" class="hero-image" alt="">
+<p>Command: `ip a` This command is used to display details of the device's network interfaces and their associated IP addresses. The results indicate that the device has a network interface named `ens33` with the local IP address `192.168.81.129`, which is the address of the victim machine itself.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969216/u7_r4q2md.png" class="hero-image" alt="">
+<hr>
+<p>In this step, we will execute an attack aimed at generating logs.</p>
+<p>(From the attacker's Kali machine) Command: ssh Omar@192.168.81.129 This command is used to connect to the victim machine via SSH using the "Omar" account. The resulting output indicates that the login was successful and the user has effectively accessed the machine.</p>
+<p>Command: `sudo -l` This command is used to list the commands the current user can execute with `sudo` privileges. The output indicates that Omar possesses full privileges: `(ALL : ALL) ALL`. Command: `sudo useradd -m door` This command is used to create a new user named "door" and generate a home directory for them. The out ut s owed no errors, meaning the account was successfully created—a highly critical indicator: Omar has created a hidden account to serve as a backdoor. Command: `sudo passwd door` This command is used to set a password for the new "door" account. The output issued a warning about a weak password, but the password was successfully set despite the warning.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969224/u8_tlmeji.png" class="hero-image" alt="">
+<p>Command: `sudo usermod -aG sudo door` This command is used to add the "door" account to the `sudo` group, thereby granting it full administrative privileges. The output showed no errors, indicating the operation succeeded; there are now two accounts with administrative privileges: Omar and door. Command: `id door` Result: `uid=1002(door) gid=1002(door) groups=1002(door),27(sudo)` — confirming that "door" is a member of the `sudo` group. Command: `su - door` Used to switch to the "door" account directly from Omar's session. The output indicates a successful switch, and the attacker began exploring the machine from within this new account. Command: `sudo -l` (from within the "door" account) The output shows an initial failed authentication attempt followed by success, revealing that "door" also possesses `(ALL : ALL) ALL` privileges. Command: `ls -la` Result: Only standard default system files; no additional suspicious tools. Command: `cat /etc/passwd` Result (to be continued): The beginning of the user list display.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969225/u9_rsi6ok.png" class="hero-image" alt="">
+<p>Continuing from the output of the `cat /etc/passwd` command on u9, the significant results at the end of the log indicate the presence of three human accounts: `soc-lab` (the legitimate user), `Omar` (the account initially compromised), and `door`—the hidden account created by the attacker as a backdoor.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969227/u10_v27o8z.png" class="hero-image" alt="">
+<p>Command: `touch mypasswords.txt` Result: No output, meaning the file was created successfully. Command: `echo "1111,2222,3333,abc" > mypasswords.txt` Used to write a list of weak, sample passwords directly into the file. Result: No output on the screen, but the data was written into the file. Command: `exit` (twice) The resulting output indicates exiting the `door` account first, followed by fully terminating the SSH connection.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969274/u11_kqdy3r.png" class="hero-image" alt="">
+<p>The command: `cut -d: -f1 /etc/passwd` The result: The list of users is displayed again (the SOC-Lab investigation team repeats the same check to verify).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969273/u12_wgrjav.png" class="hero-image" alt="">
+<p>This follows the result of the previous command. The significant results at the end of the list confirm the existence of three human accounts—soc-lab, Omar, and **door**—providing the investigator with official proof of two suspicious accounts.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969273/u13_ucu3nz.png" class="hero-image" alt="">
+<p>Command: `id door` Result: `uid=1002(door) gid=1002(door) groups=1002(door),27(sudo)` — confirming the `door` account's privileges.Command: `groups door` Result: `door : door sudo` — further confirmation that this account possesses full administrative privileges.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969272/u14_jz9erm.png" class="hero-image" alt="">
+<p>The command `sudo journalctl | grep -Ei "useradd|adduser"` is used to search the comprehensive system logs for any new user creation processes. The results tell the story chronologically: at 20:45, `soc-lab` created the "Omar" account. Later, at 21:06, Omar himself (via a remote SSH session) executed `useradd -m door`—conclusive evidence that Omar was the one who created the backdoor.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969273/u15_tfg6zl.png" class="hero-image" alt="">
+<p>Command: `sudo journalctl | grep "door"` The resulting output summarizes the lifecycle of the `door` account: creation by Omar, password assignment, addition to the `sudo` group twice, a login via `su` from Omar to `door`, a failed authentication attempt, and finally, the closing of the session.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969329/u16_oxbekh.png" class="hero-image" alt="">
+<p>Command: `sudo journalctl | grep "passwd"` The results indicate: a password change for `soc-lab` (17:28), a password change for `Omar` (20:45), and the most significant event—a password change for `door` at 21:06:42, which temporally aligns with the account creation.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969328/u17_cimfdi.png" class="hero-image" alt="">
+<p>The command: `sudo journalctl | grep "usermod"` The results reveal two significant events: the first (21:02:27), where `soc-lab` itself granted `Omar` sudo privileges; and the second (21:08:53), where `Omar` granted `door` the same privileges—demonstrating that `Omar` exploited his privileges to expand the breach.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969331/u18_lqompt.png" class="hero-image" alt="">
+<p>The command is: `sudo journalctl | grep "COMMAND="` The resulting output provides a comprehensive chronological overview: system updates and SSH installation (by `soc-lab`), the creation of the `Omar` account, granting it `sudo` privileges, and then—from within the `Omar` account—the creation of the `door` account, the setting of its password, and the granting of `sudo` privileges to it. Subsequently, `soc-lab` initiates the investigation process (using commands such as `grep Failed password`, `tail`, `head`, `cat`, `journalctl -u ssh`, and `grep Accepted password`).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969328/u19_l1tllm.png" class="hero-image" alt="">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969328/u20_wbr6jy.png" class="hero-image" alt="">
+<p>Same thing: `sudo journalctl | grep "door"` (repeated later for confirmation). The results match what appeared in u16—final confirmation of the sequence of events.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969381/u21_gqr6r1.png" class="hero-image" alt="">
+<p>The command `sudo journalctl | grep -E "su:|session opened|door"` is used to comprehensively search for all session openings and any mention of the word "door." The resulting output provides a complete picture: standard login sessions for `gdm-greeter`, `soc-lab`, and `root`; an SSH session opened for "Omar"; the creation of the "door" user, the setting of their password, and the granting of `sudo` privileges; followed by an `su` session from "Omar" to "door" and its subsequent closure.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969382/u22_qn3gso.png" class="hero-image" alt="">
+<p>This is a continuation of the previous result. The observed results indicate a return to normal activity following the closure of the 'door' session—specifically, repeated logins for 'gdm-greeter', 'soc-lab', and 'root', with no further sign of the 'Omar' or 'door' accounts thereafter.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969381/u23_w6auh0.png" class="hero-image" alt="">
+<p>Command: `id door` Used to re-verify the privileges of the `door` account as a final authentication step. Result: `uid=1002(door) gid=1002(door) groups=1002(door),27(sudo)` — a final confirmation that this suspicious account still exists and retains full `sudo` privileges, necessitating its immediate deactivation as a remedial measure.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969381/u24_ly0kio.png" class="hero-image" alt="">
+<p>Technical<a href="https://github.com/mu-b003/Unauthorized-User-Investigation-/tree/main/reports" target="_blank"> Report</a></p>
+<p>GitHub <a href="https://github.com/mu-b003/Unauthorized-User-Investigation-/tree/main" target="_blank">Repository</a></p>
+
+
+
+
+
+</div>
+</main>
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+// 1. اختيار كل الصور التي تحمل الكلاس
+const images = document.querySelectorAll('.hero-image');
+
+// 2. تطبيق حدث الضغط على كل صورة على حدة
+images.forEach(image => {
+  image.addEventListener('click', function() {
+    // 3. إزالة الكلاس expanded من أي صور أخرى إذا كانت مفتوحة (اختياري)
+    images.forEach(img => {
+      if (img !== this) img.classList.remove('expanded');
+    });
+    
+    // 4. تفعيل أو إلغاء التأثير للصورة المضغوطة
+    this.classList.toggle('expanded');
+  });
+});
+</script>
+</body>
+</html>
