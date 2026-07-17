@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Liunx Uthentcation log Investigation</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+          <ul class="menu">
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <hr>
+            <h3>SOC Analyzer Notes</h3>
+
+            <li>
+                <details>
+                    <summary>Home Lab SOC Lab Setup</summary>
+
+                    <ul class="submenu">
+                        <li><a href="soc-lab-setup.html">VMware Setup</a></li>
+                        <li><a href="kali-linux-attacker.html">Kali Linux Attacker Machin</a></li>
+                        <li><a href="ubuntu-setup.html">Ubuntu Desktop Victim</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <li>
+                <details>
+                    <summary>Logs Analysts</summary>
+
+                    <ul class="submenu">
+                        <li><a href="login-failuer-analyzer.html">Login Failuer Analyzer</a></li>
+                        <li><a href="ssh-brute-force-log-analysis.html">SSH Brute Force Log Analysis</a></li>
+                         <li><a href="ssh-authentication-log-analysis.html">SSH Authentication Log Analysis</a></li>
+                        <li><a href="failed-vs-successful-login-analysis.html">Failed vs Successful Login Analysis</a></li>
+                        <li><a href="suspicious-ip-detection.html">Suspicious IP Detection</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Security investigation</summary>
+
+                    <ul class="submenu">
+                        <li><a href="incident-response-case-study.html">Incident Response Case Study</a></li>
+                         <li><a href="unauthorized-user-investigation.html">Unauthorized User Investigation</a></li>
+                          <li><a href="liunx-uthentcation-log-investigation.html.html">Liunx Uthentcation log Investigation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+
+
+        </ul>
+
+    </aside>
+<main class="content">
+<div class="content-wrapper">
+<h3>Liunx Uthentcation log Investigation</h3>
+<p> You can carry out this task practically on an isolated lab if you do not have a lab you can set one up using the provided <a href="https://bitpluss.com/soc-lab-setup" target="_blank">link.</a></p>
+<p>Command: `sudo adduser Afreen` This command is used to create a new user named "Afreen" on the system. The output indicates that the system warned that the home directory `/home/Afreen` already exists and would not be recreated, and also warned that the password was too short (fewer than 8 characters); however, it allowed the process to complete, and the user was successfully created. Command: `id Afreen` This command is used to display the user's ID and group memberships. Result: `uid=1001(Afreen) gid=1001(Afreen) groups=1001(Afreen),100(users)` — meaning Afreen is a member of only two groups (their own group and the `users` group) and is not part of the `sudo` group.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969970/l1_l1p6v1.png" class="hero-image" alt="">
+<p>Command: `sudo truncate -s 0 /var/log/auth.log` This command is used to completely empty the authentication log file, setting its size to zero. The results showed no error messages, indicating that the previous logs were effectively erased. Command: `sudo journalctl --rotate` This command forces `journald` to "rotate" (archive) the current log files in preparation for their deletion. The results showed no errors, indicating the operation was successful. Command: `sudo journalctl --vacuum-time=1s` This command deletes all `journald` logs older than one second—effectively removing almost the entire log history. The output indicates that several archive files were indeed deleted (freeing up approximately 25.3 MB of space); this is a highly alarming indicator of a deliberate, comprehensive attempt to obliterate all traces of system activity—not just `auth.log`, but even the deeper `journald` logs.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969971/l2_cb55ff.png" class="hero-image" alt="">
+<p>Command: `sudo systemctl restart ssh` This command is used to restart the SSH service. The output showed no errors, indicating that the service was restarted successfully. Command: `sudo systemctl status ssh` This is used to check the service status after the restart. The output indicates that the service has been active (running) for just 10 seconds and is listening on port 22 (IPv4 and IPv6).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969970/u3_vcmidp.png" class="hero-image" alt="">
+<p>Command: `ip a` This command is used to display details about network interfaces and IP addresses. The results indicate that the machine has a local IP address of 192.168.81.129 on the `ens33` interface—which is the IP address of the victim machine itself.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969970/u4_bd6wg3.png" class="hero-image" alt="">
+<hr>
+<p>Attack scenario aimed at log generation</p>
+<p>Command: nmap -sV 192.168.81.129 This command is used to scan the target machine and identify open ports, services, and their versions. The results indicate that the machine is active and has only one open port: port 22 (SSH service running OpenSSH 10.2p1 Ubuntu), with the operating system identified as Linux (VMware).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783969969/u5_vopnko.png" class="hero-image" alt="">
+<p>Command: `nano passwords.txt` This command is used to open or create a text file using the `nano` editor to edit its content. The result is an empty editing screen ready for input (preparing a list of passwords for an attack).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783970028/u6_stspmk.png" class="hero-image" alt="">
+<p>The nano editor remains open; there is no new command. The displayed content indicates that the attacker compiled a list of weak, trial passwords—such as sdsdd, sdccc, 12gf, abc321, fsfdr, and 1234—to use later in an attempt to compromise Afreen's account.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783970027/u7_pctybu.png" class="hero-image" alt="">
+<p>Command: `hydra -l Afreen -P passwords.txt ssh://192.168.81.129` This command is used to execute an automated brute-force attack against the SSH service by attempting to log in as "Afreen" and testing every password listed in the file. The output indicates that the tool successfully identified the correct password—`password: 1234`—displaying the message "1 valid password found." Command: `ssh Afreen@192.168.81.129` This command is used to connect to the target machine via SSH using the compromised account. The output shows that the initial attempt failed due to a connection error ("Connection reset by peer"), but the second attempt succeeded, resulting in a successful login. Notably, the system displayed "Last login: Sun Jul 12 23:14:17... from 192.168.81.128," indicating that this was not the first connection, but rather a repeat of a previous session originating from the attacker's IP address.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783970026/u8_sylxgb.png" class="hero-image" alt="">
+<p>Commands: whoami, hostname, pwd, id, groups, sudo -l These commands are used to determine the user's identity, the machine's hostname, and the user's privileges. The results indicate the following: the user is "Afreen" on the machine "soc-lab-VMware-Virtual-Platform," with the home directory "/home/Afreen," and is a member of only the "Afreen" and "users" groups. The `sudo -l` command returned an explicit denial—"Afreen may not run sudo"—meaning this account possesses no administrative privileges. Command: `su root` Used to attempt switching directly to the root account. Result: "su: Authentication failure" — the attempt failed because the root password was unknown. Command: `passwd` (multiple attempts) Used to attempt changing the password for the current account (Afreen). The resulting outputs indicate repeated failures: once due to the password being too short, once due to an incorrect current password, and finally because the new password was "too simple/predictable" (failing the dictionary check); ultimately, the allowed number of attempts was exhausted, and the password remained unchanged. Command: `exit` Used to terminate the session; this resulted in the complete disconnection of the SSH session.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783970026/u9_tolbyx.png" class="hero-image" alt="">
+<hr>
+<p>Here, we begin the analysis scenario.</p>
+<p>Command: `grep "Failed password" /var/log/auth.log` Used to search for all failed login attempts. The results indicate five failed attempts by user "Afreen" from the address 192.168.81.128, originating from different source ports. Command: `grep "Failed password" /var/log/auth.log | wc -l` Used to count the number of these attempts. Result: Exactly 5 attempts.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783970032/u10_vr35tz.png" class="hero-image" alt="">
+<p>The command: `grep "Accepted password" /var/log/auth.log` is used to search for successful login attempts. The results show two successful logins for the user Afreen from the same attacker's address, at two different times. The command: `grep "Accepted password" /var/log/auth.log | wc -l` is used to count the number of successful logins. The result: 2.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783970090/u11_mhomxx.png" class="hero-image" alt="">
+<p>The command `grep sshd /var/log/auth.log` is used to search for all events related to the SSH service. The resulting output tells the full story: the service starting up; an initial connection attempt that was interrupted; five consecutive authentication failures; a successful login and session opening, followed by the session closing; another five failed attempts just seconds later; the system imposing an 18-second penalty delay (`srclimit_penalise`); a connection being completely dropped due to that penalty ("drop connection... penalty: failed authentication"); a subsequent successful login (at 23:15:49); and finally, a normal disconnection by the user.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783970089/u12_pzfzip.png" class="hero-image" alt="">
+<p>The command `grep "Afreen" /var/log/auth.log` is used to search for all events specifically associated with the name "Afreen." The resulting output reveals important details not found in `u12`: the opening of sessions '4' and '5' linked to the first login, and sessions '6' and '7' linked to the second login. Additionally, there is a critical attempt at 23:18:56—"su: authentication failure... ruser=Afreen... user=root" followed by "FAILED SU (to root) Afreen on pts/1"—indicating that the attacker (operating from within the "Afreen" account) attempted to escalate privileges to `root` via `su` but failed, followed by a subsequent failed attempt to change the password (`passwd`).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783970088/u13_mcrb2x.png" class="hero-image" alt="">
+<p>The command `grep "192.168.81.128" /var/log/auth.log` is used to search for all events specifically associated with the attacker's IP address. The resulting output confirms the same chronological sequence observed earlier—filtered by this address—proving that all suspicious activity originated from a single source: 192.168.81.128.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783970087/u14_vczit2.png" class="hero-image" alt="">
+<p>Command: `grep "sudo" /var/log/auth.log` This is used to search for all instances of `sudo` usage on the system. The results indicate that all `sudo` usage originated solely from the legitimate user `soc-lab` (executing commands such as `journalctl --rotate`/`--vacuum-time` and `systemctl restart`/`status ssh`); this means Afreen never used `sudo`, as he lacks the necessary privileges. Command: `grep "COMMAND=" /var/log/auth.log` This is used to display details of commands executed via `sudo` or `pkexec`. The results confirm the same conclusion: all administrative commands were executed exclusively by `soc-lab`.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783970086/u15_yfnpuj.png" class="hero-image" alt="">
+<p>Command: `grep "su:" /var/log/auth.log` Used to search specifically for attempts to use the `su` command. Result: Confirms a single failed attempt by Afreen to escalate privileges to root via `su`. Command: `grep "session opened for user root" /var/log/auth.log` Used to search for all instances where a session was opened with root privileges. The results indicate that all these sessions were legitimate (initiated via `sudo` from `soc-lab`, `CRON`, or `pkexec`); in other words, there is no evidence of any successful attempt to compromise root privileges.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783970146/u16_zaxro9.png" class="hero-image" alt="">
+<p>The command `grep "passwd" /var/log/auth.log` is used to search for all events related to password changes. The result is a single line documenting a failed attempt by Afreen to change his password ("authentication failure... user=Afreen")—further confirmation of his failed attempts on u9.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783970146/u17_xx2tag.png" class="hero-image" alt="">
+<p>Command: `grep "session opened" /var/log/auth.log` This is used to display all instances of sessions being opened on the system for any user. The results provide a comprehensive picture: standard `sudo` sessions for `soc-lab`, two SSH sessions for Afreen (the two times he logged in), and routine `CRON` and `gdm-greeter` sessions. Command: `grep "session closed" /var/log/auth.log` This is used to display all instances of sessions being closed. The results show the corresponding picture: the closing of `sudo` sessions, the closing of Afreen's two SSH sessions, and the closing of the routine `CRON` and `gdm-greeter` sessions as well.</p>
+<p>Command: `grep "session opened" /var/log/auth.log` This is used to display all instances of sessions being opened on the system for any user. The results provide a comprehensive picture: standard `sudo` sessions for `soc-lab`, two SSH sessions for Afreen (the two times he logged in), and routine `CRON` and `gdm-greeter` sessions. Command: `grep "session closed" /var/log/auth.log` This is used to display all instances of sessions being closed. The results show the corresponding picture: the closing of `sudo` sessions, the closing of Afreen's two SSH sessions, and the closing of the routine `CRON` and `gdm-greeter` sessions as well.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783970145/u18_gfdztd.png" class="hero-image" alt="">
+<p>Command: `last` Used to display the system's login history. The results indicate two SSH sessions for "Afreen" from the address 192.168.81.128 (lasting 6 minutes and a few seconds, respectively), alongside a highly significant and unexpected earlier session: "Omar pts/1 192.168.81.128 Sun Jul 12 21:01 - crash." This reveals a prior connection using the "Omar" account (from a previous case!) originating from the same address range, suggesting that the machine may have been subjected to multiple attacks or that the attacker utilized more than one account. Command: `last Afreen` Used to filter the output to display only "Afreen's" sessions. Result: Confirms only the two sessions mentioned above.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783970145/u19_krn7rj.png" class="hero-image" alt="">
+<p>Same thing: `grep "Afreen" /var/log/auth.log` (a full repeat to review all events associated with Afreen again, identical to u13).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783970144/u20_wyg8ee.png" class="hero-image" alt="">
+<p>Command: `grep "Afreen" /var/log/auth.log | head -1` Used to display only the first line—that is, the first event recorded for this user. Result: The first event was a disconnected connection attempt ("Disconnected from authenticating user Afreen"). Command: `grep "Afreen" /var/log/auth.log | tail -1` Used to display only the last line. Result: The last event was a normal session closure ("session closed for user Afreen").</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783970194/u21_crxmjw.png" class="hero-image" alt="">
+<p>Command: `grep -oP '(?<=from )(\d{1,3}\.){3}\d{1,3}' /var/log/auth.log | sort -u` Used to extract all unique IP addresses appearing after the word "from" in the log. Result: Only one address, 192.168.81.128—confirming that all suspicious activity originated from a single source. Command: `grep -E "Accepted|Failed" /var/log/auth.log | awk '{for(i=1;i<=NF;i++)if($i=="for")print $(i+1)}' | sort -u` Used to extract the target username (whether the attempt succeeded or failed) from all login attempts. Result: Only "Afreen"—confirming that the attack targeted one specific account.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783970193/u22_xpbhs1.png" class="hero-image" alt="">
+<p>Technical<a href="https://github.com/mu-b003/Linux-Authentication-Log-Investigation-/tree/main/docs" target="_blank"> Report</a></p>
+<p>GitHub <a href="https://github.com/mu-b003/Linux-Authentication-Log-Investigation-" target="_blank">Repository</a></p>
+
+
+
+</div>
+</main>
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+// 1. اختيار كل الصور التي تحمل الكلاس
+const images = document.querySelectorAll('.hero-image');
+
+// 2. تطبيق حدث الضغط على كل صورة على حدة
+images.forEach(image => {
+  image.addEventListener('click', function() {
+    // 3. إزالة الكلاس expanded من أي صور أخرى إذا كانت مفتوحة (اختياري)
+    images.forEach(img => {
+      if (img !== this) img.classList.remove('expanded');
+    });
+    
+    // 4. تفعيل أو إلغاء التأثير للصورة المضغوطة
+    this.classList.toggle('expanded');
+  });
+});
+</script>
+</body>
+</html>
