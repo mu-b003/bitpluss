@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privilege Escalation Investigation</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+          <ul class="menu">
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <hr>
+            <h3>SOC Analyzer Notes</h3>
+
+            <li>
+                <details>
+                    <summary>Home Lab SOC Lab Setup</summary>
+
+                    <ul class="submenu">
+                        <li><a href="soc-lab-setup.html">VMware Setup</a></li>
+                        <li><a href="kali-linux-attacker.html">Kali Linux Attacker Machin</a></li>
+                        <li><a href="ubuntu-setup.html">Ubuntu Desktop Victim</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <li>
+                <details>
+                    <summary>Logs Analysts</summary>
+
+                    <ul class="submenu">
+                        <li><a href="login-failuer-analyzer.html">Login Failuer Analyzer</a></li>
+                        <li><a href="ssh-brute-force-log-analysis.html">SSH Brute Force Log Analysis</a></li>
+                         <li><a href="ssh-authentication-log-analysis.html">SSH Authentication Log Analysis</a></li>
+                        <li><a href="failed-vs-successful-login-analysis.html">Failed vs Successful Login Analysis</a></li>
+                        <li><a href="suspicious-ip-detection.html">Suspicious IP Detection</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Security investigation</summary>
+
+                    <ul class="submenu">
+                        <li><a href="incident-response-case-study.html">Incident Response Case Study</a></li>
+                         <li><a href="unauthorized-user-investigation.html">Unauthorized User Investigation</a></li>
+                          <li><a href="liunx-uthentcation-log-investigation.html">Liunx Uthentcation log Investigation</a></li>
+                            <li><a href="privilege-escalation-investigation.html">Privilege Escalation Investigation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+
+
+        </ul>
+
+    </aside>
+<main class="content">
+<div class="content-wrapper">
+<h3>Privilege Escalation Investigation</h3>
+<p>This task can be performed practically in an isolated virtual lab if you do not have one you can set up a virtual lab using the provided <a href="https://bitpluss.com/soc-lab-setup" target="_blank">link</a>.</p>
+<p>Command: `sudo adduser Afreen` This command is used to create a new user named "Afreen" on the system. The output indicates that the system warned that the home directory already exists and would not be recreated, and also warned that the password was too short (fewer than 8 characters); however, it allowed the process to proceed, and the user was successfully created.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783970944/p1_qpd7vx.png" class="hero-image" alt="">
+<p>Command: `sudo truncate -s 0 /var/log/auth.log` This command is used to completely clear the contents of the authentication log file and set its size to zero. The output showed no error messages, indicating that the previous logs were successfully erased. Command: `sudo systemctl restart ssh` This command is used to restart the SSH service. The output showed no errors, indicating that the service restarted successfully. Command: `sudo systemctl status ssh` This is used to check the service status after the restart. The output indicates that the service has been "active (running)" for just 14 seconds and is listening on port 22 (IPv4 and IPv6).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783970943/p2_tgxogi.png" class="hero-image" alt="">
+<p>Command: `ip a` This command is used to display details about network interfaces and IP addresses. The results indicate that the machine has a local IP address of 192.168.81.129 on the `ens33` interface—which is the IP address of the victim machine itself.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783970942/p3_qcqvlt.png" class="hero-image" alt="">
+<hr>
+<p>At this stage we will execute an attack aimed at generating logs.</p>
+<p>Command: nmap -sV 192.168.81.129 This command is used to scan the target machine and identify open ports, services, and their versions. The results indicate that the machine is active and has only one open port: port 22 (SSH service running OpenSSH 10.2p1 Ubuntu), with the operating system identified as Linux (VMware).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783970943/p4_bqvqwp.png" class="hero-image" alt="">
+<p>Command: `ssh Afreen@192.168.81.129` This command is used to connect to the target machine via SSH using the "Afreen" account. The resulting output indicates a successful login, noting "Last login... from 192.168.81.128"—meaning this is a repeat connection from the same attacker. Commands: `hostname`, `whoami`, `id`, `groups`, `pwd` These are used to determine the session identity and privileges. The results indicate: the user is "Afreen" on the victim machine, located in the `/home/Afreen` directory, and is a member of only the "Afreen" and "users" groups.</p>
+<p>Command: `sudo -l` Used to check available `sudo` privileges. Result: Explicit denial ("Afreen may not run sudo") — no administrative privileges.</p>
+<p>Command: `su root` Used to attempt to switch directly to the root account. Result: "Authentication failure" — the attempt failed.</p>
+<p>Command: `cat /etc/shadow` Used to attempt to read the encrypted password file (a highly sensitive file). Result: "Permission denied" — the attempt was rejected.</p>
+<p>Command: `cd /root` Used to attempt to enter the `root` directory. Result: "Permission denied" — the attempt was rejected.</p>
+<p>Command: `sudo ls /root` This is used to attempt to list the contents of the `/root` directory via `sudo` (despite knowing that the necessary permissions are lacking). Result: A custom, sarcastic refusal message from the system: "sudo: I'm sorry Afreen. I'm afraid I can't do that." This is a custom `sudo` message (replacing the default one) configured by the administrator to reject this specific user with a humorous reference to the movie *2001: A Space Odyssey*. Command: `find / -perm -4000 -type f 2>/dev/null` This command is used to search for all files with the SUID permission bit (permission bit 4000) set. These files execute with the privileges of their owner (often `root`), regardless of who runs them. This is a very common technique in privilege escalation used to identify potentially exploitable vulnerabilities. The output lists the files with the SUID bit set: `/usr/bin/pkexec`, `/usr/bin/umount`, `/usr/bin/sudo.ws`, `/usr/bin/passwd`, `/usr/bin/chfn`, `/usr/bin/gpasswd`, `/usr/bin/mount`, and `/usr/bin/su`. While this is generally a standard list, the attacker was examining it to find any known vulnerability that could be exploited to gain `root` access.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783970942/p5_hy0hqy.png" class="hero-image" alt="">
+<p>Command: `sudo -l` Used again to check sudo privileges. Result: The same refusal as before—"Afreen may not run sudo". Command: `exit` Used to end the session. The resulting output indicates logging out and completely terminating the SSH connection ("Connection to 192.168.81.129 closed").</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783970941/p6_qlamv2.png" class="hero-image" alt="">
+<hr>
+<p>We begin the analysis scenario here.</p>
+<p>Command: `grep sudo /var/log/auth.log` Used to search for all instances of `sudo` usage on the system. The results indicate that all `sudo` usage originated solely from the legitimate user `soc-lab` (to execute `systemctl restart/status ssh`); in other words, Afreen never successfully used `sudo`. Command: `grep "su:" /var/log/auth.log` Used to search for attempts to use the `su` command. Result: A single line documenting a failed attempt by Afreen to escalate privileges to `root` via `su` ("authentication failure... ruser=Afreen... user=root").</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971003/p7_sdjwws.png" class="hero-image" alt="">
+<p>Command: `grep "Afreen" /var/log/auth.log` Used to search for all events specifically associated with the Afreen account. The results tell the story: a successful SSH login and the opening of two sessions (numbers '6' and '7'), a failed attempt to `su` to root—followed by "FAILED SU (to root) Afreen on pts/1" (further confirming the failed privilege escalation attempt)—and finally, disconnection and session closure. Command: `grep "COMMAND=" /var/log/auth.log` Used to display all commands executed via `sudo`. The result: only standard administrative `soc-lab` commands (SSH restart/status). Command: `grep sshd /var/log/auth.log` Used to search for all SSH service events. The results confirm the same sequence: service startup, a prior disconnected connection from the same address, a successful login by Afreen, and finally, a normal disconnection initiated by the user.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971002/p8_kik7km.png" class="hero-image" alt="">
+<p>Command: `grep "Afreen" /var/log/auth.log | head -1` Used to display only the first line. Result: The first event was a successful login ("Accepted password for Afreen"). Command: `grep "Afreen" /var/log/auth.log | tail -1` Used to display only the last line. Result: The last event was the session closing ("session closed for user Afreen"). Command: `grep "Afreen" ?var/log/auth.log` (contains a typo with a question mark instead of a forward slash) Used for the same purpose but with an incorrect path. Result: An error message "No such file or directory" because the path is incorrect. Command: `grep "Afreen" /var/log/auth.log` (path corrected and re-executed) Result: The same complete and correct list of Afreen-related events as in p8.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971001/p9_rggfap.png" class="hero-image" alt="">
+<p>Command: `grep "COMMAND=" /var/log/auth.log` (Repeated) Used to display all executed `sudo` commands. Result: Only the administrative `soc-lab` commands. Command: `grep "session opeded for user root" /var/log/auth.log` (contains a typo: "opeded" instead of "opened") Used to search for opened `root` sessions; however, due to the typo, no lines matched. Result: No output (because the misspelled word does not match the actual text in the log).</p>
+<p>Command: `last root` Used to display the login history specifically for the `root` account. Result: No results (only the message "wtmpdb begins..."), meaning the `root` account was never used for a direct login during this period—further evidence that the attacker's attempts to access `root` all failed.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971000/p10_brurdq.png" class="hero-image" alt="">
+<p>Command: `grep -oP '(?<=from )(\d{1,3}\.){3}\d{1,3}' /var/log/auth.log | sort -u` Used to extract all unique IP addresses appearing after the word "from" in the log. Result: A single address, 192.168.81.128—confirming that all suspicious activity originated from one source.</p>
+<p>Command: `grep -E "Accepted|Failed" /var/log/auth.log | awk '{for(i=1;i<=NF;i++) if($i=="for") print $(i+1)}' | sort -u` Used to extract the target username from login attempts (successful or failed). Result: Only "Afreen"—confirming that a single account was targeted.</p>
+<p>Command: `grep "Authentication failure" /var/log/auth.log` Used to search for any other authentication failures in a different format. Result: No output (no additional lines matched this specific format, unlike the `su` case—which appeared in previous searches—that used the lowercase "authentication failure").</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783970999/p11_d1lpjo.png" class="hero-image" alt="">
+<p>Technical <a href="https://github.com/mu-b003/Privilege-Escalation-Investigation-/tree/main/reports" target="_blank">Report</a></p>
+<p>GitHub <a href="https://github.com/mu-b003/Privilege-Escalation-Investigation-/tree/main">Repository</a></p>
+
+
+
+</div>
+</main>
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+// 1. اختيار كل الصور التي تحمل الكلاس
+const images = document.querySelectorAll('.hero-image');
+
+// 2. تطبيق حدث الضغط على كل صورة على حدة
+images.forEach(image => {
+  image.addEventListener('click', function() {
+    // 3. إزالة الكلاس expanded من أي صور أخرى إذا كانت مفتوحة (اختياري)
+    images.forEach(img => {
+      if (img !== this) img.classList.remove('expanded');
+    });
+    
+    // 4. تفعيل أو إلغاء التأثير للصورة المضغوطة
+    this.classList.toggle('expanded');
+  });
+});
+</script>
+</body>
+</html>
