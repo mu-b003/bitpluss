@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Server Attack Investigation</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+          <ul class="menu">
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <hr>
+            <h3>SOC Analyzer Notes</h3>
+
+            <li>
+                <details>
+                    <summary>Home Lab SOC Lab Setup</summary>
+
+                    <ul class="submenu">
+                        <li><a href="soc-lab-setup.html">VMware Setup</a></li>
+                        <li><a href="kali-linux-attacker.html">Kali Linux Attacker Machin</a></li>
+                        <li><a href="ubuntu-setup.html">Ubuntu Desktop Victim</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <li>
+                <details>
+                    <summary>Logs Analysts</summary>
+
+                    <ul class="submenu">
+                        <li><a href="login-failuer-analyzer.html">Login Failuer Analyzer</a></li>
+                        <li><a href="ssh-brute-force-log-analysis.html">SSH Brute Force Log Analysis</a></li>
+                         <li><a href="ssh-authentication-log-analysis.html">SSH Authentication Log Analysis</a></li>
+                        <li><a href="failed-vs-successful-login-analysis.html">Failed vs Successful Login Analysis</a></li>
+                        <li><a href="suspicious-ip-detection.html">Suspicious IP Detection</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Security investigation</summary>
+
+                    <ul class="submenu">
+                        <li><a href="incident-response-case-study.html">Incident Response Case Study</a></li>
+                         <li><a href="unauthorized-user-investigation.html">Unauthorized User Investigation</a></li>
+                         <li><a href="liunx-uthentcation-log-investigation.html">Liunx Uthentcation log Investigation</a></li>
+                          <li><a href="privilege-escalation-investigation.html">Privilege Escalation Investigation</a></li>
+                           <li><a href="web-server-attack-investigation.html">Web Server Attack Investigation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+
+
+        </ul>
+
+    </aside>
+<main class="content">
+<div class="content-wrapper">
+<h3>Web Server Attack Investigation</h3>
+<p>This task can be performed practically in an isolated virtual lab if you do not have a lab you can create one via the <a href="https://bitpluss.com/soc-lab-setup" target="_blank">link.</a></p>
+<p>The command: This is 'sudo apt update' then 'sudo apt upgrade -y' used to update the package lists and then upgrade the system. The results mean: 76 packages available for upgrade, and the download of updates totaling approximately 578 MB — a routine system maintenance phase.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971355/w1_uf4xuc.png" class="hero-image" alt="">
+<p>Command: sudo apt install apache2 -y Used to install the Apache2 web server.  Result: Apache2 is pre-installed with the latest version (2.4.66-2ubuntu2.4) — no need for a new installation.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971356/w2_zeglyi.png" class="hero-image" alt="">
+<p>The commands: sudo systemctl enable apache2`then` start and `then` status are used to activate, start, and check the status of the service.  Result: The service is active (running) successfully.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971354/w3_zn7wc9.png" class="hero-image" alt="">
+<p>Link: http://192.168.81.130 Used to browse the website hosted on the victim.  Result: Appearance of the default Apache2 page "It works!" — confirmation that the server is working without any customized content yet.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971353/w4_t9mije.png" class="hero-image" alt="">
+<p>Commands (on the victim): cd /var/www/html, sudo rm index.html, then echo "..." | sudo tee ...to create: index.html, login.php, admin.php, upload.php, backup.zip. Used to build a fake test site with commonly targeted pages to simulate a realistic hacking scenario config.php.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971353/w5_hrzgrc.png" class="hero-image" alt="">
+<hr>
+<p>This step is done in kali</p>
+<p>Link: http://192.168.81.130/login.php Result: Only a "Login Page" appears — a fake page with no actual form.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971418/w6_ipilxb.png" class="hero-image" alt="">
+<p>Link: http://192.168.81.130/admin.php The result: "Admin Panel" appears — an exposed page with no visible protection or authentication.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971415/w7_h4fvuu.png" class="hero-image" alt="">
+<p>Link: http://192.168.81.130/upload.php The result: "Uploads" appears — a fake file upload page. </p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971414/w8_d5230r.png" class="hero-image" alt="">
+<p>Link: http://192.168.81.130/backup.zip
+Used to attempt to download a live, exposed backup. Result: The download actually succeeds (7 bytes) — proving that any visitor can pull the backup without authentication.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971413/w9_k7owh1.png" class="hero-image" alt="">
+<p>Commands: sudo truncate -s 0 for my file /var/log/apache2/access.logand error.log then restart apache2. Used to dump Apache logs and then restart the service. Result: Service active only 29 seconds ago — Erasing directories/resetting before starting the test status</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971415/w10_mnfnyi.png" class="hero-image" alt="">
+<p>We begin the attack scenario to generate logs.</p>
+<p>This command nmap -sV 192.168.81.130 is used to scan the machine after the web interface is running. The result: Two open ports — 22 (SSH) and 80 (Apache 2.4.66) — expands the attack surface.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971487/w11_kpneuc.png" class="hero-image" alt="">
+<p>Command: curl -I http://192.168.81.130 Used to fetch HTTP headers only. Result: 200 OK, Server: Apache/2.4.66 (Ubuntu) — Initial server fingerprint.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971486/w12_pbqspa.png" class="hero-image" alt="">
+<p>Command: gobuster dir -u http://192.168.81.130 -w /usr/share/wordlists/dirb/common.txt Used to discover hidden folders by automatic guessing. Result: Discovery admin.phpof index.html(200), and 403-protected paths ( .htaccess,,, .htpasswd) server-status— admin.php detected despite not being linked to any visible URL.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971485/w13_s39dnj.png" class="hero-image" alt="">
+<p>commands are used to manually verify the content of detected pages. The result: confirmation of the content of each page and the backup.zip file .curladmin.phplogin.phpupload.phpbackup.zip</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971484/w14_snixe8.png" class="hero-image" alt="">
+<p>strings curl on .env, phpmyadmin, config, test, admin are used to guess additional sensitive paths.  The result: all 404 — no vulnerability here.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971487/w15_hnwqn7.png" class="hero-image" alt="">
+<p>Commands: These are curl "login.php?id=1'"then curl "login.php?id=1 OR 1=1" used to test SQL injection by inserting a quotation mark followed by a consistently valid logical condition.  The result: The first returned the normal page unchanged, while the second failed with a "Malformed input to a URL function" error due to uncoded spaces in the URL—a technically incomplete attempt.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971568/w16_rzatpe.png" class="hero-image" alt="">
+<!-- <p>Command: curl "search?q=<script>alert(1)</script>" Used to test for Cross-Site Scripting (XSS) vulnerability.  Result: 404 Not Found — a path /searchthat does not actually exist on the server.</p> -->
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971567/w17_jt5h3h.png" class="hero-image" alt="">
+<p>Command: LOG=/var/log/apache2/access.log Used to define a shell variable with the path to the access log file to facilitate the following commands.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971565/w18_xptqfd.png" class="hero-image" alt="">
+<p>Command: awk '{print $1}' $LOG | sort | uniq -c | sort -nr
+Used to count the frequency of each IP address in the log. 
+Result: 4635 requests from 192.168.81.129 (the attacker) versus only two requests from ::1 — almost all activity from a single machine at high intensity.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971564/w19_ehyfil.png" class="hero-image" alt="">
+<p>Command: awk '{print $4,$1,$6,$7,$9}' $LOG
+Used to display time, IP, method, path, and response code. 
+Result: A clear sequence of initial nmap scans followed by a massive gobuster wave ( .bash_history,,, ...) .git/HEAD, _adminmostly 404.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971565/w20_afc2so.png" class="hero-image" alt="">
+<p>Continuation of the same record — end of the gobuster wave ( /zorum) then start of manual requests via curl: admin.php, login.php, upload.php, backup.zip(all 200), then failed attempts (404), then an SQLi attempt (200), then an XSS attempt (404).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971630/w21_ibcrzw.png" class="hero-image" alt="">
+<p>Command 22grep "192.168.81.129" $LOG | head -1 : Used tail -1
+to determine the first and last request from the attacker. 
+Result: First request at 02:23:15 , last request at 04:08:30 — activity lasting approximately one and a half hours.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971628/w22_aaytvl.png" class="hero-image" alt="">
+<p>Command: awk '{print $7}' $LOG | sort | uniq -c | sort -nr
+Used to count the repetitions of each path (URL). 
+The result: /(5 times), /test( /sdktwice each) /phpmyadmin, /admin.phpthen hundreds of paths at once.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971627/w23_x05h1k.png" class="hero-image" alt="">
+<p>The same results were completed — digital paths ( /1000... /0) and sensitive files ( .ssh, .bash_history, .env, .git/HEAD) with one iteration of each.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971626/w24_vdba7v.png" class="hero-image" alt="">
+<p>Command 25awk '$9==404 {print $4,$1,$7}' $LOG
+ : Used to display only failed (404) requests. 
+Result: A long list of failed access attempts to random paths and directories.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971625/w25_lyiqym.png" class="hero-image" alt="">
+<p>Continuation of the same 404 results — more failed paths ( /xyzzy, /yahoo... up to the last XSS attempt).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971681/w26_itaztx.png" class="hero-image" alt="">
+<p>Command awk '{print $9}' $LOG | sort | uniq -c
+ : Used to count the distribution of HTTP response codes. 
+The result: 15 requests (200), 4 requests (403), 4618 requests (404) — over 99% of the activity were failed attempts.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971680/w27_hojt4u.png" class="hero-image" alt="">
+<p>Command grep -Ei 'admin|login|upload|backup|config|\.env|phpmyadmin' $LOG
+ : Used for focused searching of common sensitive keywords. 
+Result: Dozens of attempts to guess "admin" paths in various formats (404), except for admin.phpthe one that returned 200.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971678/w28_rilevp.png" class="hero-image" alt="">
+<p>Continued same search results — additional attempts around "upload"/"admin", then actual successful requests appear (admin.php, login.php, upload.php, backup.zip = 200), and response success login.php?id=1'(200).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971677/w29_mpzxam.png" class="hero-image" alt="">
+<p>Command awk '{print $7}' $LOG | sort | uniq | wc -l : This is then awk '{print $7}' $LOG | sort | uniq
+used to calculate the number of unique paths (4629 different paths) and display them all. 
+The result: a large list of unique paths used in the scan (starting with *, /, /_, /@... and user directory names such as ~admin, ~root, ~webmaster) — confirming the sheer size of the list of words used in the automated guessing attack.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971676/w30_s95bce.png" class="hero-image" alt="">
+<p>Command awk -F\" '{print $6}' $LOG | sort | uniq -c | sort -nr
+ : Used to count the frequency of each User-Agent value in the log. 
+The result: 4615 requests from gobuster/3.8.2, 12 requests from curl/8.20.0, 4 requests from Nmap Scripting Engine, 4 requests without User-Agent, and 2 requests with "Apache/2.4.66 (internal dummy connection)" — a clear distribution separating the different inspection tools used.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971743/w31_wnftzf.png" class="hero-image" alt="">
+<p>Command grep -i gobuster $LOG
+ : Used to isolate all requests that specifically used the GoBuster tool. 
+Result: A detailed view of the GoBuster scan waveform ( .bash_history, .htaccess, .git/HEAD, _admin...), mostly 404 and some 403.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971742/w32_dtkd78.png" class="hero-image" alt="">
+<p>Command: grep -i curl $LOG
+Used to isolate manual requests that used curl only. 
+Result: Clear sequence of manual requests: HEAD /(200), admin.php(200), login.php(200), upload.php(200), backup.zip(200), failed attempts ( .env, phpmyadmin, config, test, admin), SQLi attempt (200), XSS attempt (404).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971741/w33_vt4nmj.png" class="hero-image" alt="">
+<p>Command: grep -Ei "union|select|or 1=1|%27|'|information_schema|sleep|benchmark" $LOG
+Used to search for indicators of SQL injection attempts in their common patterns. 
+Result: Some dummy matches of gobuster path names ( /alumni_reunions, /selectaddress, /union...) and only one real match login.php?id=1'— meaning the only actual SQLi attempt was the one previously recorded.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971740/w34_oxclxs.png" class="hero-image" alt=""> 
+<p>Command:Used to search for indicators of XSS attempts. Result: Only one match, which is a (404) attempt — confirming that it is the only XSS attempt recorded in the log.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971739/w35_xep55h.png" class="hero-image" alt="">
+<p>Command grep -Ei 'backup|\.zip|\.tar|\.gz|\.bak|\.old' $LOG
+ : Used to search for attempts to access compressed backup files. 
+Result: Dozens of failed attempts ( _backup, autobackup, backup-db, sitemap.gz, tar.gz, wpau-backup...) all 404, except for the single successful request backup.zip(200) via curl.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971841/w36_rn0wju.png" class="hero-image" alt="">
+<p>Command awk '$9==404 {print $1}' $LOG | sort | uniq -c | sort -nr
+ : Used to count failed (404) requests grouped by IP address. 
+Result: 4618 failed requests from address 192.168.81.129 — confirming that all failures originated from the same attacker.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971839/w37_zf5zo5.png" class="hero-image" alt="">
+<p>Command awk '{print substr($4,2,17)}' $LOG | sort | uniq -c
+ : Used to group requests by minute (extracting the abbreviated time signature). 
+The result: Time signature of activity — a huge concentration at 03:55 with 4617 requests (gobuster wave), while the rest of the times (02:23 , 02:24 , 03:57 and beyond) were at a rate of only one or two requests — showing that the gobuster attack was very fast and intense over approximately one minute, while the reconnaissance and manual exploitation were time-separated.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971838/w38_di9s20.png" class="hero-image" alt="">
+<p>Command: awk -F\" '{print $2}' $LOG
+Used to display the entire request line (Method + Path + Protocol) for each record. 
+Result: A sequential display of all requests starting with the initial nmap scan ( GET / HTTP/1.0, POST /sdk, GET /HNAP1...) and then the beginning of the gobuster wave.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971836/w39_k2ymql.png" class="hero-image" alt="">
+<p>Continuation of the same presentation — the end of the gobuster wave ( /zorum) then OPTIONS from ::1, the successful manual requests (admin.php→backup.zip) leading up to my last two SQLi and XSS attempts.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971835/w40_s0wjg2.png" class="hero-image" alt="">
+<p>Command grep "192.168.81.129" $LOG : (Full Color) 
+is used to isolate only the attacker's lines from the full log. 
+Result: A comprehensive view documenting the initial Nmap Scripting Engine scan and then the start of the massive gobuster/3.8.2 wave.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971902/w41_lzc8wd.png" class="hero-image" alt="">
+<p>Continuation of the same filtering — end of gobuster( /zorum) then full manual requests via curl/8.20.0 (admin.php, login.php, upload.php, backup.zip = 200, failed attempts, successful SQLi response, failed XSS).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971901/w42_vbb4gi.png" class="hero-image" alt="">
+<p>Command  touch attacker_activity.log
+ : Used to create a new empty file that will be used as a destination to store the extracted attacker activity later. 
+No visible result (file creation only).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971899/w43_kzexzb.png" class="hero-image" alt="">
+<p>The command: This is grep "192.168.81.129" $LOG > attacker_activity.logthen cat attacker_activity.log
+used to filter all attacker activity from the original log and save it to a separate file, then view the contents to verify the operation was successful. 
+The result: The file contains virtually the same complete sequence of attacker activity—a standalone evidence file ready for analysis.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971898/w44_ot0hb2.png" class="hero-image" alt="">
+<p>Command awk '{print $4,$1,$6,$7,$9}' attacker_activity.log
+ : Used to parse the newly filtered file instead of the full log. 
+Result: The same previously documented sequence, but cleaner and more concise, without noise from other requests.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971896/w45_loqlm8.png" class="hero-image" alt="">
+<p>Continuation of the same outputs — more failed gobuster attempts from the new file ( _config, _common, _css, _db_backups, _files, _scripts, _source...) all 404.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971956/w46_zqarlz.png" class="hero-image" alt="">
+<p>A final continuation of the same output — the end of the gobuster wave ( /yml... /zorum) and then the final manual requests via curl (admin.php→backup.zip→failed attempts→SQLi→XSS) to conclude the directory files.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1783971954/w47_te08ko.png" class="hero-image" alt="">
+<p>Technical <a href="https://github.com/mu-b003/Web-Server-Attack-Investigation-/tree/main/reports" target="_blank">Report</a></p>
+<p>GitHub <a href="https://github.com/mu-b003/Web-Server-Attack-Investigation-" target="_blank">Repository</a></p>
+
+
+
+</div>
+</main>
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+// 1. اختيار كل الصور التي تحمل الكلاس
+const images = document.querySelectorAll('.hero-image');
+
+// 2. تطبيق حدث الضغط على كل صورة على حدة
+images.forEach(image => {
+  image.addEventListener('click', function() {
+    // 3. إزالة الكلاس expanded من أي صور أخرى إذا كانت مفتوحة (اختياري)
+    images.forEach(img => {
+      if (img !== this) img.classList.remove('expanded');
+    });
+    
+    // 4. تفعيل أو إلغاء التأثير للصورة المضغوطة
+    this.classList.toggle('expanded');
+  });
+});
+</script>
+</body>
+</html>
