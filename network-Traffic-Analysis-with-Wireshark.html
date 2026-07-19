@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Network Traffic Analysis with Wireshark</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+          <ul class="menu">
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <hr>
+            <h3>SOC Analyzer Notes</h3>
+
+            <li>
+                <details>
+                    <summary>Home Lab SOC Lab Setup</summary>
+
+                    <ul class="submenu">
+                        <li><a href="soc-lab-setup.html">VMware Setup</a></li>
+                        <li><a href="kali-linux-attacker.html">Kali Linux Attacker Machin</a></li>
+                        <li><a href="ubuntu-setup.html">Ubuntu Desktop Victim</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <li>
+                <details>
+                    <summary>Logs Analysts</summary>
+
+                    <ul class="submenu">
+                        <li><a href="login-failuer-analyzer.html">Login Failuer Analyzer</a></li>
+                        <li><a href="ssh-brute-force-log-analysis.html">SSH Brute Force Log Analysis</a></li>
+                         <li><a href="ssh-authentication-log-analysis.html">SSH Authentication Log Analysis</a></li>
+                        <li><a href="failed-vs-successful-login-analysis.html">Failed vs Successful Login Analysis</a></li>
+                        <li><a href="suspicious-ip-detection.html">Suspicious IP Detection</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Security investigation</summary>
+
+                    <ul class="submenu">
+                        <li><a href="incident-response-case-study.html">Incident Response Case Study</a></li>
+                         <li><a href="unauthorized-user-investigation.html">Unauthorized User Investigation</a></li>
+                         <li><a href="liunx-uthentcation-log-investigation.html">Liunx Uthentcation log Investigation</a></li>
+                          <li><a href="privilege-escalation-investigation.html">Privilege Escalation Investigation</a></li>
+                          <li><a href="web-server-attack-investigation.html">Web Server Attack Investigation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+             <li>
+                <details>
+                    <summary>SOC Networks</summary>
+
+                    <ul class="submenu">
+                        <li><a href="network-Traffic-Analysis-with-Wireshark.html">Network Traffic Analysis with Wireshark</a></li>
+                        
+                    </ul>
+
+                </details>
+            </li>
+
+
+        </ul>
+
+    </aside>
+<main class="content">
+<div class="content-wrapper">
+<h3>Network Traffic Analysis with Wireshark</h3>
+<p>You can carry out this task practically in an isolated lab within a virtual machine if you do not have a lab you can set up your own using the provided <a href="https://bitpluss.com/soc-lab-setup" target="_blank">link</a>.</p>
+<p>The command: This is sudo apt update then sudo apt upgrade -y
+used to update the package lists and then upgrade the system. 
+The result: 105 packages available for upgrade, with "dpkg lock" messages appearing due to the unattended-upgrade process, and then the actual upgrade process begins.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474232/1_ckgjqz.png" class="hero-image" ale="">
+<p>Continued operation apt upgrade -y. 
+Result: A breakdown of the packages to be upgraded and installed (84 upgrades, 9 new installations), with a total download size of 811 MB — preparing the system before the start of the practical exercise.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474232/2_bc5i02.png" class="hero-image" ale="">
+<p>Commands: These are sudo apt install apache2 -ythen enable/start/status apache2
+used to install, activate, run, and check the status of the Apache2 web server. 
+Result: Apache2 is pre-installed (2.4.66-2ubuntu2.4), and the service has been successfully running for two days—ready to generate HTTP traffic later.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474232/3_jay8es.png" class="hero-image" ale="">
+<p>Commands: These are sudo apt install openssh-server -y then enable/start/status ssh
+used to install and activate the SSH service to allow remote connection. 
+Result: openssh-server is pre-installed, the service is active (running), and it is listening on port 22.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474232/4_qfon8g.png" class="hero-image" ale="">
+<p>The command: ip a
+is used to display network interface settings. 
+The result: the ens33 interface has the address 192.168.81.129/24— the target address for subsequent network tests.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474232/5_jybjjw.png" class="hero-image" ale="">
+<p>The command: sudo wireshark
+is used to open the network analysis program on an Ubuntu machine. 
+The result: a welcome window appears with the ens33 interface selected as the capture interface.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474232/6_id5lrs.png" class="hero-image" ale="">
+<hr>
+<p>The command (from Kali): ping 192.168.81.129
+Used to generate ICMP traffic towards Ubuntu for capture. 
+Result: Successful connection with a 0% packet loss rate across 39 packets.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474233/7_gxyruu.png" class="hero-image" ale="">
+<p>Commands: These are ping -c 10 then curl http://192.168.81.129
+used to generate an actual HTTP request to Apache. 
+The result: Receiving the default Apache page in HTML format — confirmation that the web service is working.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474313/8_yghlcf.png" class="hero-image" ale="">
+<p>Loop: for i in {1..5}; do curl http://192.168.81.129; done
+Used to generate multiple consecutive HTTP requests to increase traffic volume. 
+Result: The Apache page is received 5 times.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474314/9_cjie4w.png" class="hero-image" ale="">
+<p>Commands: nslookup bitpluss.comThese nslookup github.com
+are used to generate DNS queries. 
+The result: Obtaining the IP addresses of the two domains via a DNS server 192.168.81.2— to later parse the DNS packets.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474313/10_njq8x3.png" class="hero-image" ale="">
+<p>The command: wget http://192.168.81.129
+Used to download the webpage as an additional means of generating HTTP traffic. 
+Result: Successful download of a index.html.110.42K file.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474314/11_izjdth.png" class="hero-image" ale="">
+<p>Commands: ssh Mubarak@192.168.81.129 The `then` pwd, ` then` ls, exit
+is used to create an encrypted SSH session to generate detectable SSHv2 traffic. 
+The result: successful login, execution of simple commands, and then session termination.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474315/12_ojlebk.png" class="hero-image" ale="">
+<p>Display of the Wireshark window during actual capture on the ens33 interface. 
+The result: Various packets appear (encrypted SSHv2, TCP FIN/ACK, NTP) between 192.168.81.128 and 192.168.81.129.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474314/13_gxqikz.png" class="hero-image" ale="">
+<p>Menu: File > Save As in Wireshark. 
+Used to start the process of saving the capture file (pcap).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474314/14_bjv0vu.png" class="hero-image" ale="">
+<p>The Save Capture File As 
+window is used to specify the file name before changing the save location./home/soc-labnetwork-analysis.pcapng</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474374/15_il2yzx.png" class="hero-image" ale="">
+<p>The same window after changing the path to [the desired location /home/soc-lab/Desktop]. 
+Result: The final file is saved network-analysis.pcapngto the desktop.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474373/16_ekmep9.png" class="hero-image" ale="">
+<p>Menu: Statistics > Capture File Properties (selected). 
+Used to access statistics for the saved capture file.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474372/17_p2mu1h.png" class="hero-image" ale="">
+<p>Capture File Properties window. 
+Result: File size 280 kB, 1370 packets, capture time 00:10:58 , average 2.1 packets/second, 2,835 bits/second.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474373/18_g6flbc.png" class="hero-image" alt="">
+<p>Menu: Statistics > Protocol Hierarchy (selected). 
+Used to display the distribution of protocols in the captured motion.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474373/19_ytuzvr.png" class="hero-image" ale="">
+<p>Protocol Hierarchy Statistics window. 
+The result: TCP accounts for 77.2% of the packets (SSH for 66.1% of them), IPv4 for 94.2%, along with DNS, HTTP, ICMP and ARP — accurately reflecting the types of traffic intentionally generated (SSH, HTTP, DNS, Ping) during the network analysis exercise.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474373/20_bgc9yq.png" class="hero-image" ale="">
+<p>Menu: Statistics > Endpoints, IPv4·18 tab. 
+This is used to display a list of all IP addresses that participated in the connections and the amount of data sent and received for each.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474373/21_rlrzkx.png" class="hero-image" ale="">
+<p>The result: The two most active addresses are 192.168.81.128 (1,140 packets, 199 kB) and 192.168.81.129 (1,252 packets, 224 kB) — these are Kali and Ubuntu machines, along with several external addresses (Ubuntu NTP/connectivity servers, Cloudflare, etc.).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474452/22_rnnkbx.png" class="hero-image" ale="">
+<p>Menu: Statistics > Conversations (selected). 
+Used to access details of bilateral conversations between devices.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474453/23_cb0npf.png" class="hero-image" ale="">
+<p>Conversations window, IPv4·18 tab. 
+The result: The largest conversation is between 192.168.81.128 and 192.168.81.129 with a size of 197 kB, 1,121 packets, and a duration of approximately 503 seconds — representing the main SSH/HTTP exchange between Kali and Ubuntu during the exercise.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474451/24_ifdjhw.png" class="hero-image" ale="">
+<p>Applying a filter icmpin the main capture window. 
+The result: Displaying 98 packets (7.2% of the total) of Ping requests and responses (Echo request/reply) between 192.168.81.128 and 192.168.81.129 — confirming the success of the previously generated connectivity test.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474451/25_cdte4d.png" class="hero-image" ale="">
+<p>Filter application http. 
+Result: Display of 18 packets (1.3%) including GET requests and 200 OK/204 No Content responses between the two devices, plus a connection to an external address (91.189.91.98) — documenting HTTP traffic resulting from the previous curl/wget.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474453/26_ksga8i.png" class="hero-image" ale="">
+<p>Filter application dns. 
+Result: Displaying 16 packets (1.2%) including AAAA/A queries for domains such as connectivity-check.ubuntu.com, bitpluss.com, and github.com with responses containing matching IP addresses — documenting previous nslookup queries and automatic system updates.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474453/27_k116e5.png" class="hero-image" ale="">
+<p>Filter application tcp. 
+Result: Display of 1,058 packets (77.2%) — Shows the TCP handshake process (SYN/SYN-ACK/ACK), retransmission attempts to the unavailable address 0.0.0.0.192, and then the flow of successful HTTP requests between 192.168.81.128 and 192.168.81.129.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474453/28_elvdno.png" class="hero-image" ale="">
+<p>Continued filter display tcpwith a focus on SSHv2 packets. 
+The result: full documentation of the SSH protocol handshake (Protocol exchange, Key Exchange Init, PQ/T Hybrid Key Exchange, New Keys) and then the exchange of encrypted packets — reflecting the security of the SSH session resulting from the previous connection.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474524/29_zwx096.png" class="hero-image" ale="">
+<p>Filter application arp. 
+Result: Displaying 58 packets (4.2%) showing ARP (Who has/is at) requests and responses between the MAC addresses of Kali, Ubuntu and Gateway machines — revealing the process of determining local network addresses (Layer 2) before any IP connection is initiated.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784474525/30_umvhfm.png" class="hero-image" ale="">
+
+
+</div>
+</main>
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+// 1. اختيار كل الصور التي تحمل الكلاس
+const images = document.querySelectorAll('.hero-image');
+
+// 2. تطبيق حدث الضغط على كل صورة على حدة
+images.forEach(image => {
+  image.addEventListener('click', function() {
+    // 3. إزالة الكلاس expanded من أي صور أخرى إذا كانت مفتوحة (اختياري)
+    images.forEach(img => {
+      if (img !== this) img.classList.remove('expanded');
+    });
+    
+    // 4. تفعيل أو إلغاء التأثير للصورة المضغوطة
+    this.classList.toggle('expanded');
+  });
+});
+</script>
+</body>
+</html>
