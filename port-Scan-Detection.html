@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Port Scan Detection</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+          <ul class="menu">
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <hr>
+            <h3>SOC Analyzer Notes</h3>
+
+            <li>
+                <details>
+                    <summary>Home Lab SOC Lab Setup</summary>
+
+                    <ul class="submenu">
+                        <li><a href="soc-lab-setup.html">VMware Setup</a></li>
+                        <li><a href="kali-linux-attacker.html">Kali Linux Attacker Machin</a></li>
+                        <li><a href="ubuntu-setup.html">Ubuntu Desktop Victim</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <li>
+                <details>
+                    <summary>Logs Analysts</summary>
+
+                    <ul class="submenu">
+                        <li><a href="login-failuer-analyzer.html">Login Failuer Analyzer</a></li>
+                        <li><a href="ssh-brute-force-log-analysis.html">SSH Brute Force Log Analysis</a></li>
+                         <li><a href="ssh-authentication-log-analysis.html">SSH Authentication Log Analysis</a></li>
+                        <li><a href="failed-vs-successful-login-analysis.html">Failed vs Successful Login Analysis</a></li>
+                        <li><a href="suspicious-ip-detection.html">Suspicious IP Detection</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Security investigation</summary>
+
+                    <ul class="submenu">
+                        <li><a href="incident-response-case-study.html">Incident Response Case Study</a></li>
+                         <li><a href="unauthorized-user-investigation.html">Unauthorized User Investigation</a></li>
+                         <li><a href="liunx-uthentcation-log-investigation.html">Liunx Uthentcation log Investigation</a></li>
+                          <li><a href="privilege-escalation-investigation.html">Privilege Escalation Investigation</a></li>
+                          <li><a href="web-server-attack-investigation.html">Web Server Attack Investigation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+             <li>
+                <details>
+                    <summary>SOC Networks</summary>
+
+                    <ul class="submenu">
+                        <li><a href="network-Traffic-Analysis-with-Wireshark.html">Network Traffic Analysis with Wireshark</a></li>
+                        <li><a href="port-Scan-Detection.html">Port Scan Detection</a></li>
+                        
+                    </ul>
+
+                </details>
+            </li>
+
+
+        </ul>
+
+    </aside>
+<main class="content">
+<div class="content-wrapper">
+<h3>Port Scan Detection</h3>
+<p>The command: This is sudo apt updatethen sudo apt upgrade -y
+used to update the package lists and ensure the system is up to date before starting the exercise.
+Result: All packages are up to date — the system is ready to begin.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563158/1_erdiyk.png" class="hero-image">
+<p>Commands: These are sudo apt install apache2 -ythen enable/status apache2
+used to verify that the Apache server is installed and running as the target service for testing.
+Result: apache2 is pre-installed, and the service has been active (running) for about 1 day and 4 hours — with a recent reload history dated July 20.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563158/2_i9ajtq.png" class="hero-image">
+<p>Commands: These are sudo apt install openssh-server -ythen enable/status ssh
+used to verify that the SSH service is enabled as a second target service for testing.
+Result: openssh-server is pre-installed, the service is active (running), with a previous successful login for user Mubarak from 192.168.81.128.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563158/3_rf0mve.png" class="hero-image">
+<p>The command: ip a
+is used to display the IP address of the Ubuntu machine (the target).
+The result: the ens33 interface displays the address 192.168.81.129/24— which is the same target address used in subsequent scans.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563158/4_wqykmz.png" class="hero-image">
+<p>Commands (from Kali): These are sudo apt updatethen sudo apt upgrade -y
+used to update the Kali system and prepare it with the scanning tools before performing a port scan.
+Result: 37 packages successfully updated on the Kali machine with a download size of 8,633 kB.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563159/5_e6ffjd.png" class="hero-image">
+<p>The command: sudo apt install nmap -y
+Used to verify that the Nmap tool is installed to perform a port scan.
+Result: Nmap is pre-installed with the latest version (7.99+dfsg-1kali1) — the tool is ready to use.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563159/6_l1dbcc.png" class="hero-image">
+<p>The command: sudo apt install wireshark -y
+Used to verify that Wireshark is installed on the Ubuntu machine to capture and monitor scan activity.
+Result: Wireshark is pre-installed with the latest version (4.6.4-1) — ready to begin monitoring.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563159/7_xgl73y.png" class="hero-image">
+<p>Commands: These are sudo systemctl status sshthen status apache2
+used for a final check of the status of both target services before the scan begins.
+Result: Both services (SSH and Apache2) are stablely running—the targets are fully ready to receive scan attempts.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563225/8_igd2sm.png" class="hero-image">
+<p>The command: sudo wiresharkon Ubuntu.
+Used to open Wireshark and start preparing to capture incoming motion during an Nmap process.
+Result: Automatically opens the previous capture file network-analysis.pcapng(273 KB), with the ens33 interface selected to prepare for a new capture.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563225/9_qviwkn.png" class="hero-image">
+<p>
+The command (from Kali): nmap 192.168.81.129
+Used to perform a default scan to detect open ports on the target.
+Result: Two open ports detected: 22/tcp (ssh) and 80/tcp (http) — scan completed in just 0.82 seconds.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563225/10_z4viit.png" class="hero-image">
+<p>Command: sudo nmap -sS 192.168.81.129
+Used to perform a stealth scan (SYN Stealth Scan) that does not complete a full TCP handshake, to reduce the likelihood of detection.
+Result: Same as before — ports 22/tcp and 80/tcp open, scan completed in 0.81 seconds.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563226/11_se4mjv.png" class="hero-image">
+<p>The command sudo nmap -sV 192.168.81.129
+is used to detect service versions running on open ports.
+The result: Accurately identifies the services — OpenSSH 10.2p1 Ubuntu 2ubuntu3.4 on port 22, and Apache httpd 2.4.66 on port 80, with the operating system identified as Linux.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563226/12_wp7uns.png" class="hero-image">
+<p>The command: sudo nmap -O 192.168.81.129
+is used to attempt to discover the operating system by analyzing the TCP/IP packet fingerprint.
+The result: No exact match for the operating system was found, but a detailed fingerprint of the network stack was displayed, with the network distance specified as (Network Distance: 1 hop).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563226/13_gdcbij.png" class="hero-image">
+<p>The command: sudo nmap -A 192.168.81.129
+Used to perform an aggressive scan combining service discovery, operating system, Traceroute, and SNMP scripts.
+The result: Service confirmation (OpenSSH and Apache) with additional details such as the homepage title "Apache2 Ubuntu Default Page: It works" and a one-hop Traceroute path with a response time of 0.51ms.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563226/14_wxubtn.png" class="hero-image">
+<p>Wireshark window view during actual capture (Capturing from ens33) on an Ubuntu machine.
+The result: a huge number of red TCP packets (SYN from Kali corresponding to RST,ACK from Ubuntu) on multiple random and consecutive ports — a classic pattern documenting an actual port scan , with a total of 11,119 captured packets.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563289/15_t5t0ck.png" class="hero-image">
+<p>Menu: File > Save As in Wireshark.
+Used to start the process of saving the capture file that documents the detected scanning activity.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563289/16_u7fihz.png" class="hero-image">
+<p>The Save Capture File As window, with a path /home/soc-lab/Desktopand filename port-scan-detection.pcapng.
+The result: the file is saved alongside the previous capture file network-analysis.pcapng— the filename clearly reflects the nature of the exercise (port scanning detection).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563290/17_zui4he.png" class="hero-image">
+<p>Menu: Statistics > Capture File Properties (selected).
+Used to access the statistics of the newly saved port-scan-detection.pcapng file.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563290/18_qsqw1w.png" class="hero-image">
+<p>
+Capture File Properties window for the port-scan-detection.pcapng file.
+The result: a relatively large file size of 1,182 kB , with 11,129 packets in just a short time (00:06:35 ) , with a high average rate of 28.1 packets/second — an unusual rate that clearly reflects the intensity of port scanning traffic compared to normal traffic in the previous exercise.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563290/19_wly9vw.png" class="hero-image">
+<p>Menu: Statistics > Protocol Hierarchy (selected) for the port-scan-detection.pcapng file.
+It is used to display the distribution of protocols in the traffic associated with the scan, and in the background, various packets (NTP, ARP, DNS PTR queries, TCP SYN for multiple ports such as 80, 8080, 445) are shown — documenting the network reconnaissance patterns associated with the entire Port Scan process.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563290/20_qjbj2o.png" class="hero-image">
+<p>Protocol Hierarchy Statistics window for port-scan-detection.pcapng.
+The result: TCP accounts for the overwhelming majority of packets (10,935 packets) at 98.3% , while the actual service protocols (SSH and HTTP) account for only a very small percentage (0.3% and 0.7% respectively) — a significant difference between the raw TCP traffic volume and the actual application traffic volume, a classic indicator of Port Scan activity rather than normal application connections.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563290/21_zfo9uc.png" class="hero-image">
+<p>Menu: Statistics > Conversations (selected).
+Used to navigate to view conversation details and analyze communication patterns between devices.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563358/22_bnutk7.png" class="hero-image">
+<p>Conversations window, Ethernet·10 tab.
+The result: The largest conversation between the MAC addresses of Kali and Ubuntu, with a size of 794 kB and a huge number of packets (11,003 packets) — a size completely disproportionate to the nature of normal network traffic, confirming the presence of an intensive scanning process.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563358/23_hjvplp.png" class="hero-image">
+<p>Menu: Statistics > Endpoints (selected).
+Used to navigate to view endpoint statistics (participating devices) in the capture.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563359/24_ogba8l.png" class="hero-image">
+<p>Endpoints window, Ethernet tab·8.
+The result: Kali and Ubuntu machines (00:0c:29:2b:4f :ef and 00:0c:29:3f:90 :98 ) captured the vast majority of the traffic with a similar size (812 kB and 797 kB) and a number of packets exceeding 11,000 each — confirming that almost the entire capture is related to the scanning process between these two machines only.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563359/25_tzsdqd.png" class="hero-image">
+<p>A filter application tcpfocusing on the sequential SYN packets to multiple ports (80, 8080, 445, 111...) from the same source port (48711) at very short intervals (fractions of a millisecond).
+The result: This pattern—a fixed source port sending SYN packets sequentially and rapidly to multiple, different destination ports—is the classic signature of an automated TCP port scanning process (not a normal user connection).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563359/26_pc9ihk.png" class="hero-image">
+<p>Advanced filtering application: tcp.flags.syn == 1 && tcp.flags.ack == 0
+Used to isolate only pure SYN packets (the beginning of connection attempts) to identify all scanned ports.
+Result: 5,168 packets (46.4% of the total capture) are pure SYN attempts for consecutive, random ports—a huge number confirming systematic and comprehensive scanning activity across most of the port range.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563360/27_igtj95.png" class="hero-image">
+<p>
+Filter application: tcp.flags.syn == 1 && tcp.flags.ack == 1
+Used to isolate positive responses (SYN-ACK) indicating that the target ports are actually open
+. Result: Only 128 packets (1.2%) were of type SYN-ACK — meaning that a very small number of scanned ports were actually open (corresponding to ports 22 and 80 previously detected by Nmap), while the rest were closed.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563360/28_h2roie.png" class="hero-image">
+<p>Filter application: tcp.flags.reset == 1
+Used to isolate RST packets representing closed port responses to connection attempts.
+Result: A large number of RST,ACK packets ( 5,110 packets, 45.9% ) — representing Ubuntu's immediate responses to each SYN attempt on a closed port, providing further strong evidence of a comprehensive scan of a wide range of ports.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563420/29_fe953o.png" class="hero-image">
+<p>Filter application: tcp.port == 22
+Used to isolate all traffic associated with a specific SSH port during the scan.
+The result: A recurring sequence of SYN→SYN-ACK→RST attempts from different source ports repeatedly targeting port 22 (a recurring scan pattern for the same port), with a single successful packet containing the actual SSH Protocol Server response appearing amidst the noise—representing the real connection amidst the repeated scan attempts.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563420/30_jitbq8.png" class="hero-image">
+<p>Filter application: tcp.port == 80
+Used to isolate all traffic associated with a specific HTTP port during the scan.
+The result: The same SYN/SYN-ACK/RST pattern repeated across multiple attempts, interspersed with a complete and successful HTTP connection (GET/HTTP/1.0 versus 200 OKs) — clearly demonstrating how a genuine application connection can be distinguished amidst the noise of repeated scan packets.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784563421/31_wsiof8.png" class="hero-image">
+<p>Technical<a href="https://github.com/mu-b003/port-scan-detection-/tree/main/reports" target="_blank">Report</a></p>
+<p>GitHub<a href="https://github.com/mu-b003/port-scan-detection-/tree/main" target="_blank">Repository</a></p>
+
+
+
+</div>
+</main>
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+// 1. اختيار كل الصور التي تحمل الكلاس
+const images = document.querySelectorAll('.hero-image');
+
+// 2. تطبيق حدث الضغط على كل صورة على حدة
+images.forEach(image => {
+  image.addEventListener('click', function() {
+    // 3. إزالة الكلاس expanded من أي صور أخرى إذا كانت مفتوحة (اختياري)
+    images.forEach(img => {
+      if (img !== this) img.classList.remove('expanded');
+    });
+    
+    // 4. تفعيل أو إلغاء التأثير للصورة المضغوطة
+    this.classList.toggle('expanded');
+  });
+});
+</script>
+</body>
+</html>
