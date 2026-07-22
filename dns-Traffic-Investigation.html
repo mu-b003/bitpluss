@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DNS Traffic Investigation</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+          <ul class="menu">
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <hr>
+            <h3>SOC Analyzer Notes</h3>
+
+            <li>
+                <details>
+                    <summary>Home Lab SOC Lab Setup</summary>
+
+                    <ul class="submenu">
+                        <li><a href="soc-lab-setup.html">VMware Setup</a></li>
+                        <li><a href="kali-linux-attacker.html">Kali Linux Attacker Machin</a></li>
+                        <li><a href="ubuntu-setup.html">Ubuntu Desktop Victim</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <li>
+                <details>
+                    <summary>Logs Analysts</summary>
+
+                    <ul class="submenu">
+                        <li><a href="login-failuer-analyzer.html">Login Failuer Analyzer</a></li>
+                        <li><a href="ssh-brute-force-log-analysis.html">SSH Brute Force Log Analysis</a></li>
+                         <li><a href="ssh-authentication-log-analysis.html">SSH Authentication Log Analysis</a></li>
+                        <li><a href="failed-vs-successful-login-analysis.html">Failed vs Successful Login Analysis</a></li>
+                        <li><a href="suspicious-ip-detection.html">Suspicious IP Detection</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Security investigation</summary>
+
+                    <ul class="submenu">
+                        <li><a href="incident-response-case-study.html">Incident Response Case Study</a></li>
+                         <li><a href="unauthorized-user-investigation.html">Unauthorized User Investigation</a></li>
+                         <li><a href="liunx-uthentcation-log-investigation.html">Liunx Uthentcation log Investigation</a></li>
+                          <li><a href="privilege-escalation-investigation.html">Privilege Escalation Investigation</a></li>
+                          <li><a href="web-server-attack-investigation.html">Web Server Attack Investigation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+             <li>
+                <details>
+                    <summary>SOC Networks</summary>
+
+                    <ul class="submenu">
+                        <li><a href="network-Traffic-Analysis-with-Wireshark.html">Network Traffic Analysis with Wireshark</a></li>
+                        <li><a href="port-Scan-Detection.html">Port Scan Detection</a></li>
+                         <li><a href="nmap-Activity-Detection.html">Nmap Activity Detection</a></li>
+                         <li><a href="dns-Traffic-Investigation.html">DNS Traffic Investigation</a></li>
+                        
+                    </ul>
+
+                </details>
+            </li>
+
+
+        </ul>
+
+    </aside>
+<main class="content">
+<div class="content-wrapper">
+<h3>DNS Traffic Investigation</h3>
+<p>This task can be performed practically in an isolated lab if you do not have a lab you can create one using this <a href="https://bitpluss.com/soc-lab-setup" target="_blank">link</a>.</p>
+<p>Commands: sudo apt update Then, sudo apt upgrade -y on an Ubuntu machine (soc-lab), they were used to update the system before starting the investigation.
+Result: One upgradeable package was detected, but the system did not upgrade it due to the "phasing" mechanism of the snapd package — Summary: 0 upgrades, 0 installations, 0 removals, 1 unupgraded.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728507/1_eybrx3.png" class="hero-image">
+<p>Commands: ip aOn an Ubuntu machine, used to check network settings before starting DNS traffic capture.
+Result: ens33Active interface with a dynamic IP address 192.168.81.129/24, as well as a loopback interface.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728507/2_g76ltg.png" class="hero-image">
+<p>Commands: sudo apt update Then, sudo apt upgrade -yon the Kali machine, they were used to update the system before investigation.
+Result: All packages are already up to date ( All packages are up to date), and nothing has been upgraded.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728507/3_u76upc.png" class="hero-image">
+<p>Commands: sudo apt install dnsutils -y Then, nslookup bitpluss.comon Kali, install DNS tools and test the target domain analysis.
+Result: Installed bind9-dnsutils(which is the alternative package), analysis bitpluss.comreturned Cloudflare addresses (IPv4 and IPv6).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728507/4_tzt47i.png" class="hero-image">
+<p>Commands: sudo apt install wireshark -y On Ubuntu, to ensure the package analyzer is available.
+Result: Wireshark is pre-installed and is the latest version (4.6.4-1), no installation required.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728507/5_ylsdma.png" class="hero-image">
+<p>Commands: sudo wireshark To run the tool with administrator privileges.
+Result: The Wireshark welcome screen opened with a list of available capture interfaces, and one interface was selected as the ens33target capture interface for monitoring DNS traffic.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728508/6_m2zmji.png" class="hero-image">
+<p>Commands: A series of commands nslookup on Kali for three domains: bitpluss.com, github.com, ubuntu.com.
+Result: Each domain was successfully resolved via the local DNS server (192.168.81.2), with multiple IPv4 and IPv6 addresses returned for each domain.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728507/7_t6rmrx.png" class="hero-image">
+<p>Commands: dig bitpluss.com On Kali, to perform a detailed DNS query.
+Result: A detailed view including the Answer section, the Authority section showing Cloudflare name servers, and an Additional section with the addresses of those servers.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728597/8_pzlgil.png" class="hero-image">
+<p>Commands: Loop for domain in google.com github.com microsoft.com openai.com ubuntu.com kali.org; do nslookup $domain; doneon Kali.
+Result: Starting to execute successive DNS queries for several known domains (google.com, github.com, microsoft.com...) to generate clean DNS traffic for later comparison.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728597/9_lj25mp.png" class="hero-image">
+<p>Continued view of the same previous episode.
+Result: Successful completion of the analysis results for the remaining domains (microsoft.com, openai.com, ubuntu.com, kali.org), confirming legitimate DNS traffic.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728597/10_rgqkld.png" class="hero-image">
+<p>Commands: nslookup fake-domain-12345.local On Kali, to simulate a query for a non-existent domain.
+Result: Resolution failed with a message NXDOMAIN, documenting DNS behavior when requesting a fake/non-existent domain.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728597/11_mm6tk3.png" class="hero-image">
+<p>Commands: Live Capture via Wireshark on an ens33 Ubuntu interface.
+Result: Recording of various traffic including DNS queries, TCP/HTTP connections, NTP and ARP packets, including the capture fake-domain-12345.local and failure of a query (NXDOMAIN) within packets 2189–2190.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728598/12_zaeoqg.png" class="hero-image">
+<p>Commands: Open a menu File in Wireshark while live capture is ongoing, preparing to save the file.
+Result: Save options ( Save, Save As...) appear as packets continue to flow (counter reaches 2212 packets).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728598/13_q4gav3.png" class="hero-image">
+<p>Commands: Used Save Asin Wireshark to save the capture. Result: The path and filename
+were specified in an uncompressed format./home/soc-lab/Desktopdns-traffic-investigation.pcapng</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728598/14_gwqomp.png" class="hero-image">
+<p>Commands: Open a menu Statisticsin Wireshark after saving the file dns-traffic-investigation.pcapng.
+Result: Displays a list of available statistical options (Capture File Properties, Protocol Hierarchy, Conversations, Endpoints... etc.) in preparation for analyzing the captured packets.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728659/15_dyjup3.png" class="hero-image">
+<p>Commands: Statistics > Capture File Properties on a file dns-traffic-investigation.pcapng.
+Result: Display full file details — 2212 packets, size 2,157 KB, capture time 00:07:46 , average 4.7 packets/second and 35 KB/second.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728658/16_gizvzz.png" class="hero-image">
+<p>Commands: Statistics Reopen the menu by hovering the cursor over an option Protocol Hierarchy.
+Result: Prepared to display the protocol hierarchy within the captured file.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728658/17_iqecmk.png" class="hero-image">
+<p>Commands: Statistics > Protocol Hierarchy.
+Result: Protocol distribution — IPv4 accounts for 97.8% of the packets, TCP accounts for 90.8%, while TLS accounts for 94.3% of the total bytes, and DNS accounts for only 2.4% of the packets.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728659/18_fy0klr.png" class="hero-image">
+<p>Commands: Open a menu Statistics by hovering the cursor over an option Endpoints.
+Result: Prepares to display a list of endpoints involved in the captured motion.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728659/19_mp2e9p.png" class="hero-image">
+<p>Commands: Statistics > Endpoints.
+Result: Displaying 13 IPv4 endpoints with packet/byte details for each address — highlighting 151.101.210.491,990 packets (2 MB) and 192.168.81.129(the Ubuntu machine itself) 2,091 packets (2 MB).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728659/20_wa6ivi.png" class="hero-image">
+<p>Commands: Open a menu Statistics by hovering the cursor over an option Conversationsin Wireshark on a file dns-traffic-investigation.pcapng.
+Result: Prepared to display the recorded network conversations between the different parties in the capture.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728659/21_sf5v6l.png" class="hero-image">
+<p>Commands: Statistics > Conversations With the IPv4 tab displayed.
+Result: Displaying 12 IPv4 conversations — the most notable being a conversation 192.168.81.129with 151.101.210.49a size of 2 MB and a relatively high transfer speed (79 kbps / 4,540 kbps), along with smaller NTP and DNS conversations.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728741/22_w9tmsj.png" class="hero-image">
+<p>Commands: Applying the display filter dnsin Wireshark.
+Result: Displaying 52 DNS packets (2.4% of the total) including queries and responses for multiple domains (github.com, ubuntu.com, bitpluss.com, cdn.fwupd.org...), with detailing response packet number 101 for the AAAA query for cdn.fwupd.org.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728741/23_ezff9v.png" class="hero-image">
+<p>Commands: Apply a filter dns.flags.response == 0 to display only outgoing DNS queries (not responses).
+Result: Displays 30 query packets (1.4%), including normal queries for known domains plus the last suspicious query fake-domain-12345.localin packet 2189.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728742/24_qn0tzq.png" class="hero-image">
+<p>Commands: Apply a filter dns.flags.response == 1 to display DNS responses only.
+Result: Display 26 response packets (1.2%), including the final response to fake-domain-12345.localpacket 2190 which shows a "No such name" error (NXDOMAIN) along with successful responses for other domains.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728743/25_zyfp8c.png" class="hero-image">
+<p>Commands: Apply a filter dns.qry.type == 1 to display only A-type queries.
+Result: Displays 28 packets (1.3%) representing A-record queries and responses for domains such as bitpluss.com, github.com, microsoft.com, kali.org, and others.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728742/26_j0udtf.png" class="hero-image">
+<p>Commands: Apply a filter dns.qry.type == 28 to display only AAAA (IPv6) type queries.
+Result: Displays 24 packets (1.1%) representing AAAA-record queries and responses, with ubuntu.com's response details containing multiple IPv6 addresses.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728743/27_y0kwzm.png" class="hero-image">
+<p>Commands: Apply a filter udpto display all UDP traffic in the file.
+Result: Displays 157 packets (7.1%) including a mix of DNS and NTP traffic, illustrating the transition from recent DNS queries to the beginning of recurring NTP (NTS) packets between the machine and external servers.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728744/28_quhmz0.png" class="hero-image">
+<p>Commands: Apply a filter udp.port == 53 to display DNS traffic exclusively over port 53.
+Result: Display 52 packets (2.4%), matching the results of the dnsprevious filter, confirming that all DNS traffic is passing through UDP/53 as expected.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728817/29_wtb2bu.png" class="hero-image">
+<p>Commands: Apply a filter dns.flags.rcode != 0to isolate responses containing an error code (not a success).
+Result: Displaying only one packet (0.0%), which is the response to fake-domain-12345.local(package 2190), confirming that it is the only query in the entire capture that failed with a "No such name" error — the key evidence documented in this DNS Traffic Investigation Task .</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784728817/30_p7hesw.png" class="hero-image">
+<p>Technical<a href="https://github.com/mu-b003/DNS-Traffic-Investigation-/tree/main/report" target="_blank">Report</a></p>
+<p>GitHub<a href="https://github.com/mu-b003/DNS-Traffic-Investigation-/tree/main" target="_blank">Repository</a></p>
+
+
+
+
+
+</div>
+</main>
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+// 1. اختيار كل الصور التي تحمل الكلاس
+const images = document.querySelectorAll('.hero-image');
+
+// 2. تطبيق حدث الضغط على كل صورة على حدة
+images.forEach(image => {
+  image.addEventListener('click', function() {
+    // 3. إزالة الكلاس expanded من أي صور أخرى إذا كانت مفتوحة (اختياري)
+    images.forEach(img => {
+      if (img !== this) img.classList.remove('expanded');
+    });
+    
+    // 4. تفعيل أو إلغاء التأثير للصورة المضغوطة
+    this.classList.toggle('expanded');
+  });
+});
+</script>
+</body>
+</html>
