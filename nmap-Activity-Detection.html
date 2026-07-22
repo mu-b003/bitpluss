@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nmap Activity Detection</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+          <ul class="menu">
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <hr>
+            <h3>SOC Analyzer Notes</h3>
+
+            <li>
+                <details>
+                    <summary>Home Lab SOC Lab Setup</summary>
+
+                    <ul class="submenu">
+                        <li><a href="soc-lab-setup.html">VMware Setup</a></li>
+                        <li><a href="kali-linux-attacker.html">Kali Linux Attacker Machin</a></li>
+                        <li><a href="ubuntu-setup.html">Ubuntu Desktop Victim</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <li>
+                <details>
+                    <summary>Logs Analysts</summary>
+
+                    <ul class="submenu">
+                        <li><a href="login-failuer-analyzer.html">Login Failuer Analyzer</a></li>
+                        <li><a href="ssh-brute-force-log-analysis.html">SSH Brute Force Log Analysis</a></li>
+                         <li><a href="ssh-authentication-log-analysis.html">SSH Authentication Log Analysis</a></li>
+                        <li><a href="failed-vs-successful-login-analysis.html">Failed vs Successful Login Analysis</a></li>
+                        <li><a href="suspicious-ip-detection.html">Suspicious IP Detection</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Security investigation</summary>
+
+                    <ul class="submenu">
+                        <li><a href="incident-response-case-study.html">Incident Response Case Study</a></li>
+                         <li><a href="unauthorized-user-investigation.html">Unauthorized User Investigation</a></li>
+                         <li><a href="liunx-uthentcation-log-investigation.html">Liunx Uthentcation log Investigation</a></li>
+                          <li><a href="privilege-escalation-investigation.html">Privilege Escalation Investigation</a></li>
+                          <li><a href="web-server-attack-investigation.html">Web Server Attack Investigation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+             <li>
+                <details>
+                    <summary>SOC Networks</summary>
+
+                    <ul class="submenu">
+                        <li><a href="network-Traffic-Analysis-with-Wireshark.html">Network Traffic Analysis with Wireshark</a></li>
+                        <li><a href="port-Scan-Detection.html">Port Scan Detection</a></li>
+                        <li><a href="nmap-Activity-Detection.html">Nmap Activity Detection</a></li>
+                        
+                    </ul>
+
+                </details>
+            </li>
+
+
+        </ul>
+
+    </aside>
+<main class="content">
+<div class="content-wrapper">
+<h3>Nmap Activity Detection</h3>
+<p>You can carry out this task practically in an isolated virtual lab if you don't have one you can set up your own using this <a href="https://bitpluss.com/soc-lab-setup" target="_blank">link.</a></p>
+<p>Commands: These are sudo apt update then sudo apt upgrade -y
+used to update the system before the exercise begins.
+Result: 12 upgradeable packages are available, and a 4,588 kB update download has begun — the system is in routine update mode.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784703751/1_xjln52.png" class="hero-image">
+<p>Commands: These are sudo apt install apache2 -y then start/status apache2
+used to verify that the Apache server is running as the target for testing.
+Result: apache2 is pre-installed, the service has been active (running) for two days, with a recent reload log dated July 21 at 17:53 .</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784703751/2_b1da8u.png" class="hero-image">
+<p>Commands: These are sudo apt install openssh-server -y then start/status ssh
+used to verify that the SSH service is running as a second target for testing.
+Result: openssh-server is pre-installed, and the service was recently started (active just 11 seconds ago) — a deliberate restart prior to the exercise.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784703751/3_kmkluj.png" class="hero-image">
+<p>The command: ip a
+is used to display the IP address of the Ubuntu machine (the target).
+The result: the ens33 interface displays the address 192.168.81.129/24— the same target address used in subsequent Nmap operations.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784703751/4_ph6arw.png" class="hero-image">
+<p>Commands (from Kali): These are sudo apt updatethen sudo apt upgrade -y
+used to update the Kali system in preparation for running the scanning tools.
+Result: All packages are up to date.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784703752/5_bfs9sa.png" class="hero-image">
+<p>The command: sudo apt install nmap wireshark -y
+Used to ensure that both Nmap and Wireshark are installed together on Kali.
+Result: Both tools are pre-installed with the latest version (nmap 7.99, wireshark 4.6.6) — ready to use.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784703826/6_ga1cto.png" class="hero-image">
+<p>The command: sudo wireshark on Ubuntu.
+Used to open Wireshark in preparation for capturing incoming Nmap traffic.
+Result: Attempt to open previous capture files failed (not found) because they were previously on a different machine, with the ens33 interface selected to start a new capture.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784703827/7_j94xuk.png" class="hero-image">
+<p>Commands (from Kali): These are nmap -sn 192.168.81.129 then nmap 192.168.81.129
+used to perform a host discovery scan (Ping Scan) followed by a default scan of common ports.
+The result: confirmation that the host is up, and the discovery of two open ports: 22/tcp (ssh) and 80/tcp (http) .</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784703827/8_dmkrma.png" class="hero-image">
+<p>Commands: These are sudo nmap -sS 192.168.81.129then sudo nmap -sV 192.168.81.129
+used to perform a SYN scan followed by a scan to detect service versions.
+The result: Confirmation of the same two open ports, with the versions precisely identified: OpenSSH 10.2p1 Ubuntu 2 Ubuntu 3.5 and Apache httpd 2.4.66 .</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784703827/9_u69cci.png" class="hero-image">
+<p>The command: sudo nmap -A 192.168.81.129
+Used to perform an aggressive comprehensive scan combining service discovery, operating system, and traceroute.
+The result: Confirmation of both services with details of the default Apache page, a detailed Linux operating system fingerprint, and a single-hop (0.96ms) traceroute path.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784703827/10_vylyfg.png" class="hero-image">
+<p>The command: sudo nmap -p- 192.168.81.129
+Used to scan all 65535 ports instead of just the common ones, to ensure there are no additional hidden ports.
+Result: Confirmation of only two open ports (22 and 80) out of 65535 ports. The scan was completed in 4.48 seconds.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784703877/11_qz8fyh.png" class="hero-image">
+<p>A Wireshark window view after capturing has stopped, showing the traffic generated by all previous Nmap operations (especially the full port scan -p-).
+The result: a massive amount of packets ( 139,970 packets ) — a SYN pattern from a fixed port (55421) corresponding to RST,ACK for randomly sequenced destination ports at very high speed — a clear signature of a full Nmap port scan.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784703878/12_sv1yt5.png" class="hero-image">
+<p>Menu: File > Save As in Wireshark.
+Used to initiate saving the capture file that documents the entire Nmap activity.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784703877/13_cpanxv.png" class="hero-image">
+<p>The Save Capture File As window, with a path /home/soc-lab/Desktopand filename nmap-activity-detection.pcapng.
+The result: The file is saved with a name that clearly reflects the nature of the exercise (detecting Nmap activity), ready for subsequent statistical analysis like previous exercises.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784703877/14_zod9pp.png" class="hero-image">
+<p>Menu: Statistics > Capture File Properties (selected) for the nmap-activity-detection.pcapng file.
+Used to access full capture statistics.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784703879/15_m1igdg.png" class="hero-image">
+<p>Capture File Properties window.
+The result: a large file size of 12 MB , with a huge number of packets (139,970 packets ) over a relatively short period (00:03:53 ) , with a very high average rate of 598.3 packets/second and a data rate of 278 kbps — much higher than the previous two exercises (Network Analysis and Port Scan), reflecting the intensity of the comprehensive Nmap scan of all ports.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784703950/16_r4hhwu.png" class="hero-image">
+<p>Menu: Statistics > Protocol Hierarchy (selected).
+Used to display the distribution of protocols in this large capture.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784703950/17_npgmbg.png" class="hero-image">
+<p>Protocol Hierarchy Statistics window.
+The result: TCP dominates with 99.9% of the packets (139,825 packets) — a higher percentage even than the previous Port Scan exercise (98.3%), confirming that the comprehensive scan of all ports ( -p-) generated a much larger volume of raw TCP traffic.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784703950/18_my8lku.png" class="hero-image">
+<p>Menu: Statistics > Endpoints (selected).
+Used to navigate to view endpoint statistics.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784703950/19_mvqqer.png" class="hero-image">
+<p>Endpoints window, IPv4·11 tab.
+The result: Kali and Ubuntu machines (192.168.81.128 and 192.168.81.129) captured almost all the traffic with an almost identical size of 8 MB each and a number of packets exceeding 139,800 per machine — almost a total focus on these two ends only.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784703950/20_r7wux6.png" class="hero-image">
+<p>Menu: Statistics > Conversations (selected).
+Used to navigate to view the main conversation details.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784704037/21_rq1lwr.png" class="hero-image">
+<p>Conversations window, IPv4·11 tab.
+The result: The main conversation between 192.168.81.128 and 192.168.81.129 with a massive size of 8 MB and a number of 139,849 packets in only 4 streams — an unprecedented size that clearly surpasses any normal traffic, as confirmed by a thorough and intensive Nmap scan.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784704036/22_kmiakq.png" class="hero-image">
+<p>A filter application tcpshows a very rapid sequence of SYN packets from multiple and varied ports (135, 554, 8080, 25, 23, 8888, 1720, 1025...) from the same source port (48976) within fractions of a second.
+The result: a very rapid, comprehensive scan pattern covering a wide and random range of port numbers—perfectly matching the nmap -p-previously executed command.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784704037/23_f71dkl.png" class="hero-image">
+<p>Filter application: tcp.flags.syn == 1 && tcp.flags.ack == 0
+Used to isolate only all initial SYN attempts.
+The result: A very large number of pure SYN packets — 69,643 packets (49.8%) of the total capture, meaning that almost half of all captured motion was just initial screening attempts.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784704036/24_cev6xw.png" class="hero-image">
+<p>Filter application: tcp.flags.syn == 1 && tcp.flags.ack == 1
+Used to isolate positive SYN-ACK responses (ports that are actually open).
+Result: Only 93 packets (0.1%) of type SYN-ACK — a very small percentage compared to the enormous size of SYN — confirming that most of the 65,535 ports were closed, and only ports 22 and 80 were actually open.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784704037/25_ydyokq.png" class="hero-image">
+<p>Filter application: tcp.flags.reset == 1
+Used to isolate RST (closed port responses) packets.
+The result: A huge number of RST,ACK packets — 69,591 packets (49.7%) , almost half of all traffic, conclusive evidence of a thorough scan targeting almost the entire port range and encountering closed ports in the vast majority of attempts.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784704116/26_agjnrb.png" class="hero-image">
+<p>Filter application: tcp.port == 22
+Used to isolate SSH port traffic within this comprehensive scan.
+Result: Displaying only 302 packets (0.2%) out of a total of 139,970 — a recurring pattern of SYN→SYN-ACK→RST for multiple scan attempts, interspersed with actual successful SSH connections (SSH-2.0-OpenSSH Server Protocol) amidst the noise, illustrating the vast difference between the total scan traffic volume and the traffic volume of a single open port.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784704115/27_ufelpw.png" class="hero-image">
+<p>Filter application: tcp.port == 80
+used to isolate HTTP port traffic within this comprehensive scan.
+Result: Only 443 packets (0.3%) were displayed , all containing the same recursive scan pattern (SYN/SYN-ACK/RST), in addition to a complete and successful HTTP connection (GET/HTTP/1.0 with 200 OK responses) — the analysis concludes by showing that out of approximately 140,000 packets, there were only two genuine application connections (SSH and HTTP) amidst a vast sea of ​​Nmap's comprehensive port scanning attempts.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784704115/28_jyzrnu.png" class="hero-image">
+<p>Technical<a href="https://github.com/mu-b003/nmap-activity-detection-/tree/main/docs" target="_blank">Report</a></p>
+<p>GitHub<a href="https://github.com/mu-b003/nmap-activity-detection-" target="_blank">Repository</a></p>
+</div>
+</main>
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+// 1. اختيار كل الصور التي تحمل الكلاس
+const images = document.querySelectorAll('.hero-image');
+
+// 2. تطبيق حدث الضغط على كل صورة على حدة
+images.forEach(image => {
+  image.addEventListener('click', function() {
+    // 3. إزالة الكلاس expanded من أي صور أخرى إذا كانت مفتوحة (اختياري)
+    images.forEach(img => {
+      if (img !== this) img.classList.remove('expanded');
+    });
+    
+    // 4. تفعيل أو إلغاء التأثير للصورة المضغوطة
+    this.classList.toggle('expanded');
+  });
+});
+</script>
+</body>
+</html>
