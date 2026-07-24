@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suspicious Connections Analysis</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+          <ul class="menu">
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <hr>
+            <h3>SOC Analyzer Notes</h3>
+
+            <li>
+                <details>
+                    <summary>Home Lab SOC Lab Setup</summary>
+
+                    <ul class="submenu">
+                        <li><a href="soc-lab-setup.html">VMware Setup</a></li>
+                        <li><a href="kali-linux-attacker.html">Kali Linux Attacker Machin</a></li>
+                        <li><a href="ubuntu-setup.html">Ubuntu Desktop Victim</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <li>
+                <details>
+                    <summary>Logs Analysts</summary>
+
+                    <ul class="submenu">
+                        <li><a href="login-failuer-analyzer.html">Login Failuer Analyzer</a></li>
+                        <li><a href="ssh-brute-force-log-analysis.html">SSH Brute Force Log Analysis</a></li>
+                         <li><a href="ssh-authentication-log-analysis.html">SSH Authentication Log Analysis</a></li>
+                        <li><a href="failed-vs-successful-login-analysis.html">Failed vs Successful Login Analysis</a></li>
+                        <li><a href="suspicious-ip-detection.html">Suspicious IP Detection</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Security investigation</summary>
+
+                    <ul class="submenu">
+                        <li><a href="incident-response-case-study.html">Incident Response Case Study</a></li>
+                         <li><a href="unauthorized-user-investigation.html">Unauthorized User Investigation</a></li>
+                         <li><a href="liunx-uthentcation-log-investigation.html">Liunx Uthentcation log Investigation</a></li>
+                          <li><a href="privilege-escalation-investigation.html">Privilege Escalation Investigation</a></li>
+                          <li><a href="web-server-attack-investigation.html">Web Server Attack Investigation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+             <li>
+                <details>
+                    <summary>SOC Networks</summary>
+
+                    <ul class="submenu">
+                        <li><a href="network-Traffic-Analysis-with-Wireshark.html">Network Traffic Analysis with Wireshark</a></li>
+                        <li><a href="port-Scan-Detection.html">Port Scan Detection</a></li>
+                        <li><a href="nmap-Activity-Detection.html">Nmap Activity Detection</a></li>
+                        <li><a href="dns-Traffic-Investigation.html">DNS Traffic Investigation</a></li>
+                        <li><a href="suspicious-Connections-Analysis.html">Suspicious Connections Analysis</a></li>
+                      
+                    </ul>
+
+                </details>
+            </li>
+
+
+        </ul>
+
+    </aside>
+<main class="content">
+<div class="content-wrapper">
+<h3>Suspicious Connections Analysis</h3>
+<p>You can carry out this task practically in an isolated virtual lab if you do not have a lab you can set one up using this .<a href="https://bitpluss.com/soc-lab-setup" target="_blank">link</a></p>
+<p>Commands: sudo apt updateThen sudo apt upgradeon the Ubuntu machine (soc-lab), to update the system before starting the exercise.
+Result: One upgradeable package was detected, but it was not upgraded due to the "phasing" mechanism of snapd — Summary: 0 upgrades, 0 installations, 0 removals, 1 unupgraded.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742486/1_xay05g.png" class="hero-image">
+<p>Commands: sudo apt install apache2Then, sudo apt install openssh-serveron Ubuntu, to check if the two target services are installed.
+Result: Both packages are pre-installed with the latest version (Apache 2.4.66-2ubuntu2.4 and OpenSSH 1 : 10.2p1-2ubuntu3.5), no installation is required.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742486/2_fiuxtc.png" class="hero-image">
+<p>Commands: sudo systemctl start apache2 Then sudo systemctl status apache2to confirm that the web service is running.
+Result: The service has been active (running) for 2 days (July 19, 2:28 PM ), with a recent reload history dated July 21, 5:53 PM .</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742487/3_gz9iaw.png" class="hero-image">
+<p>Commands: sudo systemctl start ssh Then sudo systemctl status sshto verify that the SSH service is running.
+Result: The service has been active for only one hour (started 17:59:32 ) , with multiple warning logs documenting failed connection attempts from the address 192.168.81.128due to protocol version differences and key exchange algorithm incompatibility — an indication of a previous scan or attack on the service.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742486/4_fqsbop.png" class="hero-image">
+<p>Commands: ip a On Ubuntu, to check network settings.
+Result: ens33Active interface with dynamic IP address 192.168.81.129/24, ready to start monitoring.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742486/5_rgjo1n.png" class="hero-image">
+<p>(Kali) Commands: sudo apt update Then sudo apt upgrade -yon the Kali machine, to update the system.
+Result: All packages are already updated ( All packages are up to date), no changes.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742487/6_tqd6mp.png" class="hero-image">
+<p>Don't install Wireshark because we don't need it in Cali. Commands: sudo apt install curl -y ,sudo apt install wget -yon Kali, to ensure the availability of analysis and communication tools.
+Result: The three packages are pre-installed with the latest version (Wireshark 4.6.6-1, curl 8.20.0-5, wget 1.25.0-2).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742487/7_puwmy1.png" class="hero-image">
+<p>Commands: sudo apt install dnsutils -y, sudo apt install openssh-client -y, sudo apt install netcat-openbsd -yon Kali, to prepare the DNS scanning and network connection tools (SSH and netcat).
+Result: All tools are pre-installed and ready to use (bind9-dnsutils, openssh-client 1 : 10.3p1-5, netcat-openbsd 1.238-1).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742586/8_woxegu.png" class="hero-image">
+<p>Commands: sudo wireshark On Ubuntu to run the packet analyzer.
+Result: The Wireshark welcome screen opened with a list of previous files ( nmap-activity-detection.pcapngone present, and two others missing), and an interface selected ens33for capture.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742587/9_zusa2u.png" class="hero-image">
+<p>Commands: curl http://192.168.81.129from Kali, to test access to the web server on Ubuntu.
+Result: Successful response displaying the default Ubuntu Apache2 page (full HTML), confirming that the service is responding to HTTP requests.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742587/10_bl7ryq.png" class="hero-image">
+<p>Commands: A for i in {1..10}; do curl http://192.168.81.129; doneKali loop to generate repetitive HTTP requests to the server.
+Result: 10 consecutive requests successfully initiated, each returning the default Apache page — simulating a repetitive/suspicious connection.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742586/11_eveiw1.png" class="hero-image">
+<p>Commands: nslookup bitpluss.comthen nslookup ubunyu.com(domain name identical to ubuntu.com, likely a phishing/typing domain) from Kali.
+Result: Multi-domain analysis succeeded bitpluss.com, while ubunyu.comNXDOMAIN error analysis failed — documenting an attempt to access a suspicious domain that looked like a legitimate domain (typosquatting).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742588/12_h2ena7.png" class="hero-image">
+<p>Commands: ssh Mubarak@192.168.81.129 From Kali to connect to the Ubuntu machine via a user named Mubarak, then execute pwd, ls, and exit.
+Result: Login successful (a previous connection activity from the same machine 192.168.81.128 according to the log), the user directory was found to contain snaponly a folder, then the session was successfully terminated.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742587/13_ndg5eg.png" class="hero-image">
+<p>Commands: nc -vz 192.168.81.129 4444 Then, nc -vz 192.168.81.129 9999from Kali, to check two common ports often used in command and control (C2) communications or penetration testing tools (such as Metasploit).
+Result: Both ports are rejected (Connection refused), meaning they are blocked on the target machine.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742587/14_jjnvax.png" class="hero-image">
+<p>Commands: nc -vz 192.168.81.129 21 Then nc -vz 192.168.81.129 23from Kali, to check the FTP and Telnet ports.
+Result: Both ports are also refused (Connection refused), confirming that these services are not available on the target.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742673/15_kp3fdp.png" class="hero-image">
+<p>Commands: Live Capture via Wireshark on an interface ens33in Ubuntu.
+Result: Logging 1372 diverse packets including DNS (including a failed query for ubunyu.comNXDOMAIN in packet 210), NTP, ARP, and ICMPv6 — comprehensive documentation of network traffic during suspicious tests.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742673/16_ttg90n.png" class="hero-image">
+<p>Commands: Open a menu Filein Wireshark during live capture in preparation for saving.
+Result: Save options appear while capturing continues (counter reaches 1374 packets), temporary file named wireshark_ens33Q39MS3.pcapng.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742674/17_rf4yym.png" class="hero-image">
+<p>Commands: File > Save AsIn Wireshark, to save the capture with a permanent name.
+Result: Specifies the path /home/soc-lab/Desktopand filename suspicious-connections-analysis.pcapngin an uncompressed format.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742672/18_trtpir.png" class="hero-image">
+<p>Commands: Open a menu Statistics after saving the file suspicious-connections-analysis.pcapng, hovering the cursor over it Capture File Properties.
+Result: Prepares to display comprehensive statistical file details.</p>
+<p>Commands: Statistics > Capture File Propertieson the saved file.
+Result: Displaying full file details — 1374 packets, size 345 KB, capture time 00:07:38 , average 3.0 packets/second and 5,218 bits/second — thus documenting the entire suspicious communications analysis session.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742674/19_e3tgt2.png" class="hero-image">
+<p>The following is a description of images 21 to 32 of the "Suspicious Connections Analysis" task , in the same style:</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742673/20_vbkzer.png" class="hero-image">
+<p>Commands: Open a menu Statistics by hovering the cursor over Protocol Hierarchya file in Wireshark suspicious-connections-analysis.pcapng.
+Result: Prepared to display the protocol hierarchy within the captured file.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742675/21_xqbs1h.png" class="hero-image">
+<p>Commands: Statistics > Protocol Hierarchy.
+Result: Detailed distribution of protocols — IPv4 accounts for 95.2% of the packets, TCP accounts for 86.1%, and SSH alone accounts for 68.4% of the packets (940 packets), while HTTP accounts for only 1.7% — a clear indication that most of the traffic is repeated SSH connection attempts.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742751/22_oi6i7h.png" class="hero-image">
+<p>Commands: Open a menu Statistics by hovering the cursor over it Endpoints.
+Result: Prepares to display a list of endpoints involved in the network traffic.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742753/23_m42djg.png" class="hero-image">
+<p>Commands: Statistics > Endpoints With the IPv4 tab displayed.
+Result: Displaying 15 IPv4 endpoints — the most prominent being 192.168.81.1281,151 packets (243 KB) and 192.168.81.1291,269 packets (291 KB), which are the two main parties involved in the suspicious traffic exchange.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742752/24_dqpzsw.png" class="hero-image">
+<p>Commands: Open a menu Statisticsby hovering the cursor over it Conversations.
+Result: Prepared to display network conversations between different parties.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742752/25_wm0vso.png" class="hero-image">
+<p>Commands: Statistics > Conversations With the IPv4 tab displayed.
+Result: Displaying 14 conversations — the most prominent being the conversation between [username] 192.168.81.128and 192.168.81.129[username] with a size of 1,113 packets (239 KB) and a high transmission speed (up to 3,722 kbps), which is the dominant conversation that needs deeper examination.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742752/26_ilpkpx.png" class="hero-image">
+<p>Commands: Applying the display filter tcp in Wireshark.
+Result: Displaying 1183 packets (86.1%) showing a recurring pattern of HTTP connections (SYN → SYN/ACK → GET → 200 OK → FIN) between ports 33114/58564/58570 and port 80, at a regular recurrence rate of ~46 seconds — behavior resembling an automated (scripted) server scan.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742753/27_wwhyqi.png" class="hero-image">
+<p>Commands: Apply a filter http to display only HTTP traffic.
+Result: Displays 24 packets (1.7%) showing recurring GET requests from 192.168.81.128and to 192.168.81.129at regular intervals (~13 seconds), with request details visible in the hexadecimal header, indicating the use of curl's User-Agent.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742753/28_tv24ck.png" class="hero-image">
+<p>Commands: Apply a filter tcp.port == 22 to display SSH traffic exclusively.
+Result: Displaying 973 packets (70.8%) detailing a complete SSH session — from the TCP handshake, SSH-2.0 protocol exchange (OpenSSH 10.3p1 client-side and OpenSSH 10.2p1 Ubuntu server-side), through key exchange, and even the repeated encrypted packets — documenting the unusually large volume of SSH connections.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742836/29_nsglac.png" class="hero-image">
+<p>Commands: Apply a filter dns to display DNS traffic only.
+Result: Displays 22 packets (1.6%) including successful queries (bitpluss.com, connectivity-check.ubuntu.com, changelogs.ubuntu.com) plus the suspicious failed query ubunyu.comthat returned an NXDOMAIN error in packet 210.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742837/30_fhgjee.png" class="hero-image">
+<p>Commands: Apply a filter tcp.flags.reset == 1 to isolate reset packets (RST) indicating rejected connections.
+Result: Displaying only 6 packets (0.4%), including rejected connections on suspicious ports 4444 and 9999 (commonly used in C2 tools such as Metasploit) as well as 21 (FTP) and 23 (Telnet) — documenting failed scanning attempts on sensitive ports.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742836/31_jqp2ik.png" class="hero-image">
+<p>Commands: Apply a filter tcp.flags.syn == 1 && tcp.flags.ack == 0 to isolate only SYN packets, to identify all attempts to establish new connections.
+Result: Displays 20 packets (1.5%) documenting all initial connection attempts across multiple ports (80, 22, 443, 4444, 9999, 21, 23), including a TCP retransmission on port 443—a comprehensive log of all connections initiated by the device 192.168.81.128towards the various targets, summarizing the entire suspicious activity in this exercise.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1784742837/32_nogppq.png" class="hero-image">
+<p>Technical<a href="https://github.com/mu-b003/Suspicious-Connections-Analysis-/tree/main/report" target="_blank">Report</a></p>
+<p>GitHub<a href="https://github.com/mu-b003/Suspicious-Connections-Analysis-/tree/main" target="_blank">Repository</a></p>
+
+
+
+
+
+</div>
+</main>
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+// 1. اختيار كل الصور التي تحمل الكلاس
+const images = document.querySelectorAll('.hero-image');
+
+// 2. تطبيق حدث الضغط على كل صورة على حدة
+images.forEach(image => {
+  image.addEventListener('click', function() {
+    // 3. إزالة الكلاس expanded من أي صور أخرى إذا كانت مفتوحة (اختياري)
+    images.forEach(img => {
+      if (img !== this) img.classList.remove('expanded');
+    });
+    
+    // 4. تفعيل أو إلغاء التأثير للصورة المضغوطة
+    this.classList.toggle('expanded');
+  });
+});
+</script>
+</body>
+</html>
