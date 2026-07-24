@@ -57,7 +57,7 @@ nav a{
 /* Sidebar */
 
 .sidebar{
-    width:280px;
+    width:200px !important;
     background:white;
     border-right:1px solid #bdc0c4;
     padding:20px;
@@ -77,7 +77,7 @@ nav a{
     border:1px solid #334155;
     border-radius:6px;
     background:white;
-    color:#333333; /* تم تعديل اللون من white إلى رمادي غامق */
+    color:#333333; /* ØªÙ… ØªØ¹Ø¯ÙŠÙ„ Ø§Ù„Ù„ÙˆÙ† Ù…Ù† white Ø¥Ù„Ù‰ Ø±Ù…Ø§Ø¯ÙŠ ØºØ§Ù…Ù‚ */
     margin-bottom:20px;
 }
 
@@ -99,11 +99,11 @@ summary{
     cursor:pointer;
     padding:10px;
     border-radius:6px;
-    color:#333333; /* تم تعديل اللون من white إلى رمادي غامق */
+    color:#333333; /* ØªÙ… ØªØ¹Ø¯ÙŠÙ„ Ø§Ù„Ù„ÙˆÙ† Ù…Ù† white Ø¥Ù„Ù‰ Ø±Ù…Ø§Ø¯ÙŠ ØºØ§Ù…Ù‚ */
 }
 
 summary:hover{
-    background:#f0f0f0; /* تم تعديل الخلفية لترى التأثير */
+    background:#f0f0f0; /* ØªÙ… ØªØ¹Ø¯ÙŠÙ„ Ø§Ù„Ø®Ù„ÙÙŠØ© Ù„ØªØ±Ù‰ Ø§Ù„ØªØ£Ø«ÙŠØ± */
 }
 
 details[open] summary{
@@ -124,14 +124,14 @@ details[open] summary{
 .submenu a{
     display:block;
     text-decoration:none;
-    color:#555555; /* تم تعديل اللون من cbd5e1 (كان غير مرئي) إلى رمادي */
+    color:#555555; /* ØªÙ… ØªØ¹Ø¯ÙŠÙ„ Ø§Ù„Ù„ÙˆÙ† Ù…Ù† cbd5e1 (ÙƒØ§Ù† ØºÙŠØ± Ù…Ø±Ø¦ÙŠ) Ø¥Ù„Ù‰ Ø±Ù…Ø§Ø¯ÙŠ */
     padding:8px;
     border-radius:6px;
 }
 
 .submenu a:hover{
     background:#ebecf0;
-    color:#0e5bd8; /* تم تعديل اللون ليصبح مرئياً عند التحديد */
+    color:#0e5bd8; /* ØªÙ… ØªØ¹Ø¯ÙŠÙ„ Ø§Ù„Ù„ÙˆÙ† Ù„ÙŠØµØ¨Ø­ Ù…Ø±Ø¦ÙŠØ§Ù‹ Ø¹Ù†Ø¯ Ø§Ù„ØªØ­Ø¯ÙŠØ¯ */
 }
 
 /* Content */
@@ -152,7 +152,7 @@ details[open] summary{
     max-width:900px;
     width:100%;
     margin:0 auto 30px auto;
-    color:#555555; /* تم تعديل اللون من white إلى رمادي غامق */
+    color:#555555; /* ØªÙ… ØªØ¹Ø¯ÙŠÙ„ Ø§Ù„Ù„ÙˆÙ† Ù…Ù† white Ø¥Ù„Ù‰ Ø±Ù…Ø§Ø¯ÙŠ ØºØ§Ù…Ù‚ */
     line-height:1.8;
     word-wrap:break-word;
 }
@@ -167,28 +167,28 @@ details[open] summary{
 
 
 
-/* تنسيق الشاشات الصغيرة (الهواتف) */
+/* ØªÙ†Ø³ÙŠÙ‚ Ø§Ù„Ø´Ø§Ø´Ø§Øª Ø§Ù„ØµØºÙŠØ±Ø© (Ø§Ù„Ù‡ÙˆØ§ØªÙ) */
 @media screen and (max-width: 768px) {
     .docs-layout {
-        flex-direction: column; /* تحويل التخطيط من أعمدة إلى صفوف */
+        flex-direction: column; /* ØªØ­ÙˆÙŠÙ„ Ø§Ù„ØªØ®Ø·ÙŠØ· Ù…Ù† Ø£Ø¹Ù…Ø¯Ø© Ø¥Ù„Ù‰ ØµÙÙˆÙ */
         margin-top: 68px;
     }
 
     .sidebar {
-        width: 100%; /* الجانب يأخذ عرض الشاشة بالكامل */
-        height: auto; /* ارتفاع تلقائي حسب المحتوى */
-        position: relative; /* إلغاء التثبيت */
+       width:200px !important;
+        height: auto; /* Ø§Ø±ØªÙØ§Ø¹ ØªÙ„Ù‚Ø§Ø¦ÙŠ Ø­Ø³Ø¨ Ø§Ù„Ù…Ø­ØªÙˆÙ‰ */
+        position: relative; /* Ø¥Ù„ØºØ§Ø¡ Ø§Ù„ØªØ«Ø¨ÙŠØª */
         top: 0;
         border-right: none;
         border-bottom: 1px solid #bdc0c4;
     }
 
     .content {
-        padding: 20px; /* تقليل الهوامش في الموبايل */
+        padding: 20px; /* ØªÙ‚Ù„ÙŠÙ„ Ø§Ù„Ù‡ÙˆØ§Ù…Ø´ ÙÙŠ Ø§Ù„Ù…ÙˆØ¨Ø§ÙŠÙ„ */
     }
 
     .content h1 {
-        font-size: 32px; /* تصغير حجم الخط ليتناسب مع الشاشة */
+        font-size: 32px; /* ØªØµØºÙŠØ± Ø­Ø¬Ù… Ø§Ù„Ø®Ø· Ù„ÙŠØªÙ†Ø§Ø³Ø¨ Ù…Ø¹ Ø§Ù„Ø´Ø§Ø´Ø© */
     }
 
     .topbar {
@@ -215,7 +215,7 @@ footer p {
 footer a {
     color: #0e5bd8;
     text-decoration: none;
-    margin: 0 5px; /* مسافة صغيرة جداً حول الروابط */
+    margin: 0 5px; /* Ù…Ø³Ø§ÙØ© ØµØºÙŠØ±Ø© Ø¬Ø¯Ø§Ù‹ Ø­ÙˆÙ„ Ø§Ù„Ø±ÙˆØ§Ø¨Ø· */
 }
 
 footer a:hover {
@@ -228,13 +228,13 @@ footer a:hover {
 
 
 .content-wrapper {
-    max-width: 900px; /* اضبط هذا الرقم ليتناسب مع عرض الصورة في موقعك */
-    margin: 0 auto;   /* لتوسيط المحتوى */
+    max-width: 750px;
+    margin: 0 auto 0 40px;
 }
 
 .hero-image {
     display: block;
-    width: 100%;      /* تجعل الصورة تأخذ كامل عرض الحاوية */
+    width: 100%;      /* ØªØ¬Ø¹Ù„ Ø§Ù„ØµÙˆØ±Ø© ØªØ£Ø®Ø° ÙƒØ§Ù…Ù„ Ø¹Ø±Ø¶ Ø§Ù„Ø­Ø§ÙˆÙŠØ© */
     height: auto;
 }
 
@@ -242,25 +242,21 @@ footer a:hover {
     background-color: #2d2d2d;
     color: #f8f8f2;
     padding: 15px;
-    border-radius: 0 0 8px 8px; /* زوايا دائرية من الأسفل فقط لتبدو متصلة */
+    border-radius: 0 0 8px 8px; /* Ø²ÙˆØ§ÙŠØ§ Ø¯Ø§Ø¦Ø±ÙŠØ© Ù…Ù† Ø§Ù„Ø£Ø³ÙÙ„ ÙÙ‚Ø· Ù„ØªØ¨Ø¯Ùˆ Ù…ØªØµÙ„Ø© */
     border-left: 5px solid #0e5bd8;
-    margin-top: 0;    /* إزالة المسافة بين الصورة والكود */
-    width: 100%;      /* ضمان مطابقة الكود لعرض الحاوية */
-    box-sizing: border-box; /* لضمان عدم خروج الحواف بسبب الـ padding */
+    margin-top: 0;    /* Ø¥Ø²Ø§Ù„Ø© Ø§Ù„Ù…Ø³Ø§ÙØ© Ø¨ÙŠÙ† Ø§Ù„ØµÙˆØ±Ø© ÙˆØ§Ù„ÙƒÙˆØ¯ */
+    width: 100%;      /* Ø¶Ù…Ø§Ù† Ù…Ø·Ø§Ø¨Ù‚Ø© Ø§Ù„ÙƒÙˆØ¯ Ù„Ø¹Ø±Ø¶ Ø§Ù„Ø­Ø§ÙˆÙŠØ© */
+    box-sizing: border-box; /* Ù„Ø¶Ù…Ø§Ù† Ø¹Ø¯Ù… Ø®Ø±ÙˆØ¬ Ø§Ù„Ø­ÙˆØ§Ù Ø¨Ø³Ø¨Ø¨ Ø§Ù„Ù€ padding */
 }
 
 
 
 
 
-.content-wrapper {
-    max-width: 900px; /* اضبط هذا الرقم ليتناسب مع عرض الصورة في موقعك */
-    margin: 0 auto;   /* لتوسيط المحتوى */
-}
 
 .hero-image {
     display: block;
-    width: 100%;      /* تجعل الصورة تأخذ كامل عرض الحاوية */
+    width: 100%;      /* ØªØ¬Ø¹Ù„ Ø§Ù„ØµÙˆØ±Ø© ØªØ£Ø®Ø° ÙƒØ§Ù…Ù„ Ø¹Ø±Ø¶ Ø§Ù„Ø­Ø§ÙˆÙŠØ© */
     height: auto;
 }
 
@@ -268,11 +264,11 @@ footer a:hover {
     background-color: #2d2d2d;
     color: #f8f8f2;
     padding: 15px;
-    border-radius: 0 0 8px 8px; /* زوايا دائرية من الأسفل فقط لتبدو متصلة */
+    border-radius: 0 0 8px 8px; /* Ø²ÙˆØ§ÙŠØ§ Ø¯Ø§Ø¦Ø±ÙŠØ© Ù…Ù† Ø§Ù„Ø£Ø³ÙÙ„ ÙÙ‚Ø· Ù„ØªØ¨Ø¯Ùˆ Ù…ØªØµÙ„Ø© */
     border-left: 5px solid #0e5bd8;
-    margin-top: 0;    /* إزالة المسافة بين الصورة والكود */
-    width: 100%;      /* ضمان مطابقة الكود لعرض الحاوية */
-    box-sizing: border-box; /* لضمان عدم خروج الحواف بسبب الـ padding */
+    margin-top: 0;    /* Ø¥Ø²Ø§Ù„Ø© Ø§Ù„Ù…Ø³Ø§ÙØ© Ø¨ÙŠÙ† Ø§Ù„ØµÙˆØ±Ø© ÙˆØ§Ù„ÙƒÙˆØ¯ */
+    width: 100%;      /* Ø¶Ù…Ø§Ù† Ù…Ø·Ø§Ø¨Ù‚Ø© Ø§Ù„ÙƒÙˆØ¯ Ù„Ø¹Ø±Ø¶ Ø§Ù„Ø­Ø§ÙˆÙŠØ© */
+    box-sizing: border-box; /* Ù„Ø¶Ù…Ø§Ù† Ø¹Ø¯Ù… Ø®Ø±ÙˆØ¬ Ø§Ù„Ø­ÙˆØ§Ù Ø¨Ø³Ø¨Ø¨ Ø§Ù„Ù€ padding */
 }
 
 
@@ -283,19 +279,61 @@ footer a:hover {
 
 .hero-image {
   cursor: pointer;
-  transition: all 0.4s ease; /* تأثير حركة سلس */
+  transition: all 0.4s ease; /* ØªØ£Ø«ÙŠØ± Ø­Ø±ÙƒØ© Ø³Ù„Ø³ */
   position: relative;
   z-index: 1;
 }
 
-/* الكلاس الذي سنضيفه عند الضغط */
+/* Ø§Ù„ÙƒÙ„Ø§Ø³ Ø§Ù„Ø°ÙŠ Ø³Ù†Ø¶ÙŠÙÙ‡ Ø¹Ù†Ø¯ Ø§Ù„Ø¶ØºØ· */
 .hero-image.expanded {
-  position: fixed; /* لتصبح فوق كل العناصر */
+  position: fixed; /* Ù„ØªØµØ¨Ø­ ÙÙˆÙ‚ ÙƒÙ„ Ø§Ù„Ø¹Ù†Ø§ØµØ± */
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(1.5); /* تكبير الصورة وتوسيطها */
-  z-index: 9999; /* لضمان ظهورها فوق كل شيء */
-  box-shadow: 0 0 20px rgba(0,0,0,0.5); /* إضافة ظل لتبدو كبطاقة منبثقة */
+  transform: translate(-50%, -50%) scale(1.5); /* ØªÙƒØ¨ÙŠØ± Ø§Ù„ØµÙˆØ±Ø© ÙˆØªÙˆØ³ÙŠØ·Ù‡Ø§ */
+  z-index: 9999; /* Ù„Ø¶Ù…Ø§Ù† Ø¸Ù‡ÙˆØ±Ù‡Ø§ ÙÙˆÙ‚ ÙƒÙ„ Ø´ÙŠØ¡ */
+  box-shadow: 0 0 20px rgba(0,0,0,0.5); /* Ø¥Ø¶Ø§ÙØ© Ø¸Ù„ Ù„ØªØ¨Ø¯Ùˆ ÙƒØ¨Ø·Ø§Ù‚Ø© Ù…Ù†Ø¨Ø«Ù‚Ø© */
   cursor: zoom-out;
 }
 
+@media (min-width: 1400px) {
+    .content-wrapper{
+        max-width: 900px;
+    }
+
+    .ad-sidebar{
+        width:320px;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1399px) {
+    .content-wrapper{
+        max-width:750px;
+    }
+
+    .ad-sidebar{
+        width:260px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .ad-sidebar{
+        display:none;
+    }
+
+    .content-wrapper{
+        max-width:100%;
+        margin:0 auto;
+    }
+}
+
+@media (max-width:768px){
+
+    .ad-sidebar{
+        display:none !important;
+    }
+
+    .content-wrapper{
+        max-width:100%;
+        margin:0 auto;
+    }
+}
