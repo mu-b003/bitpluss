@@ -347,3 +347,49 @@ footer a:hover {
         margin:0 auto;
     }
 }
+
+
+
+/* ===================================
+   Right Advertisement Sidebar
+=================================== */
+
+.ad-sidebar{
+    width:340px;
+    flex-shrink:0;
+    padding:20px 10px 20px 20px;
+
+    display:flex;
+    justify-content:flex-end;
+}
+
+.ad-box{
+    position:fixed;
+    top:90px;
+    right:20px;
+
+    width:180px;
+    height:500px;
+
+    border:1px dashed #cbd5e1;
+    background:#fafafa;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#94a3b8;
+    font-size:15px;
+    font-weight:600;
+}
+
+/* إخفاء الإعلان في الشاشات الصغيرة */
+
+@media (max-width:1200px){
+
+    .ad-sidebar{
+        display:none;
+    }
+
+}
+
