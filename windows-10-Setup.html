@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Windows 10 Setup</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+          <ul class="menu">
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <hr>
+            <h3>SOC Analyzer Notes</h3>
+
+            <li>
+                <details open>
+                    <summary>Home Lab SOC Lab Setup</summary>
+
+                    <ul class="submenu">
+                        <li><a href="soc-lab-setup.html">VMware Setup</a></li>
+                        <li><a href="kali-linux-attacker.html">Kali Linux Attacker Machin</a></li>
+                        <li><a href="ubuntu-setup.html">Ubuntu Desktop Victim</a></li>
+                        <li><a href="windows-10-Setup.html">Windows 10 Setup</a></li>
+                      
+                    </ul>
+
+                </details>
+            </li>
+
+              
+             <li>
+                <details>
+                    <summary>Logs Analysts</summary>
+
+                    <ul class="submenu">
+                        <li><a href="login-failuer-analyzer.html">Login Failuer Analyzer</a></li>
+                        <li><a href="ssh-brute-force-log-analysis.html">SSH Brute Force Log Analysis</a></li>
+                        <li><a href="ssh-authentication-log-analysis.html">SSH Authentication Log Analysis</a></li>
+                        <li><a href="failed-vs-successful-login-analysis.html">Failed vs Successful Login Analysis</a></li>
+                        <li><a href="suspicious-ip-detection.html">Suspicious IP Detection</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+               <li>
+                <details>
+                    <summary>Security investigation</summary>
+
+                    <ul class="submenu">
+                        <li><a href="incident-response-case-study.html">Incident Response Case Study</a></li>
+                         <li><a href="unauthorized-user-investigation.html">Unauthorized User Investigation</a></li>
+                         <li><a href="liunx-uthentcation-log-investigation.html">Liunx Uthentcation log Investigation</a></li>
+                          <li><a href="privilege-escalation-investigation.html">Privilege Escalation Investigation</a></li>
+                          <li><a href="web-server-attack-investigation.html">Web Server Attack Investigation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+               <li>
+                <details>
+                    <summary>SOC Networks</summary>
+
+                    <ul class="submenu">
+                        <li><a href="network-Traffic-Analysis-with-Wireshark.html">Network Traffic Analysis with Wireshark</a></li>
+                        <li><a href="port-Scan-Detection.html">Port Scan Detection</a></li>
+                         <li><a href="nmap-Activity-Detection.html">Nmap Activity Detection</a></li>
+                        <li><a href="dns-Traffic-Investigation.html">DNS Traffic Investigation</a></li>
+                        <li><a href="suspicious-Connections-Analysis.html">Suspicious Connections Analysis</a></li>
+                    </ul>
+
+                </details>
+            </li>
+        </ul>
+
+    </aside>
+<main class="content">
+<div class="content-wrapper">
+<h3>Windows 10 Setup</h3>
+<p>To install and set up a virtual Windows 10 system on VMware you can follow these steps in order.</p>
+<p>First download Windows 10 via the <a href="https://microsoft.com/en-in/software-download/windows10?" target="_blank">link.</a></p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071346/1_h5hx1j.png" class="hero-image">
+<P>MediaCreationTool_22H2</P>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071345/2_gtzweb.png" class="hero-image">
+<P>Accept</P>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071352/3_cjppez.png" class="hero-image">
+<p>Create installation medis and then Next</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071352/4_cu1gs7.png" class="hero-image">
+<p>Fill in the required information. and then  Next</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071350/5_e45i93.png" class="hero-image">
+<p>ISO file and then Next</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071355/6_cb2qfv.png" class="hero-image">
+<p>Choose the location where you want to store it then Save</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071357/7_m7hbdz.png" class="hero-image">
+<p>Finish</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071457/8_o48vln.png" class="hero-image">
+<p>Open VMware</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071458/9_li8hyl.png" class="hero-image">
+<p>Create a New Virtual Machine</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071454/10_obkbrw.png" class="hero-image">
+<p>Typcal then Next</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071454/11_bz4rkb.png" class="hero-image">
+<p>Browse Then select the Windows version we downloaded. then Open</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071454/12_eerdu7.png" class="hero-image">
+<p>Fill in the required information then click Next.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071455/13_kpgxko.png" class="hero-image">
+<p>Next</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071455/14_r6vujw.png" class="hero-image">
+<p>64 GB Store virtual then Next</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071532/15_gzqd6z.png" class="hero-image">
+<p>Finish</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071533/16_rynqn3.png" class="hero-image">
+<p>EFI VMware Virtual SATA CDROM Drive (1.0)</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071533/17_ytmsvv.png" class="hero-image">
+<p>Wait a moment it will open.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071533/18_qrhbls.png" class="hero-image">
+<p>Next</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071533/19_qfg3tm.png" class="hero-image">
+<p>Install now</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071533/20_dxahqq.png" class="hero-image">
+<p>I dont have aproduct key then Next</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071533/21_n7rmf6.png" class="hero-image">
+<p>Windows 10 Pro then Next</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071606/22_cldfjp.png" class="hero-image">
+<p>I accept the license terms</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071608/23_uref0q.png" class="hero-image">
+<p>Coustom: Install Windows only</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071613/24_u52nua.png" class="hero-image">
+<p>Drive 0  then Next</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071611/25_wfnfa5.png" class="hero-image">
+<p>wait a moment for it to load</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071607/26_n1yozw.png" class="hero-image">
+<p>United States then Yes</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071610/27_vboykl.png" class="hero-image">
+<p>US then Yes</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071610/28_wve45z.png" class="hero-image">
+<p>Skip</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071687/29_w2ehgy.png" class="hero-image">
+<p>Set up for personal use then Next</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071687/30_tx2alr.png" class="hero-image">
+<p>Create a Microsoft account If you already have an email address use it to create the Microsoft account.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071688/31_h9ax5z.png" class="hero-image">
+<p>Enter email then Next</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071687/32_ynjag2.png" class="hero-image">
+<p>Create a password then Next</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071685/33_smhxql.png" class="hero-image">
+<p>Select region and birthdate then Next</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071685/34_oemxwf.png" class="hero-image">
+<p>Go to your emails a code has been sent Copy it and paste it here.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071686/35_ocrxle.png" class="hero-image">
+<p>Create PIN</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071765/36_gicthv.png" class="hero-image">
+<p>Set a PIN and then OK</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071765/37_zdof1p.png" class="hero-image">
+<p>Accept</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071766/38_w73bza.png" class="hero-image">
+<p>Accept</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071766/39_rimzo6.png" class="hero-image">
+<p>Skip</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071765/40_e6vfg3.png" class="hero-image">
+<p>NO thanks</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071767/41_eewpic.png" class="hero-image">
+<p>Decline Microsoft 365</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071766/42_wabtsh.png" class="hero-image">
+<p>Decline</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071857/43_zqa0a7.png" class="hero-image">
+<p>Next</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071858/44_tfpseg.png" class="hero-image">
+<p>Skip</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071860/45_ob3nuq.png" class="hero-image">
+<p>Not now</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071857/46_xkailn.png" class="hero-image">
+<p>Windows 10 has been successfully set up.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785071860/47_jg5puy.png" class="hero-image">
+<p>To enlarge the screen follow these steps.</p>
+<p>Go to VM then Install VMware Tools</p>
+<p>Inside Windows open File Explorer</p>
+<p>Open the drive that will appear under the name VMware Tools</p>
+<p>run setup64.exe</p>
+<p>select Typical, Next , Install and then Finish</p>
+<p>Restart Windows inside the virtual machine.</p>
+
+
+
+
+</div>
+</main>
+</div>
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+// 1. اختيار كل الصور التي تحمل الكلاس
+const images = document.querySelectorAll('.hero-image');
+
+// 2. تطبيق حدث الضغط على كل صورة على حدة
+images.forEach(image => {
+  image.addEventListener('click', function() {
+    // 3. إزالة الكلاس expanded من أي صور أخرى إذا كانت مفتوحة (اختياري)
+    images.forEach(img => {
+      if (img !== this) img.classList.remove('expanded');
+    });
+    
+    // 4. تفعيل أو إلغاء التأثير للصورة المضغوطة
+    this.classList.toggle('expanded');
+  });
+});
+</script>
+<style>
+.right-sidebar-ad{
+    position: fixed;
+    top: 90px;
+    right: 20px;
+
+    width: 16vw;
+    min-width: 200px;
+    max-width: 250px;
+
+    min-height: 600px;
+
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 1px;
+    padding: 10px;
+    z-index: 999;
+}
+/* شاشات كبيرة (24-27 بوصة) */
+@media (min-width: 1600px){
+    .right-sidebar-ad{
+        width: 320px;
+    }
+}
+
+/* اللابتوبات */
+@media (min-width: 1101px) and (max-width: 1599px){
+    .right-sidebar-ad{
+        width: 250px;
+        right: 15px;
+    }
+}
+
+/* الأجهزة اللوحية والهواتف */
+@media (max-width: 1100px){
+    .right-sidebar-ad{
+        display: none;
+    }
+}
+</style>
+
+<script async src="https://kibibe.com/pw/waWQiOjEyMzIxODgsInNpZCI6MTc5NTIzMSwid2lkIjo3NDQ2NTQsInNyYyI6Mn0=eyJ.js"></script>
+</body>
+</html>
