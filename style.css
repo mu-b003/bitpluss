@@ -5,9 +5,13 @@
 }
 
 body{
-    font-family:Segoe UI, sans-serif;
+    font-family:'Inter',sans-serif;
+    font-weight:400;
     background:white;
     color:#555555;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    text-rendering:optimizeLegibility;
 }
 
 /* Top Bar */
@@ -31,7 +35,8 @@ body{
     color:#0e5bd8;
     text-decoration:none;
     font-size:24px;
-    font-weight:bold;
+    font-weight:800;
+    letter-spacing:-0.5px;
 }
 
 nav{
@@ -45,6 +50,7 @@ nav a{
     border:1px solid #64748b;
     padding:8px 15px;
     border-radius:6px;
+    font-weight:600;
 }
 
 /* Layout */
@@ -146,14 +152,17 @@ details[open] summary{
     width:100%;
     margin:0 auto 20px auto;
     font-size:52px;
+    font-weight:800;
+    letter-spacing:-1px;
 }
 
 .content p{
     max-width:900px;
     width:100%;
     margin:0 auto 30px auto;
-    color:#555555; /* ØªÙ… ØªØ¹Ø¯ÙŠÙ„ Ø§Ù„Ù„ÙˆÙ† Ù…Ù† white Ø¥Ù„Ù‰ Ø±Ù…Ø§Ø¯ÙŠ ØºØ§Ù…Ù‚ */
+    color:#555555;
     line-height:1.8;
+    font-weight:400;
     word-wrap:break-word;
 }
 
