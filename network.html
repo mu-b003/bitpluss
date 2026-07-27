@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Network</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+          <ul class="menu">
+            <li>
+                <details>
+                    <summary>Network Basics</summary>
+
+                    <ul class="submenu">
+                        <li><a href="network.html">Network</a></li>
+                    </ul>
+                </details>
+            </li>
+
+
+            <li>
+                <details>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <hr>
+            <h3>SOC Analyzer Notes</h3>
+
+            <li>
+                <details>
+                    <summary>Home Lab SOC Lab Setup</summary>
+
+                    <ul class="submenu">
+                        <li><a href="soc-lab-setup.html">VMware Setup</a></li>
+                        <li><a href="kali-linux-attacker.html">Kali Linux Attacker Machin</a></li>
+                        <li><a href="ubuntu-setup.html">Ubuntu Desktop Victim</a></li>
+                        <li><a href="windows-10-Setup.html">Windows 10 Setup</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <li>
+                <details>
+                    <summary>Logs Analysts</summary>
+
+                    <ul class="submenu">
+                        <li><a href="login-failuer-analyzer.html">Login Failuer Analyzer</a></li>
+                        <li><a href="ssh-brute-force-log-analysis.html">SSH Brute Force Log Analysis</a></li>
+                         <li><a href="ssh-authentication-log-analysis.html">SSH Authentication Log Analysis</a></li>
+                        <li><a href="failed-vs-successful-login-analysis.html">Failed vs Successful Login Analysis</a></li>
+                        <li><a href="suspicious-ip-detection.html">Suspicious IP Detection</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Security investigation</summary>
+
+                    <ul class="submenu">
+                        <li><a href="incident-response-case-study.html">Incident Response Case Study</a></li>
+                         <li><a href="unauthorized-user-investigation.html">Unauthorized User Investigation</a></li>
+                         <li><a href="liunx-uthentcation-log-investigation.html">Liunx Uthentcation log Investigation</a></li>
+                          <li><a href="privilege-escalation-investigation.html">Privilege Escalation Investigation</a></li>
+                          <li><a href="web-server-attack-investigation.html">Web Server Attack Investigation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+               <li>
+                <details>
+                    <summary>SOC Networks</summary>
+
+                    <ul class="submenu">
+                        <li><a href="network-Traffic-Analysis-with-Wireshark.html">Network Traffic Analysis with Wireshark</a></li>
+                        <li><a href="port-Scan-Detection.html">Port Scan Detection</a></li>
+                         <li><a href="nmap-Activity-Detection.html">Nmap Activity Detection</a></li>
+                        <li><a href="dns-Traffic-Investigation.html">DNS Traffic Investigation</a></li>
+                        <li><a href="suspicious-Connections-Analysis.html">Suspicious Connections Analysis</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+
+        </ul>
+
+    </aside>
+<main class="content">
+<div class="content-wrapper">
+<h3>Network</h3>
+<p>A network is a group of devices (computers, servers, printers, etc.) connected to each other to exchange data and resources</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785158535/1_avloyh.png" class="hero-image">
+<h3>Network Types</h3>
+<p>LAN (Local Area Network): A local network that covers a small area such as a single building or office.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785158699/2_vkl9cl.jpg" class="hero-image">
+<p>WLAN (Wireless LAN): The same idea as LAN but using a wireless connection (Wi-Fi).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785158824/3_l6vnzi.webp" class="hero-image">
+<p>MAN (Metropolitan Area Network): A network that covers almost an entire city, connecting several branches.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785158942/4_rneiyt.png" class="hero-image">
+<p>WAN (Wide Area Network): A wide network that covers large geographical areas, like the Internet itself.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785159019/6_ppxvub.jpg" class="hero-image">
+<hr>
+<h3>Network Topologies</h3>
+<p>It is the way devices are arranged within a network, such as: Star, Bus, Ring, Mesh. The shape determines how data is transmitted and the ease of maintenance and fault detection.</p>
+<h3>Star</h3>
+<p>is a network architecture in which all devices (such as computers and printers) are connected to a single central device, usually a switch or hub . All data passes through this central device before reaching the desired device.</p>
+<h3>Features</h3>
+<p>Easy to install and manage,
+Faults are easy to detect and repair,
+The failure of one device or cable does not affect the rest of the network,
+It provides good performance, especially when using Switch.</p>
+<h3>Disadvantages</h3>
+<p>A failure of the central device leads to a complete network shutdown,
+It requires a larger quantity of cables compared to some other topologies,
+Higher cost due to the need for a central device.</p>
+<h3>Uses</h3>
+<p>Star topology is widely used in:
+Home networks,
+Corporate and office networks,
+Schools and universities,
+Most modern Ethernet LAN networks .</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785175335/10_qrbzx2.jpg" class="hero-image">
+<h3>Bus</h3>
+<p>Backbone CableAnd the air moves Easy to install, Low cost for ,Manas</p>
+<h3>Disadvantages</h3>
+<p>If the cable breaks
+Performance decreases as the number of devices increases,
+Difficult,
+Collisions may occur</p>
+<h3>Uses</h3>
+<p>It was used in older Ethernet networks,
+It is rarely used today, having been replaced by Star Topology .</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785159373/7_f9vctw.jpg" class="hero-image">
+<h3>Ring</h3>
+<p>It is a network structure thatclosed loopData is transferred from one device to another.
+Collisions do not occur easily because,
+Provides consistent performance,
+Each device acts as an intermediary.</p>
+<h3>Disadvantages</h3>
+<p>One device malfunctioned,
+Adding or removing a device may require temporarily turning off the network,
+Fault detection may be more difficult compared to Star Topology .</p>
+<h3>Uses</h3>
+<p>It was used in some older networks such as Token Ring and FDDI ,
+It is rarely used today, as S has becomeIt is the most widespread.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785159452/8_q00bcj.webp" class="hero-image">
+<h3>Mesh</h3>
+<p>It is a structure forFull Mesh which provides more than one path for data transmission.</p>
+<h3>Features</h3>
+<p>High reliability; if one path fails, the data is transmitted via another path,
+The failure of a single device or cable does not cause a network outage,
+It provides good performance and a high level of reliability,
+Suitable for networks requiring continuous operation</p>
+<h3>Disadvantages</h3>
+<p>High cost due to the large number of cables and ports ,Difficult ,It requires more time and effort for maintenance.</p>
+<h3>Uses</h3>
+<p>Data Center Networks,
+Communication networks,
+Wireless Mesh Networks,
+Systems that require high availability</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785159497/9_gyixkq.webp" class="hero-image">
+
+
+</div>
+</main>
+</div>
+
+
+    
+<div class="ad-sidebar">
+    <div class="ad-box">
+
+        <script>
+            atOptions = {
+                'key' : 'e53c51154450bf04d9fd7725fe055f0f',
+                'format' : 'iframe',
+                'height' : 250,
+                'width' : 300,
+                'params' : {}
+            };
+        </script>
+        <script src="//www.highperformanceformat.com/e53c51154450bf04d9fd7725fe055f0f/invoke.js"></script>
+
+    </div>
+</div>
+
+
+    
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+// 1. اختيار كل الصور التي تحمل الكلاس
+const images = document.querySelectorAll('.hero-image');
+
+// 2. تطبيق حدث الضغط على كل صورة على حدة
+images.forEach(image => {
+  image.addEventListener('click', function() {
+    // 3. إزالة الكلاس expanded من أي صور أخرى إذا كانت مفتوحة (اختياري)
+    images.forEach(img => {
+      if (img !== this) img.classList.remove('expanded');
+    });
+    
+    // 4. تفعيل أو إلغاء التأثير للصورة المضغوطة
+    this.classList.toggle('expanded');
+  });
+});
+</script>
+<style>
+.right-sidebar-ad{
+    position: fixed;
+    top: 90px;
+    right: 20px;
+
+    width: 16vw;
+    min-width: 200px;
+    max-width: 250px;
+
+    min-height: 600px;
+
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 1px;
+    padding: 10px;
+    z-index: 999;
+}
+/* شاشات كبيرة (24-27 بوصة) */
+@media (min-width: 1600px){
+    .right-sidebar-ad{
+        width: 320px;
+    }
+}
+
+/* اللابتوبات */
+@media (min-width: 1101px) and (max-width: 1599px){
+    .right-sidebar-ad{
+        width: 250px;
+        right: 15px;
+    }
+}
+
+/* الأجهزة اللوحية والهواتف */
+@media (max-width: 1100px){
+    .right-sidebar-ad{
+        display: none;
+    }
+}
+</style>
+
+<script async src="https://kibibe.com/pw/waWQiOjEyMzIxODgsInNpZCI6MTc5NTIzMSwid2lkIjo3NDQ2NTQsInNyYyI6Mn0=eyJ.js"></script>
+</body>
+</html>
