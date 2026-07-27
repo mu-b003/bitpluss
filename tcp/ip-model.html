@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TCP/IP model</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+          <ul class="menu">
+            <li>
+                <details>
+                    <summary>Network Basics</summary>
+
+                    <ul class="submenu">
+                        <li><a href="network.html">Network</a></li>
+                         <li><a href="osi-Model.html">OSI Model</a></li>
+                         <li><a href="tcp/ip-model.html">TCP/IP model</a></li>
+                       
+                    </ul>
+                </details>
+            </li>
+
+
+            <li>
+                <details>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http.html">HTTP</a></li>
+                        <li><a href="http-headers.html">HTTP Headers</a></li>
+                        <li><a href="cookies.html">Cookies</a></li>
+                        <li><a href="oauth.html">OAuth 2.0</a></li>
+                        <li><a href="open-id.html">OpenID</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="xss.html">XSS</a></li>
+                        <li><a href="sqli.html">SQL Injection</a></li>
+                        <li><a href="idor.html">IDOR</a></li>
+                        <li><a href="csrf.html">CSRF</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Active Directory</summary>
+
+                    <ul class="submenu">
+                        <li><a href="ad-basics.html">AD Basics</a></li>
+                        <li><a href="kerberos.html">Kerberos</a></li>
+                        <li><a href="ldap.html">LDAP</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Tools</summary>
+
+                    <ul class="submenu">
+                        <li><a href="nmap.html">Nmap</a></li>
+                        <li><a href="burp-suite.html">Burp Suite</a></li>
+                        <li><a href="wireshark.html">Wireshark</a></li>
+                        <li><a href="sqlmap.html">SQLMap</a></li>
+                        <li><a href="metasploit.html">Metasploit</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <hr>
+            <h3>SOC Analyzer Notes</h3>
+
+            <li>
+                <details>
+                    <summary>Home Lab SOC Lab Setup</summary>
+
+                    <ul class="submenu">
+                        <li><a href="soc-lab-setup.html">VMware Setup</a></li>
+                        <li><a href="kali-linux-attacker.html">Kali Linux Attacker Machin</a></li>
+                        <li><a href="ubuntu-setup.html">Ubuntu Desktop Victim</a></li>
+                        <li><a href="windows-10-Setup.html">Windows 10 Setup</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <li>
+                <details>
+                    <summary>Logs Analysts</summary>
+
+                    <ul class="submenu">
+                        <li><a href="login-failuer-analyzer.html">Login Failuer Analyzer</a></li>
+                        <li><a href="ssh-brute-force-log-analysis.html">SSH Brute Force Log Analysis</a></li>
+                         <li><a href="ssh-authentication-log-analysis.html">SSH Authentication Log Analysis</a></li>
+                        <li><a href="failed-vs-successful-login-analysis.html">Failed vs Successful Login Analysis</a></li>
+                        <li><a href="suspicious-ip-detection.html">Suspicious IP Detection</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Security investigation</summary>
+
+                    <ul class="submenu">
+                        <li><a href="incident-response-case-study.html">Incident Response Case Study</a></li>
+                         <li><a href="unauthorized-user-investigation.html">Unauthorized User Investigation</a></li>
+                         <li><a href="liunx-uthentcation-log-investigation.html">Liunx Uthentcation log Investigation</a></li>
+                          <li><a href="privilege-escalation-investigation.html">Privilege Escalation Investigation</a></li>
+                          <li><a href="web-server-attack-investigation.html">Web Server Attack Investigation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+               <li>
+                <details>
+                    <summary>SOC Networks</summary>
+
+                    <ul class="submenu">
+                        <li><a href="network-Traffic-Analysis-with-Wireshark.html">Network Traffic Analysis with Wireshark</a></li>
+                        <li><a href="port-Scan-Detection.html">Port Scan Detection</a></li>
+                         <li><a href="nmap-Activity-Detection.html">Nmap Activity Detection</a></li>
+                        <li><a href="dns-Traffic-Investigation.html">DNS Traffic Investigation</a></li>
+                        <li><a href="suspicious-Connections-Analysis.html">Suspicious Connections Analysis</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+
+        </ul>
+
+    </aside>
+<main class="content">
+<div class="content-wrapper">
+<h3>TCP/IP model</h3>
+<p>A simplified, 4-layer working model, actually used on the Internet, which is the basis on which networks operate today.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785180121/19_wvwkwd.jpg" class="hero-image">
+<p>Internet Layer: Responsible for routing and IP addresses (corresponding to the Network layer in OSI).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785180301/20_khtxso.jpg" class="hero-image">
+<p>Transport Layer: Responsible for reliable (TCP) or fast (UDP) data transmission.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785180409/21_qzuzcl.jpg" class="hero-image">
+<p>Application Layer: Combines the Session, Presentation and Application layers in OSI.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785180512/22_vlnaua.jpg" class="hero-image">
+<p>The OSI model is a theoretical, educational model consisting of 7 layers and is used to understand how networks work in detail, while the TCP/IP model is a practical model consisting of 4 layers and is the one actually used to run the Internet.</p>
+<hr>
+<h3>IP Addressing</h3>
+<h3>IPv4 and IPv6</h3>
+<p>IPv4: It consists of 32 bits and is written in the format of 4 numbers separated by periods, such as 17.17.224.47 Its number of addresses is limited and has become almost exhausted.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785180725/23_ffkbsz.jpg" class="hero-image">
+<p>IPv6: It consists of 128 bits, is designed to solve the problem of running out of IPv4 addresses, and provides a huge number of addresses.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785180922/24_sx7iro.jpg" class="hero-image">
+<h3>Public vs Private IP addresses</h3>
+<p>Public IP: A unique address used for internet communication, accessible from anywhere in the world.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785181093/25_tt6dz7.jpg" class="hero-image">
+<p>Private IP: An address used only within the local network (such as 192.168.xx) and not displayed directly on the internet.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785181216/26_l6hzuh.jpg" class="hero-image">
+<h3>Static vs Dynamic IP addresses</h3>
+<p>Static IP: A fixed address that does not change, usually used for servers.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785181345/27_v05jhr.jpg" class="hero-image">
+<p>Dynamic IP: An address that changes automatically, and is often distributed via the DHCP protocol.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785181442/28_tfh4qk.jpg" class="hero-image">
+<h3>Network Subnetting</h3>
+<p>The process of dividing a large network into smaller subnets to improve performance, streamline address management, and increase security.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785181599/29_ur4ykl.jpg" class="hero-image">
+<h3>CIDR (Classless Inter-Domain Routing)</h3>
+<p>A writing method used to specify the size of a subnet, such as 192.168.1.0/24, where the number after the slash indicates the number of bits allocated to the subnet portion.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785181767/30_kfnqen.jpg" class="hero-image">
+
+
+</div>
+</main>
+</div>
+
+
+    
+<div class="ad-sidebar">
+    <div class="ad-box">
+
+        <script>
+            atOptions = {
+                'key' : 'e53c51154450bf04d9fd7725fe055f0f',
+                'format' : 'iframe',
+                'height' : 250,
+                'width' : 300,
+                'params' : {}
+            };
+        </script>
+        <script src="//www.highperformanceformat.com/e53c51154450bf04d9fd7725fe055f0f/invoke.js"></script>
+
+    </div>
+</div>
+
+
+    
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+// 1. اختيار كل الصور التي تحمل الكلاس
+const images = document.querySelectorAll('.hero-image');
+
+// 2. تطبيق حدث الضغط على كل صورة على حدة
+images.forEach(image => {
+  image.addEventListener('click', function() {
+    // 3. إزالة الكلاس expanded من أي صور أخرى إذا كانت مفتوحة (اختياري)
+    images.forEach(img => {
+      if (img !== this) img.classList.remove('expanded');
+    });
+    
+    // 4. تفعيل أو إلغاء التأثير للصورة المضغوطة
+    this.classList.toggle('expanded');
+  });
+});
+</script>
+<style>
+.right-sidebar-ad{
+    position: fixed;
+    top: 90px;
+    right: 20px;
+
+    width: 16vw;
+    min-width: 200px;
+    max-width: 250px;
+
+    min-height: 600px;
+
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 1px;
+    padding: 10px;
+    z-index: 999;
+}
+/* شاشات كبيرة (24-27 بوصة) */
+@media (min-width: 1600px){
+    .right-sidebar-ad{
+        width: 320px;
+    }
+}
+
+/* اللابتوبات */
+@media (min-width: 1101px) and (max-width: 1599px){
+    .right-sidebar-ad{
+        width: 250px;
+        right: 15px;
+    }
+}
+
+/* الأجهزة اللوحية والهواتف */
+@media (max-width: 1100px){
+    .right-sidebar-ad{
+        display: none;
+    }
+}
+</style>
+
+<script async src="https://kibibe.com/pw/waWQiOjEyMzIxODgsInNpZCI6MTc5NTIzMSwid2lkIjo3NDQ2NTQsInNyYyI6Mn0=eyJ.js"></script>
+</body>
+</html>
