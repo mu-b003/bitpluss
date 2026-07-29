@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DNS</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+          <ul class="menu">
+           <li>
+                <details>
+                    <summary>Network Basics</summary>
+
+                    <ul class="submenu">
+                        <li><a href="network.html">Network</a></li>
+                         <li><a href="osi-Model.html">OSI Model</a></li>
+                        <li><a href="tcp-ip-model.html">TCP/IP model</a></li>
+                         <li><a href="common-Protocols-and-Network Devices.html">Common Protocols & Network Devices</a></li>
+                        <li><a href="domain-Name-System.html">Domain Name System</a></li>
+                        <li><a href="network-Security.html">Network Security</a></li>
+
+                    </ul>
+                </details>
+            </li>
+
+
+            <li>
+                <details>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http-https.html">HTTP&HTTPS</a></li>
+                        <li><a href="dns.html">DNS</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+              <hr>
+            <h3>SOC Analyzer Notes</h3>
+
+            <li>
+                <details>
+                    <summary>Home Lab SOC Lab Setup</summary>
+
+                    <ul class="submenu">
+                        <li><a href="soc-lab-setup.html">VMware Setup</a></li>
+                        <li><a href="kali-linux-attacker.html">Kali Linux Attacker Machin</a></li>
+                        <li><a href="ubuntu-setup.html">Ubuntu Desktop Victim</a></li>
+                        <li><a href="windows-10-Setup.html">Windows 10 Setup</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <li>
+                <details>
+                    <summary>Logs Analysts</summary>
+
+                    <ul class="submenu">
+                        <li><a href="login-failuer-analyzer.html">Login Failuer Analyzer</a></li>
+                        <li><a href="ssh-brute-force-log-analysis.html">SSH Brute Force Log Analysis</a></li>
+                         <li><a href="ssh-authentication-log-analysis.html">SSH Authentication Log Analysis</a></li>
+                        <li><a href="failed-vs-successful-login-analysis.html">Failed vs Successful Login Analysis</a></li>
+                        <li><a href="suspicious-ip-detection.html">Suspicious IP Detection</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Security investigation</summary>
+
+                    <ul class="submenu">
+                        <li><a href="incident-response-case-study.html">Incident Response Case Study</a></li>
+                         <li><a href="unauthorized-user-investigation.html">Unauthorized User Investigation</a></li>
+                         <li><a href="liunx-uthentcation-log-investigation.html">Liunx Uthentcation log Investigation</a></li>
+                          <li><a href="privilege-escalation-investigation.html">Privilege Escalation Investigation</a></li>
+                          <li><a href="web-server-attack-investigation.html">Web Server Attack Investigation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+               <li>
+                <details>
+                    <summary>SOC Networks</summary>
+
+                    <ul class="submenu">
+                        <li><a href="network-Traffic-Analysis-with-Wireshark.html">Network Traffic Analysis with Wireshark</a></li>
+                        <li><a href="port-Scan-Detection.html">Port Scan Detection</a></li>
+                         <li><a href="nmap-Activity-Detection.html">Nmap Activity Detection</a></li>
+                        <li><a href="dns-Traffic-Investigation.html">DNS Traffic Investigation</a></li>
+                        <li><a href="suspicious-Connections-Analysis.html">Suspicious Connections Analysis</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+
+        </ul>
+
+    </aside>
+<main class="content">
+<div class="content-wrapper">
+<h3>DNS (Domain Name System)</h3>
+<p>It's what converts the name (example.com) into an IP address. But in terms of security, DNS isn't just a "phone book"—it's a goldmine of information in the Reconnaissance phase.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785353877/19_jhyn9p.png" class="hero-image">
+<h3>Important records:</h3>
+<p>A	The domain connects to IPv4</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785354080/20_sdxpht.png" class="hero-image">
+<p>AAAA	The domain connects to IPv6</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785354336/21_jqvrlm.png" class="hero-image">
+<p>CNAME	Alias ​​for a second domain (source of the Subdomain Takeover vulnerability)</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785354430/22_desup9.png" class="hero-image">
+<p>MX	Email servers</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785354528/23_lmio5k.png" class="hero-image">
+<p>TXT	Textual information (SPF, DKIM, or sometimes forgotten secrets!)</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785354616/24_zri7bo.png" class="hero-image">
+<p>NS	DNS servers responsible for the domain</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785354705/25_ri14cg.png" class="hero-image">
+<h3>Important techniques in Pentesting:</h3>
+<h3>1. Subdomain Enumeration</h3>
+<p>searches for hidden subdomains such as:</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785353454/17_pex5zy.png" class="hero-image">
+<p>Old spodumnes (dev, staging, test) are often the weakest protection and open a door for you to enter.</p>
+<p>Tools: subfinder, amass, or even crt.sh(checks public SSL certificates and reveals what SDOMS know about them).</p>
+<h3>2. Subdomain Takeover:</h3>
+<p>If you find a CNAME pointing to a service (for example myapp.herokuapp.com) and the service has been deleted or cancelled, you can register the same name and take over the subdomain — a real and very dangerous vulnerability that is widespread with Bug Bounty.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785354821/26_yq9gfn.png" class="hero-image">
+<h3>3. Zone Transfer (AXFR)</h3>
+<p>If the server is not properly protected, you can request a "full copy" of all domains and subdomains:</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785353684/18_x2ujcw.png" class="hero-image">
+<p>If it succeeds, it will reveal the entire internal structure of the company.</p>
+
+
+</div>
+</main>
+</div>
+
+
+    
+<div class="ad-sidebar">
+    <div class="ad-box">
+
+<script>
+  atOptions = {
+    'key' : 'f7883477b9a0b56d40c9cf62d95a12cb',
+    'format' : 'iframe',
+    'height' : 300,
+    'width' : 160,
+    'params' : {}
+  };
+</script>
+<script src="https://www.highperformanceformat.com/f7883477b9a0b56d40c9cf62d95a12cb/invoke.js"></script>
+
+
+    </div>
+</div>
+
+
+    
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+// 1. اختيار كل الصور التي تحمل الكلاس
+const images = document.querySelectorAll('.hero-image');
+
+// 2. تطبيق حدث الضغط على كل صورة على حدة
+images.forEach(image => {
+  image.addEventListener('click', function() {
+    // 3. إزالة الكلاس expanded من أي صور أخرى إذا كانت مفتوحة (اختياري)
+    images.forEach(img => {
+      if (img !== this) img.classList.remove('expanded');
+    });
+    
+    // 4. تفعيل أو إلغاء التأثير للصورة المضغوطة
+    this.classList.toggle('expanded');
+  });
+});
+</script>
+<style>
+.right-sidebar-ad{
+    position: fixed;
+    top: 90px;
+    right: 20px;
+
+    width: 16vw;
+    min-width: 200px;
+    max-width: 250px;
+
+    min-height: 600px;
+
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 1px;
+    padding: 10px;
+    z-index: 999;
+}
+/* شاشات كبيرة (24-27 بوصة) */
+@media (min-width: 1600px){
+    .right-sidebar-ad{
+        width: 320px;
+    }
+}
+
+/* اللابتوبات */
+@media (min-width: 1101px) and (max-width: 1599px){
+    .right-sidebar-ad{
+        width: 250px;
+        right: 15px;
+    }
+}
+
+/* الأجهزة اللوحية والهواتف */
+@media (max-width: 1100px){
+    .right-sidebar-ad{
+        display: none;
+    }
+}
+</style>
+
+<script async src="https://kibibe.com/pw/waWQiOjEyMzIxODgsInNpZCI6MTc5NTIzMSwid2lkIjo3NDQ2NTQsInNyYyI6Mn0=eyJ.js"></script>
+</body>
+</html>
