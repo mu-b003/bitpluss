@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>http</title>
+<title>http&https</title>
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -53,11 +53,8 @@
                     <summary>Web Security</summary>
 
                     <ul class="submenu">
-                        <li><a href="http.html">HTTP</a></li>
-                        <li><a href="http-headers.html">HTTP Headers</a></li>
-                        <li><a href="cookies.html">Cookies</a></li>
-                        <li><a href="oauth.html">OAuth 2.0</a></li>
-                        <li><a href="open-id.html">OpenID</a></li>
+                        <li><a href="http-https.html">HTTP&HTTPS</a></li>
+                        
                     </ul>
 
                 </details>
@@ -194,173 +191,36 @@
 
 
 <main class="content">
-    <div class="content-wrapper">
-      <h3>HTTP (HyperText Transfer Protocol)</h3>
-      <p>HTTP is the protocol responsible for transferring data between a web browser (Client) and a web server (Server).</p>
-      <p>When you enter a website URL such as:</p>        
-        <pre class="code-box"><code>https://example.com</code></pre>
-        <p>the browser sends an HTTP Request to the server, and the server responds with an HTTP Response.</p>
-        <h3>How Does HTTP Work?</h3>
-        <p>1- The user requests a web page.</p>
-        <p>2- The browser sends an HTTP Request.</p>
-        <p>3- The server processes the request.</p>
-        <p>4- The server sends an HTTP Response.</p>
-        <p>5- The browser displays the result.</p>
-        <h3>Example</h3>
-        <pre class="code-box">
-        <code>Client ------ Request ------> Server</code>
-        <code>Client <----- Response ------ Server</code>
-        </pre>
-<h3>Components of an HTTP Request</h3>
-
-<p>Every HTTP request consists of several parts.</p>
-
-<h3>1. Request Line</h3>
-
-<p>The Request Line contains:</p>
-
-<pre class="code-box"><code>METHOD PATH VERSION</code></pre>
-
-<p>Example:</p>
-
-<pre class="code-box"><code>GET /profile HTTP/1.1</code></pre>
-
-<p>Meaning:</p>
-
-<p><strong>GET</strong> = Request method</p>
-<p><strong>/profile</strong> = Requested resource</p>
-<p><strong>HTTP/1.1</strong> = HTTP version</p>
-<h3>2. Headers</h3>
-<p>Headers contain additional information about the request.</p>
-
-<pre class="code-box"><code>Host: example.com
-User-Agent: Chrome
-Cookie: session=abc123</code></pre>
-
-<h3>3. Body</h3>
-<p>The Body contains data sent to the server.</p>
-
-<pre class="code-box"><code>{
-  "username": "admin",
-  "password": "123456"
-}</code></pre>
-
-<h3>Components of an HTTP Response</h3>
-
-<h4>Status Line</h4>
-<p>Example:</p>
-
-<pre class="code-box"><code>HTTP/1.1 200 OK</code></pre>
-
-<h4>Headers</h4>
-<p>Example:</p>
-
-<pre class="code-box"><code>Content-Type: text/html
-Content-Length: 1024</code></pre>
-
-<h4>Body</h4>
-<p>Contains the page content or returned data.</p>
-
-<pre class="code-box"><code>&lt;h1&gt;Welcome&lt;/h1&gt;</code></pre>
-
-<h3>Common HTTP Methods</h3>
-
-<h4>GET</h4>
-<p>Used to retrieve data.</p>
-
-<pre class="code-box"><code>GET /products</code></pre>
-
-<p>A GET request should not modify data on the server.</p>
-
-<h4>POST</h4>
-<p>Used to create new data.</p>
-
-<pre class="code-box"><code>POST /register</code></pre>
-
-<p>Practical example:</p>
-
-<pre class="code-box"><code>{
-  "username": "mubarak",
-  "password": "123456"
-}</code></pre>
-
-<h4>PUT</h4>
-<p>Used to update an entire resource.</p>
-
-<pre class="code-box"><code>PUT /users/5</code></pre>
-
-<h4>PATCH</h4>
-<p>Used to update part of a resource.</p>
-
-<pre class="code-box"><code>PATCH /users/5</code></pre>
-
-<p>Example payload:</p>
-
-<pre class="code-box"><code>{
-  "email": "new@email.com"
-}</code></pre>
-
-<h4>DELETE</h4>
-<p>Used to remove data.</p>
-
-<pre class="code-box"><code>DELETE /users/5</code></pre>
-
-<h4>HEAD</h4>
-<p>Similar to GET but returns no response body.</p>
-
-<p>Commonly used to determine:</p>
-
-<p>• File size</p>
-<p>• File type</p>
-<p>• Whether a resource exists</p>
-
-<h4>OPTIONS</h4>
-<p>Returns the methods allowed on a resource.</p>
-
-<pre class="code-box"><code>OPTIONS /api/users</code></pre>
-
-<p>Response:</p>
-
-<pre class="code-box"><code>Allow: GET, POST, PUT</code></pre>
-
-<h4>TRACE</h4>
-<p>Returns the request exactly as received by the server.</p>
-<p>Often disabled for security reasons.</p>
-
-<h4>CONNECT</h4>
-<p>Used to establish a tunnel, commonly for HTTPS connections.</p>
-
-<h3>HTTP Status Codes</h3>
-
-<p>HTTP status codes are divided into five categories.</p>
-
-<h4>1xx Informational</h4>
-<p><strong>100 Continue</strong> — Continue sending the request.</p>
-
-<h4>2xx Success</h4>
-<p><strong>200 OK</strong> — The request was successful.</p>
-<p><strong>201 Created</strong> — A new resource was created successfully.</p>
-<p><strong>204 No Content</strong> — The request succeeded but no data is returned.</p>
-
-<h4>3xx Redirection</h4>
-<p><strong>301 Moved Permanently</strong> — Permanent redirection.</p>
-<p><strong>302 Found</strong> — Temporary redirection.</p>
-<p><strong>304 Not Modified</strong> — The content has not changed since the last request.</p>
-
-<h4>4xx Client Errors</h4>
-<p><strong>400 Bad Request</strong> — Invalid request.</p>
-<p><strong>401 Unauthorized</strong> — Authentication required.</p>
-<p><strong>403 Forbidden</strong> — Access denied.</p>
-<p><strong>404 Not Found</strong> — Resource not found.</p>
-<p><strong>405 Method Not Allowed</strong> — Method not allowed.</p>
-<p><strong>408 Request Timeout</strong> — Request timed out.</p>
-<p><strong>429 Too Many Requests</strong> — Rate limit exceeded.</p>
-
-<h4>5xx Server Errors</h4>
-<p><strong>500 Internal Server Error</strong> — Generic server error.</p>
-<p><strong>502 Bad Gateway</strong> — Invalid gateway response.</p>
-<p><strong>503 Service Unavailable</strong> — Service unavailable.</p>
-<p><strong>504 Gateway Timeout</strong> — Gateway timeout.</p>
+<div class="content-wrapper">
+<h3>HTTP</h3>
+<p>HyperText Transfer Protocol It is the protocol that the browser uses to communicate with the server. It operates on a Request/Response system .</p>
+<h3>Request structure</h3>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785337696/1_oiazkb.png" class="hero-image">
+<h3>Response structure:</h3>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785337845/2_ijaelj.png" class="hero-image">
+<h3>The most important HTTP methods</h3>
+<p>GET— It retrieves data (parameters appear in the URL, dangerous because they are saved in history and logs)</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785339622/6_gchfrh.png" class="hero-image">
+<p>POST— It sends data (in the body, relatively more secure but not encrypted except with HTTPS)</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785339521/5_vfdhut.png" class="hero-image">
+<p>PUT/DELETE— You'll often find them in APIs; if they're not protected, you can modify/delete data that doesn't belong to you.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785339701/7_fmekmr.png" class="hero-image">
+<p>DELETE</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785339819/8_czg81m.png" class="hero-image">
+<p>OPTIONS— Reveals the methods allowed by the server (useful for Recon)</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785339935/9_tv4vxg.png" class="hero-image">
+<p>Response</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785340043/10_zjagr5.png" class="hero-image">
+<hr>
+<h3>HTTPS</h3>
+<p>It's HTTP + TLS/SSL encryption layer. The idea:</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785340450/13_e0njpa.png" class="hero-image">
+<p>The browser communicates with the server (TLS Handshake).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785340538/14_f2gei1.png" class="hero-image">
+<p>They exchange certificates and encryption keys.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785340664/15_n0c6rw.png" class="hero-image">
+<p>After that, all data is transmitted in encrypted form (even if someone sniffs it, they cannot read it).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785340773/16_lzdrzq.png" class="hero-image">
 </div>
 </main>
 </div>
