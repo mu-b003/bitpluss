@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://bitpluss.com/</loc>
+        <lastmod>2026-07-31</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
 
+    <url>
+        <loc>https://bitpluss.com/about-us.html</loc>
+        <lastmod>2026-07-31</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.5</priority>
+    </url>
 <url><loc>https://bitpluss.com/</loc></url>
 <url><loc>https://bitpluss.com/dns-Traffic-Investigation.html</loc></url>
 <url><loc>https://bitpluss.com/dns.html</loc></url>
