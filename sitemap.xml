@@ -1,100 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <url>
-    <loc>https://bitpluss.com/</loc>
-  </url>
-
-  <url>
-    <loc>https://bitpluss.com/about-us.html</loc>
-  </url>
-
-  <url>
-    <loc>https://bitpluss.com/ad-basics.html</loc>
-  </url>
-
-  <url>
-    <loc>https://bitpluss.com/burp-suite.html</loc>
-  </url>
-
-  <url>
-    <loc>https://bitpluss.com/contact.html</loc>
-  </url>
-
-  <url>
-    <loc>https://bitpluss.com/cookies.html</loc>
-  </url>
-
-  <url>
-    <loc>https://bitpluss.com/csrf.html</loc>
-  </url>
-
-  <url>
-    <loc>https://bitpluss.com/http-headers.html</loc>
-  </url>
-
-  <url>
-    <loc>https://bitpluss.com/http.html</loc>
-  </url>
-
-  <url>
-    <loc>https://bitpluss.com/idor.html</loc>
-  </url>
-
-  <url>
-    <loc>https://bitpluss.com/kerberos.html</loc>
-  </url>
-
-  <url>
-    <loc>https://bitpluss.com/ldap.html</loc>
-  </url>
-
-  <url>
-    <loc>https://bitpluss.com/linux-basics.html</loc>
-  </url>
-
-  <url>
-    <loc>https://bitpluss.com/metasploit.html</loc>
-  </url>
-
-  <url>
-    <loc>https://bitpluss.com/nmap.html</loc>
-  </url>
-
-  <url>
-    <loc>https://bitpluss.com/oauth.html</loc>
-  </url>
-
-  <url>
-    <loc>https://bitpluss.com/open-id.html</loc>
-  </url>
-
-  <url>
-    <loc>https://bitpluss.com/permissions.html</loc>
-  </url>
-
-  <url>
-    <loc>https://bitpluss.com/privacy-policy.html</loc>
-  </url>
-
-  <url>
-    <loc>https://bitpluss.com/privilege-escalation.html</loc>
-  </url>
-
-  <url>
-    <loc>https://bitpluss.com/sql.html</loc>
-  </url>
-
-  <url>
-    <loc>https://bitpluss.com/sqlmap.html</loc>
-  </url>
-
-  <url>
-    <loc>https://bitpluss.com/wireshark.html</loc>
-  </url>
-
-  <url>
-    <loc>https://bitpluss.com/xss.html</loc>
-  </url>
+<url><loc>https://bitpluss.com/</loc></url>
+<url><loc>https://bitpluss.com/dns-Traffic-Investigation.html</loc></url>
+<url><loc>https://bitpluss.com/dns.html</loc></url>
+<url><loc>https://bitpluss.com/domain-Name-System.html</loc></url>
+<url><loc>https://bitpluss.com/failed-vs-successful-login-analysis.html</loc></url>
+<url><loc>https://bitpluss.com/http-https.html</loc></url>
+<url><loc>https://bitpluss.com/incident-response-case-study.html</loc></url>
+<url><loc>https://bitpluss.com/kali-linux-attacker.html</loc></url>
+<url><loc>https://bitpluss.com/linux-basics.html</loc></url>
+<url><loc>https://bitpluss.com/linux-authentication-log-investigation.html</loc></url>
+<url><loc>https://bitpluss.com/login-failure-analyzer.html</loc></url>
+<url><loc>https://bitpluss.com/network-Security.html</loc></url>
+<url><loc>https://bitpluss.com/network-Traffic-Analysis-with-Wireshark.html</loc></url>
+<url><loc>https://bitpluss.com/network.html</loc></url>
+<url><loc>https://bitpluss.com/nmap-Activity-Detection.html</loc></url>
+<url><loc>https://bitpluss.com/osi-Model.html</loc></url>
+<url><loc>https://bitpluss.com/permissions.html</loc></url>
+<url><loc>https://bitpluss.com/port-Scan-Detection.html</loc></url>
+<url><loc>https://bitpluss.com/privacy-policy.html</loc></url>
+<url><loc>https://bitpluss.com/privilege-escalation-investigation.html</loc></url>
+<url><loc>https://bitpluss.com/privilege-escalation.html</loc></url>
+<url><loc>https://bitpluss.com/soc-lab-setup.html</loc></url>
+<url><loc>https://bitpluss.com/ssh-authentication-log-analysis.html</loc></url>
+<url><loc>https://bitpluss.com/ssh-brute-force-log-analysis.html</loc></url>
+<url><loc>https://bitpluss.com/suspicious-Connections-Analysis.html</loc></url>
+<url><loc>https://bitpluss.com/suspicious-ip-detection.html</loc></url>
+<url><loc>https://bitpluss.com/tcp-ip-model.html</loc></url>
+<url><loc>https://bitpluss.com/ubuntu-setup.html</loc></url>
+<url><loc>https://bitpluss.com/unauthorized-user-investigation.html</loc></url>
+<url><loc>https://bitpluss.com/web-server-attack-investigation.html</loc></url>
+<url><loc>https://bitpluss.com/windows-10-setup.html</loc></url>
 
 </urlset>
