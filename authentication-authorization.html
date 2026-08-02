@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Authentication & Authorization</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2368362978436357"
+     crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+          <ul class="menu">
+           <li>
+                <details>
+                    <summary>Network Basics</summary>
+
+                    <ul class="submenu">
+                        <li><a href="network.html">Network</a></li>
+                         <li><a href="osi-Model.html">OSI Model</a></li>
+                        <li><a href="tcp-ip-model.html">TCP/IP model</a></li>
+                         <li><a href="common-Protocols-and-Network Devices.html">Common Protocols & Network Devices</a></li>
+                        <li><a href="domain-Name-System.html">Domain Name System</a></li>
+                        <li><a href="network-Security.html">Network Security</a></li>
+
+                    </ul>
+                </details>
+            </li>
+
+
+            <li>
+                <details>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http-https.html">HTTP&HTTPS</a></li>
+                        <li><a href="dns.html">DNS</a></li>
+                         <li><a href="cookies-Sessions.html">Cookies & Sessions</a></li>
+                         <li><a href=" http-headers.html">HTTP headers</a></li>
+                         <li><a href="authentication-authorization.html">Authentication & Authorization</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+              <hr>
+            <h3>SOC Analyzer Notes</h3>
+
+            <li>
+                <details>
+                    <summary>Home Lab SOC Lab Setup</summary>
+
+                    <ul class="submenu">
+                        <li><a href="soc-lab-setup.html">VMware Setup</a></li>
+                        <li><a href="kali-linux-attacker.html">Kali Linux Attacker Machin</a></li>
+                        <li><a href="ubuntu-setup.html">Ubuntu Desktop Victim</a></li>
+                        <li><a href="windows-10-Setup.html">Windows 10 Setup</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <li>
+                <details>
+                    <summary>Logs Analysts</summary>
+
+                    <ul class="submenu">
+                        <li><a href="login-failuer-analyzer.html">Login Failuer Analyzer</a></li>
+                        <li><a href="ssh-brute-force-log-analysis.html">SSH Brute Force Log Analysis</a></li>
+                         <li><a href="ssh-authentication-log-analysis.html">SSH Authentication Log Analysis</a></li>
+                        <li><a href="failed-vs-successful-login-analysis.html">Failed vs Successful Login Analysis</a></li>
+                        <li><a href="suspicious-ip-detection.html">Suspicious IP Detection</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Security investigation</summary>
+
+                    <ul class="submenu">
+                        <li><a href="incident-response-case-study.html">Incident Response Case Study</a></li>
+                         <li><a href="unauthorized-user-investigation.html">Unauthorized User Investigation</a></li>
+                         <li><a href="liunx-uthentcation-log-investigation.html">Liunx Uthentcation log Investigation</a></li>
+                          <li><a href="privilege-escalation-investigation.html">Privilege Escalation Investigation</a></li>
+                          <li><a href="web-server-attack-investigation.html">Web Server Attack Investigation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+               <li>
+                <details>
+                    <summary>SOC Networks</summary>
+
+                    <ul class="submenu">
+                        <li><a href="network-Traffic-Analysis-with-Wireshark.html">Network Traffic Analysis with Wireshark</a></li>
+                        <li><a href="port-Scan-Detection.html">Port Scan Detection</a></li>
+                         <li><a href="nmap-Activity-Detection.html">Nmap Activity Detection</a></li>
+                        <li><a href="dns-Traffic-Investigation.html">DNS Traffic Investigation</a></li>
+                        <li><a href="suspicious-Connections-Analysis.html">Suspicious Connections Analysis</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+
+        </ul>
+
+    </aside>
+<main class="content">
+<div class="content-wrapper">
+<h3>Authentication & Authorization</h3>
+<p>A very important point: These are two completely different concepts and you must differentiate between them:</p>
+<p>Authentication = "Who are you?" (Login, Identity Verification)</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785661380/17_m6k2g1.png" class="hero-image">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785661485/18_t2whe6.png" class="hero-image">
+<p>Authorization = "What are you allowed to do?" (Permissions after you prove your identity)</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785661622/19_fxdirg.png" class="hero-image">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785661692/20_ozcyfj.png" class="hero-image">
+<h3>Common Authentication Problems:</h3>
+<p>Brute Force : No Rate Limiting on the login page → You can try thousands of passwords (Tools: Hydra, Burp Intruder)</p>
+<p>If the login page does not implement rate limiting or account lockout, an attacker can perform a Brute Force attack by trying thousands of passwords automatically using tools such as Hydra or Burp Suite Intruder until the correct password is found.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785661868/21_gwxc1x.png" class="hero-image">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785662008/22_vako75.png" class="hero-image">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785662068/23_x1e8yl.png" class="hero-image">
+<p>Weak Password Policy : Accepting weak passwords such as123456</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785662239/24_ecrhgm.png" class="hero-image">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785662381/25_e8qkoy.png" class="hero-image">
+<p>No MFA : No two-factor authentication</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785662500/26_f5jofp.png" class="hero-image">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785662585/27_ankz9l.png" class="hero-image">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785662660/28_ilxxmy.png" class="hero-image">
+<p>Username Enumeration : If the error message differentiates between "user not found" and "incorrect password," you can identify which emails are actually registered in the system.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785662755/29_li6bms.png" class="hero-image">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785662819/30_jsjnrp.png" class="hero-image">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785662900/31_jwd22p.png" class="hero-image">
+<h3>Common (and actually more serious) Authorization problems:</h3>
+<h3>Broken Access Control — the most famous example:</h3>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785663051/32_z9cklb.png" class="hero-image">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785663156/33_xebxip.png" class="hero-image">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785663367/34_adwuar.png" class="hero-image">
+<h3>Privilege Escalation — Example: If there is a request to send:</h3>
+<p>{ "username": "ahmed", "role": "user" }</p>
+<p>And you changed it manually to:</p>
+<p>{ "username": "ahmed", "role": "admin" }</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785663532/35_xuszrq.png" class="hero-image">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785663634/36_xflzoc.png" class="hero-image">
+
+
+</div>
+</main>
+</div>
+
+
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+// 1. اختيار كل الصور التي تحمل الكلاس
+const images = document.querySelectorAll('.hero-image');
+
+// 2. تطبيق حدث الضغط على كل صورة على حدة
+images.forEach(image => {
+  image.addEventListener('click', function() {
+    // 3. إزالة الكلاس expanded من أي صور أخرى إذا كانت مفتوحة (اختياري)
+    images.forEach(img => {
+      if (img !== this) img.classList.remove('expanded');
+    });
+    
+    // 4. تفعيل أو إلغاء التأثير للصورة المضغوطة
+    this.classList.toggle('expanded');
+  });
+});
+</script>
+<style>
+.right-sidebar-ad{
+    position: fixed;
+    top: 90px;
+    right: 20px;
+
+    width: 16vw;
+    min-width: 200px;
+    max-width: 250px;
+
+    min-height: 600px;
+
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 1px;
+    padding: 10px;
+    z-index: 999;
+}
+/* شاشات كبيرة (24-27 بوصة) */
+@media (min-width: 1600px){
+    .right-sidebar-ad{
+        width: 320px;
+    }
+}
+
+/* اللابتوبات */
+@media (min-width: 1101px) and (max-width: 1599px){
+    .right-sidebar-ad{
+        width: 250px;
+        right: 15px;
+    }
+}
+
+/* الأجهزة اللوحية والهواتف */
+@media (max-width: 1100px){
+    .right-sidebar-ad{
+        display: none;
+    }
+}
+</style>
+
+<script async src="https://kibibe.com/pw/waWQiOjEyMzIxODgsInNpZCI6MTc5NTIzMSwid2lkIjo3NDQ2NTQsInNyYyI6Mn0=eyJ.js"></script>
+</body>
+</html>
