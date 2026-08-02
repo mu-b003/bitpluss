@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title> HTTP headers</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2368362978436357"
+     crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+          <ul class="menu">
+           <li>
+                <details>
+                    <summary>Network Basics</summary>
+
+                    <ul class="submenu">
+                        <li><a href="network.html">Network</a></li>
+                         <li><a href="osi-Model.html">OSI Model</a></li>
+                        <li><a href="tcp-ip-model.html">TCP/IP model</a></li>
+                         <li><a href="common-Protocols-and-Network Devices.html">Common Protocols & Network Devices</a></li>
+                        <li><a href="domain-Name-System.html">Domain Name System</a></li>
+                        <li><a href="network-Security.html">Network Security</a></li>
+
+                    </ul>
+                </details>
+            </li>
+
+
+            <li>
+                <details>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http-https.html">HTTP&HTTPS</a></li>
+                        <li><a href="dns.html">DNS</a></li>
+                         <li><a href="cookies-Sessions.html">Cookies & Sessions</a></li>
+                         <li><a href=" http-headers.html">HTTP headers</a></li>
+
+                    </ul>
+
+                </details>
+            </li>       
+
+            <li>
+                <details>
+                    <summary>Linux</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+              <hr>
+            <h3>SOC Analyzer Notes</h3>
+
+            <li>
+                <details>
+                    <summary>Home Lab SOC Lab Setup</summary>
+
+                    <ul class="submenu">
+                        <li><a href="soc-lab-setup.html">VMware Setup</a></li>
+                        <li><a href="kali-linux-attacker.html">Kali Linux Attacker Machin</a></li>
+                        <li><a href="ubuntu-setup.html">Ubuntu Desktop Victim</a></li>
+                        <li><a href="windows-10-Setup.html">Windows 10 Setup</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <li>
+                <details>
+                    <summary>Logs Analysts</summary>
+
+                    <ul class="submenu">
+                        <li><a href="login-failuer-analyzer.html">Login Failuer Analyzer</a></li>
+                        <li><a href="ssh-brute-force-log-analysis.html">SSH Brute Force Log Analysis</a></li>
+                         <li><a href="ssh-authentication-log-analysis.html">SSH Authentication Log Analysis</a></li>
+                        <li><a href="failed-vs-successful-login-analysis.html">Failed vs Successful Login Analysis</a></li>
+                        <li><a href="suspicious-ip-detection.html">Suspicious IP Detection</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Security investigation</summary>
+
+                    <ul class="submenu">
+                        <li><a href="incident-response-case-study.html">Incident Response Case Study</a></li>
+                         <li><a href="unauthorized-user-investigation.html">Unauthorized User Investigation</a></li>
+                         <li><a href="liunx-uthentcation-log-investigation.html">Liunx Uthentcation log Investigation</a></li>
+                          <li><a href="privilege-escalation-investigation.html">Privilege Escalation Investigation</a></li>
+                          <li><a href="web-server-attack-investigation.html">Web Server Attack Investigation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+               <li>
+                <details>
+                    <summary>SOC Networks</summary>
+
+                    <ul class="submenu">
+                        <li><a href="network-Traffic-Analysis-with-Wireshark.html">Network Traffic Analysis with Wireshark</a></li>
+                        <li><a href="port-Scan-Detection.html">Port Scan Detection</a></li>
+                         <li><a href="nmap-Activity-Detection.html">Nmap Activity Detection</a></li>
+                        <li><a href="dns-Traffic-Investigation.html">DNS Traffic Investigation</a></li>
+                        <li><a href="suspicious-Connections-Analysis.html">Suspicious Connections Analysis</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+
+        </ul>
+
+    </aside>
+<main class="content">
+<div class="content-wrapper">
+<h3>Headers (HTTP headers)</h3>
+<p>The headers contain a lot of information that helps you with Recon, and they also contain security settings that, if missing, create vulnerabilities.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785657338/1_tpijlc.png" class="hero-image">
+<h3>Important Security Headers:</h3>
+<h3>Content-Security-Policy (CSP)</h3>
+<p>It controls which sources you can download scripts/images/styles from. The strongest defense against XSS.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785657504/2_lbj8e5.png" class="hero-image">
+<p>Content-Security-Policy: default-src 'self'; script-src 'self' cdn.example.com</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785657746/3_nfly6n.png" class="hero-image">
+<p>If missing = the site is more exposed to XSS attacks.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785657898/4_icrmfi.png" class="hero-image">
+<h3>X-Frame-Options</h3> 
+<p>Embedding the site with an iframe from another site is prohibited. If it's missing, it's vulnerable to clickjacking (making the user click a button when they think it's doing something else).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785658090/5_jramtm.png" class="hero-image">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785658180/6_gxccc1.png" class="hero-image">
+<p>X-Frame-Options: DENY</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785658389/7_l3tzu0.png" class="hero-image">
+<h3>Strict-Transport-Security (HSTS)</h3>
+<p>The browser is forced to communicate only via HTTPS for a certain period, even if you manually type http://.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785658585/8_idhpqm.png" class="hero-image">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785658667/9_hvz7yl.png" class="hero-image">
+<p>Strict-Transport-Security: max-age=31536000; includeSubDomains</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785658794/10_b7kx9b.png" class="hero-image">
+<h3>X-Content-Type-Options: nosniff</h3>
+<p>It prevents the browser from "guessing" the file type — protecting against certain file-loading attacks.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785658900/11_gpj9gx.png" class="hero-image">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785659010/12_ssdke3.png" class="hero-image">
+<h3>Headers reveal information (that is dangerous to them):</h3>
+<p>Server: Apache/2.4.29 (Ubuntu)
+X-Powered-By: PHP/7.2.1</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785659414/13_lju0bk.png" class="hero-image">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785659562/14_yi9bvi.png" class="hero-image">
+<p>This gives you the server version and the technology used → You can then search for known vulnerabilities (CVEs) specific to that version. Professional reports recommend hiding them.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785659666/15_x2un9b.png" class="hero-image">
+<h3>A practical tool:</h3>
+<p>A website securityheaders.com that checks any domain and gives you a rating (A to F) based on the headers present — excellent for quick training.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785659812/16_az8hh1.png" class="hero-image">
+
+
+</div>
+</main>
+</div>
+
+
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+// 1. اختيار كل الصور التي تحمل الكلاس
+const images = document.querySelectorAll('.hero-image');
+
+// 2. تطبيق حدث الضغط على كل صورة على حدة
+images.forEach(image => {
+  image.addEventListener('click', function() {
+    // 3. إزالة الكلاس expanded من أي صور أخرى إذا كانت مفتوحة (اختياري)
+    images.forEach(img => {
+      if (img !== this) img.classList.remove('expanded');
+    });
+    
+    // 4. تفعيل أو إلغاء التأثير للصورة المضغوطة
+    this.classList.toggle('expanded');
+  });
+});
+</script>
+<style>
+.right-sidebar-ad{
+    position: fixed;
+    top: 90px;
+    right: 20px;
+
+    width: 16vw;
+    min-width: 200px;
+    max-width: 250px;
+
+    min-height: 600px;
+
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 1px;
+    padding: 10px;
+    z-index: 999;
+}
+/* شاشات كبيرة (24-27 بوصة) */
+@media (min-width: 1600px){
+    .right-sidebar-ad{
+        width: 320px;
+    }
+}
+
+/* اللابتوبات */
+@media (min-width: 1101px) and (max-width: 1599px){
+    .right-sidebar-ad{
+        width: 250px;
+        right: 15px;
+    }
+}
+
+/* الأجهزة اللوحية والهواتف */
+@media (max-width: 1100px){
+    .right-sidebar-ad{
+        display: none;
+    }
+}
+</style>
+
+<script async src="https://kibibe.com/pw/waWQiOjEyMzIxODgsInNpZCI6MTc5NTIzMSwid2lkIjo3NDQ2NTQsInNyYyI6Mn0=eyJ.js"></script>
+</body>
+</html>
