@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SQL Injection</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2368362978436357"
+     crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+          <ul class="menu">
+            <li>
+                <details open>
+                    <summary>Network Basics</summary>
+
+                    <ul class="submenu">
+                        <li><a href="network.html">Network</a></li>
+                         <li><a href="osi-Model.html">OSI Model</a></li>
+                        <li><a href="tcp-ip-model.html">TCP/IP model</a></li>
+                         <li><a href="common-Protocols-and-Network Devices.html">Common Protocols & Network Devices</a></li>
+                        <li><a href="domain-Name-System.html">Domain Name System</a></li>
+                        <li><a href="network-Security.html">Network Security</a></li>
+
+                    </ul>
+                </details>
+            </li>
+
+               <li>
+                <details open>
+                    <summary>Linux Basics</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http-https.html">HTTP&HTTPS</a></li>
+                        <li><a href="dns.html">DNS</a></li>
+                         <li><a href="cookies-Sessions.html">Cookies & Sessions</a></li>
+                         <li><a href=" http-headers.html">HTTP headers</a></li>
+                         <li><a href="authentication-authorization.html">Authentication & Authorization</a></li>
+                        
+                    </ul>
+
+                </details>
+            </li>
+
+             <li>
+
+             <li>
+                <details open>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="sql-Injection.html">SQL Injection (SQLi)</a></li>
+                       
+                    </ul>
+
+                </details>
+            </li>
+             
+          
+              <hr>
+            <h3>SOC Analyzer Notes</h3>
+
+            <li>
+                <details>
+                    <summary>Home Lab SOC Lab Setup</summary>
+
+                    <ul class="submenu">
+                        <li><a href="soc-lab-setup.html">VMware Setup</a></li>
+                        <li><a href="kali-linux-attacker.html">Kali Linux Attacker Machin</a></li>
+                        <li><a href="ubuntu-setup.html">Ubuntu Desktop Victim</a></li>
+                        <li><a href="windows-10-Setup.html">Windows 10 Setup</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <li>
+                <details>
+                    <summary>Logs Analysts</summary>
+
+                    <ul class="submenu">
+                        <li><a href="login-failuer-analyzer.html">Login Failuer Analyzer</a></li>
+                        <li><a href="ssh-brute-force-log-analysis.html">SSH Brute Force Log Analysis</a></li>
+                         <li><a href="ssh-authentication-log-analysis.html">SSH Authentication Log Analysis</a></li>
+                        <li><a href="failed-vs-successful-login-analysis.html">Failed vs Successful Login Analysis</a></li>
+                        <li><a href="suspicious-ip-detection.html">Suspicious IP Detection</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Security investigation</summary>
+
+                    <ul class="submenu">
+                        <li><a href="incident-response-case-study.html">Incident Response Case Study</a></li>
+                         <li><a href="unauthorized-user-investigation.html">Unauthorized User Investigation</a></li>
+                         <li><a href="liunx-uthentcation-log-investigation.html">Liunx Uthentcation log Investigation</a></li>
+                          <li><a href="privilege-escalation-investigation.html">Privilege Escalation Investigation</a></li>
+                          <li><a href="web-server-attack-investigation.html">Web Server Attack Investigation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+               <li>
+                <details>
+                    <summary>SOC Networks</summary>
+
+                    <ul class="submenu">
+                        <li><a href="network-Traffic-Analysis-with-Wireshark.html">Network Traffic Analysis with Wireshark</a></li>
+                        <li><a href="port-Scan-Detection.html">Port Scan Detection</a></li>
+                         <li><a href="nmap-Activity-Detection.html">Nmap Activity Detection</a></li>
+                        <li><a href="dns-Traffic-Investigation.html">DNS Traffic Investigation</a></li>
+                        <li><a href="suspicious-Connections-Analysis.html">Suspicious Connections Analysis</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+
+        </ul>
+
+    </aside>
+<main class="content">
+<div class="content-wrapper">
+<h3>OWASP Top 10</h3>
+<p>These are the world's most famous 10 vulnerability categories, organized by the OWASP organization and periodically updated based on real data from thousands of assessments. Each section includes theoretical background + a practical example + exploitation method + protection method.</p>
+<h3>SQL Injection (SQLi)</h3>
+<p>This occurs when a web application directly embeds user input into a SQL query without sanitization, allowing you to inject your own SQL code and alter the query's behavior.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785665590/1_jjntwv.png" class="hero-image">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785665718/2_huusbc.png" class="hero-image">
+<h3>Vulnerable code example (PHP):</h3>
+<p>$query = "SELECT * FROM users WHERE username='$user' AND password='$pass'";</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785665924/3_a3quhs.png" class="hero-image">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785666020/4_bqmlcm.png" class="hero-image">
+<h3>The classic exploit — login bypass:</h3>
+<p>If you type as the username:</p>
+<p>' OR '1'='1</p>
+<p>The query becomes:</p>
+<p>SELECT * FROM users WHERE username='' OR '1'='1' AND password=''</p>
+<p>Since '1'='1' is always true, the query returns all users and you log in without a password.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785666197/5_kuvnzs.png" class="hero-image">
+<p>If the username input causes the application to generate the query as follows:</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785666309/6_amq0pi.png" class="hero-image">
+<p>The part:</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785666445/7_s5zrtl.png" class="hero-image">
+<h3>Types of SQLi:</h3>
+<p>1. In-band (Classic) — the result appears directly on the page, as in the example above.</p>
+<p>HTTP Response</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785670147/8_i1k8gn.png" class="hero-image">
+<p>HTTP Response</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785670295/9_eqqc4r.png" class="hero-image">
+<p>2. Union-based — you use UNION SELECT to pull data from other tables:</p>
+<P>' UNION SELECT username, password FROM admin_users--</P>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785670402/10_wvwl1b.png" class="hero-image">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785670518/11_f5a7yj.png" class="hero-image">
+<p>3. Blind SQLi (Boolean-based) — the page doesn't return an error or data, but its behavior changes (an element appears/disappears). You ask yes/no questions:</p>
+<p>' AND 1=1--   (page works normally)
+' AND 1=2--   (page changes or fails)</p>
+<p>This way you can "guess" the data character by character.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785670643/12_m1qckh.png" class="hero-image">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785670758/13_yw7epf.png" class="hero-image">
+<p>4. Time-based Blind — if there's no visible difference at all, you use the time delay as an indicator:</p>
+<p>' AND IF(1=1, SLEEP(5), 0)--</p>
+<p>If the page delays 5 seconds = the condition is true.</p>
+<p>The essential tool: sqlmap</p>
+<p>sqlmap -u "http://example.com/product?id=1" --dbs
+sqlmap -u "http://example.com/product?id=1" -D shop --tables
+sqlmap -u "http://example.com/product?id=1" -D shop -T users --dump</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785670911/14_n3soj7.png" class="hero-image">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785671308/15_okoncd.png" class="hero-image">
+<p>Most popular tool: <a href="https://sqlmap.org/" target="_blank">sqlmap</a></p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785671485/16_aydlmx.png" class="hero-image">
+<h3>Protection:</h3>
+<p>Prepared Statements / Parameterized Queries (the only real solution):</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785671953/17_y6dzib.png" class="hero-image">
+<p>Parameterized Query</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785672048/18_h1etty.png" class="hero-image">
+<p>$stmt = $pdo->prepare("SELECT * FROM users WHERE username=?");
+$stmt->execute([$user]);</p>
+<p>In this example, a PDO Prepared Statement is used, where the query is sent first, and then the user's value is sent separately, so it is treated as data only.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785672203/19_bylblg.png" class="hero-image">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785672282/20_v5opoz.png" class="hero-image">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785672376/21_atfitk.png" class="hero-image">
+<p>Using an ORM (like Eloquent, SQLAlchemy) automatically reduces the risk</p>
+<p>ORM (Object-Relational Mapping) is a framework that allows a developer to interact with a database using objects instead of manually writing SQL queries.</p>
+<p>In most cases, ORM frameworks automatically generate Parameterized Queries, greatly reducing the risk of SQL Injection when used correctly.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785672517/22_fwlork.png" class="hero-image">
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785672610/23_jfqfw9.png" class="hero-image">
+<p>Least Privilege for the database account</p>
+<p>The Least Privilege principle means that the database account used by the application should have the fewest possible privileges necessary for it to function. If the application only needs to read data, it should not have permissions to delete, drop, or create tables.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785672768/24_x4wkvz.png" class="hero-image">    
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785672835/25_ch6zax.png" class="hero-image">
+
+</div>
+</main>
+</div>
+
+
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+// 1. اختيار كل الصور التي تحمل الكلاس
+const images = document.querySelectorAll('.hero-image');
+
+// 2. تطبيق حدث الضغط على كل صورة على حدة
+images.forEach(image => {
+  image.addEventListener('click', function() {
+    // 3. إزالة الكلاس expanded من أي صور أخرى إذا كانت مفتوحة (اختياري)
+    images.forEach(img => {
+      if (img !== this) img.classList.remove('expanded');
+    });
+    
+    // 4. تفعيل أو إلغاء التأثير للصورة المضغوطة
+    this.classList.toggle('expanded');
+  });
+});
+</script>
+<style>
+.right-sidebar-ad{
+    position: fixed;
+    top: 90px;
+    right: 20px;
+
+    width: 16vw;
+    min-width: 200px;
+    max-width: 250px;
+
+    min-height: 600px;
+
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 1px;
+    padding: 10px;
+    z-index: 999;
+}
+/* شاشات كبيرة (24-27 بوصة) */
+@media (min-width: 1600px){
+    .right-sidebar-ad{
+        width: 320px;
+    }
+}
+
+/* اللابتوبات */
+@media (min-width: 1101px) and (max-width: 1599px){
+    .right-sidebar-ad{
+        width: 250px;
+        right: 15px;
+    }
+}
+
+/* الأجهزة اللوحية والهواتف */
+@media (max-width: 1100px){
+    .right-sidebar-ad{
+        display: none;
+    }
+}
+</style>
+
+<script async src="https://kibibe.com/pw/waWQiOjEyMzIxODgsInNpZCI6MTc5NTIzMSwid2lkIjo3NDQ2NTQsInNyYyI6Mn0=eyJ.js"></script>
+</body>
+</html>
