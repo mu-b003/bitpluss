@@ -188,305 +188,36 @@
 
 <main class="content">
 <div class="content-wrapper">
-<h3>Linux Basics</h3>
-
-<p>Linux is an open-source operating system widely used in servers, cloud environments, cybersecurity, and penetration testing.</p>
-
-<p>Most security tools and platforms run on Linux.</p>
-
-<h4>Why Learn Linux?</h4>
-
-<p>Linux is essential for:</p>
-
-<p>• Penetration Testing</p>
-<p>• System Administration</p>
-<p>• Cloud Computing</p>
-<p>• DevOps</p>
-<p>• Web Hosting</p>
-<p>• Digital Forensics</p>
-
-<h4>Linux File System</h4>
-
-<p>Linux uses a hierarchical directory structure starting from the root directory.</p>
-
-<pre class="code-box"><code>/
-├── bin
-├── boot
-├── dev
-├── etc
-├── home
-├── opt
-├── root
-├── tmp
-├── usr
-└── var</code></pre>
-
-<h4>Important Directories</h4>
-
-<h5>/home</h5>
-
-<p>Contains user home directories.</p>
-
-<pre class="code-box"><code>/home/mubarak</code></pre>
-
-<h5>/root</h5>
-
-<p>Home directory of the root user.</p>
-
-<h5>/etc</h5>
-
-<p>Stores system configuration files.</p>
-
-<h5>/var</h5>
-
-<p>Contains logs and variable data.</p>
-
-<h5>/tmp</h5>
-
-<p>Stores temporary files.</p>
-
-<h5>/usr</h5>
-
-<p>Contains installed programs and libraries.</p>
-
-<h4>Navigation Commands</h4>
-
-<h5>pwd</h5>
-
-<p>Displays the current directory.</p>
-
-<pre class="code-box"><code>pwd</code></pre>
-
-<h5>ls</h5>
-
-<p>Lists files and directories.</p>
-
-<pre class="code-box"><code>ls</code></pre>
-
-<p>Show detailed information:</p>
-
-<pre class="code-box"><code>ls -la</code></pre>
-
-<h5>cd</h5>
-
-<p>Changes the current directory.</p>
-
-<pre class="code-box"><code>cd /home/user</code></pre>
-
-<h4>File Operations</h4>
-
-<h5>touch</h5>
-
-<p>Creates an empty file.</p>
-
-<pre class="code-box"><code>touch notes.txt</code></pre>
-
-<h5>cat</h5>
-
-<p>Displays file contents.</p>
-
-<pre class="code-box"><code>cat notes.txt</code></pre>
-
-<h5>cp</h5>
-
-<p>Copies files and directories.</p>
-
-<pre class="code-box"><code>cp file.txt backup.txt</code></pre>
-
-<h5>mv</h5>
-
-<p>Moves or renames files.</p>
-
-<pre class="code-box"><code>mv file.txt newfile.txt</code></pre>
-
-<h5>rm</h5>
-
-<p>Deletes files.</p>
-
-<pre class="code-box"><code>rm file.txt</code></pre>
-
-<p>Delete directories recursively:</p>
-
-<pre class="code-box"><code>rm -r folder</code></pre>
-
-<h5>mkdir</h5>
-
-<p>Creates a directory.</p>
-
-<pre class="code-box"><code>mkdir projects</code></pre>
-
-<h4>Viewing Files</h4>
-
-<h5>head</h5>
-
-<p>Displays the first lines of a file.</p>
-
-<pre class="code-box"><code>head file.txt</code></pre>
-
-<h5>tail</h5>
-
-<p>Displays the last lines of a file.</p>
-
-<pre class="code-box"><code>tail file.txt</code></pre>
-
-<h5>less</h5>
-
-<p>Views large files page by page.</p>
-
-<pre class="code-box"><code>less file.txt</code></pre>
-
-<h4>Searching</h4>
-
-<h5>find</h5>
-
-<p>Searches for files and directories.</p>
-
-<pre class="code-box"><code>find /home -name notes.txt</code></pre>
-
-<h5>grep</h5>
-
-<p>Searches for text inside files.</p>
-
-<pre class="code-box"><code>grep "admin" users.txt</code></pre>
-
-<h4>Permissions</h4>
-
-<p>Linux uses permissions to control access to files and directories.</p>
-
-<pre class="code-box"><code>-rwxr-xr--</code></pre>
-
-<p>Permission groups:</p>
-
-<pre class="code-box"><code>Owner | Group | Others</code></pre>
-
-<h5>r</h5>
-
-<p>Read permission.</p>
-
-<h5>w</h5>
-
-<p>Write permission.</p>
-
-<h5>x</h5>
-
-<p>Execute permission.</p>
-
-<h4>Changing Permissions</h4>
-
-<h5>chmod</h5>
-
-<p>Modifies file permissions.</p>
-
-<pre class="code-box"><code>chmod 755 script.sh</code></pre>
-
-<h5>chown</h5>
-
-<p>Changes file ownership.</p>
-
-<pre class="code-box"><code>chown user:user file.txt</code></pre>
-
-<h4>Processes</h4>
-
-<h5>ps</h5>
-
-<p>Displays running processes.</p>
-
-<pre class="code-box"><code>ps aux</code></pre>
-
-<h5>top</h5>
-
-<p>Displays system activity in real time.</p>
-
-<pre class="code-box"><code>top</code></pre>
-
-<h5>kill</h5>
-
-<p>Terminates a process.</p>
-
-<pre class="code-box"><code>kill 1234</code></pre>
-
-<h4>Networking Commands</h4>
-
-<h5>ip</h5>
-
-<p>Displays network interfaces and IP addresses.</p>
-
-<pre class="code-box"><code>ip a</code></pre>
-
-<h5>ping</h5>
-
-<p>Tests network connectivity.</p>
-
-<pre class="code-box"><code>ping google.com</code></pre>
-
-<h5>netstat</h5>
-
-<p>Displays network connections.</p>
-
-<pre class="code-box"><code>netstat -tunlp</code></pre>
-
-<h5>ss</h5>
-
-<p>Modern replacement for netstat.</p>
-
-<pre class="code-box"><code>ss -tunlp</code></pre>
-
-<h4>Package Management</h4>
-
-<h5>APT (Debian / Ubuntu)</h5>
-
-<p>Update package lists:</p>
-
-<pre class="code-box"><code>sudo apt update</code></pre>
-
-<p>Install a package:</p>
-
-<pre class="code-box"><code>sudo apt install nmap</code></pre>
-
-<h4>Useful Shortcuts</h4>
-
-<pre class="code-box"><code>Ctrl + C   → Stop current process
-Ctrl + Z   → Suspend process
-Ctrl + L   → Clear screen
-Tab        → Auto-complete
-↑          → Previous command</code></pre>
-
-<h4>What Should a Penetration Tester Know?</h4>
-
-<p>• File system navigation</p>
-
-<p>• File permissions</p>
-
-<p>• User management</p>
-
-<p>• Process management</p>
-
-<p>• Network troubleshooting</p>
-
-<p>• Log analysis</p>
-
-<p>• Package installation</p>
-
-<p>• Bash command line usage</p>
-
-<h4>Essential Commands for Beginners</h4>
-
-<pre class="code-box"><code>pwd
-ls -la
-cd
-cat
-cp
-mv
-rm
-find
-grep
-chmod
-chown
-ps
-top
-ip a
-ping
-sudo</code></pre>      
+<h3>What is Linux?</h3>
+<p>Linux is an open-source operating system that manages computer hardware and software resources. It allows users to run applications, manage files, and interact with the computer through a command-line interface (CLI) or a graphical user interface (GUI).</p>
+<p>We will be using the Kali version <a href="https://bitpluss.com/kali-linux-attacker" target="_blank">link</a> if you prefer the Ubuntu version it can be installed via the <a href="https://bitpluss.com/ubuntu-setup" target="_blank">link</a>.</p>
+<h3>Common Linux Distributions:</h3>
+<h3>Ubuntu</h3>
+<p><a href="https://ubuntu.com/download" target="_blank">Ubuntu</a> is a widely used Linux distribution built on Debian and developed by Canonical. It is known for emphasizing ease of use, regular releases, and broad hardware and software support, making it popular with individuals, businesses, developers, and cloud providers.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785849810/7_yzh7f1.jpg" class="hero-image"> 
+<h3>Debian</h3>
+<p><a href="https://www.debian.org/distrib/" target="_blank">Debian</a> is a free and open-source Linux distribution developed by a global community of volunteers. Known for its emphasis on stability, software freedom, and careful release practices, it has become one of the most influential operating systems in the Linux ecosystem and serves as the foundation for many other distributions.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785849906/8_xmnjus.jpg" class="hero-image"> 
+<h3>Fedora</h3>
+<p><a href="https://fedoraproject.org/workstation/download/" target="_blank">Fedora</a>is a free and open-source Linux distribution developed by the Fedora Project and sponsored primarily by Red Hat. It is widely recognized for delivering the latest stable open-source technologies and for serving as the upstream source of many innovations that later appear in Red Hat Enterprise Linux (RHEL). </p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785849980/9_ys6hcl.jpg" class="hero-image"> 
+<h3>Kali Linux</h3>
+<p><a href="https://www.kali.org/get-kali/#kali-platforms" target="_blank">Kali Linux</a> is a specialized Linux distribution designed for cybersecurity, penetration testing, and digital forensics. Maintained by Offensive Security, it is widely used by security professionals, researchers, educators, and students because it ships with hundreds of security-focused tools and receives frequent updates.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785850063/10_eeuse7.jpg" class="hero-image"> 
+<h3>CentOS</h3>
+<p><a href="https://www.centos.org/download/" target="_blank">CentOS </a>is an open-source enterprise Linux distribution and community project focused on providing a stable platform for software development and deployment. Originally known for rebuilding Red Hat Enterprise Linux (RHEL) sources, the project now centers on CentOS Stream, the development platform that sits just ahead of RHEL releases and invites community collaboration.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785850226/11_yojuru.png" class="hero-image"> 
+<hr>
+<h3>Kali Linux</h3>
+<p>This is the Kali graphics interface As you can see we have the home folder , File System , Trash , and file named File.pdf in the graphical interface.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785849339/1_o1iop8.png" class="hero-image">
+<p>Enter the home folder you will see similar items—specifically folders and files located within the home folder.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785849337/2_o1nvtd.png" class="hero-image">
+<p>Click the Kali icon to view the programs available within it.Then click on the icon labeled Terminal.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785849339/3_tyhye4.png" class="hero-image">
+<h3>Terminal</h3>
+<p>The Terminal is a command-line interface (CLI) that allows users to interact with the operating system by typing commands. It is used to manage files, run programs, configure the system, and perform administrative tasks efficiently.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1785849337/4_qqxota.png" class="hero-image">
 </div>
 </main>  
 </div>
