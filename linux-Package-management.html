@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linux Package management</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2368362978436357"
+     crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+          <ul class="menu">
+            <li>
+                <details open>
+                    <summary>Network Basics</summary>
+
+                    <ul class="submenu">
+                        <li><a href="network.html">Network</a></li>
+                         <li><a href="osi-Model.html">OSI Model</a></li>
+                        <li><a href="tcp-ip-model.html">TCP/IP model</a></li>
+                         <li><a href="common-Protocols-and-Network Devices.html">Common Protocols & Network Devices</a></li>
+                        <li><a href="domain-Name-System.html">Domain Name System</a></li>
+                        <li><a href="network-Security.html">Network Security</a></li>
+
+                    </ul>
+                </details>
+            </li>
+
+               <li>
+                <details open>
+                    <summary>Linux Basics</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                         <li><a href="file-system-structure.html">File system structure</a></li>
+                         <li><a href="linux-Commands.html">Linux Commands</a></li>
+                         <li><a href="linux-folders-and-files.html">Linux folders and files</a></li>
+                         <li><a href="bash-scripting.html"> Bash scripting</a></li>
+                         <li><a href="linux-Package-management.html">Linux Package management</a></li>
+                       
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http-https.html">HTTP&HTTPS</a></li>
+                        <li><a href="dns.html">DNS</a></li>
+                         <li><a href="cookies-Sessions.html">Cookies & Sessions</a></li>
+                         <li><a href=" http-headers.html">HTTP headers</a></li>
+                         <li><a href="authentication-authorization.html">Authentication & Authorization</a></li>
+                        
+                    </ul>
+
+                </details>
+            </li>
+
+             <li>
+
+             <li>
+                <details open>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="sql-Injection.html">SQL Injection (SQLi)</a></li>
+                       
+                    </ul>
+
+                </details>
+            </li>
+             
+          
+              <hr>
+            <h3>SOC Analyzer Notes</h3>
+
+            <li>
+                <details>
+                    <summary>Home Lab SOC Lab Setup</summary>
+
+                    <ul class="submenu">
+                        <li><a href="soc-lab-setup.html">VMware Setup</a></li>
+                        <li><a href="kali-linux-attacker.html">Kali Linux Attacker Machin</a></li>
+                        <li><a href="ubuntu-setup.html">Ubuntu Desktop Victim</a></li>
+                        <li><a href="windows-10-Setup.html">Windows 10 Setup</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <li>
+                <details>
+                    <summary>Logs Analysts</summary>
+
+                    <ul class="submenu">
+                        <li><a href="login-failuer-analyzer.html">Login Failuer Analyzer</a></li>
+                        <li><a href="ssh-brute-force-log-analysis.html">SSH Brute Force Log Analysis</a></li>
+                         <li><a href="ssh-authentication-log-analysis.html">SSH Authentication Log Analysis</a></li>
+                        <li><a href="failed-vs-successful-login-analysis.html">Failed vs Successful Login Analysis</a></li>
+                        <li><a href="suspicious-ip-detection.html">Suspicious IP Detection</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Security investigation</summary>
+
+                    <ul class="submenu">
+                        <li><a href="incident-response-case-study.html">Incident Response Case Study</a></li>
+                         <li><a href="unauthorized-user-investigation.html">Unauthorized User Investigation</a></li>
+                         <li><a href="liunx-uthentcation-log-investigation.html">Liunx Uthentcation log Investigation</a></li>
+                          <li><a href="privilege-escalation-investigation.html">Privilege Escalation Investigation</a></li>
+                          <li><a href="web-server-attack-investigation.html">Web Server Attack Investigation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+               <li>
+                <details>
+                    <summary>SOC Networks</summary>
+
+                    <ul class="submenu">
+                        <li><a href="network-Traffic-Analysis-with-Wireshark.html">Network Traffic Analysis with Wireshark</a></li>
+                        <li><a href="port-Scan-Detection.html">Port Scan Detection</a></li>
+                         <li><a href="nmap-Activity-Detection.html">Nmap Activity Detection</a></li>
+                        <li><a href="dns-Traffic-Investigation.html">DNS Traffic Investigation</a></li>
+                        <li><a href="suspicious-Connections-Analysis.html">Suspicious Connections Analysis</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+
+        </ul>
+
+    </aside>
+<main class="content">
+<div class="content-wrapper">
+<h3>Linux Package management</h3>
+<p>Package management refers to the handling of software packages within an operating system; it is used to install, update, and remove software as well as to manage the dependencies required for programs to function.</p>
+<p>The `sudo apt update` command is used to update packages.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786030155/1_hf8nb0.png" class="hero-image">
+<p>It is used to update all installed packages to the latest version available in the repositories.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786030219/2_urcgzj.png" class="hero-image">
+<p>It is used to install Git on Linux using the APT package manager.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786030255/3_atepzm.png" class="hero-image">
+<p>It is used to remove Git from the system while retaining configuration files.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786030384/4_kmpsx7.png" class="hero-image">
+<p>It is used to display information about IP addresses and network interfaces on a Linux device.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786030425/5_ljlrop.png" class="hero-image">
+<h3>It is used to send an ICMP Echo Request to the server bitpluss.com to verify:</h3>
+<p>Can the site be accessed via the network?</p>
+<p>Is the DNS working and able to resolve the domain name to an IP address?</p>
+<p>How long does it take for packets to travel and return (response time or latency)?</p>
+<p>Is there any packet loss?</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786030450/6_ttljdz.png" class="hero-image">
+<p>'ss -tuln' This is the result:</p>
+<p>Netid  State  Recv-Q  Send-Q  Local Address:Port  Peer Address:Port</p>
+<p>This means that there are currently no services listening on TCP or UDP ports.This is perfectly normal if the Kali system is new and you haven't started any servers, such as: SSH,Apache,Nginx,FTP,Netcat</p>
+<h3>What is the function of the `ss -tuln` command?</h3>
+<p>'-t' Display TCP ports</p>
+<p>'-u' Show UDP ports</p>
+<p>'-l' Show only listening ports.</p>
+<p>'-n' Display port numbers instead of service names.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786030474/7_px6r4j.png" class="hero-image">
+
+
+</div>
+</main>
+</div>
+
+
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+// 1. اختيار كل الصور التي تحمل الكلاس
+const images = document.querySelectorAll('.hero-image');
+
+// 2. تطبيق حدث الضغط على كل صورة على حدة
+images.forEach(image => {
+  image.addEventListener('click', function() {
+    // 3. إزالة الكلاس expanded من أي صور أخرى إذا كانت مفتوحة (اختياري)
+    images.forEach(img => {
+      if (img !== this) img.classList.remove('expanded');
+    });
+    
+    // 4. تفعيل أو إلغاء التأثير للصورة المضغوطة
+    this.classList.toggle('expanded');
+  });
+});
+</script>
+<style>
+.right-sidebar-ad{
+    position: fixed;
+    top: 90px;
+    right: 20px;
+
+    width: 16vw;
+    min-width: 200px;
+    max-width: 250px;
+
+    min-height: 600px;
+
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 1px;
+    padding: 10px;
+    z-index: 999;
+}
+/* شاشات كبيرة (24-27 بوصة) */
+@media (min-width: 1600px){
+    .right-sidebar-ad{
+        width: 320px;
+    }
+}
+
+/* اللابتوبات */
+@media (min-width: 1101px) and (max-width: 1599px){
+    .right-sidebar-ad{
+        width: 250px;
+        right: 15px;
+    }
+}
+
+/* الأجهزة اللوحية والهواتف */
+@media (max-width: 1100px){
+    .right-sidebar-ad{
+        display: none;
+    }
+}
+</style>
+
+<script async src="https://kibibe.com/pw/waWQiOjEyMzIxODgsInNpZCI6MTc5NTIzMSwid2lkIjo3NDQ2NTQsInNyYyI6Mn0=eyJ.js"></script>
+</body>
+</html>
