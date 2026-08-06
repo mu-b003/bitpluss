@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linux folders and files</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2368362978436357"
+     crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+          <ul class="menu">
+            <li>
+                <details open>
+                    <summary>Network Basics</summary>
+
+                    <ul class="submenu">
+                        <li><a href="network.html">Network</a></li>
+                         <li><a href="osi-Model.html">OSI Model</a></li>
+                        <li><a href="tcp-ip-model.html">TCP/IP model</a></li>
+                         <li><a href="common-Protocols-and-Network Devices.html">Common Protocols & Network Devices</a></li>
+                        <li><a href="domain-Name-System.html">Domain Name System</a></li>
+                        <li><a href="network-Security.html">Network Security</a></li>
+
+                    </ul>
+                </details>
+            </li>
+
+               <li>
+                <details open>
+                    <summary>Linux Basics</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                         <li><a href="file-system-structure.html">File system structure</a></li>
+                         <li><a href="linux-Commands.html">Linux Commands</a></li>
+                         <li><a href="linux-folders-and-files.html">Linux folders and files</a></li>
+
+                      
+                        <li><a href="permissions.html">Permissions</a></li>
+                        <li><a href="privilege-escalation.html">Privilege Escalation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http-https.html">HTTP&HTTPS</a></li>
+                        <li><a href="dns.html">DNS</a></li>
+                         <li><a href="cookies-Sessions.html">Cookies & Sessions</a></li>
+                         <li><a href=" http-headers.html">HTTP headers</a></li>
+                         <li><a href="authentication-authorization.html">Authentication & Authorization</a></li>
+                        
+                    </ul>
+
+                </details>
+            </li>
+
+             <li>
+
+             <li>
+                <details open>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="sql-Injection.html">SQL Injection (SQLi)</a></li>
+                       
+                    </ul>
+
+                </details>
+            </li>
+             
+          
+              <hr>
+            <h3>SOC Analyzer Notes</h3>
+
+            <li>
+                <details>
+                    <summary>Home Lab SOC Lab Setup</summary>
+
+                    <ul class="submenu">
+                        <li><a href="soc-lab-setup.html">VMware Setup</a></li>
+                        <li><a href="kali-linux-attacker.html">Kali Linux Attacker Machin</a></li>
+                        <li><a href="ubuntu-setup.html">Ubuntu Desktop Victim</a></li>
+                        <li><a href="windows-10-Setup.html">Windows 10 Setup</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <li>
+                <details>
+                    <summary>Logs Analysts</summary>
+
+                    <ul class="submenu">
+                        <li><a href="login-failuer-analyzer.html">Login Failuer Analyzer</a></li>
+                        <li><a href="ssh-brute-force-log-analysis.html">SSH Brute Force Log Analysis</a></li>
+                         <li><a href="ssh-authentication-log-analysis.html">SSH Authentication Log Analysis</a></li>
+                        <li><a href="failed-vs-successful-login-analysis.html">Failed vs Successful Login Analysis</a></li>
+                        <li><a href="suspicious-ip-detection.html">Suspicious IP Detection</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Security investigation</summary>
+
+                    <ul class="submenu">
+                        <li><a href="incident-response-case-study.html">Incident Response Case Study</a></li>
+                         <li><a href="unauthorized-user-investigation.html">Unauthorized User Investigation</a></li>
+                         <li><a href="liunx-uthentcation-log-investigation.html">Liunx Uthentcation log Investigation</a></li>
+                          <li><a href="privilege-escalation-investigation.html">Privilege Escalation Investigation</a></li>
+                          <li><a href="web-server-attack-investigation.html">Web Server Attack Investigation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+               <li>
+                <details>
+                    <summary>SOC Networks</summary>
+
+                    <ul class="submenu">
+                        <li><a href="network-Traffic-Analysis-with-Wireshark.html">Network Traffic Analysis with Wireshark</a></li>
+                        <li><a href="port-Scan-Detection.html">Port Scan Detection</a></li>
+                         <li><a href="nmap-Activity-Detection.html">Nmap Activity Detection</a></li>
+                        <li><a href="dns-Traffic-Investigation.html">DNS Traffic Investigation</a></li>
+                        <li><a href="suspicious-Connections-Analysis.html">Suspicious Connections Analysis</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+
+        </ul>
+
+    </aside>
+<main class="content">
+<div class="content-wrapper">
+<h3>Linux folders and files</h3>
+<p>The `mkdir Mubarak` command is used to create a folder named Mubarak.</p>
+<p>The command `mkdir folder1 folder2 folder3` is used to create multiple folders at once.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786017560/1_x9cjjr.png" class="hero-image">
+<p>The `touch file.txt` command is used to create a file named `file.txt`.</p>
+<p>The command `touch file2.txt file3.txt` is used to create multiple files at once.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786017560/2_tplkcd.png" class="hero-image">
+<p>The command `cp file.txt backup.txt` is used to create a copy of the original file but it is saved under the new name.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786017560/3_exjnvr.png" class="hero-image">
+<p>The command `cp -r folder1 backup-folder` is used to create a copy of the folder but it is saved under the new name.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786017561/4_ewp1np.png" class="hero-image">
+<p>The command `mv backup.txt Desktop/` is used to move a file from one location to another for example here it moves the file `backup.txt` from the current directory to the `Desktop/` directory.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786017560/5_emti8d.png" class="hero-image">
+<p>The command `mv file2.txt new.txt` is used to rename the file from `file2.txt` to `new.txt`.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786017561/6_x4cxmn.png" class="hero-image">
+<p>The command `rm new.txt` is used to permanently delete the file from the system.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786017561/7_nmilsf.png" class="hero-image">
+<p>The command `rmdir folder1` is used to permanently delete the folder from the system.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786017561/8_zwxk5j.png" class="hero-image">
+<p>The command `rm -r folder3` is used to permanently delete the directory and its contents from the system.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786017561/9_bhqmbn.png" class="hero-image">
+<p>The command `nano file.txt` is used to open the file.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786017561/10_afqkhl.png" class="hero-image">
+<p>Running the `nano` command opens the file you can type anything inside to test it then press Ctrl+O to save, hit Enter, and finally press Ctrl+X to exit.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786017562/11_id2cst.png" class="hero-image">
+<p>The `cat file.txt` command is used to display the contents of the file.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786017562/12_pqgtw2.png" class="hero-image">
+<p>The `head file.txt` command is used to display the first ten lines of the file.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786017562/13_jv4sry.png" class="hero-image">
+<p>The command `tail file.txt` is used to display the last ten lines of the file.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786017564/14_fldj0l.png" class="hero-image">
+<p>It is used to display the content of a text file page by page this is useful when the file is long and you do not want to display it all at once.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786017562/15_q1nouw.png" class="hero-image">
+<p>The Result</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786017564/16_xesovw.png" class="hero-image">
+<p>It is used to search for all files ending with .txt within the /home directory and all its subdirectories.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786017562/17_l0c2t2.png" class="hero-image">
+<p>It is used to search for a specific word or text within a file and then displays the lines containing that text.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786017562/18_qvej00.png" class="hero-image">
+
+
+</div>
+</main>
+</div>
+
+
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+// 1. اختيار كل الصور التي تحمل الكلاس
+const images = document.querySelectorAll('.hero-image');
+
+// 2. تطبيق حدث الضغط على كل صورة على حدة
+images.forEach(image => {
+  image.addEventListener('click', function() {
+    // 3. إزالة الكلاس expanded من أي صور أخرى إذا كانت مفتوحة (اختياري)
+    images.forEach(img => {
+      if (img !== this) img.classList.remove('expanded');
+    });
+    
+    // 4. تفعيل أو إلغاء التأثير للصورة المضغوطة
+    this.classList.toggle('expanded');
+  });
+});
+</script>
+<style>
+.right-sidebar-ad{
+    position: fixed;
+    top: 90px;
+    right: 20px;
+
+    width: 16vw;
+    min-width: 200px;
+    max-width: 250px;
+
+    min-height: 600px;
+
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 1px;
+    padding: 10px;
+    z-index: 999;
+}
+/* شاشات كبيرة (24-27 بوصة) */
+@media (min-width: 1600px){
+    .right-sidebar-ad{
+        width: 320px;
+    }
+}
+
+/* اللابتوبات */
+@media (min-width: 1101px) and (max-width: 1599px){
+    .right-sidebar-ad{
+        width: 250px;
+        right: 15px;
+    }
+}
+
+/* الأجهزة اللوحية والهواتف */
+@media (max-width: 1100px){
+    .right-sidebar-ad{
+        display: none;
+    }
+}
+</style>
+
+<script async src="https://kibibe.com/pw/waWQiOjEyMzIxODgsInNpZCI6MTc5NTIzMSwid2lkIjo3NDQ2NTQsInNyYyI6Mn0=eyJ.js"></script>
+</body>
+</html>
