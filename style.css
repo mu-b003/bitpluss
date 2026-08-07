@@ -1,222 +1,395 @@
-/* =====================================================
-   START: Image Improvements
-===================================================== */
-
-.content{
-    padding:60px 50px;
+* {
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-.content-wrapper{
+body{
+    font-family:'Inter',sans-serif;
+    font-weight:400;
+    background:white;
+    color:#555555;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    text-rendering:optimizeLegibility;
+}
+
+/* Top Bar */
+
+.topbar{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 68px;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 1px solid #334155;
+    z-index: 1000;
+}
+
+.logo a{
+    color:#0e5bd8;
+    text-decoration:none;
+    font-size:24px;
+    font-weight:800;
+    letter-spacing:-0.5px;
+}
+
+nav{
+    display:flex;
+    gap:10px;
+}
+
+nav a{
+    color:#0e5bd8;
+    text-decoration:none;
+    border:1px solid #64748b;
+    padding:8px 15px;
+    border-radius:6px;
+    font-weight:600;
+}
+
+/* Layout */
+
+.docs-layout{
+    display:flex;
+    min-height:calc(100vh - 70px);
+    margin-top:70px;
+}
+/* Sidebar */
+
+.sidebar{
+    width:280px;
+    min-width:280px;
+    background:white;
+    border-right:1px solid #bdc0c4;
+    padding:20px;
+    overflow-y:auto;
+    position:sticky;
+    top:70px;
+    height:calc(100vh - 70px);
+}
+
+.sidebar h2{
+    margin-bottom:20px;
+}
+
+.sidebar input{
     width:100%;
-    max-width:1100px;
-    margin:0 auto;
+    padding:10px;
+    border:1px solid #334155;
+    border-radius:6px;
+    background:white;
+    color:#333333; /* ØªÙ… ØªØ¹Ø¯ÙŠÙ„ Ø§Ù„Ù„ÙˆÙ† Ù…Ù† white Ø¥Ù„Ù‰ Ø±Ù…Ø§Ø¯ÙŠ ØºØ§Ù…Ù‚ */
+    margin-bottom:20px;
+}
+
+/* Menu */
+
+.menu{
+    list-style:none;
+}
+
+.menu li{
+    margin-bottom:8px;
+}
+
+details{
+    width:100%;
+}
+
+summary{
+    cursor:pointer;
+    padding:10px;
+    border-radius:6px;
+    color:#333333; /* ØªÙ… ØªØ¹Ø¯ÙŠÙ„ Ø§Ù„Ù„ÙˆÙ† Ù…Ù† white Ø¥Ù„Ù‰ Ø±Ù…Ø§Ø¯ÙŠ ØºØ§Ù…Ù‚ */
+}
+
+summary:hover{
+    background:#f0f0f0; /* ØªÙ… ØªØ¹Ø¯ÙŠÙ„ Ø§Ù„Ø®Ù„ÙÙŠØ© Ù„ØªØ±Ù‰ Ø§Ù„ØªØ£Ø«ÙŠØ± */
+}
+
+details[open] summary{
+    color:#60a5fa;
+    font-weight:bold;
+}
+
+.submenu{
+    list-style:none;
+    margin-top:5px;
+    padding-left:15px;
+}
+
+.submenu li{
+    margin:4px 0;
+}
+
+.submenu a{
+    display:block;
+    text-decoration:none;
+    color:#555555; /* ØªÙ… ØªØ¹Ø¯ÙŠÙ„ Ø§Ù„Ù„ÙˆÙ† Ù…Ù† cbd5e1 (ÙƒØ§Ù† ØºÙŠØ± Ù…Ø±Ø¦ÙŠ) Ø¥Ù„Ù‰ Ø±Ù…Ø§Ø¯ÙŠ */
+    padding:8px;
+    border-radius:6px;
+}
+
+.submenu a:hover{
+    background:#ebecf0;
+    color:#0e5bd8; /* ØªÙ… ØªØ¹Ø¯ÙŠÙ„ Ø§Ù„Ù„ÙˆÙ† Ù„ÙŠØµØ¨Ø­ Ù…Ø±Ø¦ÙŠØ§Ù‹ Ø¹Ù†Ø¯ Ø§Ù„ØªØ­Ø¯ÙŠØ¯ */
+}
+
+/* Content */
+
+.content{
+    flex:1;
+    padding:35px;
 }
 
 .content h1{
-    max-width:1100px;
+    max-width:900px;
+    width:100%;
+    margin:0 auto 20px auto;
+    font-size:52px;
+    font-weight:800;
+    letter-spacing:-1px;
 }
 
 .content p{
-    max-width:1100px;
+    max-width:900px;
+    width:100%;
+    margin:0 auto 30px auto;
+    color:#555555;
+    line-height:1.8;
+    font-weight:400;
+    word-wrap:break-word;
 }
 
 .hero-image{
     width:100%;
-    max-width:1100px;
-    display:block;
-    margin:0 auto 40px auto;
-    border-radius:12px;
-    overflow:hidden;
-    box-shadow:0 8px 25px rgba(0,0,0,.15);
-    transition:
-        transform .35s ease,
-        box-shadow .35s ease;
-}
-
-.hero-image:hover{
-    transform:translateY(-3px);
-    box-shadow:0 18px 35px rgba(0,0,0,.22);
-}
-
-.code-box{
-    max-width:1100px;
-    width:100%;
-    margin:0 auto 45px auto;
-}
-
-/* =====================================================
-   END: Image Improvements
-===================================================== */
-/* =====================================================
-   START: Dark Mode
-===================================================== */
-
-/* الصفحة */
-
-body.dark-mode{
-    background:#0f172a;
-    color:#e5e7eb;
-}
-
-/* الشريط العلوي */
-
-body.dark-mode .topbar{
-    background:#111827;
-    border-bottom:1px solid #374151;
-}
-
-/* القائمة الجانبية */
-
-body.dark-mode .sidebar{
-    background:#111827;
-    border-right:1px solid #374151;
-}
-
-/* المحتوى */
-
-body.dark-mode .content{
-    background:#0f172a;
-}
-
-/* العناوين */
-
-body.dark-mode h1,
-body.dark-mode h2,
-body.dark-mode h3,
-body.dark-mode h4,
-body.dark-mode h5,
-body.dark-mode p,
-body.dark-mode summary{
-    color:#f8fafc;
-}
-
-/* البحث */
-
-body.dark-mode .sidebar input{
-    background:#1e293b;
-    color:#ffffff;
-    border:1px solid #475569;
-}
-
-body.dark-mode .sidebar input::placeholder{
-    color:#94a3b8;
-}
-
-/* القوائم */
-
-body.dark-mode summary:hover{
-    background:#1e293b;
-}
-
-body.dark-mode .submenu a{
-    color:#cbd5e1;
-}
-
-body.dark-mode .submenu a:hover{
-    background:#1e293b;
-    color:#60a5fa;
-}
-
-/* روابط الشريط العلوي */
-
-body.dark-mode nav a{
-    color:#60a5fa;
-    border-color:#475569;
-}
-
-/* =====================================================
-   END: Dark Mode
-===================================================== */
-/* =====================================================
-   START: Dark Mode Final Touches
-===================================================== */
-
-/* زر الوضع الداكن */
-
-#themeToggle{
-    width:42px;
-    height:42px;
-    border:none;
-    border-radius:8px;
-    background:#0e5bd8;
-    color:#ffffff;
-    font-size:18px;
-    cursor:pointer;
-    transition:all .3s ease;
-}
-
-#themeToggle:hover{
-    background:#2563eb;
-    transform:scale(1.05);
-}
-
-/* صندوق الكود */
-
-body.dark-mode .code-box{
-    background:#111827;
-    color:#f8fafc;
-    border-left:5px solid #3b82f6;
-}
-
-/* الصور */
-
-body.dark-mode .hero-image{
-    box-shadow:0 10px 30px rgba(0,0,0,.45);
-}
-
-body.dark-mode .hero-image:hover{
-    box-shadow:0 18px 45px rgba(0,0,0,.60);
-}
-
-/* الإعلان */
-
-body.dark-mode .ad-box{
-    background:#111827;
-    border:1px dashed #374151;
-    color:#cbd5e1;
-}
-
-/* الفوتر */
-
-body.dark-mode footer{
-    background:#111827;
-    border-top:1px solid #374151;
-}
-
-body.dark-mode footer p{
-    color:#cbd5e1;
-}
-
-body.dark-mode footer a{
-    color:#60a5fa;
-}
-
-body.dark-mode footer a:hover{
-    color:#93c5fd;
-}
-
-/* شريط التمرير */
-
-body.dark-mode::-webkit-scrollbar{
-    width:10px;
-}
-
-body.dark-mode::-webkit-scrollbar-track{
-    background:#0f172a;
-}
-
-body.dark-mode::-webkit-scrollbar-thumb{
-    background:#475569;
+    max-width:900px;
     border-radius:10px;
+    display:block;
+    margin:0 auto 30px auto;
 }
 
-body.dark-mode::-webkit-scrollbar-thumb:hover{
-    background:#64748b;
+
+
+/* ØªÙ†Ø³ÙŠÙ‚ Ø§Ù„Ø´Ø§Ø´Ø§Øª Ø§Ù„ØµØºÙŠØ±Ø© (Ø§Ù„Ù‡ÙˆØ§ØªÙ) */
+@media screen and (max-width: 768px) {
+    .docs-layout {
+        flex-direction: column; /* ØªØ­ÙˆÙŠÙ„ Ø§Ù„ØªØ®Ø·ÙŠØ· Ù…Ù† Ø£Ø¹Ù…Ø¯Ø© Ø¥Ù„Ù‰ ØµÙÙˆÙ */
+        margin-top: 68px;
+    }
+
+    .sidebar {
+       width:200px !important;
+        height: auto; /* Ø§Ø±ØªÙØ§Ø¹ ØªÙ„Ù‚Ø§Ø¦ÙŠ Ø­Ø³Ø¨ Ø§Ù„Ù…Ø­ØªÙˆÙ‰ */
+        position: relative; /* Ø¥Ù„ØºØ§Ø¡ Ø§Ù„ØªØ«Ø¨ÙŠØª */
+        top: 0;
+        border-right: none;
+        border-bottom: 1px solid #bdc0c4;
+    }
+
+    .content {
+        padding: 20px; /* ØªÙ‚Ù„ÙŠÙ„ Ø§Ù„Ù‡ÙˆØ§Ù…Ø´ ÙÙŠ Ø§Ù„Ù…ÙˆØ¨Ø§ÙŠÙ„ */
+    }
+
+    .content h1 {
+        font-size: 32px; /* ØªØµØºÙŠØ± Ø­Ø¬Ù… Ø§Ù„Ø®Ø· Ù„ÙŠØªÙ†Ø§Ø³Ø¨ Ù…Ø¹ Ø§Ù„Ø´Ø§Ø´Ø© */
+    }
+
+    .topbar {
+        padding: 0 10px;
+    }
 }
 
-/* =====================================================
-   END: Dark Mode Final Touches
-===================================================== */
 
 
+
+
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #64748b;
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+footer p {
+    margin: 0;
+}
+
+footer a {
+    color: #0e5bd8;
+    text-decoration: none;
+    margin: 0 5px; /* Ù…Ø³Ø§ÙØ© ØµØºÙŠØ±Ø© Ø¬Ø¯Ø§Ù‹ Ø­ÙˆÙ„ Ø§Ù„Ø±ÙˆØ§Ø¨Ø· */
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+
+.content-wrapper {
+    max-width: 750px;
+    margin: 0 auto 0 40px;
+}
+
+.hero-image {
+    display: block;
+    width: 100%;      /* ØªØ¬Ø¹Ù„ Ø§Ù„ØµÙˆØ±Ø© ØªØ£Ø®Ø° ÙƒØ§Ù…Ù„ Ø¹Ø±Ø¶ Ø§Ù„Ø­Ø§ÙˆÙŠØ© */
+    height: auto;
+}
+
+.code-box {
+    background-color: #2d2d2d;
+    color: #f8f8f2;
+    padding: 15px;
+    border-radius: 0 0 8px 8px; /* Ø²ÙˆØ§ÙŠØ§ Ø¯Ø§Ø¦Ø±ÙŠØ© Ù…Ù† Ø§Ù„Ø£Ø³ÙÙ„ ÙÙ‚Ø· Ù„ØªØ¨Ø¯Ùˆ Ù…ØªØµÙ„Ø© */
+    border-left: 5px solid #0e5bd8;
+    margin-top: 0;    /* Ø¥Ø²Ø§Ù„Ø© Ø§Ù„Ù…Ø³Ø§ÙØ© Ø¨ÙŠÙ† Ø§Ù„ØµÙˆØ±Ø© ÙˆØ§Ù„ÙƒÙˆØ¯ */
+    width: 100%;      /* Ø¶Ù…Ø§Ù† Ù…Ø·Ø§Ø¨Ù‚Ø© Ø§Ù„ÙƒÙˆØ¯ Ù„Ø¹Ø±Ø¶ Ø§Ù„Ø­Ø§ÙˆÙŠØ© */
+    box-sizing: border-box; /* Ù„Ø¶Ù…Ø§Ù† Ø¹Ø¯Ù… Ø®Ø±ÙˆØ¬ Ø§Ù„Ø­ÙˆØ§Ù Ø¨Ø³Ø¨Ø¨ Ø§Ù„Ù€ padding */
+}
+
+
+
+
+
+
+.hero-image {
+    display: block;
+    width: 100%;      /* ØªØ¬Ø¹Ù„ Ø§Ù„ØµÙˆØ±Ø© ØªØ£Ø®Ø° ÙƒØ§Ù…Ù„ Ø¹Ø±Ø¶ Ø§Ù„Ø­Ø§ÙˆÙŠØ© */
+    height: auto;
+}
+
+.code-box {
+    background-color: #2d2d2d;
+    color: #f8f8f2;
+    padding: 15px;
+    border-radius: 0 0 8px 8px; /* Ø²ÙˆØ§ÙŠØ§ Ø¯Ø§Ø¦Ø±ÙŠØ© Ù…Ù† Ø§Ù„Ø£Ø³ÙÙ„ ÙÙ‚Ø· Ù„ØªØ¨Ø¯Ùˆ Ù…ØªØµÙ„Ø© */
+    border-left: 5px solid #0e5bd8;
+    margin-top: 0;    /* Ø¥Ø²Ø§Ù„Ø© Ø§Ù„Ù…Ø³Ø§ÙØ© Ø¨ÙŠÙ† Ø§Ù„ØµÙˆØ±Ø© ÙˆØ§Ù„ÙƒÙˆØ¯ */
+    width: 100%;      /* Ø¶Ù…Ø§Ù† Ù…Ø·Ø§Ø¨Ù‚Ø© Ø§Ù„ÙƒÙˆØ¯ Ù„Ø¹Ø±Ø¶ Ø§Ù„Ø­Ø§ÙˆÙŠØ© */
+    box-sizing: border-box; /* Ù„Ø¶Ù…Ø§Ù† Ø¹Ø¯Ù… Ø®Ø±ÙˆØ¬ Ø§Ù„Ø­ÙˆØ§Ù Ø¨Ø³Ø¨Ø¨ Ø§Ù„Ù€ padding */
+}
+
+
+
+
+
+
+
+.hero-image {
+  cursor: pointer;
+  transition: all 0.4s ease; /* ØªØ£Ø«ÙŠØ± Ø­Ø±ÙƒØ© Ø³Ù„Ø³ */
+  position: relative;
+  z-index: 1;
+}
+
+/* Ø§Ù„ÙƒÙ„Ø§Ø³ Ø§Ù„Ø°ÙŠ Ø³Ù†Ø¶ÙŠÙÙ‡ Ø¹Ù†Ø¯ Ø§Ù„Ø¶ØºØ· */
+.hero-image.expanded {
+  position: fixed; /* Ù„ØªØµØ¨Ø­ ÙÙˆÙ‚ ÙƒÙ„ Ø§Ù„Ø¹Ù†Ø§ØµØ± */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.5); /* ØªÙƒØ¨ÙŠØ± Ø§Ù„ØµÙˆØ±Ø© ÙˆØªÙˆØ³ÙŠØ·Ù‡Ø§ */
+  z-index: 9999; /* Ù„Ø¶Ù…Ø§Ù† Ø¸Ù‡ÙˆØ±Ù‡Ø§ ÙÙˆÙ‚ ÙƒÙ„ Ø´ÙŠØ¡ */
+  box-shadow: 0 0 20px rgba(0,0,0,0.5); /* Ø¥Ø¶Ø§ÙØ© Ø¸Ù„ Ù„ØªØ¨Ø¯Ùˆ ÙƒØ¨Ø·Ø§Ù‚Ø© Ù…Ù†Ø¨Ø«Ù‚Ø© */
+  cursor: zoom-out;
+}
+
+@media (min-width: 1400px) {
+    .content-wrapper{
+        max-width: 900px;
+    }
+
+    .ad-sidebar{
+        width:320px;
+    }
+}
+
+@media (min-width: 1024px) and (max-width: 1399px) {
+    .content-wrapper{
+        max-width:750px;
+    }
+
+    .ad-sidebar{
+        width:260px;
+    }
+}
+
+@media (max-width: 1023px) {
+    .ad-sidebar{
+        display:none;
+    }
+
+    .content-wrapper{
+        max-width:850px;
+        margin:0 auto;
+    }
+}
+
+@media (max-width:768px){
+
+    .ad-sidebar{
+        display:none !important;
+    }
+
+    .content-wrapper{
+        max-width:100%;
+        margin:0 auto;
+    }
+}
+
+
+
+/* ===================================
+   Right Advertisement Sidebar
+=================================== */
+
+.ad-sidebar{
+    width:340px;
+    flex-shrink:0;
+    padding:20px 10px 20px 20px;
+
+    display:flex;
+    justify-content:flex-end;
+}
+
+.ad-box{
+    position:fixed;
+    top:90px;
+    right:20px;
+
+    width:180px;
+    height:500px;
+
+    border:1px dashed #cbd5e1;
+    background:#fafafa;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    color:#94a3b8;
+    font-size:15px;
+    font-weight:600;
+}
+
+/* إخفاء الإعلان في الشاشات الصغيرة */
+
+@media (max-width:1200px){
+
+    .ad-sidebar{
+        display:none;
+    }
+
+}
 
