@@ -393,3 +393,189 @@ footer a:hover {
 
 }
 
+
+
+
+/* =====================================================
+   DARK MODE
+   ===================================================== */
+
+/* الصفحة */
+
+body.dark-mode{
+    background:#0f172a;
+    color:#e5e7eb;
+}
+
+/* الشريط العلوي */
+
+body.dark-mode .topbar{
+    background:#111827;
+    border-bottom:1px solid #374151;
+}
+
+/* الشعار */
+
+body.dark-mode .logo a{
+    color:#60a5fa;
+}
+
+/* روابط التنقل */
+
+body.dark-mode nav a{
+    color:#60a5fa;
+    border-color:#475569;
+    background:transparent;
+}
+
+body.dark-mode nav a:hover{
+    background:#1e293b;
+}
+
+/* زر الوضع الداكن */
+
+#themeToggle{
+    width:42px;
+    height:42px;
+    border:none;
+    border-radius:8px;
+    background:#0e5bd8;
+    color:#ffffff;
+    cursor:pointer;
+    font-size:18px;
+    transition:.3s;
+}
+
+#themeToggle:hover{
+    background:#2563eb;
+}
+
+/* القائمة الجانبية */
+
+body.dark-mode .sidebar{
+    background:#111827;
+    border-right:1px solid #374151;
+}
+
+/* البحث */
+
+body.dark-mode .sidebar input{
+    background:#1e293b;
+    color:#ffffff;
+    border:1px solid #475569;
+}
+
+body.dark-mode .sidebar input::placeholder{
+    color:#94a3b8;
+}
+
+/* العناوين */
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5{
+    color:#f8fafc;
+}
+
+/* النصوص */
+
+body.dark-mode p{
+    color:#d1d5db;
+}
+
+/* القائمة */
+
+body.dark-mode summary{
+    color:#f8fafc;
+}
+
+body.dark-mode summary:hover{
+    background:#1e293b;
+}
+
+body.dark-mode details[open] summary{
+    color:#60a5fa;
+}
+
+/* الروابط */
+
+body.dark-mode .submenu a{
+    color:#cbd5e1;
+}
+
+body.dark-mode .submenu a:hover{
+    background:#1e293b;
+    color:#60a5fa;
+}
+
+/* المحتوى */
+
+body.dark-mode .content{
+    background:#0f172a;
+}
+
+/* الصور */
+
+body.dark-mode .hero-image{
+    box-shadow:0 10px 30px rgba(0,0,0,.45);
+}
+
+/* صناديق الكود */
+
+body.dark-mode .code-box{
+    background:#111827;
+    color:#f8fafc;
+    border-left:5px solid #3b82f6;
+}
+
+/* الإعلان */
+
+body.dark-mode .ad-box{
+    background:#111827;
+    border:1px dashed #374151;
+    color:#cbd5e1;
+}
+
+/* الفوتر */
+
+body.dark-mode footer{
+    background:#111827;
+    border-top:1px solid #374151;
+}
+
+body.dark-mode footer p{
+    color:#cbd5e1;
+}
+
+body.dark-mode footer a{
+    color:#60a5fa;
+}
+
+body.dark-mode footer a:hover{
+    color:#93c5fd;
+}
+
+/* شريط التمرير */
+
+body.dark-mode::-webkit-scrollbar{
+    width:10px;
+}
+
+body.dark-mode::-webkit-scrollbar-track{
+    background:#0f172a;
+}
+
+body.dark-mode::-webkit-scrollbar-thumb{
+    background:#475569;
+    border-radius:10px;
+}
+
+body.dark-mode::-webkit-scrollbar-thumb:hover{
+    background:#64748b;
+}
+
+/* =====================================================
+   END DARK MODE
+   ===================================================== */
