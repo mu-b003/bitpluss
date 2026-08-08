@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linux Promations</title>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2368362978436357"
+     crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css">
+<meta name="color-scheme" content="light dark">     
+</head>
+<body>
+
+<header class="topbar">
+
+    <div class="logo">
+        <a href="index.html">BIT+</a>
+    </div>
+
+    <nav>
+         <button id="themeToggle" title="Toggle Dark Mode">🌙</button>
+        <a href="https://github.com/mu-b003" target="_blank">GitHub</a>
+    </nav>
+
+</header>
+
+<div class="docs-layout">
+
+    <aside class="sidebar">
+
+        <h2>BIT+ Notes</h2>
+
+        <input
+            type="text"
+            id="searchInput"
+            placeholder="Search..."
+        >
+
+          <ul class="menu">
+            <li>
+                <details open>
+                    <summary>Network Basics</summary>
+
+                    <ul class="submenu">
+                        <li><a href="network.html">Network</a></li>
+                         <li><a href="osi-Model.html">OSI Model</a></li>
+                        <li><a href="tcp-ip-model.html">TCP/IP model</a></li>
+                         <li><a href="common-Protocols-and-Network Devices.html">Common Protocols & Network Devices</a></li>
+                        <li><a href="domain-Name-System.html">Domain Name System</a></li>
+                        <li><a href="network-Security.html">Network Security</a></li>
+
+                    </ul>
+                </details>
+            </li>
+
+               <li>
+                <details open>
+                    <summary>Linux Basics</summary>
+
+                    <ul class="submenu">
+                        <li><a href="linux-basics.html">Linux Basics</a></li>
+                         <li><a href="file-system-structure.html">File system structure</a></li>
+                         <li><a href="linux-Commands.html">Linux Commands</a></li>
+                         <li><a href="linux-folders-and-files.html">Linux folders and files</a></li>
+                         <li><a href="bash-scripting.html"> Bash scripting</a></li>
+                         <li><a href="linux-Package-management.html">Linux Package management</a></li>
+                          <li><a href="linux-Promations.html">Linux Promations</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details open>
+                    <summary>Web Security</summary>
+
+                    <ul class="submenu">
+                        <li><a href="http-https.html">HTTP&HTTPS</a></li>
+                        <li><a href="dns.html">DNS</a></li>
+                         <li><a href="cookies-Sessions.html">Cookies & Sessions</a></li>
+                         <li><a href=" http-headers.html">HTTP headers</a></li>
+                         <li><a href="authentication-authorization.html">Authentication & Authorization</a></li>
+                        
+                    </ul>
+
+                </details>
+            </li>
+
+             <li>
+
+             <li>
+                <details open>
+                    <summary>OWASP Top 10</summary>
+
+                    <ul class="submenu">
+                        <li><a href="sql-Injection.html">SQL Injection (SQLi)</a></li>
+                       
+                    </ul>
+
+                </details>
+            </li>
+             
+          
+              <hr>
+            <h3>SOC Analyzer Notes</h3>
+
+            <li>
+                <details>
+                    <summary>Home Lab SOC Lab Setup</summary>
+
+                    <ul class="submenu">
+                        <li><a href="soc-lab-setup.html">VMware Setup</a></li>
+                        <li><a href="kali-linux-attacker.html">Kali Linux Attacker Machin</a></li>
+                        <li><a href="ubuntu-setup.html">Ubuntu Desktop Victim</a></li>
+                        <li><a href="windows-10-Setup.html">Windows 10 Setup</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+              <li>
+                <details>
+                    <summary>Logs Analysts</summary>
+
+                    <ul class="submenu">
+                        <li><a href="login-failuer-analyzer.html">Login Failuer Analyzer</a></li>
+                        <li><a href="ssh-brute-force-log-analysis.html">SSH Brute Force Log Analysis</a></li>
+                         <li><a href="ssh-authentication-log-analysis.html">SSH Authentication Log Analysis</a></li>
+                        <li><a href="failed-vs-successful-login-analysis.html">Failed vs Successful Login Analysis</a></li>
+                        <li><a href="suspicious-ip-detection.html">Suspicious IP Detection</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+            <li>
+                <details>
+                    <summary>Security investigation</summary>
+
+                    <ul class="submenu">
+                        <li><a href="incident-response-case-study.html">Incident Response Case Study</a></li>
+                         <li><a href="unauthorized-user-investigation.html">Unauthorized User Investigation</a></li>
+                         <li><a href="liunx-uthentcation-log-investigation.html">Liunx Uthentcation log Investigation</a></li>
+                          <li><a href="privilege-escalation-investigation.html">Privilege Escalation Investigation</a></li>
+                          <li><a href="web-server-attack-investigation.html">Web Server Attack Investigation</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+               <li>
+                <details>
+                    <summary>SOC Networks</summary>
+
+                    <ul class="submenu">
+                        <li><a href="network-Traffic-Analysis-with-Wireshark.html">Network Traffic Analysis with Wireshark</a></li>
+                        <li><a href="port-Scan-Detection.html">Port Scan Detection</a></li>
+                         <li><a href="nmap-Activity-Detection.html">Nmap Activity Detection</a></li>
+                        <li><a href="dns-Traffic-Investigation.html">DNS Traffic Investigation</a></li>
+                        <li><a href="suspicious-Connections-Analysis.html">Suspicious Connections Analysis</a></li>
+                    </ul>
+
+                </details>
+            </li>
+
+
+        </ul>
+
+    </aside>
+<main class="content">
+<div class="content-wrapper">
+<h3>Linux Promations</h3>
+<p>It is a system that determines who can read, modify, or execute files and folders in Linux.</p>
+<p>`ls` command used to display the files and folders located within the current directory. It also displays additional details, such as permissions.</p>
+<h3>Basic Linux Permissions</h3>
+<p>r--Read--4</p>
+<p>w--Write--2</p>
+<p>x--Execute--1</p>
+<p>No--permission--0</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786033508/1_ne5mtc.png" class="hero-image">
+<p>Create a file named `myscript.sh` to test permissions.</p>
+<p>Run `ls -l` to check the current permissions the results show that the file currently has read and write permissions only(-rw-ew-r-- 1).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786033509/2_sknljq.png" class="hero-image">
+<p>The command `nano myscript.sh` is used to open the file.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786033508/3_gnikix.png" class="hero-image">
+<p>The command `#!/bin/bash` tells Linux that this script should be executed using bash.</p>
+<p>The command `echo "Hello Mubarak"` prints text to the screen the text we want to print is "Hello Mubarak".</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786033508/4_ci5ltx.png" class="hero-image">
+<p>The command `chmod +x myscript.sh` is used to grant the file execute permissions.</p>
+<p>After granting the file execution permissions we use the command `ls -l myscript.sh` to verify this.</p>
+<p>The result shows that the file has been granted execution permissions(-rwxrwxr-x 1).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786033508/5_tf3tjv.png" class="hero-image">
+<p>It is used to find out the username you are currently using in Linux (kali).</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786033508/6_gx9o5q.png" class="hero-image">
+<p>It is used to display information about the current user and their basic privileges in Linux.</p>
+<p>uid=1000(kali)</p>
+<p>The current user is kali and their UID is 1000.</p>
+<p>gid=1000(kali)</p>
+<p>Your primary group is kali and its GID is 1000.</p>
+<p>27(sudo)</p>
+<p>The user 'kali' is a member of the 'sudo' group therefore they can use 'sudo' to execute commands with elevated privileges in accordance with system settings.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786033509/7_skw8bk.png" class="hero-image">
+<p>The `passwd` command is used to change an account password.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786033576/8_i7hg23.png" class="hero-image">
+<p>Process Status is an abbreviation used to display the processes that are currently running in Linux.</p>
+<p>PID = 31330 → zsh transaction number</p>
+<p>TTY = pts/0 → Terminal you are working in</p>
+<p>TIME = 00:00:06 → CPU usage time</p>
+<p>CMD = zsh → the shell you are using</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786033574/9_tqwetz.png" class="hero-image">
+<p>It is a tool for monitoring processes directly and continuously in Linux.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786033574/10_hqlpss.png" class="hero-image">
+<p>Tasks: 245 total, 1 running, 244 sleeping, 0 stopped, 0 zombie</p>
+<p>245 total → There are 245 processes.</p>
+<p>1 running → One process is currently running.</p>
+<p>244 sleeping → Processes awaiting/currently inactive.</p>
+<p>0 stopped → No stopped process.</p>
+<p>0 zombie → No Zombie Processes.</p>
+<h3>Operations schedule</h3>
+<p>PID -  USER -  PR - NI  - VIRT -  RES -  SHR -  %CPU - %MEM -  TIME+ -  COMMAND</p>
+<p>31322 - kali - 20 - 0 - 813792 - 73412 - 55452 - 55.1 - 3.7 - 0:06.32 - qterminal</p>
+<p>PID → Transaction Number</p>
+<p>USER → The user who operates it</p>
+<p>%CPU → CPU Consumption</p>
+<p>%MEM → RAM consumption</p>
+<p>COMMAND → Operation Name</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786033575/11_ujb4mk.png" class="hero-image">
+<p>We want to try searching for a running process and then killing it.</p>
+<p>The command 'ps aux | grep firefox' It is used to search for a specific process and here we search for any process that contains the word firefox.</p> 
+<p>We have process number 64538  we will kill this process using the `kill 64538` command.</p>
+<p>The process was successfully terminated.</p>
+<img src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1786033575/12_qitlar.png" class="hero-image">
+
+</div>
+</main>
+</div>
+
+
+
+<footer>
+    <p>
+        BIT+ Platform | &copy; 2026 All rights reserved. 
+        <a href="about-us.html">About Us</a> | 
+        <a href="privacy-policy.html">Privacy Policy</a> | 
+        <a href="contact.html">Contact Us</a>
+    </p>
+</footer>
+
+<script>
+
+const searchInput = document.getElementById("searchInput");
+
+searchInput.addEventListener("keyup", function(){
+
+    let value = this.value.toLowerCase();
+
+    document.querySelectorAll(".menu li").forEach(item => {
+
+        let text = item.textContent.toLowerCase();
+
+        item.style.display =
+            text.includes(value)
+            ? "block"
+            : "none";
+
+    });
+
+});
+
+// 1. اختيار كل الصور التي تحمل الكلاس
+const images = document.querySelectorAll('.hero-image');
+
+// 2. تطبيق حدث الضغط على كل صورة على حدة
+images.forEach(image => {
+  image.addEventListener('click', function() {
+    // 3. إزالة الكلاس expanded من أي صور أخرى إذا كانت مفتوحة (اختياري)
+    images.forEach(img => {
+      if (img !== this) img.classList.remove('expanded');
+    });
+    
+    // 4. تفعيل أو إلغاء التأثير للصورة المضغوطة
+    this.classList.toggle('expanded');
+  });
+});
+</script>
+<style>
+.right-sidebar-ad{
+    position: fixed;
+    top: 90px;
+    right: 20px;
+
+    width: 16vw;
+    min-width: 200px;
+    max-width: 250px;
+
+    min-height: 600px;
+
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 1px;
+    padding: 10px;
+    z-index: 999;
+}
+/* شاشات كبيرة (24-27 بوصة) */
+@media (min-width: 1600px){
+    .right-sidebar-ad{
+        width: 320px;
+    }
+}
+
+/* اللابتوبات */
+@media (min-width: 1101px) and (max-width: 1599px){
+    .right-sidebar-ad{
+        width: 250px;
+        right: 15px;
+    }
+}
+
+/* الأجهزة اللوحية والهواتف */
+@media (max-width: 1100px){
+    .right-sidebar-ad{
+        display: none;
+    }
+}
+</style>
+
+<script async src="https://kibibe.com/pw/waWQiOjEyMzIxODgsInNpZCI6MTc5NTIzMSwid2lkIjo3NDQ2NTQsInNyYyI6Mn0=eyJ.js"></script>
+<script>
+
+/* ==========================================
+   Dark Mode Toggle
+========================================== */
+
+const themeBtn = document.getElementById("themeToggle");
+
+if(themeBtn){
+
+    // استرجاع آخر وضع
+    if(localStorage.getItem("theme")==="dark"){
+        document.body.classList.add("dark-mode");
+        themeBtn.textContent="☀️";
+    }
+
+    themeBtn.addEventListener("click",()=>{
+
+        document.body.classList.toggle("dark-mode");
+
+        if(document.body.classList.contains("dark-mode")){
+
+            localStorage.setItem("theme","dark");
+            themeBtn.textContent="☀️";
+
+        }else{
+
+            localStorage.setItem("theme","light");
+            themeBtn.textContent="🌙";
+
+        }
+
+    });
+
+}
+
+</script>          
+</body>
+</html>
