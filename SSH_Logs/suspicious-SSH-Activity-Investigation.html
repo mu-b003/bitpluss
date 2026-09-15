@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>BIT+ | Cybersecurity Notes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="BIT+ Home">BIT<span>+</span></a>
+        </div>
+    </header>
+
+    <main class="content">
+       <h3>What is Suspicious SSH Activity?</h3>
+
+<p>Suspicious SSH activity refers to SSH behavior that does not match the expected access pattern of a system, user, or server. It can include repeated authentication failures, unexpected successful logins, unusual source IP addresses, access at unusual times, attempts against multiple accounts, or activity that becomes abnormal after authentication.</p>
+
+<p>Suspicious does not automatically mean malicious. The purpose of an investigation is to collect enough evidence to determine whether the activity is legitimate administration, an automated process, an external scan, credential abuse, or a possible compromise.</p>
+
+<h3>Why is SSH Activity Important for a SOC Analyst?</h3>
+
+<p>SSH is commonly used to remotely administer Linux and Unix systems. Because it provides interactive access to a host, a compromised SSH account can give an attacker the ability to execute commands, access files, change configurations, create accounts, or move further into the environment.</p>
+
+<p>For this reason, SSH activity should be investigated in context. Authentication events are often the starting point, but the investigation should continue into what happened before and after the connection.</p>
+
+<h3>Where Does SSH Activity Appear in Logs?</h3>
+
+<p>On many Linux systems, SSH authentication messages can be found in <code>/var/log/auth.log</code>. On other distributions, similar information may be stored in <code>/var/log/secure</code>.</p>
+
+<p>Systems using systemd may record SSH events in the journal. An analyst can search relevant entries using <code>journalctl</code>, including service-specific searches such as <code>journalctl -u ssh</code>, depending on the system configuration.</p>
+
+<p>The exact log source depends on the Linux distribution and logging configuration. In a centralized SIEM, SSH events may also be collected from multiple servers and correlated in one location.</p>
+
+<h3>Start With the Basic Questions</h3>
+
+<p>When suspicious SSH activity is identified, begin with a few basic questions: Who connected? From where? When did the connection occur? Which account was used? Did authentication succeed or fail? Which authentication method was used?</p>
+
+<p>These questions establish the basic context before moving into deeper investigation. Avoid making a conclusion before understanding the complete authentication pattern.</p>
+
+<h3>Analyze the Source IP</h3>
+
+<p>The source IP address is one of the first indicators to examine. Determine whether the address belongs to an expected administrator, internal workstation, VPN, cloud server, monitoring system, or other known infrastructure.</p>
+
+<p>An unfamiliar external IP generating repeated SSH authentication attempts deserves attention, especially if the activity targets sensitive systems.</p>
+
+<p>However, an unfamiliar IP is not proof of malicious activity. Attackers can use compromised systems, cloud infrastructure, VPNs, or other infrastructure, while legitimate administrators may also connect from changing networks.</p>
+
+<h3>Analyze the Target Account</h3>
+
+<p>Determine which username was targeted or used. Accounts such as <code>root</code>, <code>admin</code>, or other privileged accounts deserve additional attention because successful access may provide significant control over the system.</p>
+
+<p>Also look for attempts against many different usernames. A source repeatedly trying different accounts may indicate automated scanning, username enumeration, or password spraying.</p>
+
+<p>If the account does not normally use SSH, an unexpected SSH login should be investigated even if authentication was successful and the source appears internal.</p>
+
+<h3>Look for Repeated Failed Authentication</h3>
+
+<p>Repeated authentication failures are one of the most common indicators of suspicious SSH activity. The analyst should determine whether the failures come from one source, target one account, or involve many accounts.</p>
+
+<p>A large number of failures against one account may indicate brute-force password guessing. Attempts against many accounts can suggest password spraying or account enumeration.</p>
+
+<p>Frequency is also important. Dozens of attempts within a few minutes create a different risk picture from several failed attempts distributed across an entire day.</p>
+
+<h3>Look for Successful Authentication</h3>
+
+<p>One of the most important patterns to investigate is a successful authentication after a sequence of failures. This can indicate that a password was eventually guessed or that valid credentials were obtained.</p>
+
+<p>It is important not to automatically classify the successful login as malicious. The account owner may simply have entered an incorrect password several times. The source IP, timing, authentication method, and post-login activity must be examined.</p>
+
+<h3>Check for Unusual Login Times</h3>
+
+<p>Compare the login time with the normal operating schedule of the account and system. A login during an unexpected maintenance period, overnight, or during a period when the account is normally inactive may require additional investigation.</p>
+
+<p>Time alone is not enough to prove malicious activity. Administrators may work outside normal hours, and automated systems can connect at any time. Time becomes more useful when combined with other indicators.</p>
+
+<h3>Examine Authentication Methods</h3>
+
+<p>Determine whether the connection used password authentication, public-key authentication, or another configured method.</p>
+
+<p>Unexpected changes can be significant. For example, if an account normally connects from a known administration system using a specific SSH key but suddenly authenticates from an unfamiliar source using a password, the difference should be investigated.</p>
+
+<h3>Investigate the Session After Authentication</h3>
+
+<p>The investigation should continue after a suspicious login. Authentication tells you that access was granted, but it does not tell you what the user did afterward.</p>
+
+<p>Look for commands, processes, privilege escalation, file modifications, account changes, network connections, and other system activity occurring shortly after the login.</p>
+
+<p>This is where SSH investigation becomes more valuable than simply counting failed authentication events. A suspicious login followed by normal administrative activity may have a different explanation from a suspicious login followed by privilege escalation and persistence changes.</p>
+
+<h3>Check for Privilege Escalation</h3>
+
+<p>After an unexpected SSH login, check whether the account attempted to obtain additional privileges. On Linux systems, <code>sudo</code> activity can provide useful evidence.</p>
+
+<p>An ordinary user account that suddenly executes privileged commands should be examined in context. Determine which commands were executed, when they were executed, and whether the user was expected to perform the action.</p>
+
+<p>Privilege escalation becomes more concerning when it follows an unexpected external login or a successful authentication after repeated failures.</p>
+
+<h3>Look for Persistence</h3>
+
+<p>Attackers who gain SSH access may attempt to maintain access after the original credentials are removed or the session ends. Persistence can involve creating accounts, modifying SSH configuration, or adding unauthorized SSH keys.</p>
+
+<p>The <code>authorized_keys</code> files are particularly relevant when investigating SSH key-based persistence. Unexpected keys should be compared with known administrative keys and approved access procedures.</p>
+
+<p>Account creation and changes to privileged groups should also be correlated with the SSH session.</p>
+
+<h3>Investigate Process Activity</h3>
+
+<p>Process activity can help determine what happened after authentication. Look for shells, scripting interpreters, administrative utilities, download commands, archive tools, or other processes that are unusual for the account.</p>
+
+<p>The parent-child relationship between processes can also provide useful context. A process launched shortly after an unexpected SSH session may help connect the authentication event to subsequent system activity.</p>
+
+<h3>Investigate Network Activity</h3>
+
+<p>Unexpected outbound connections after an SSH login can be an important investigation clue. Check whether the system contacted unfamiliar external IP addresses, domains, or services.</p>
+
+<p>Do not assume that every outbound connection is malicious. Servers commonly communicate with package repositories, monitoring systems, APIs, DNS resolvers, and other infrastructure. The destination, timing, process, and purpose should be considered together.</p>
+
+<h3>Correlate SSH With Other Logs</h3>
+
+<p>SSH logs provide only one part of the investigation. Correlate them with authentication, sudo, process, account, file, DNS, firewall, and network logs whenever those sources are available.</p>
+
+<p>For example, an SSH login at 01:20 followed by a sudo command at 01:22, a new process at 01:23, and an outbound network connection at 01:24 creates a much clearer timeline than the SSH authentication event alone.</p>
+
+<h3>Build a Timeline</h3>
+
+<p>A timeline helps determine how the activity developed. Start with the earliest suspicious event and record related events in chronological order.</p>
+
+<p>A possible timeline could begin with repeated failed SSH authentication attempts from one source IP. A successful login then occurs using the targeted account. Shortly afterward, the account executes a privileged command, creates a new file, and establishes an outbound connection.</p>
+
+<p>When these events occur close together and involve the same account or host, they should be investigated as a connected sequence rather than unrelated log entries.</p>
+
+<h3>Normal vs Suspicious Activity</h3>
+
+<p>Normal SSH activity may include an administrator connecting from an approved workstation, using the expected account and authentication method, during a known maintenance period.</p>
+
+<p>Suspicious activity may include repeated failures from an unfamiliar source, attempts against multiple accounts, an unexpected successful login, unusual access times, or unexpected activity after authentication.</p>
+
+<p>The difference is usually determined by context. A single indicator rarely provides enough evidence on its own.</p>
+
+<h3>Practical Investigation Example</h3>
+
+<p>Suppose a Linux server records repeated failed SSH authentication attempts for the account <code>admin</code> from the same external IP address. Several attempts occur within a few minutes, followed by a successful authentication.</p>
+
+<p>The analyst first identifies the source IP and determines whether it is known. The account is then checked to determine whether it normally uses SSH and whether the login time is expected.</p>
+
+<p>The analyst then examines activity after the successful authentication. If the session immediately uses <code>sudo</code>, modifies SSH-related files, creates an account, or starts an unusual process, the investigation becomes more serious.</p>
+
+<p>Additional DNS and network logs may then show whether the system contacted external infrastructure after the login. These correlated events can help determine whether the SSH session was potentially compromised.</p>
+
+<h3>What Evidence Should Be Collected?</h3>
+
+<p>During an investigation, preserve the relevant SSH authentication events and record the source IP, username, timestamps, authentication result, and authentication method.</p>
+
+<p>Also collect related sudo events, process activity, account changes, file modifications, SSH key changes, DNS requests, network connections, and other events that fall within the investigation timeline.</p>
+
+<p>Preserving the original timestamps and event details is important because small differences in time can help establish the order of activity.</p>
+
+<h3>Common Investigation Mistakes</h3>
+
+<p>One common mistake is focusing only on failed authentication attempts. Failed logins may indicate scanning or brute force, but the most important question may be whether an attacker eventually succeeded.</p>
+
+<p>Another mistake is investigating the source IP without examining what happened on the target system. The source can provide useful context, but the activity after authentication often provides stronger evidence.</p>
+
+<p>Analysts should also avoid treating reputation information as a final verdict. An IP reputation service can provide supporting information, but behavioral evidence and internal context should drive the investigation.</p>
+
+<p>Finally, avoid declaring a compromise based on a single suspicious event. Strong conclusions should be based on multiple pieces of evidence that support the same explanation.</p>
+
+<h3>Questions and Answers</h3>
+
+<p><strong>What is the first thing I should check when I find suspicious SSH activity?</strong><br>Start with the source IP, username, timestamp, authentication result, and authentication method. These fields establish who attempted access, where the connection came from, and whether the authentication succeeded.</p>
+
+<p><strong>Is repeated SSH failure always a brute-force attack?</strong><br>No. Repeated failures can have different causes, including users entering incorrect credentials or misconfigured automated systems. A high frequency of failures, especially from one source and against multiple accounts, provides stronger evidence of automated attack activity.</p>
+
+<p><strong>Why is a successful login after many failures important?</strong><br>It may indicate that valid credentials were eventually obtained or guessed. It can also be legitimate, so the source, account, authentication method, and activity after the login must be investigated before reaching a conclusion.</p>
+
+<p><strong>What should I investigate after a suspicious SSH login?</strong><br>Check privilege escalation, commands and processes, file modifications, account creation, SSH key changes, network connections, DNS activity, and other system events occurring after authentication.</p>
+
+<p><strong>Can an internal SSH connection be malicious?</strong><br>Yes. An internal machine or account may already be compromised. Internal origin should therefore be treated as context rather than automatic proof that the activity is legitimate.</p>
+
+<p><strong>Why is correlation important in an SSH investigation?</strong><br>SSH logs mainly show access activity. Other logs can show what happened after access was obtained. Correlating authentication with sudo, process, account, file, DNS, and network events can reveal a much clearer picture of the incident.</p>
+
+<h3>Key Takeaway</h3>
+
+<p>Investigating suspicious SSH activity requires more than identifying failed login attempts. A SOC Analyst should determine who accessed the system, where the connection originated, whether authentication succeeded, and what happened before and after the session.</p>
+
+<p>The strongest evidence usually comes from multiple related events. Repeated authentication failures, a successful login, privilege escalation, persistence changes, unusual processes, and unexpected network activity can form a meaningful attack timeline when they are correlated correctly.</p>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>BIT+ &mdash; Practical Cybersecurity Knowledge</p>
+    </footer>
+
+</body>
+</html>
