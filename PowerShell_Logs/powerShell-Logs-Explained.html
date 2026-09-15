@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>BIT+ | Cybersecurity Notes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="BIT+ Home">BIT<span>+</span></a>
+        </div>
+    </header>
+
+    <main class="content">
+        <h3>What Are PowerShell Logs?</h3>
+<p>PowerShell Logs are records that provide visibility into PowerShell activity on a Windows system. They can help show when PowerShell was used, what commands or scripts were executed, and in some configurations, provide additional details about the content and behavior of the activity.</p>
+
+<p>PowerShell is a legitimate Windows administration and automation tool. System administrators use it for configuration, troubleshooting, automation, software management, and many other tasks. Because of its capabilities, attackers can also abuse PowerShell after gaining access to a system.</p>
+
+<p>For a SOC analyst, PowerShell logging is therefore important because it can provide evidence of both legitimate administration and potentially malicious command execution.</p>
+
+<h3>Why PowerShell Logs Matter</h3>
+<p>Attackers may use PowerShell to execute commands, download files, run scripts, modify system settings, interact with Windows components, or perform actions without relying on traditional executable files.</p>
+
+<p>PowerShell logs can provide additional visibility into this activity. Instead of seeing only that powershell.exe started, detailed logging may provide information about the commands or script content that was executed.</p>
+
+<p>This makes PowerShell logs useful when investigating suspicious process creation, credential access, persistence, lateral movement, and other types of activity.</p>
+
+<h3>Where Are PowerShell Logs Found?</h3>
+<p>PowerShell-related events can be viewed through Windows Event Viewer. Depending on the version of PowerShell and the logging configuration, relevant information can appear under PowerShell operational logs and the Windows Security log.</p>
+
+<p>PowerShell activity can also be collected by endpoint security products and forwarded to a SIEM. In larger environments, centralized collection makes it easier for SOC analysts to search PowerShell activity across many Windows systems.</p>
+
+<h3>PowerShell Logging Levels</h3>
+<p>PowerShell provides several logging capabilities, and the amount of available information depends on which policies and features are enabled.</p>
+
+<p>Module Logging can record pipeline execution events for specified modules. This can provide visibility into commands and operations performed through PowerShell modules.</p>
+
+<p>Script Block Logging can record the contents of PowerShell script blocks that are processed by the engine. This is especially useful when investigating suspicious scripts or commands.</p>
+
+<p>Transcription can record PowerShell session input and output. When enabled, it can provide a more complete record of what occurred during a PowerShell session.</p>
+
+<p>These logging mechanisms provide different levels of visibility. A SOC analyst should understand which logging capabilities are enabled before assuming that the logs contain complete command information.</p>
+
+<h3>PowerShell Operational Logs</h3>
+<p>PowerShell operational events can provide information about PowerShell engine activity. Depending on the PowerShell version and configuration, these events can help identify commands, scripts, modules, and other execution details.</p>
+
+<p>The exact events available can differ between Windows and PowerShell versions. Analysts should therefore focus on understanding the information provided by the environment rather than relying only on a fixed list of event IDs.</p>
+
+<h3>Important PowerShell Event IDs</h3>
+<p>Event ID 4103 is associated with PowerShell Module Logging. It can provide information about commands and module operations when the appropriate logging is enabled.</p>
+
+<p>Event ID 4104 is associated with PowerShell Script Block Logging. It can provide the content of PowerShell script blocks processed by the PowerShell engine.</p>
+
+<p>Event ID 400 can indicate the start of a PowerShell engine lifecycle, while Event ID 403 can indicate that a PowerShell engine lifecycle has ended.</p>
+
+<p>Event ID 600 can provide information related to PowerShell provider lifecycle activity. These events can provide additional context during investigations, although their usefulness depends on the logging configuration.</p>
+
+<h3>Script Block Logging</h3>
+<p>Script Block Logging is particularly valuable during security investigations because it can record PowerShell script block content. Event ID 4104 is commonly associated with this logging capability.</p>
+
+<p>An analyst may use these events to examine commands that were executed and determine whether they contain suspicious behavior. This can be useful when a process event only shows that powershell.exe was started without revealing the actual command.</p>
+
+<p>Large or complex scripts may generate multiple events, so analysts should be careful when interpreting individual entries. Related events may need to be combined to understand the complete script.</p>
+
+<h3>Module Logging</h3>
+<p>Module Logging can provide information about PowerShell commands executed through modules. Event ID 4103 is commonly associated with Module Logging.</p>
+
+<p>This can help analysts understand what PowerShell was doing even when the activity involves built-in modules or administrative functionality.</p>
+
+<p>Module Logging and Script Block Logging can complement each other. One can provide information about module and command execution while the other can provide script block content.</p>
+
+<h3>PowerShell and Process Creation</h3>
+<p>PowerShell logs become more useful when correlated with process creation events. Windows Event ID 4688 can provide information about a process being created when process auditing is configured.</p>
+
+<p>For example, a process creation event may show that powershell.exe started. PowerShell logs can then provide additional information about what PowerShell actually executed.</p>
+
+<p>This correlation allows an analyst to connect the process, user, timestamp, parent process, and command or script activity into one investigation timeline.</p>
+
+<h3>Normal PowerShell Activity</h3>
+<p>PowerShell is commonly used for legitimate administration. IT administrators may use it to manage users, services, applications, Windows configuration, and system maintenance.</p>
+
+<p>Normal PowerShell activity often comes from known administrative accounts or management systems and follows expected operational patterns.</p>
+
+<p>However, legitimate PowerShell tools and commands can still be used by attackers. Therefore, simply seeing PowerShell in a log does not mean that the activity is malicious.</p>
+
+<h3>Potentially Suspicious PowerShell Activity</h3>
+<p>PowerShell activity may require additional investigation when it contains unusual commands, unexpected scripts, encoded content, suspicious download behavior, or execution from an unusual account or workstation.</p>
+
+<p>PowerShell launched by an unexpected parent process can also be interesting. For example, a user-facing application unexpectedly starting PowerShell may deserve closer examination depending on the environment and application behavior.</p>
+
+<p>Other useful indicators include PowerShell execution immediately after suspicious authentication, execution from temporary or unusual directories, and commands that interact with security settings, credentials, or remote systems.</p>
+
+<h3>Encoded PowerShell Commands</h3>
+<p>PowerShell supports encoded command execution, which can make commands harder to read directly in process information. Encoded content is not automatically malicious because administrators and legitimate applications can use encoding for various reasons.</p>
+
+<p>However, encoded PowerShell combined with an unusual account, suspicious parent process, external network activity, or other indicators can become a strong investigation lead.</p>
+
+<h3>PowerShell Download Activity</h3>
+<p>PowerShell can communicate with remote systems and retrieve content. This capability can be useful for legitimate automation but can also be abused by attackers.</p>
+
+<p>When PowerShell activity appears to download a file or retrieve content from an external system, the analyst should investigate the destination, command context, account, parent process, and events that occurred afterward.</p>
+
+<h3>PowerShell and Persistence</h3>
+<p>Attackers may use PowerShell as part of persistence techniques. For example, PowerShell may be involved in creating scheduled tasks, modifying registry settings, creating services, or changing other system configuration.</p>
+
+<p>When suspicious PowerShell execution is associated with a persistence-related change, the analyst should correlate the events to determine whether they form part of the same activity.</p>
+
+<h3>PowerShell and Privilege Escalation</h3>
+<p>PowerShell can be used to perform administrative actions when executed under a privileged account or process. This makes account context especially important during an investigation.</p>
+
+<p>If PowerShell activity occurs immediately after a privileged authentication or unexpected privilege assignment, examine the sequence carefully. The combination of authentication, privilege, and command execution can provide stronger evidence than any individual event.</p>
+
+<h3>How to Investigate PowerShell Logs</h3>
+<p>Start by identifying the PowerShell event and its timestamp. Determine which system generated the event and which account was involved.</p>
+
+<p>Next, examine the available command, script block, module, or session information. Look for unusual commands, scripts, encoded content, remote communication, file activity, or changes to system configuration.</p>
+
+<p>Then correlate the PowerShell activity with process creation events. Identify the parent process and determine how PowerShell was launched.</p>
+
+<p>Review authentication events to determine how the account gained access to the system. Finally, investigate what happened after the PowerShell execution and build a timeline connecting the related events.</p>
+
+<h3>Practical Example</h3>
+<p>Suppose a Windows workstation records a successful authentication for a user account. A short time later, Event ID 4688 shows powershell.exe being created.</p>
+
+<p>The process event alone does not prove malicious activity. The analyst should examine the PowerShell operational logs and look for related Script Block Logging or Module Logging events.</p>
+
+<p>If the PowerShell activity contains an unusual script, accesses an external destination, creates a scheduled task, or performs another unexpected administrative action, the events should be correlated and investigated as a possible incident.</p>
+
+<h3>Common Mistakes</h3>
+<p>A common mistake is treating every PowerShell event as malicious. PowerShell is a normal Windows administration tool and can generate a large amount of legitimate activity.</p>
+
+<p>Another mistake is looking only at the process name. Seeing powershell.exe tells you that PowerShell started, but it does not explain what the user or process did with it.</p>
+
+<p>Analysts should also avoid assuming that encoded commands are automatically malicious. Encoding is an indicator that may require inspection, not proof of an attack.</p>
+
+<p>Finally, analysts should remember that logging must be enabled and configured correctly. The absence of a detailed PowerShell event does not necessarily mean that no PowerShell activity occurred.</p>
+
+<h3>Questions and Answers</h3>
+
+<p><strong>What are PowerShell Logs used for?</strong></p>
+<p>They provide visibility into PowerShell activity and can help analysts understand commands, scripts, modules, and PowerShell engine activity. They are especially useful when investigating suspicious command execution.</p>
+
+<p><strong>What is Event ID 4104?</strong></p>
+<p>Event ID 4104 is commonly associated with PowerShell Script Block Logging. When Script Block Logging is enabled, it can provide the content of PowerShell script blocks processed by the engine.</p>
+
+<p><strong>What is Event ID 4103?</strong></p>
+<p>Event ID 4103 is associated with PowerShell Module Logging. It can provide information about commands and operations performed through PowerShell modules when the relevant logging is enabled.</p>
+
+<p><strong>Is PowerShell itself a malicious tool?</strong></p>
+<p>No. PowerShell is a legitimate Windows administration and automation framework. Attackers abuse it because it provides powerful capabilities, but the presence of PowerShell in logs alone is not evidence of malicious activity.</p>
+
+<p><strong>Why should PowerShell logs be correlated with Event ID 4688?</strong></p>
+<p>Event ID 4688 can show that powershell.exe was created and may provide process and parent-process information. PowerShell logs can then provide additional information about what the PowerShell engine executed. Together, these events provide better context.</p>
+
+<p><strong>Does encoded PowerShell automatically mean an attack?</strong></p>
+<p>No. Encoding can have legitimate uses. However, encoded commands can make analysis more difficult, so they deserve additional inspection when combined with other suspicious indicators.</p>
+
+<p><strong>What should I look for in a suspicious PowerShell command?</strong></p>
+<p>Look for unusual scripts, encoded content, unexpected downloads, remote communication, suspicious file activity, security configuration changes, credential-related activity, or commands that do not match the normal role of the account or system.</p>
+
+<p><strong>What should I investigate after finding suspicious PowerShell activity?</strong></p>
+<p>Investigate the account, process creation event, parent process, authentication history, network activity, file activity, privilege use, persistence mechanisms, and events occurring immediately before and after the PowerShell execution.</p>
+
+<h3>Key Takeaway</h3>
+<p>PowerShell Logs provide valuable visibility into one of the most powerful administrative tools available on Windows. The goal of analysis is not to treat PowerShell as malicious, but to determine whether the activity matches the expected behavior of the account, system, and environment.</p>
+
+<p>For a SOC analyst, the most useful approach is to combine PowerShell logs with process creation, authentication, privilege, account, file, and network events. When these sources are correlated, PowerShell activity can provide important evidence for understanding how a command was executed, what it did, and whether it may be part of a larger security incident.</p>
+
+       
+
+
+
+
+
+
+
+
+
+
+        
+
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>BIT+ &mdash; Practical Cybersecurity Knowledge</p>
+    </footer>
+
+</body>
+</html>
