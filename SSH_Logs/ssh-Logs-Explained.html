@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>BIT+ | Cybersecurity Notes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="BIT+ Home">BIT<span>+</span></a>
+        </div>
+    </header>
+
+    <main class="content">
+       <h3>What are SSH Logs?</h3>
+<p>SSH logs record activity related to Secure Shell connections. SSH is commonly used to remotely access Linux and Unix systems, manage servers, execute commands, transfer files, and perform administrative tasks.</p>
+
+<p>For a SOC Analyst, SSH logs are valuable because remote access is an important security boundary. The logs can show successful and failed authentication attempts, usernames, source IP addresses, connection times, authentication methods, and other events depending on the SSH configuration and logging system.</p>
+
+<h3>Why are SSH Logs Important?</h3>
+<p>SSH is widely used by administrators and automated systems, which means normal SSH activity can be frequent in an enterprise environment. At the same time, attackers commonly target exposed SSH services because gaining access to an account can provide direct access to a system.</p>
+
+<p>SSH logs can therefore help analysts detect brute-force attempts, password spraying, unauthorized remote access, suspicious accounts, unusual source addresses, and successful logins that may require investigation.</p>
+
+<h3>Where are SSH Logs Found?</h3>
+<p>The exact location of SSH-related logs depends on the Linux distribution and logging configuration. SSH authentication messages are commonly recorded through the system authentication logging mechanism.</p>
+
+<p>On systems using traditional log files, SSH activity may appear in authentication logs such as <code>/var/log/auth.log</code>. Other Linux systems may record the same information in the systemd journal, which can be queried using <code>journalctl</code>.</p>
+
+<p>The important point for a SOC Analyst is to understand the logging mechanism used by the system rather than assuming that every Linux machine stores SSH events in the same file.</p>
+
+<h3>Common SSH Log Information</h3>
+<p>The timestamp tells you when the SSH event occurred. Accurate timestamps are important when creating an incident timeline and correlating SSH activity with other security events.</p>
+
+<p>The source IP address identifies where the SSH connection originated. This can be an internal workstation, another server, a jump host, or an external system.</p>
+
+<p>The username identifies the account involved in the authentication attempt. Repeated attempts against one account or attempts against many accounts can provide different investigation clues.</p>
+
+<p>The authentication result indicates whether the attempt succeeded or failed. Failed authentication events can be useful for detecting brute-force behavior, while successful authentication events are important because they may represent legitimate access or unauthorized use of valid credentials.</p>
+
+<h3>SSH Authentication Methods</h3>
+<p>Password authentication allows a user to authenticate using a password. When SSH is exposed to untrusted networks, repeated password failures can become an important security indicator.</p>
+
+<p>Public key authentication uses a cryptographic key pair instead of a traditional password. It is commonly used for administrative access and automated system-to-system communication.</p>
+
+<p>Other authentication mechanisms may also be configured depending on the environment. Analysts should understand which methods are expected before treating an authentication event as suspicious.</p>
+
+<h3>Successful SSH Login</h3>
+<p>A successful SSH login indicates that authentication was accepted and a remote session may have been established.</p>
+
+<p>Successful authentication is not automatically safe. An attacker who obtains valid credentials or a private key may generate a completely legitimate-looking SSH login.</p>
+
+<p>When investigating a successful login, examine the source IP, username, time, authentication method, and whether the login matches the user's normal behavior.</p>
+
+<h3>Failed SSH Authentication</h3>
+<p>Failed SSH authentication occurs when a connection attempt does not successfully authenticate. A small number of failed attempts can be normal because users can mistype passwords or use an incorrect account.</p>
+
+<p>Repeated failures from the same source within a short period may indicate automated password guessing or brute-force activity.</p>
+
+<p>Failures against many different usernames from one source may suggest password spraying or account enumeration behavior, depending on the environment.</p>
+
+<h3>SSH Brute-Force Indicators</h3>
+<p>One common indicator of SSH brute force is a large number of failed authentication attempts from the same source IP within a short period.</p>
+
+<p>Another pattern is repeated attempts against the same username. An attacker may continuously test different passwords until authentication succeeds or the account becomes unavailable.</p>
+
+<p>Distributed attacks may appear differently because attempts can originate from many source IP addresses. In such cases, analyzing the target account, timing, and overall authentication pattern becomes important.</p>
+
+<h3>Source IP Analysis</h3>
+<p>The source IP should always be examined during an SSH investigation. Determine whether it belongs to an expected administrator, internal server, jump host, VPN range, cloud environment, or unknown external system.</p>
+
+<p>An external IP is not automatically malicious. Some organizations legitimately allow remote administration from external networks. The analyst must determine whether the source is authorized.</p>
+
+<p>Repeated SSH activity from an address that has no legitimate reason to access the server can be a strong investigation lead.</p>
+
+<h3>Username Analysis</h3>
+<p>Examine which accounts are being targeted or used. Common administrative accounts may receive frequent attacks because attackers know that privileged accounts can provide greater access.</p>
+
+<p>Attempts against nonexistent usernames can also provide useful information because automated attackers often test common account names.</p>
+
+<p>A successful login to an unusual or rarely used account should receive additional attention, especially if the source or timing is unexpected.</p>
+
+<h3>Time-Based Analysis</h3>
+<p>Time helps establish whether SSH activity matches normal administrative behavior. Compare the login time with the user's expected working schedule and normal access patterns.</p>
+
+<p>Repeated failed attempts followed by a successful login within a short period are particularly important to investigate. This pattern does not prove that the account was compromised, but it can indicate that an attacker eventually authenticated successfully.</p>
+
+<h3>Normal SSH Activity</h3>
+<p>Normal SSH traffic can include administrators connecting to servers, automated management systems performing tasks, backup systems accessing hosts, monitoring platforms, and server-to-server communication.</p>
+
+<p>Normal activity should generally match known users, source systems, schedules, and authentication methods.</p>
+
+<p>Establishing this baseline makes it easier to identify unexpected remote access.</p>
+
+<h3>Suspicious SSH Activity</h3>
+<p>Potentially suspicious SSH activity includes repeated failed authentication attempts, unexpected successful logins, access from unfamiliar locations or systems, attempts against many usernames, unusual login times, and authentication using methods that are not normally expected.</p>
+
+<p>Activity becomes more concerning when multiple indicators occur together. For example, a large number of failed attempts from an unknown source followed by a successful login should be investigated more closely than a single failed attempt.</p>
+
+<h3>SSH Session Investigation</h3>
+<p>After identifying a successful SSH login, the investigation should continue beyond the authentication event. Determine what happened after the session was established.</p>
+
+<p>Depending on the available logs, examine command execution, privilege escalation, file activity, process creation, network connections, and other system events associated with the account.</p>
+
+<p>This helps answer an important question: was the SSH login simply authentication, or did the session lead to suspicious activity on the system?</p>
+
+<h3>SSH and Privilege Escalation</h3>
+<p>An attacker who gains SSH access may attempt to increase privileges after authentication. Look for sudo activity, changes to privileged accounts, unusual administrative commands, and other privilege-related events.</p>
+
+<p>SSH authentication should therefore be correlated with privilege escalation and command execution logs when investigating possible compromise.</p>
+
+<h3>SSH and Persistence</h3>
+<p>SSH access can also be related to persistence. Attackers who gain access to a Linux system may attempt to maintain access by modifying authorized keys, creating accounts, changing SSH configuration, or using other persistence mechanisms.</p>
+
+<p>If an unexpected successful SSH login is followed by changes to SSH-related files or user accounts, the events should be investigated together.</p>
+
+<h3>Correlating SSH With Other Logs</h3>
+<p>SSH logs are most useful when combined with other security telemetry. Authentication logs can show additional account activity, while sudo logs can reveal privilege use after login.</p>
+
+<p>Process logs can identify commands or processes started during the session. Network logs can show connections made after authentication, and file activity can reveal changes made to the system.</p>
+
+<p>DNS logs can also be useful if the compromised system begins communicating with unfamiliar external domains after an SSH login.</p>
+
+<h3>Practical Example</h3>
+<p>Imagine a Linux server receiving dozens of failed SSH authentication attempts from an unfamiliar external IP address within several minutes.</p>
+
+<p>The analyst first checks the targeted username and confirms that the attempts are concentrated against a privileged account. The source is not part of the organization's known administration infrastructure.</p>
+
+<p>Later, the logs show a successful SSH login from the same source. This event requires immediate investigation because the successful login occurred after a series of failures.</p>
+
+<p>The analyst then examines sudo activity, process creation, network connections, and file changes after the successful login. This helps determine whether the account was legitimately accessed or whether the SSH session may have resulted in system compromise.</p>
+
+<h3>Building an SSH Investigation Timeline</h3>
+<p>A useful SSH timeline may begin with the first connection attempt, followed by failed authentication events, a successful login, privilege changes, command execution, file activity, and outbound network connections.</p>
+
+<p>Organizing the events in chronological order makes it easier to identify relationships between authentication and actions performed on the system.</p>
+
+<h3>Common Mistakes</h3>
+<p>A common mistake is treating every failed SSH login as an attack. Users can legitimately enter incorrect credentials, and automated systems can generate authentication failures due to configuration problems.</p>
+
+<p>Another mistake is assuming that every successful login is legitimate. Attackers frequently use stolen credentials or keys, so successful authentication must be evaluated against the expected source, account, timing, and behavior.</p>
+
+<p>Analysts should also avoid investigating only the source IP. An attacker may use compromised infrastructure or distributed sources, making the complete behavior more important than one address.</p>
+
+<h3>Questions and Answers</h3>
+<p><strong>What is the most important information in an SSH log?</strong><br>The timestamp, source IP, username, authentication result, and authentication method are among the most useful fields. Together they provide the basic context for investigating remote access.</p>
+
+<p><strong>Does a failed SSH login mean an attack occurred?</strong><br>No. A few failed attempts can happen during normal administration. Repeated failures, especially when concentrated in a short period or directed at multiple accounts, may indicate automated attack activity.</p>
+
+<p><strong>Why is a successful SSH login important?</strong><br>A successful login means that authentication was accepted. If the source, account, timing, or authentication method is unexpected, the login may require investigation because valid credentials can be abused by attackers.</p>
+
+<p><strong>What does repeated SSH failure followed by success indicate?</strong><br>This pattern can be an important investigation clue because an attacker may eventually obtain or guess valid credentials. It does not prove compromise, but the successful session should be examined closely.</p>
+
+<p><strong>What should I check after a suspicious SSH login?</strong><br>Review sudo activity, process creation, command execution, file changes, account modifications, network connections, and other activity associated with the session.</p>
+
+<p><strong>Can SSH logs detect brute-force attacks?</strong><br>They can provide strong indicators of brute-force behavior, particularly when many failed authentication attempts come from the same source within a short period. Distributed attacks may require additional correlation across multiple systems.</p>
+
+<h3>Key Takeaway</h3>
+<p>SSH logs provide important visibility into remote access to Linux and Unix systems. A SOC Analyst should learn to identify who attempted to connect, where the connection came from, which account was targeted, whether authentication succeeded, and what happened after the session began.</p>
+
+<p>The most important lesson is to investigate SSH authentication as part of a larger timeline. Failed logins, successful authentication, privilege use, command execution, file changes, and network activity can reveal whether a remote session was normal administration or part of a potential security incident.</p>
+
+       
+
+
+
+
+
+
+
+
+
+
+        
+
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>BIT+ &mdash; Practical Cybersecurity Knowledge</p>
+    </footer>
+
+</body>
+</html>
