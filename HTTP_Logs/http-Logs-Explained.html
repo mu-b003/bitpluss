@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>BIT+ | Cybersecurity Notes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="BIT+ Home">BIT<span>+</span></a>
+        </div>
+    </header>
+
+    <main class="content">
+       <h3>What are HTTP Logs?</h3>
+<p>HTTP logs record web traffic between clients and web servers. They provide information about requests made to websites, web applications, APIs, and other HTTP-based services. For a SOC Analyst, HTTP logs are useful because they show what a client requested, which server handled the request, and how the server responded.</p>
+
+<p>HTTP logs can help analysts investigate suspicious web requests, unauthorized access attempts, exploitation, web attacks, malicious downloads, unusual user agents, and communication with potentially compromised systems.</p>
+
+<h3>Why are HTTP Logs Important for a SOC Analyst?</h3>
+<p>Web traffic is one of the most common forms of network communication. Users access websites, applications communicate with APIs, and internal systems exchange information through HTTP or HTTPS.</p>
+
+<p>When something suspicious happens, HTTP logs can provide valuable evidence about the request. An analyst can examine the source address, requested URL, HTTP method, response status, user agent, timestamp, and other available fields to understand what occurred.</p>
+
+<p>HTTP logs are particularly useful when investigating activity against web servers because they can reveal patterns that may not be visible in authentication or operating system logs.</p>
+
+<h3>Common HTTP Log Fields</h3>
+<p>The timestamp shows when the HTTP request occurred. Time is important when building an incident timeline and correlating web activity with other security events.</p>
+
+<p>The source IP identifies the client that made the request. It can represent an individual workstation, server, proxy, NAT device, or another network component depending on the environment.</p>
+
+<p>The HTTP method describes what type of operation the client requested. Common methods include GET, POST, PUT, DELETE, HEAD, and OPTIONS.</p>
+
+<p>The requested URL or URI shows the resource that the client attempted to access. This is one of the most important fields during web traffic investigation because suspicious paths can provide clues about the purpose of a request.</p>
+
+<p>The HTTP status code shows how the server responded. Codes such as 200, 301, 302, 400, 401, 403, 404, and 500 can provide useful context about the result of the request.</p>
+
+<p>The user agent identifies the client software making the request. Browsers normally provide recognizable user-agent information, while scripts, scanners, command-line tools, and automated software may identify themselves differently.</p>
+
+<h3>HTTP Methods</h3>
+<p>GET is commonly used to request a resource from a server. Normal browsing generates many GET requests for pages, images, scripts, stylesheets, and other resources.</p>
+
+<p>POST is commonly used to send data to a server. It is frequently used for login forms, API requests, uploads, and other operations where information is submitted to the server.</p>
+
+<p>PUT and DELETE can be used by applications and APIs to modify or remove resources. Their presence is not automatically suspicious, but they may deserve attention when they appear unexpectedly or against sensitive endpoints.</p>
+
+<p>OPTIONS is commonly used to determine which HTTP methods or capabilities are supported by a server. Security tools and legitimate applications can generate OPTIONS requests.</p>
+
+<h3>Understanding HTTP Status Codes</h3>
+<p>A 2xx response generally indicates that the request was successfully processed. A common example is HTTP 200, which indicates a successful request.</p>
+
+<p>A 3xx response indicates redirection. For example, a server may redirect a user from one URL to another.</p>
+
+<p>A 4xx response indicates a client-side error. HTTP 401 can indicate that authentication is required, while 403 indicates that access is forbidden. HTTP 404 means that the requested resource was not found.</p>
+
+<p>A 5xx response indicates a server-side error. Repeated 500 responses may indicate application problems, but they can also become relevant during an investigation if they occur alongside unusual requests.</p>
+
+<h3>Normal HTTP Activity</h3>
+<p>Normal HTTP traffic usually contains requests that match the expected applications and browsing behavior of the environment. A user accessing a website may generate requests for HTML pages, JavaScript, CSS files, images, APIs, and other resources.</p>
+
+<p>Normal traffic can also contain errors. A 404 response does not automatically indicate an attack because users and applications frequently request resources that no longer exist.</p>
+
+<p>The important question is whether the overall pattern matches the expected behavior of the user, application, or system.</p>
+
+<h3>What Looks Suspicious?</h3>
+<p>Suspicious HTTP activity can include repeated requests to sensitive paths, unusual HTTP methods, abnormal request frequency, unexpected user agents, large numbers of errors, or requests containing unusual parameters.</p>
+
+<p>Repeated requests against administrative interfaces, login endpoints, configuration files, backup files, or other sensitive resources may require investigation depending on the environment.</p>
+
+<p>A single unusual request is usually not enough to confirm an attack. Analysts should examine the source, frequency, target, response, and surrounding events.</p>
+
+<h3>Source IP Analysis</h3>
+<p>The source IP is an important starting point when investigating HTTP traffic. Determine whether the source belongs to an internal workstation, server, known business partner, public client, proxy, or another expected system.</p>
+
+<p>Look for repeated requests from the same source. A large number of requests within a short period may indicate automated activity such as scanning, enumeration, brute-force attempts, or application testing.</p>
+
+<p>However, high request volume can also be completely legitimate. Web crawlers, APIs, monitoring systems, and busy applications may naturally generate large numbers of requests.</p>
+
+<h3>URL and URI Analysis</h3>
+<p>The requested path can provide important clues about what the client was trying to access. Analysts should look for unusual paths, unexpected files, administrative endpoints, debug pages, backup files, or parameters that do not match normal application behavior.</p>
+
+<p>Special characters and encoded values can also appear in suspicious requests. Encoding itself is not malicious because web applications routinely encode legitimate information. The important question is what the decoded value represents and why it was requested.</p>
+
+<h3>User-Agent Analysis</h3>
+<p>The user agent can help distinguish normal browser activity from automated tools. Common browsers typically generate recognizable user-agent strings.</p>
+
+<p>Requests made by command-line utilities, scripts, scanners, or custom programs may use different user agents. An unusual user agent is not automatically malicious, but it can become useful evidence when combined with suspicious request patterns.</p>
+
+<h3>HTTP Error Patterns</h3>
+<p>Repeated HTTP 404 responses from the same source may indicate that a client is looking for resources that do not exist. A small number of 404 errors is normal, but hundreds of different paths requested in a short period may suggest automated enumeration or scanning.</p>
+
+<p>Repeated 401 or 403 responses may indicate authentication attempts or access to resources for which the client does not have permission.</p>
+
+<p>HTTP 500 errors can indicate server-side problems. If they occur immediately after unusual requests, the analyst should examine the requests and application behavior more closely.</p>
+
+<h3>Web Scanning Indicators</h3>
+<p>Automated scanners often generate many requests in a short period. The requests may target many different paths, files, parameters, or application endpoints.</p>
+
+<p>A source requesting a large number of unrelated URLs within seconds or minutes can therefore be an investigation clue. User-agent information, request frequency, response codes, and targeted paths can help determine whether the activity resembles automated scanning.</p>
+
+<h3>Web Attack Indicators</h3>
+<p>HTTP logs can contain indicators associated with attacks against web applications. These may include suspicious parameters, unexpected file access, repeated authentication attempts, path traversal patterns, command-like input, or unusual encoded data.</p>
+
+<p>Security analysts should not rely on one string or pattern alone. Legitimate applications can contain characters and parameters that resemble attack payloads. The request context and server response should always be considered.</p>
+
+<h3>HTTP vs HTTPS</h3>
+<p>HTTP traffic is normally transmitted without transport encryption, while HTTPS protects HTTP communication using TLS. When HTTPS is used, network monitoring systems generally cannot see the full HTTP request unless the traffic is inspected through an appropriate security control or endpoint telemetry is available.</p>
+
+<p>This means that traditional HTTP server logs may still provide valuable information even when clients use HTTPS, but network-level visibility depends on where logging and inspection take place.</p>
+
+<h3>Correlating HTTP Logs With Other Logs</h3>
+<p>HTTP logs become much more useful when combined with other security data. DNS logs can show which domain a system resolved before making a web request. Firewall or network logs can show the connection to the destination. Endpoint logs can identify the process responsible for the request.</p>
+
+<p>Authentication logs can also help determine which user was active when suspicious web traffic occurred. By combining these sources, an analyst can build a more complete timeline of the activity.</p>
+
+<h3>Practical Example</h3>
+<p>Suppose a web server receives hundreds of requests from one source IP within a short period. The requests target many different URLs, including administrative and nonexistent paths, and most of them return 404 responses.</p>
+
+<p>The analyst should first determine whether the source is a known scanner, monitoring system, or legitimate application. If it is an unknown external source, the request frequency and variety of paths may indicate automated enumeration.</p>
+
+<p>The analyst should then examine whether any requests returned successful responses, especially responses involving sensitive resources. Additional firewall, authentication, and application logs can help determine whether the activity progressed beyond scanning.</p>
+
+<h3>Investigation Questions</h3>
+<p><strong>What is the source IP?</strong><br>Identify the system that generated the request and determine whether it is expected or known.</p>
+
+<p><strong>What resource was requested?</strong><br>Examine the URL or URI and determine whether the requested resource is normal for the application.</p>
+
+<p><strong>What HTTP method was used?</strong><br>Determine whether the method matches the expected operation. Unexpected POST, PUT, DELETE, or other methods may deserve additional investigation.</p>
+
+<p><strong>What was the server response?</strong><br>Check the HTTP status code and determine whether the request succeeded, failed, was redirected, or caused a server-side error.</p>
+
+<p><strong>How frequently did the requests occur?</strong><br>Determine whether the activity was normal browsing or automated behavior based on the number and timing of requests.</p>
+
+<p><strong>What user agent generated the request?</strong><br>Determine whether the request came from a normal browser, application, script, scanner, or another client.</p>
+
+<h3>Common Mistakes</h3>
+<p>A common mistake is treating every 404 response as malicious. Missing resources are normal on the internet, and a few 404 responses do not provide enough evidence of an attack.</p>
+
+<p>Another mistake is focusing only on the source IP. Attackers can use proxies, VPNs, compromised systems, or shared infrastructure, so the source address should be considered together with the complete request pattern.</p>
+
+<p>Analysts should also avoid assuming that unusual HTTP methods or user agents are automatically malicious. Automated applications and security tools can legitimately generate traffic that looks unusual compared with normal browser activity.</p>
+
+<h3>Questions and Answers</h3>
+<p><strong>Can HTTP logs prove that an attack occurred?</strong><br>HTTP logs can provide strong evidence of suspicious activity, but a single request rarely proves an attack. Analysts should correlate the request with server responses, endpoint activity, authentication events, and other network logs.</p>
+
+<p><strong>Why are HTTP status codes useful?</strong><br>Status codes show how the server responded to requests. Patterns such as repeated 404, 401, or 403 responses can provide clues about scanning, authentication attempts, or unauthorized access.</p>
+
+<p><strong>Why is the user agent important?</strong><br>The user agent provides information about the software making the request. It can help distinguish normal browser activity from scripts, command-line tools, scanners, or other automated clients.</p>
+
+<p><strong>Is a high number of HTTP requests suspicious?</strong><br>Not necessarily. Busy websites, APIs, monitoring systems, and legitimate applications can generate large volumes of traffic. The analyst should determine whether the request rate and targets are normal for that source.</p>
+
+<p><strong>What should I investigate after finding a suspicious HTTP request?</strong><br>Start with the source IP, timestamp, method, URL, parameters, user agent, response code, and request frequency. Then correlate the event with DNS, firewall, endpoint, authentication, and application logs.</p>
+
+<h3>Key Takeaway</h3>
+<p>HTTP Logs provide a detailed view of web requests and responses. For a SOC Analyst, the most important skill is learning to recognize patterns rather than judging individual requests in isolation.</p>
+
+<p>When investigating HTTP activity, examine who made the request, what was requested, how often it happened, which method was used, how the server responded, and what other events occurred around the same time. This approach helps distinguish normal web traffic from activity that may require further investigation.</p>
+
+       
+
+
+
+
+
+
+
+
+
+
+        
+
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>BIT+ &mdash; Practical Cybersecurity Knowledge</p>
+    </footer>
+
+</body>
+</html>
