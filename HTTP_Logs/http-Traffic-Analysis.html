@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>BIT+ | Cybersecurity Notes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="BIT+ Home">BIT<span>+</span></a>
+        </div>
+    </header>
+
+    <main class="content">
+        <h3>What is HTTP Traffic Analysis?</h3>
+<p>HTTP Traffic Analysis is the process of examining web traffic to understand how clients and servers communicate. Instead of looking at one HTTP request by itself, the analyst studies groups of requests and responses to identify normal communication patterns, unusual behavior, and possible security incidents.</p>
+
+<p>For a SOC Analyst, HTTP traffic can provide useful evidence about web browsing, application communication, automated activity, scanning, authentication attempts, suspicious downloads, and possible attacks against web services.</p>
+
+<h3>Why is HTTP Traffic Analysis Important?</h3>
+<p>Modern systems generate a large amount of web traffic. Users access websites, applications communicate with APIs, software checks for updates, and background services connect to external platforms.</p>
+
+<p>Because legitimate traffic is so common, analysts need to understand what normal traffic looks like before they can identify abnormal behavior. Traffic analysis helps establish that context by looking at frequency, destinations, requested resources, response codes, methods, and timing.</p>
+
+<h3>Start With the Traffic Source</h3>
+<p>The source IP is one of the first fields an analyst should examine. It identifies the client that generated the HTTP request, although the address may represent a proxy, NAT gateway, load balancer, or other intermediary depending on the environment.</p>
+
+<p>Determine whether the source is an internal workstation, server, application, monitoring system, or external address. The expected traffic pattern depends heavily on the role of the source system.</p>
+
+<h3>Identify the Destination</h3>
+<p>Next, identify the destination server or domain receiving the requests. Determine whether the destination belongs to an approved business service, internal application, known cloud provider, or unfamiliar external system.</p>
+
+<p>A workstation communicating with a service that is commonly used by the organization may be normal. A new connection to an unfamiliar destination should be examined in context rather than automatically classified as malicious.</p>
+
+<h3>Analyze Request Frequency</h3>
+<p>Request frequency is useful for identifying automated behavior. Normal browsing often contains bursts of requests when a page loads, followed by periods of lower activity.</p>
+
+<p>Automated tools may behave differently by generating requests continuously or at very regular intervals. A large number of requests in a short period can indicate scanning, enumeration, automated API activity, or other scripted behavior.</p>
+
+<p>High traffic volume is not automatically suspicious. Busy applications, crawlers, monitoring systems, and legitimate APIs can generate thousands of requests. The analyst should compare the traffic with the expected behavior of the source.</p>
+
+<h3>Analyze HTTP Methods</h3>
+<p>HTTP methods provide information about what the client is attempting to do. GET is commonly associated with retrieving resources, while POST is frequently used to submit information to an application or API.</p>
+
+<p>PUT and DELETE may be used to modify or remove resources. These methods can be completely legitimate in APIs, but unexpected use against sensitive systems may deserve additional investigation.</p>
+
+<p>HEAD and OPTIONS requests can also occur during normal application and security-tool activity. Their presence alone should not be considered an attack indicator.</p>
+
+<h3>Analyze Response Codes</h3>
+<p>HTTP response codes provide context about the result of each request. Successful responses such as 200 can show that a requested resource was available and returned successfully.</p>
+
+<p>Redirects such as 301 and 302 are common in normal web applications. They may indicate that a resource has moved or that an application is redirecting the user to another location.</p>
+
+<p>Client errors such as 400, 401, 403, and 404 can become useful when analyzed as patterns. For example, a large number of 404 responses against different paths may indicate automated enumeration.</p>
+
+<p>Server errors such as 500 can indicate application problems. When they occur immediately after unusual requests, they may also provide useful evidence during a web attack investigation.</p>
+
+<h3>Look at Requested URLs</h3>
+<p>The requested URL is one of the most valuable parts of HTTP traffic analysis. Examine which resources the client is requesting and whether those resources make sense for the application.</p>
+
+<p>Normal traffic often requests pages, images, scripts, stylesheets, API endpoints, and other resources required by the application.</p>
+
+<p>Suspicious traffic may target administrative interfaces, configuration files, backup files, debug endpoints, unexpected directories, or large numbers of unrelated paths.</p>
+
+<h3>Analyze Request Parameters</h3>
+<p>HTTP parameters can contain information submitted to an application. They may appear in the URL, query string, form data, or other parts of the request depending on the application and logging configuration.</p>
+
+<p>Analysts should look for unusual parameter values, unexpected encoded data, excessive lengths, or input that does not match the normal behavior of the application.</p>
+
+<p>Encoding alone does not make a request malicious. Web applications commonly encode legitimate data, so the analyst should understand what the decoded value represents and why it was submitted.</p>
+
+<h3>User-Agent Analysis</h3>
+<p>The user agent provides information about the software generating the HTTP request. Normal browser traffic usually contains recognizable browser information, while scripts, scanners, command-line utilities, and custom applications may identify themselves differently.</p>
+
+<p>A rare or unusual user agent can be an investigation clue, particularly when it appears together with high request frequency or requests against many different paths.</p>
+
+<h3>Analyze Traffic Timing</h3>
+<p>Time is important when analyzing HTTP traffic because the sequence of events can reveal how activity developed.</p>
+
+<p>For example, a DNS lookup may occur before an HTTP connection. The HTTP request may then be followed by a file download or another outbound connection. Building a timeline helps the analyst understand the relationship between these events.</p>
+
+<p>Look for sudden changes in traffic volume, repeated requests at regular intervals, activity occurring outside the normal operating pattern, and bursts of requests immediately before or after other security events.</p>
+
+<h3>Normal HTTP Traffic Patterns</h3>
+<p>A normal browser session may generate many requests when a website is opened. The browser can request the main page, JavaScript files, CSS files, images, fonts, APIs, and other resources.</p>
+
+<p>Application servers may also generate predictable communication with APIs and external services. These patterns can be used as a baseline for identifying deviations.</p>
+
+<p>The goal is not to memorize one definition of normal traffic. Normal behavior is specific to the system, application, user, and environment being investigated.</p>
+
+<h3>Suspicious HTTP Traffic Patterns</h3>
+<p>Potentially suspicious patterns include a sudden increase in request volume, requests to many unrelated paths, repeated access to sensitive endpoints, unusual HTTP methods, unexpected user agents, and repeated authentication failures.</p>
+
+<p>Another useful indicator is a significant change in the normal behavior of a host. A workstation that normally generates ordinary browsing traffic but suddenly starts making large numbers of automated requests may require investigation.</p>
+
+<h3>Web Scanning and Enumeration</h3>
+<p>Web scanners and enumeration tools often generate large numbers of requests designed to discover pages, directories, files, parameters, or application functionality.</p>
+
+<p>One possible pattern is a single source requesting many different URLs within a short period. A large percentage of 404 responses may indicate that the client is testing paths that do not exist.</p>
+
+<p>Other clues include unusual user agents, very high request rates, and requests for administrative or commonly targeted resources.</p>
+
+<h3>Authentication Traffic</h3>
+<p>Authentication endpoints deserve special attention during HTTP traffic analysis. Repeated POST requests to a login endpoint may indicate normal user activity, but a large number of attempts in a short period may suggest automated credential attacks.</p>
+
+<p>Compare the source address, target account if available, timing, response codes, and number of attempts. Multiple failed attempts followed by a successful authentication can be particularly important when investigating possible account compromise.</p>
+
+<h3>Suspicious File Access and Downloads</h3>
+<p>HTTP traffic can reveal requests for files and resources that are unusual for the environment. Unexpected downloads, access to backup files, executable content, scripts, or configuration files may require further investigation.</p>
+
+<p>The analyst should examine the requested resource, response status, file type if available, source system, and what happened after the request.</p>
+
+<h3>Potential Web Attack Indicators</h3>
+<p>HTTP traffic can contain indicators associated with attacks such as directory traversal, injection attempts, authentication attacks, unauthorized file access, and automated exploitation.</p>
+
+<p>Suspicious input may appear in URL paths or parameters. However, detection should be based on the complete request and application context rather than matching one suspicious-looking character or string.</p>
+
+<h3>HTTP Traffic and Malware Activity</h3>
+<p>Compromised systems may generate HTTP traffic to external infrastructure. Some malware uses web protocols for command and control, downloading additional components, sending information, or communicating with remote services.</p>
+
+<p>Potential indicators include repeated connections to an unusual destination, regular communication intervals, unexpected user agents, and traffic generated by an unusual process or system.</p>
+
+<p>These indicators require correlation because legitimate applications also communicate with external services continuously.</p>
+
+<h3>Correlation With DNS Logs</h3>
+<p>DNS logs can provide useful context before HTTP communication. If a system resolves a domain and shortly afterward sends HTTP traffic to the corresponding destination, the two events can be connected in the investigation timeline.</p>
+
+<p>This correlation can help determine which domain was associated with the traffic and whether the destination was previously known to the host.</p>
+
+<h3>Correlation With Endpoint Logs</h3>
+<p>Endpoint telemetry can help identify which process generated the network activity. This is especially useful when a suspicious HTTP connection originates from a workstation.</p>
+
+<p>If an unfamiliar executable, script, or PowerShell process starts immediately before the HTTP communication, the events should be investigated together.</p>
+
+<h3>Practical Traffic Analysis Example</h3>
+<p>Consider a workstation that normally generates ordinary web browsing traffic. Suddenly, it begins making hundreds of HTTP requests within a few minutes.</p>
+
+<p>The requests target many different URLs, most of which return 404 responses. The user agent is different from the browser normally used by the organization.</p>
+
+<p>The analyst should identify the source system, examine the requested paths, determine the request frequency, and check whether the traffic resembles automated scanning. Endpoint logs should then be reviewed to identify the process responsible for the requests.</p>
+
+<p>If the process is unknown and the same system also contacted a newly observed external domain through DNS, the events should be correlated as part of the same investigation.</p>
+
+<h3>Building an HTTP Traffic Timeline</h3>
+<p>A timeline helps organize individual HTTP events into a sequence. Start with the first relevant event and record the time, source, destination, request, response, and related activity.</p>
+
+<p>For example, the timeline may show a DNS query, followed by an HTTP request, followed by a successful download, followed by the creation of a new process on the endpoint.</p>
+
+<p>Looking at these events together can provide much more useful evidence than examining each log entry independently.</p>
+
+<h3>Common Mistakes</h3>
+<p>A common mistake is assuming that high traffic volume automatically means malicious activity. Legitimate applications and busy services can generate significant amounts of HTTP traffic.</p>
+
+<p>Another mistake is focusing only on status codes. A 200 response does not mean the activity was safe, and a 404 response does not automatically mean an attack occurred.</p>
+
+<p>Analysts should also avoid investigating only the destination. The source system, process, user, timing, request pattern, and response should all be considered.</p>
+
+<h3>Questions and Answers</h3>
+<p><strong>What is the difference between HTTP Log Analysis and HTTP Traffic Analysis?</strong><br>HTTP Log Analysis can focus on individual log entries and their fields, while HTTP Traffic Analysis looks more broadly at patterns and relationships between multiple requests, responses, sources, destinations, and time periods.</p>
+
+<p><strong>Is a large number of HTTP requests suspicious?</strong><br>Not necessarily. Busy applications, APIs, monitoring systems, and legitimate crawlers can generate large volumes of traffic. The analyst should compare the traffic with the expected behavior of the source.</p>
+
+<p><strong>What HTTP pattern can indicate web scanning?</strong><br>A source making many requests to different paths in a short period, especially when many requests return 404 responses, can be an indicator of automated enumeration or scanning. Other evidence should be examined before reaching a conclusion.</p>
+
+<p><strong>Why should HTTP traffic be correlated with DNS?</strong><br>DNS can show which domain a system resolved before communicating. Connecting DNS and HTTP events can help establish the relationship between a hostname and subsequent network activity.</p>
+
+<p><strong>Why is the source system important?</strong><br>The same HTTP behavior can have completely different meanings depending on the source. A web crawler, API server, employee workstation, and monitoring system can all generate high HTTP traffic for legitimate reasons.</p>
+
+<p><strong>What should I check when HTTP traffic looks suspicious?</strong><br>Examine the source, destination, timestamp, HTTP method, requested URL, parameters, response code, user agent, request frequency, and related DNS, endpoint, authentication, and firewall activity.</p>
+
+<h3>Key Takeaway</h3>
+<p>HTTP Traffic Analysis is about understanding the behavior of web communication rather than examining isolated requests. A strong analysis considers the source, destination, timing, request pattern, HTTP methods, URLs, parameters, response codes, and user agents.</p>
+
+<p>The most valuable skill is learning to establish what normal traffic looks like and then identify meaningful deviations from that baseline. When suspicious HTTP activity is discovered, correlate it with DNS, endpoint, authentication, and network logs to determine whether the activity is simply unusual or part of a larger security incident.</p>
+
+       
+
+
+
+
+
+
+
+
+
+
+        
+
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>BIT+ &mdash; Practical Cybersecurity Knowledge</p>
+    </footer>
+
+</body>
+</html>
