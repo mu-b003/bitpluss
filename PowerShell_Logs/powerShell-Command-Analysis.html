@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>BIT+ | Cybersecurity Notes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="BIT+ Home">BIT<span>+</span></a>
+        </div>
+    </header>
+
+    <main class="content">
+       <h3>What Is PowerShell Command Analysis?</h3>
+<p>PowerShell Command Analysis is the process of examining PowerShell commands and script activity to understand what a user, administrator, application, or attacker attempted to do on a Windows system.</p>
+
+<p>Knowing that PowerShell was executed is useful, but it does not explain the actual activity. Command analysis goes one step further by examining the command, its parameters, the account that executed it, the parent process, the target system, and the activity that occurred afterward.</p>
+
+<p>For a SOC analyst, this is important because the same PowerShell executable can be used for completely different purposes. A command used by an administrator to check system information may be normal, while another command executed by the same program could download a file or modify security settings.</p>
+
+<h3>Why Analyze PowerShell Commands?</h3>
+<p>PowerShell provides access to many Windows capabilities through commands, cmdlets, scripts, .NET functionality, and Windows management interfaces. This makes it extremely useful for administration and automation.</p>
+
+<p>The same capabilities can also be abused after an attacker gains access to a system. Command analysis can help identify suspicious execution, system discovery, credential-related activity, remote access, file manipulation, persistence, and other behaviors.</p>
+
+<p>The goal is not simply to find “bad commands.” The analyst should understand what the command does and whether that behavior makes sense in the context of the system and account.</p>
+
+<h3>Where Can PowerShell Commands Appear?</h3>
+<p>PowerShell command information may be available through PowerShell Script Block Logging, Module Logging, transcription, process creation events, endpoint security products, or SIEM platforms.</p>
+
+<p>Event ID 4104 is commonly associated with Script Block Logging and can provide script block content when the feature is enabled. Event ID 4103 is associated with Module Logging and can provide information about module and command execution.</p>
+
+<p>Windows process creation logging can also provide information about how PowerShell was launched. Event ID 4688 may contain process and command-line information when the appropriate auditing is configured.</p>
+
+<h3>Start With the Full Command</h3>
+<p>When possible, obtain the complete PowerShell command rather than analyzing only the word “PowerShell.” A command may contain parameters that completely change its behavior.</p>
+
+<p>For example, a simple command that retrieves system information is very different from a command that downloads remote content, launches another process, or modifies a security setting.</p>
+
+<p>Break the command into smaller parts and identify the executable, cmdlet, parameters, arguments, paths, URLs, variables, and other important components.</p>
+
+<h3>Understand the Command Purpose</h3>
+<p>The first question should be: what is this command trying to accomplish?</p>
+
+<p>A command may perform discovery, create or modify files, interact with users, manage services, change registry values, communicate with another system, or execute another program.</p>
+
+<p>Understanding the purpose is more useful than simply searching for a suspicious-looking word. Many legitimate PowerShell commands can appear unusual to someone who does not understand their administrative purpose.</p>
+
+<h3>Analyze Cmdlets</h3>
+<p>PowerShell cmdlets are commands designed to perform specific operations. Their names often provide useful clues about the activity.</p>
+
+<p>Commands used for system discovery may retrieve information about processes, services, users, network configuration, or operating system details. Other commands may manage files, scheduled tasks, services, or security settings.</p>
+
+<p>The presence of a particular cmdlet does not automatically make the activity malicious. The analyst should determine why it was executed, by whom, and what happened afterward.</p>
+
+<h3>Analyze Command Parameters</h3>
+<p>Parameters can provide important context about what a command actually does. Two commands using the same cmdlet can behave very differently because of their parameters and arguments.</p>
+
+<p>Pay attention to parameters that specify remote systems, files, URLs, execution behavior, credentials, or configuration changes.</p>
+
+<p>Also examine paths and destinations. A command operating on a normal administrative directory may be expected, while an unexpected executable or script in a temporary or unusual directory may require investigation.</p>
+
+<h3>Analyze File Paths</h3>
+<p>File paths can provide useful clues about the purpose of a PowerShell command. Determine whether the command reads, creates, modifies, deletes, or executes a file.</p>
+
+<p>System and application directories may be normal depending on the activity. Files located in temporary directories, user download locations, or other unexpected paths may require additional investigation.</p>
+
+<p>File analysis becomes stronger when correlated with process creation and endpoint events. For example, a PowerShell command that creates a new executable followed by execution of that file provides more context than the command alone.</p>
+
+<h3>Analyze URLs and Network Destinations</h3>
+<p>Some PowerShell commands communicate with remote systems. When a command contains a URL, hostname, or IP address, investigate the destination and determine why the connection occurred.</p>
+
+<p>Consider whether the destination belongs to a known corporate service, trusted application, software provider, or another expected system.</p>
+
+<p>An unexpected external destination becomes more interesting when it appears together with suspicious command execution, file downloads, encoded content, or unusual account activity.</p>
+
+<h3>PowerShell Download Commands</h3>
+<p>PowerShell can retrieve content from remote systems. This functionality is useful for legitimate administration but can also be abused to bring additional content onto a compromised machine.</p>
+
+<p>During an investigation, determine what was retrieved, where it came from, where it was stored, and what happened afterward.</p>
+
+<p>A remote download followed by execution of the retrieved content is more significant than a simple request to a known internal management service.</p>
+
+<h3>Encoded Commands</h3>
+<p>PowerShell supports encoded command execution, which can make the original command harder to read directly from process information.</p>
+
+<p>Encoding is not proof of malicious activity. However, analysts should decode and inspect the content when possible and determine what the resulting command actually does.</p>
+
+<p>Encoded PowerShell becomes more concerning when it is combined with suspicious parent processes, unusual accounts, external connections, downloads, or other indicators.</p>
+
+<h3>Obfuscation</h3>
+<p>Attackers may attempt to make PowerShell commands harder to understand by using obfuscation. This can include unusual variable names, string manipulation, character substitutions, concatenation, aliases, or other techniques that make the command less readable.</p>
+
+<p>The purpose of analysis is to simplify the command conceptually and determine its final behavior. Analysts should focus on what the command eventually executes rather than being distracted by its original formatting.</p>
+
+<h3>Analyze the User Context</h3>
+<p>The same command can have different significance depending on which account executed it. An IT administrator performing system maintenance may legitimately run powerful commands.</p>
+
+<p>The same activity from a standard user account, an unexpected service account, or an account that recently experienced suspicious authentication may deserve more attention.</p>
+
+<p>Always ask whether the account has a legitimate reason to perform the observed action.</p>
+
+<h3>Analyze the Parent Process</h3>
+<p>Understanding what started PowerShell can provide valuable context. A user intentionally opening PowerShell is different from an unexpected application launching PowerShell in the background.</p>
+
+<p>Use process creation information to identify the parent process when available. Investigate whether the parent-child relationship is normal for the application and environment.</p>
+
+<p>An unusual parent process combined with a suspicious PowerShell command can provide a stronger investigation lead.</p>
+
+<h3>Analyze the Execution Time</h3>
+<p>Time provides additional context for command analysis. Determine when the command was executed and compare it with the user's normal activity.</p>
+
+<p>Commands executed during planned maintenance may be expected. Unexpected PowerShell execution during an unusual period, especially after suspicious authentication, may require additional investigation.</p>
+
+<h3>Normal PowerShell Commands</h3>
+<p>Normal PowerShell activity can include checking system information, managing services, configuring Windows, installing software, managing users, collecting administrative information, and performing routine automation.</p>
+
+<p>Normal activity usually has a reasonable relationship between the command, account, system, and operational task.</p>
+
+<p>However, even legitimate commands should be evaluated in context when they appear during a security investigation.</p>
+
+<h3>Potentially Suspicious Commands</h3>
+<p>Commands may require additional investigation when they perform unexpected downloads, execute content from unusual locations, modify security settings, create persistence mechanisms, access sensitive information, or communicate with unexpected remote systems.</p>
+
+<p>Commands that launch other interpreters or executable programs can also deserve attention, especially when the execution chain is unusual for the environment.</p>
+
+<p>The important principle is to analyze behavior rather than rely on a single keyword.</p>
+
+<h3>PowerShell and Credential Activity</h3>
+<p>PowerShell can interact with Windows authentication and credential-related functionality. Commands that access credential stores, authentication information, or security-sensitive configuration should therefore be examined carefully.</p>
+
+<p>If such commands are executed by an unexpected account or immediately after suspicious authentication, privilege use, or lateral movement activity, the commands may be part of a broader attack sequence.</p>
+
+<h3>PowerShell and Persistence</h3>
+<p>PowerShell commands can be used to create or modify persistence mechanisms. Examples include scheduled tasks, services, registry settings, startup-related configuration, and scripts that execute automatically.</p>
+
+<p>When a command modifies one of these mechanisms, investigate what was changed, which account performed the action, and whether the change was expected.</p>
+
+<h3>Correlating Commands With Other Logs</h3>
+<p>A PowerShell command should be treated as one piece of evidence. Correlate it with authentication events to understand how the account accessed the system.</p>
+
+<p>Correlate it with process creation events to determine how PowerShell was launched. Examine network events when the command communicates externally, and check file or service events when the command modifies the system.</p>
+
+<p>This correlation can transform an isolated command into a complete investigation timeline.</p>
+
+<h3>Practical Example</h3>
+<p>Suppose Event ID 4688 shows that powershell.exe was launched by a user process. Shortly afterward, Script Block Logging records a command that retrieves content from an external location.</p>
+
+<p>The analyst should determine whether the user normally performs this type of activity and whether the destination is legitimate. They should then check whether a new file appeared on the system and whether another process was executed afterward.</p>
+
+<p>If the command was executed by an unexpected account, came from an unusual parent process, contacted an unknown destination, and resulted in execution of a newly downloaded file, the events should be investigated together rather than individually.</p>
+
+<h3>Investigation Workflow</h3>
+<p>Start by collecting the complete PowerShell command or script block. Identify the account, system, timestamp, and source of the event.</p>
+
+<p>Next, break the command into understandable components. Identify the cmdlets, parameters, file paths, URLs, IP addresses, encoded content, and other important arguments.</p>
+
+<p>Determine what the command was designed to accomplish. Then compare the activity with the normal behavior of the account and system.</p>
+
+<p>After that, examine the parent process and related process creation events. Search for authentication, network, file, privilege, service, and account activity around the same time.</p>
+
+<p>Finally, build a timeline and determine whether the command represents normal administration, suspicious activity, or part of a larger incident.</p>
+
+<h3>Common Mistakes</h3>
+<p>A common mistake is searching for one suspicious keyword and immediately declaring the command malicious. PowerShell commands can be complex, and the same functionality may have legitimate administrative uses.</p>
+
+<p>Another mistake is analyzing the command without understanding the account that executed it. User context is essential when determining whether an action makes sense.</p>
+
+<p>Analysts should also avoid ignoring encoded or obfuscated content. These techniques do not automatically indicate an attack, but they can make malicious activity harder to recognize and therefore deserve inspection.</p>
+
+<p>Finally, do not stop at the command itself. Investigating what happened before and after execution is often necessary to understand its actual impact.</p>
+
+<h3>Questions and Answers</h3>
+
+<p><strong>What is the main goal of PowerShell command analysis?</strong></p>
+<p>The goal is to understand what a PowerShell command actually did and determine whether that behavior was expected. Analysts examine the command, parameters, account, parent process, destination, and surrounding activity.</p>
+
+<p><strong>Is every PowerShell command suspicious?</strong></p>
+<p>No. PowerShell is widely used for legitimate Windows administration. A command should be evaluated according to its purpose, account context, system role, timing, and relationship with other events.</p>
+
+<p><strong>Why is the full command important?</strong></p>
+<p>The executable name alone does not explain the activity. Parameters and arguments can reveal whether PowerShell was performing system discovery, modifying files, communicating with a remote system, executing another program, or performing another action.</p>
+
+<p><strong>What should I do when I find an encoded PowerShell command?</strong></p>
+<p>Inspect and decode the content when possible, then analyze what the decoded command actually does. Encoding alone is not proof of malicious behavior, but it can make suspicious activity harder to recognize.</p>
+
+<p><strong>Why should I investigate the parent process?</strong></p>
+<p>The parent process explains how PowerShell was started. An administrator intentionally launching PowerShell is different from an unexpected application launching it. The parent-child relationship can therefore provide important behavioral context.</p>
+
+<p><strong>What makes a PowerShell command more suspicious?</strong></p>
+<p>A combination of indicators is more meaningful than one command characteristic. Unexpected downloads, unusual destinations, obfuscation, suspicious parent processes, unusual accounts, persistence changes, or execution immediately after suspicious authentication can increase concern.</p>
+
+<p><strong>Why should PowerShell commands be correlated with authentication logs?</strong></p>
+<p>Authentication logs can show how the account gained access, while PowerShell logs can show what the account did afterward. Connecting the two helps determine whether command execution may have followed unauthorized access.</p>
+
+<p><strong>What is the most important question when analyzing a PowerShell command?</strong></p>
+<p>The most important question is what the command was actually trying to accomplish. Once its purpose is understood, the analyst can compare it with the expected behavior of the account and system and determine what additional evidence should be examined.</p>
+
+<h3>Key Takeaway</h3>
+<p>PowerShell Command Analysis is about understanding behavior, not simply identifying PowerShell usage. The analyst should break the command into its components, understand its purpose, examine the account and parent process, and investigate any files, network connections, privileges, or system changes associated with the execution.</p>
+
+<p>The strongest analysis comes from correlation. A PowerShell command becomes much more meaningful when connected with authentication events, process creation, network activity, file changes, privilege use, and persistence events. This allows the SOC analyst to move from simply seeing a command to understanding the activity and its role in a potential security incident.</p>
+
+       
+
+
+
+
+
+
+
+
+
+
+        
+
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>BIT+ &mdash; Practical Cybersecurity Knowledge</p>
+    </footer>
+
+</body>
+</html>
