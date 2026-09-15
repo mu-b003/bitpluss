@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>BIT+ | Cybersecurity Notes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="BIT+ Home">BIT<span>+</span></a>
+        </div>
+    </header>
+
+    <main class="content">
+        <h3>What Is a Failed Logon?</h3>
+<p>A failed logon occurs when Windows rejects an attempt to authenticate an account. In Windows Security Logs, these events are commonly recorded as Event ID 4625.</p>
+
+<p>A single failed logon is not necessarily a security incident. Users can enter an incorrect password, use an expired credential, or attempt to access a resource they are not authorized to use. The main purpose of an investigation is to determine whether failed logons form a suspicious pattern.</p>
+
+<h3>Why Failed Logons Matter</h3>
+<p>Failed logon events can provide early evidence of unauthorized access attempts. Attackers may repeatedly attempt passwords against one account, try the same password against many accounts, or target administrative accounts.</p>
+
+<p>For a SOC analyst, the important information is not simply how many failures occurred. The analyst needs to understand who was targeted, where the attempts came from, how frequently they occurred, and whether a successful authentication followed them.</p>
+
+<h3>Event ID 4625</h3>
+<p>Event ID 4625 indicates that an account failed to log on to a Windows system. The event contains information that can help an analyst understand the authentication attempt.</p>
+
+<p>Useful fields can include the account name, source network address, logon type, failure information, workstation name, authentication package, and timestamp.</p>
+
+<p>These fields should be analyzed together. A suspicious source address or unusual account may be important, but the complete context determines whether the activity is actually concerning.</p>
+
+<h3>Start With the Timeline</h3>
+<p>The first step in a failed logon investigation is to examine when the events occurred. Look for isolated failures as well as groups of failures occurring within a short period.</p>
+
+<p>Several failures spread across a long period may simply represent normal user mistakes. Dozens or hundreds of failures within a short period are more likely to require investigation, especially when they originate from the same source.</p>
+
+<p>Time-based analysis can also reveal attacks that occur outside normal working hours or continue for a long period without obvious interruption.</p>
+
+<h3>Analyze the Target Account</h3>
+<p>Identify which account was targeted by the failed logons. Determine whether it is a normal user account, administrator account, service account, or another type of account.</p>
+
+<p>A large number of failures against one account can indicate targeted password guessing or brute-force activity. Failed attempts against multiple accounts may suggest a different attack pattern, such as password spraying.</p>
+
+<p>Accounts with administrative privileges deserve additional attention because successful compromise could provide greater access to the system.</p>
+
+<h3>Analyze the Source Address</h3>
+<p>Check the source network address associated with the failed authentication. Determine whether it belongs to a known internal workstation, server, VPN network, or another expected source.</p>
+
+<p>If many failed logons originate from the same unfamiliar address, investigate the activity more closely. The address should be correlated with other events to determine whether it is involved in additional suspicious behavior.</p>
+
+<p>An internal address should not automatically be considered safe. A compromised internal workstation can also generate malicious authentication attempts.</p>
+
+<h3>Count the Failed Attempts</h3>
+<p>The number of failed attempts provides useful context, but the number alone does not prove an attack.</p>
+
+<p>A small number of failures from one user may be normal. A high number of failures within a short period, particularly against the same account, can indicate automated password guessing or brute-force behavior.</p>
+
+<p>When counting failures, consider the time period, source address, targeted account, and whether successful authentication eventually occurred.</p>
+
+<h3>Brute Force Indicators</h3>
+<p>Brute-force activity usually involves repeated attempts to authenticate against an account. An attacker may try many passwords until one is accepted or until the account becomes locked.</p>
+
+<p>Common indicators include a high number of failures, a short interval between events, repeated targeting of one account, and authentication attempts originating from the same source.</p>
+
+<p>The pattern becomes more significant when the attempts are automated and continue consistently rather than appearing as occasional user mistakes.</p>
+
+<h3>Password Spraying Indicators</h3>
+<p>Password spraying is different from traditional brute force because the attacker may try one or a small number of common passwords against many accounts rather than repeatedly targeting one account.</p>
+
+<p>When investigating failed logons, check whether the same source is attempting authentication against multiple usernames. A distributed pattern involving many accounts can be an important indicator of password spraying.</p>
+
+<p>Password spraying may also occur slowly to avoid triggering simple threshold-based detection, so the investigation should consider longer time periods when necessary.</p>
+
+<h3>Failed Logons From Multiple Sources</h3>
+<p>Multiple source addresses targeting the same account can indicate several different situations. It may be normal activity from different users or systems, but it can also indicate distributed attack activity.</p>
+
+<p>Do not assume that every source represents a separate attacker. VPN gateways, proxies, NAT, security tools, and shared infrastructure can cause many users or systems to appear behind the same address.</p>
+
+<h3>Logon Type Analysis</h3>
+<p>The logon type helps explain how the failed authentication attempt was made. Logon Type 2 commonly represents an interactive logon, while Logon Type 3 represents a network logon.</p>
+
+<p>Logon Type 10 represents Remote Interactive access and is commonly associated with Remote Desktop. Failed Remote Desktop authentication can therefore be useful when investigating possible remote access attacks.</p>
+
+<p>The logon type should always be considered in context. A particular logon type is not automatically malicious simply because it appears in a failed authentication event.</p>
+
+<h3>Failure Information</h3>
+<p>Event ID 4625 can contain information explaining why authentication failed. The failure status and substatus values can help distinguish different authentication problems.</p>
+
+<p>For example, failures caused by incorrect credentials can produce a different investigation path from failures caused by account restrictions or other authentication conditions.</p>
+
+<p>A SOC analyst should use these fields to understand the reason for the failure rather than treating every 4625 event as the same.</p>
+
+<h3>Successful Logon After Failed Attempts</h3>
+<p>One of the most important patterns is a successful authentication following multiple failed attempts. This can indicate that an attacker eventually obtained or guessed valid credentials.</p>
+
+<p>However, the same pattern can occur when a legitimate user repeatedly enters an incorrect password and then succeeds. The analyst should compare the source, account, timing, and subsequent activity before deciding whether the sequence is suspicious.</p>
+
+<h3>What Happened After the Successful Logon?</h3>
+<p>If a successful authentication follows suspicious failures, investigate what happened immediately afterward.</p>
+
+<p>Look for process creation, PowerShell activity, privilege use, account changes, service creation, remote connections, and other actions performed by the account.</p>
+
+<p>If suspicious activity begins immediately after the successful authentication, the failed logons may be part of a larger credential attack rather than an isolated authentication problem.</p>
+
+<h3>Normal Failed Logon Activity</h3>
+<p>Normal failed logons are common in Windows environments. Users may mistype passwords, attempt to use old credentials, reconnect to resources with outdated credentials, or experience authentication problems caused by configuration changes.</p>
+
+<p>Normal activity usually follows a reasonable pattern. For example, a few failures from a user's normal workstation followed by a successful login may not require extensive investigation.</p>
+
+<h3>Potentially Suspicious Failed Logon Activity</h3>
+<p>Failed logons become more suspicious when they show characteristics that are inconsistent with normal behavior.</p>
+
+<p>Examples include a large number of rapid failures, one source targeting many accounts, repeated attempts against privileged accounts, failures from unfamiliar systems, Remote Desktop authentication attempts from unexpected sources, and successful authentication following a large number of failures.</p>
+
+<p>Multiple indicators together provide stronger evidence than any single event.</p>
+
+<h3>Investigating a Failed Logon Incident</h3>
+<p>Begin by identifying the relevant Event ID 4625 events. Record the timestamp, username, source address, logon type, and failure information.</p>
+
+<p>Next, group the events by source address and account. This can reveal whether one source is targeting one account or many accounts.</p>
+
+<p>Then examine the frequency and timing of the attempts. Look for bursts of activity, repeated patterns, or attempts occurring over an unusually long period.</p>
+
+<p>After that, search for successful authentication events involving the same account or source. A successful logon can significantly change the priority of the investigation.</p>
+
+<p>Finally, examine activity after any successful authentication and correlate the events into a timeline.</p>
+
+<h3>Practical Example</h3>
+<p>Suppose a Windows server records dozens of failed logons against an administrator account within several minutes. Most of the events originate from the same workstation.</p>
+
+<p>The analyst should determine whether the workstation is authorized to perform administrative authentication. If it is not, the activity becomes more suspicious.</p>
+
+<p>If a successful administrator logon then occurs from the same source, the analyst should immediately examine the events that follow. Process creation, PowerShell execution, privilege use, account changes, or network activity may provide evidence about what happened after authentication.</p>
+
+<h3>Common Investigation Mistakes</h3>
+<p>One common mistake is assuming that a high number of failed logons always means brute force. Legitimate applications, misconfigured services, and users with outdated credentials can also generate repeated failures.</p>
+
+<p>Another mistake is looking only at the source IP. The account, logon type, timing, and failure reason are equally important.</p>
+
+<p>Analysts should also avoid investigating only a short time window. Some attacks are deliberately slow and may become visible only when authentication activity is reviewed across a larger period.</p>
+
+<h3>Questions and Answers</h3>
+
+<p><strong>What Event ID represents a failed Windows logon?</strong></p>
+<p>Event ID 4625 represents a failed logon. It provides information that can help an analyst investigate the account, source, timing, logon type, and reason for the failed authentication.</p>
+
+<p><strong>Does one failed logon indicate an attack?</strong></p>
+<p>No. A single failed logon is common and may simply result from an incorrect password or another legitimate authentication problem. The surrounding pattern is much more important.</p>
+
+<p><strong>How can I recognize possible brute-force activity?</strong></p>
+<p>Look for repeated authentication failures against the same account, especially when the attempts occur rapidly and originate from the same source. Additional evidence such as automation, unusual sources, or a successful login afterward can increase suspicion.</p>
+
+<p><strong>How is password spraying different from brute force?</strong></p>
+<p>Brute force generally involves repeatedly attempting passwords against one account, while password spraying commonly attempts a small number of passwords across many accounts. Therefore, the number of targeted accounts and the distribution of failures are important during analysis.</p>
+
+<p><strong>Why should I investigate a successful login after failed attempts?</strong></p>
+<p>Because it may represent the point where valid credentials were successfully obtained or used. The analyst should determine whether the successful login came from the same source and whether suspicious activity followed it.</p>
+
+<p><strong>Why is the source IP important during a failed logon investigation?</strong></p>
+<p>The source address helps identify where the authentication attempts originated. Repeated failures from an unfamiliar source can be significant, but internal addresses must also be investigated because compromised internal systems can generate malicious activity.</p>
+
+<p><strong>What should I investigate after finding suspicious failed logons?</strong></p>
+<p>Check for successful authentication, process creation, PowerShell activity, privilege use, account changes, Remote Desktop activity, and network connections. These events can help determine whether the failed authentication was part of a larger attack.</p>
+
+<p><strong>Can failed logons be caused by legitimate activity?</strong></p>
+<p>Yes. Incorrect passwords, expired credentials, disconnected applications, scheduled tasks, and misconfigured services can all generate failed authentication events. The analyst must compare the activity with the expected behavior of the account and system.</p>
+
+<h3>Key Takeaway</h3>
+<p>Windows Failed Logon Investigation is not simply about finding Event ID 4625. The real objective is to understand the pattern behind the failures.</p>
+
+<p>A strong investigation examines the targeted account, source address, timing, frequency, logon type, failure information, and relationship between failed and successful authentication. When these events are correlated with process, privilege, PowerShell, account, and network activity, failed logons can become valuable evidence for identifying unauthorized access and understanding the development of a security incident.</p>
+
+
+
+
+
+
+
+
+
+
+
+        
+
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>BIT+ &mdash; Practical Cybersecurity Knowledge</p>
+    </footer>
+
+</body>
+</html>
