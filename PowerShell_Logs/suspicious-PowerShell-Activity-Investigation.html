@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>BIT+ | Cybersecurity Notes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="BIT+ Home">BIT<span>+</span></a>
+        </div>
+    </header>
+
+    <main class="content">
+        <h3>What Is Suspicious PowerShell Activity?</h3>
+<p>Suspicious PowerShell activity is PowerShell execution that does not fit the expected behavior of the user, system, application, or environment. It may involve unusual commands, scripts, downloads, encoded content, unexpected network connections, or actions that modify the system.</p>
+
+<p>PowerShell itself is not malicious. It is a legitimate Windows administration and automation framework. The purpose of an investigation is to determine whether PowerShell was being used for a legitimate task or whether its capabilities were being abused.</p>
+
+<h3>Why Is Suspicious PowerShell Activity Important?</h3>
+<p>PowerShell provides extensive access to Windows functionality. An attacker who gains access to a system can use it to perform discovery, execute commands, interact with files, communicate with remote systems, modify configuration, and establish persistence.</p>
+
+<p>For a SOC analyst, suspicious PowerShell activity can therefore provide important evidence about what an attacker may have attempted to do after gaining access to a system.</p>
+
+<h3>Where Can Suspicious PowerShell Activity Be Found?</h3>
+<p>PowerShell activity can be visible in several Windows logging sources depending on the system configuration. PowerShell operational logs may contain command and script information, while Security logs can provide process creation and authentication context.</p>
+
+<p>Event ID 4103 is commonly associated with PowerShell Module Logging, while Event ID 4104 is associated with Script Block Logging. Event ID 4688 can provide process creation information when the appropriate auditing is enabled.</p>
+
+<p>Endpoint security products and SIEM platforms may provide additional visibility and make it easier to correlate PowerShell activity across multiple systems.</p>
+
+<h3>Start With the User and System</h3>
+<p>Before deciding whether PowerShell activity is suspicious, identify the account and computer involved.</p>
+
+<p>Determine whether the account is an administrator, standard user, service account, or another type of account. Then consider the role of the computer. PowerShell activity on an administrative server may be much more common than on a standard user workstation.</p>
+
+<p>The same command can therefore have different meanings depending on where and by whom it was executed.</p>
+
+<h3>Examine the Command</h3>
+<p>When command information is available, examine the complete command rather than only looking for the word “PowerShell.”</p>
+
+<p>Identify the cmdlets, parameters, arguments, file paths, URLs, IP addresses, variables, and other components. Determine what the command was designed to accomplish.</p>
+
+<p>A command that retrieves system information may be normal administrative activity, while a command that retrieves remote content and executes it may require much closer investigation.</p>
+
+<h3>Look for Encoded Commands</h3>
+<p>PowerShell supports encoded command execution. Encoding can make a command harder to understand when reviewing process creation events or other logs.</p>
+
+<p>Encoded content is not automatically malicious. However, it should be inspected when encountered during a suspicious activity investigation.</p>
+
+<p>After decoding the content, determine what the command actually performs. Look for downloads, execution, system discovery, credential-related activity, persistence, or other unexpected behavior.</p>
+
+<h3>Look for Obfuscation</h3>
+<p>Attackers may use obfuscation to make PowerShell commands harder to read or detect. This can include string manipulation, character concatenation, unusual variable names, aliases, or dynamically constructed commands.</p>
+
+<p>When a command appears heavily obfuscated, the analyst should attempt to simplify it conceptually and identify its final behavior.</p>
+
+<p>Obfuscation alone does not prove malicious activity, but it can be a useful indicator when combined with other suspicious characteristics.</p>
+
+<h3>Investigate Download Activity</h3>
+<p>PowerShell can retrieve content from remote systems. During an investigation, determine whether the command contacted an external destination and whether it downloaded a file or script.</p>
+
+<p>Check the destination, the retrieved content, the location where it was stored, and what happened after the download.</p>
+
+<p>A download followed by execution of a newly created file is more concerning than communication with a known internal management service.</p>
+
+<h3>Investigate Network Connections</h3>
+<p>Suspicious PowerShell activity may involve communication with remote systems. Examine any domain names, URLs, or IP addresses associated with the command.</p>
+
+<p>Determine whether the destination is expected for the organization and whether other systems have contacted the same destination.</p>
+
+<p>Unexpected external communication can become more significant when it occurs immediately after PowerShell execution or is associated with encoded commands, downloads, or suspicious processes.</p>
+
+<h3>Examine the Parent Process</h3>
+<p>One of the most useful questions is: what started PowerShell?</p>
+
+<p>Process creation logs can help identify the parent process. PowerShell launched directly by an administrator may be normal, while PowerShell unexpectedly launched by an application, document-related process, or another unusual process may require additional investigation.</p>
+
+<p>The parent-child relationship should be evaluated according to the normal behavior of the application and environment.</p>
+
+<h3>Check Authentication Activity</h3>
+<p>Authentication events can provide important context for suspicious PowerShell activity. Determine whether the account recently logged in and whether the authentication was expected.</p>
+
+<p>A suspicious login followed shortly afterward by unusual PowerShell activity is more concerning than the same PowerShell command executed during known administrative maintenance.</p>
+
+<p>Look for failed authentication, successful authentication, unusual source addresses, Remote Desktop access, and other authentication events around the same time.</p>
+
+<h3>Check Privilege Activity</h3>
+<p>Determine whether the PowerShell process or account had elevated privileges. Administrative PowerShell sessions can perform actions that standard users cannot.</p>
+
+<p>If suspicious PowerShell activity follows an unexpected privileged logon or privilege assignment, the events should be correlated carefully.</p>
+
+<p>Privilege alone does not indicate malicious activity. Administrators legitimately use elevated PowerShell sessions, so the purpose and context of the activity remain important.</p>
+
+<h3>PowerShell and Persistence</h3>
+<p>Attackers may use PowerShell to establish persistence so they can regain access later. Possible persistence-related actions include creating scheduled tasks, modifying registry settings, creating services, or placing scripts in locations that cause them to execute automatically.</p>
+
+<p>If suspicious PowerShell activity is followed by a system configuration change, investigate whether the change provides automatic or recurring execution.</p>
+
+<h3>PowerShell and Discovery</h3>
+<p>PowerShell can be used to gather information about a Windows environment. Attackers may use commands to identify users, processes, services, network configuration, operating system information, or other systems.</p>
+
+<p>Discovery commands can also be legitimate. The analyst should determine whether the volume, timing, account, and sequence of discovery activity match normal administrative behavior.</p>
+
+<h3>PowerShell and Credential-Related Activity</h3>
+<p>PowerShell can interact with security-sensitive Windows functionality. Commands related to credentials, authentication, security configuration, or protected system information should therefore be examined carefully.</p>
+
+<p>If credential-related activity appears after suspicious authentication or privilege escalation, it may indicate an attempt to obtain additional access.</p>
+
+<h3>Look at What Happened Before</h3>
+<p>Do not begin the investigation with PowerShell alone. Search backward in the timeline to understand what led to its execution.</p>
+
+<p>Check for suspicious authentication, malicious files, unusual process creation, document or application execution, remote access, or other events that may have preceded the PowerShell process.</p>
+
+<p>This can help identify the initial access or execution mechanism that caused PowerShell to start.</p>
+
+<h3>Look at What Happened After</h3>
+<p>Next, investigate what happened immediately after PowerShell executed.</p>
+
+<p>Look for newly created processes, files, network connections, account changes, services, scheduled tasks, registry modifications, and other system changes.</p>
+
+<p>The activity after PowerShell execution can help determine whether the command was simply administrative or whether it led to additional suspicious behavior.</p>
+
+<h3>Normal vs Suspicious PowerShell</h3>
+<p>Normal PowerShell activity often comes from known administrators, management systems, or automation processes and performs predictable administrative tasks.</p>
+
+<p>Suspicious activity may involve an unexpected account, unusual parent process, encoded or heavily obfuscated commands, unexpected external communication, downloads, execution from unusual locations, or system changes that do not have an obvious administrative purpose.</p>
+
+<p>No single characteristic should normally be used as the only reason to classify PowerShell as malicious. Multiple related indicators provide stronger evidence.</p>
+
+<h3>Practical Investigation Example</h3>
+<p>Suppose a standard Windows workstation records a successful authentication from an unusual source. A few minutes later, a PowerShell process is created by an unexpected parent process.</p>
+
+<p>Script Block Logging then records an obfuscated command that communicates with an external destination and creates a file on the workstation.</p>
+
+<p>The analyst should investigate the authentication source, identify the parent process, analyze the PowerShell command, examine the external destination, and determine what happened to the newly created file.</p>
+
+<p>If another process is launched from that file, followed by additional network activity or privilege-related events, the PowerShell execution may represent an important stage of a larger incident.</p>
+
+<h3>Investigation Workflow</h3>
+<p>Start by identifying the suspicious PowerShell event and recording the timestamp, system, and account involved.</p>
+
+<p>Next, obtain the available command or script information. Break the command into understandable components and determine its purpose.</p>
+
+<p>Examine encoding and obfuscation, then inspect URLs, IP addresses, file paths, and other destinations contained in the command.</p>
+
+<p>Review the process creation event and identify the parent process. Then examine authentication and privilege events before the PowerShell execution.</p>
+
+<p>Continue forward in the timeline and investigate process, file, network, account, service, and scheduled task activity that occurred afterward.</p>
+
+<p>Finally, determine whether the activity is consistent with legitimate administration or whether the evidence indicates suspicious behavior.</p>
+
+<h3>Common Mistakes</h3>
+<p>A common mistake is treating PowerShell execution as malicious by default. PowerShell is a normal and widely used Windows administration tool.</p>
+
+<p>Another mistake is focusing only on suspicious keywords. Some legitimate commands may contain words that look concerning, while malicious commands may be heavily obfuscated.</p>
+
+<p>Analysts should also avoid investigating the PowerShell event without checking the parent process and surrounding timeline. The execution chain often provides important context.</p>
+
+<p>Finally, the absence of detailed PowerShell logs does not prove that PowerShell was not used. Logging depends on configuration, and different Windows environments may provide different levels of visibility.</p>
+
+<h3>Questions and Answers</h3>
+
+<p><strong>What makes PowerShell activity suspicious?</strong></p>
+<p>PowerShell becomes more interesting when its behavior does not match the expected activity of the account or system. Suspicious commands, unusual parent processes, encoded content, unexpected downloads, external connections, and unauthorized system changes are examples of indicators that may require investigation.</p>
+
+<p><strong>Is encoded PowerShell evidence of malware?</strong></p>
+<p>No. Encoding is not proof of malicious activity. It is an indicator that can make analysis more difficult, so the content should be inspected and its actual behavior determined.</p>
+
+<p><strong>Why is the parent process important?</strong></p>
+<p>The parent process explains how PowerShell was launched. An unusual application launching PowerShell may provide an important clue about the execution chain, particularly when the resulting command is also suspicious.</p>
+
+<p><strong>Why should I investigate the account running PowerShell?</strong></p>
+<p>The account provides context about whether the activity is expected. Administrative PowerShell activity may be normal on a management system, while the same activity from an unexpected standard account may require more investigation.</p>
+
+<p><strong>What should I check after finding a suspicious PowerShell command?</strong></p>
+<p>Check the parent process, authentication history, privileges, network connections, files created or modified, processes launched afterward, and any persistence or account changes. These events can help determine the command's purpose and impact.</p>
+
+<p><strong>Why is a PowerShell download important?</strong></p>
+<p>A remote download can indicate that PowerShell was used to retrieve additional content. The analyst should determine what was downloaded, where it came from, where it was stored, and whether it was executed afterward.</p>
+
+<p><strong>Can administrators generate activity that looks suspicious?</strong></p>
+<p>Yes. Administrators may legitimately use powerful commands, scripts, remote connections, and configuration changes. This is why analysts must compare the activity with known maintenance tasks, account roles, system purpose, and expected behavior.</p>
+
+<p><strong>What is the most important part of a PowerShell investigation?</strong></p>
+<p>Understanding the complete execution chain is one of the most important parts. Determine how PowerShell started, what command it executed, what resources it accessed, and what happened afterward. Correlating these events provides much stronger evidence than examining the PowerShell command alone.</p>
+
+<h3>Key Takeaway</h3>
+<p>Suspicious PowerShell Activity Investigation is about determining whether PowerShell was being used for legitimate administration or abused as part of an attack. The analyst should examine the command, account, parent process, authentication context, privileges, network destinations, files, and activity that occurred before and after execution.</p>
+
+<p>The strongest investigations do not rely on one indicator. A suspicious authentication followed by an unusual PowerShell process, an obfuscated command, an external connection, and additional system changes creates a much clearer picture of potential malicious activity. By correlating these events into a timeline, a SOC analyst can better understand the behavior and its role in a security incident.</p>
+
+       
+
+
+
+
+
+
+
+
+
+
+        
+
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>BIT+ &mdash; Practical Cybersecurity Knowledge</p>
+    </footer>
+
+</body>
+</html>
