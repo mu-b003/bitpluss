@@ -1,48 +1,198 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    <!-- Root -->
+
     <url>
         <loc>https://bitpluss.com/</loc>
-        <lastmod>2026-07-31</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>1.0</priority>
+        <lastmod>2026-09-16</lastmod>
     </url>
 
     <url>
-        <loc>https://bitpluss.com/about-us.html</loc>
-        <lastmod>2026-07-31</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.5</priority>
+        <loc>https://bitpluss.com/about.html</loc>
+        <lastmod>2026-09-16</lastmod>
     </url>
-<url><loc>https://bitpluss.com/</loc></url>
-<url><loc>https://bitpluss.com/dns-Traffic-Investigation.html</loc></url>
-<url><loc>https://bitpluss.com/dns.html</loc></url>
-<url><loc>https://bitpluss.com/domain-Name-System.html</loc></url>
-<url><loc>https://bitpluss.com/failed-vs-successful-login-analysis.html</loc></url>
-<url><loc>https://bitpluss.com/http-https.html</loc></url>
-<url><loc>https://bitpluss.com/incident-response-case-study.html</loc></url>
-<url><loc>https://bitpluss.com/kali-linux-attacker.html</loc></url>
-<url><loc>https://bitpluss.com/linux-basics.html</loc></url>
-<url><loc>https://bitpluss.com/linux-authentication-log-investigation.html</loc></url>
-<url><loc>https://bitpluss.com/login-failure-analyzer.html</loc></url>
-<url><loc>https://bitpluss.com/network-Security.html</loc></url>
-<url><loc>https://bitpluss.com/network-Traffic-Analysis-with-Wireshark.html</loc></url>
-<url><loc>https://bitpluss.com/network.html</loc></url>
-<url><loc>https://bitpluss.com/nmap-Activity-Detection.html</loc></url>
-<url><loc>https://bitpluss.com/osi-Model.html</loc></url>
-<url><loc>https://bitpluss.com/permissions.html</loc></url>
-<url><loc>https://bitpluss.com/port-Scan-Detection.html</loc></url>
-<url><loc>https://bitpluss.com/privacy-policy.html</loc></url>
-<url><loc>https://bitpluss.com/privilege-escalation-investigation.html</loc></url>
-<url><loc>https://bitpluss.com/privilege-escalation.html</loc></url>
-<url><loc>https://bitpluss.com/soc-lab-setup.html</loc></url>
-<url><loc>https://bitpluss.com/ssh-authentication-log-analysis.html</loc></url>
-<url><loc>https://bitpluss.com/ssh-brute-force-log-analysis.html</loc></url>
-<url><loc>https://bitpluss.com/suspicious-Connections-Analysis.html</loc></url>
-<url><loc>https://bitpluss.com/suspicious-ip-detection.html</loc></url>
-<url><loc>https://bitpluss.com/tcp-ip-model.html</loc></url>
-<url><loc>https://bitpluss.com/ubuntu-setup.html</loc></url>
-<url><loc>https://bitpluss.com/unauthorized-user-investigation.html</loc></url>
-<url><loc>https://bitpluss.com/web-server-attack-investigation.html</loc></url>
-<url><loc>https://bitpluss.com/windows-10-setup.html</loc></url>
+
+    <url>
+        <loc>https://bitpluss.com/contact.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+    <url>
+        <loc>https://bitpluss.com/disclaimer.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+    <url>
+        <loc>https://bitpluss.com/index.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+    <url>
+        <loc>https://bitpluss.com/privacy-Policy.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+
+    <!-- Authentication_Logs -->
+
+    <url>
+        <loc>https://bitpluss.com/Authentication_Logs/index.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+    <url>
+        <loc>https://bitpluss.com/Authentication_Logs/authentication-Logs-Explained.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+    <url>
+        <loc>https://bitpluss.com/Authentication_Logs/failed-Authentication-Analysis.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+    <url>
+        <loc>https://bitpluss.com/Authentication_Logs/successful-Authentication-Investigation.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+
+    <!-- DNS_Logs -->
+
+    <url>
+        <loc>https://bitpluss.com/DNS_Logs/index.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+    <url>
+        <loc>https://bitpluss.com/DNS_Logs/dns-Logs-Explained.htm</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+    <url>
+        <loc>https://bitpluss.com/DNS_Logs/dns-Query-Analysis.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+    <url>
+        <loc>https://bitpluss.com/DNS_Logs/suspicious-DNS-Activity-Investigation.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+
+    <!-- HTTP_Logs -->
+
+    <url>
+        <loc>https://bitpluss.com/HTTP_Logs/index.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+    <url>
+        <loc>https://bitpluss.com/HTTP_Logs/http-Logs-Explained.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+    <url>
+        <loc>https://bitpluss.com/HTTP_Logs/http-Traffic-Analysis.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+    <url>
+        <loc>https://bitpluss.com/HTTP_Logs/suspicious-HTTP-Activity-Investigation.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+
+    <!-- PowerShell_Logs -->
+
+    <url>
+        <loc>https://bitpluss.com/PowerShell_Logs/index.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+    <url>
+        <loc>https://bitpluss.com/PowerShell_Logs/powerShell-Command-Analysis.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+    <url>
+        <loc>https://bitpluss.com/PowerShell_Logs/powerShell-Logs-Explained.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+    <url>
+        <loc>https://bitpluss.com/PowerShell_Logs/suspicious-PowerShell-Activity-Investigation.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+
+    <!-- Process_Logs -->
+
+    <url>
+        <loc>https://bitpluss.com/Process_Logs/index.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+    <url>
+        <loc>https://bitpluss.com/Process_Logs/process-Activity-Analysis.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+    <url>
+        <loc>https://bitpluss.com/Process_Logs/process-Logs-Explained.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+    <url>
+        <loc>https://bitpluss.com/Process_Logs/suspicious-Process-Investigation.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+
+    <!-- SSH_Logs -->
+
+    <url>
+        <loc>https://bitpluss.com/SSH_Logs/index.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+    <url>
+        <loc>https://bitpluss.com/SSH_Logs/ssh-Authentication-Analysis.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+    <url>
+        <loc>https://bitpluss.com/SSH_Logs/ssh-Logs-Explained.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+    <url>
+        <loc>https://bitpluss.com/SSH_Logs/suspicious-SSH-Activity-Investigation.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+
+    <!-- Windows_Security_Logs -->
+
+    <url>
+        <loc>https://bitpluss.com/Windows_Security_Logs/index.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+    <url>
+        <loc>https://bitpluss.com/Windows_Security_Logs/windows-Authentication-Log-Analysis.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+    <url>
+        <loc>https://bitpluss.com/Windows_Security_Logs/windows-Failed-Log-Investigation.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
+
+    <url>
+        <loc>https://bitpluss.com/Windows_Security_Logs/windows-Security-Logs-Explained.html</loc>
+        <lastmod>2026-09-16</lastmod>
+    </url>
 
 </urlset>
