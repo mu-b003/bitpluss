@@ -44,7 +44,7 @@ body {
 }
 
 .content {
-    width: min(970px, calc(100% - 40px));
+    width: min(800px, calc(100% - 40px));
     margin: 0 auto;
     padding: 0 0 70px;
 }
@@ -62,7 +62,7 @@ body {
 
 .content p {
     margin: 0 0 18px;
-    max-width: 970px;
+    max-width: 800px;
     color: #c8c8c8;
 }
 
@@ -122,7 +122,6 @@ body {
     }
 }
 
-
 html,
 body {
     height: 100%;
@@ -143,4 +142,31 @@ body {
 
 .site-footer p {
     margin: 0;
+}
+
+.site-footer a {
+    margin: 0 4px;
+}
+
+.learn-links {
+    margin-top: 30px;
+    max-width: 700px;
+}
+
+.learn-links a {
+    display: block;
+    padding: 12px 0;
+    color: #d9a7d9;
+    text-decoration: none;
+    border-bottom: 1px solid #2a2a2a;
+    font-size: 16px;
+    transition: color 0.2s ease;
+}
+
+.learn-links a:first-child {
+    border-top: 1px solid #2a2a2a;
+}
+
+.learn-links a:hover {
+    color: #ffffff;
 }
