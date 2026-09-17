@@ -43,8 +43,9 @@ body {
     color: #f2c400;
 }
 
+
 .content {
-    width: min(800px, calc(100% - 40px));
+    width: min(1000px, calc(100% - 40px));
     margin: 0 auto;
     padding: 0 0 70px;
 }
@@ -62,7 +63,7 @@ body {
 
 .content p {
     margin: 0 0 18px;
-    max-width: 800px;
+    max-width: none;
     color: #c8c8c8;
 }
 
