@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>BIT+ | Cybersecurity Notes</title>
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2368362978436357"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="BIT+ Home">BIT<span>+</span></a>
+        </div>
+    </header>
+
+    <main class="content">
+      
+       
+
+      
+
+       
+
+        <section class="notes">
+            <h2>What Is SIEM?</h2>
+
+
+  <div class="learn-layout">
+    <div class="learn-links">
+    <h3>What Is SIEM?</h3>
+<p>SIEM stands for <strong>Security Information and Event Management</strong>. It is a security platform used to collect, organize, search, and analyze security events from different systems in one place.</p>
+
+<p>Instead of an analyst checking authentication logs, Windows events, firewall logs, DNS activity, and other sources separately, a SIEM brings these events together so they can be monitored and investigated from a central location.</p>
+
+<h3>Why Is SIEM Important?</h3>
+<p>Modern environments generate a large number of security events every day. Looking at each log manually can make it difficult to identify important activity.</p>
+
+<p>A SIEM helps security teams find suspicious patterns, investigate incidents, create alerts, and maintain visibility across systems and networks.</p>
+
+<h3>What Does a SIEM Collect?</h3>
+<p>A SIEM can receive logs and security events from many different sources, including:</p>
+
+<p><strong>Authentication:</strong> Successful and failed logins, account lockouts, password changes, and other identity events.</p>
+
+<p><strong>Windows:</strong> Windows Security Events, process activity, account changes, and other system events.</p>
+
+<p><strong>Linux:</strong> Authentication activity, system events, SSH activity, and service logs.</p>
+
+<p><strong>Network:</strong> Firewall, router, VPN, IDS/IPS, and network connection events.</p>
+
+<p><strong>DNS and Web:</strong> DNS queries, HTTP requests, web server activity, and related events.</p>
+
+<p><strong>Endpoint Security:</strong> Process execution, malware detections, suspicious files, and other endpoint activity.</p>
+
+<h3>How Does SIEM Work?</h3>
+<p>The basic SIEM process can be understood as:</p>
+
+<p><strong>Collect → Normalize → Store → Analyze → Alert → Investigate</strong></p>
+
+<p><strong>1. Collect:</strong> The SIEM receives logs and events from connected systems and security tools.</p>
+
+<p><strong>2. Normalize:</strong> Different systems may use different log formats. The SIEM processes the data into a structure that makes searching and analysis easier.</p>
+
+<p><strong>3. Store:</strong> Events are stored so analysts can search historical activity and investigate incidents over time.</p>
+
+<p><strong>4. Analyze:</strong> The SIEM applies detection rules, searches, correlations, and other analysis methods to identify potentially suspicious activity.</p>
+
+<p><strong>5. Alert:</strong> When activity matches a detection condition, the SIEM can generate an alert for the security team.</p>
+
+<p><strong>6. Investigate:</strong> The analyst examines the alert and related events to determine what happened, whether the activity is suspicious, and what additional investigation is required.</p>
+
+<h3>What Is SIEM Correlation?</h3>
+<p>Correlation means connecting related events from different sources to provide more context.</p>
+
+<p>For example, a single failed login may not be unusual. However, multiple failed logins followed by a successful login, followed by unusual activity from the same account or device, can provide a stronger reason for investigation.</p>
+
+<p>The SIEM can connect these events using information such as usernames, IP addresses, hostnames, timestamps, and event types.</p>
+
+<h3>SIEM Alerts</h3>
+<p>A SIEM does not simply show every event to an analyst as an incident. Detection rules can identify specific patterns and generate alerts when those patterns occur.</p>
+
+<p>Examples include repeated failed logins, suspicious administrative activity, unusual network connections, malware detections, or activity involving privileged accounts.</p>
+
+<p>An alert is not automatically proof of an attack. The SOC analyst still needs to review the available evidence and determine what happened.</p>
+
+<h3>How SOC Analysts Use SIEM</h3>
+<p>SOC analysts commonly use SIEM to search logs, review alerts, investigate timelines, correlate events, identify affected systems or accounts, and document findings.</p>
+
+<p>A typical investigation may start with one alert and expand into related authentication, endpoint, DNS, network, or process events.</p>
+
+<p>The analyst's goal is not simply to find an alert. It is to understand the activity and determine whether there is evidence of suspicious or malicious behavior.</p>
+
+<h3>Simple SIEM Investigation Example</h3>
+<p>Imagine a SIEM generates an alert for repeated failed logins against an account.</p>
+
+<p>The analyst can search for related events and discover several failed attempts from one IP address, followed by a successful login. The analyst may then examine what happened after the successful login, including process activity, network connections, and other account actions.</p>
+
+<p>This creates a timeline that provides more context than looking at the original failed-login event alone.</p>
+
+<h3>SIEM and SOC</h3>
+<p>SIEM is an important technology in many SOC environments, but it does not replace the analyst.</p>
+
+<p>The SIEM helps collect and organize security data and identify potentially important activity. The analyst provides the investigation, context, validation, and decision-making needed to understand the event.</p>
+
+<h3>Key Takeaway</h3>
+<p>SIEM provides a central way to collect and analyze security events from different systems. It helps SOC teams monitor activity, detect suspicious patterns, investigate incidents, and search historical events.</p>
+
+<p>Understanding SIEM is important for SOC analysts because much of security monitoring involves turning large amounts of log data into useful evidence.</p>
+
+
+
+
+
+        
+    </div>
+
+     <div class="learn-image">
+      <img
+        src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1790100777/Screenshot_From_2026-09-22_23-40-34_e96y1d.png"
+        alt="BIT+ cybersecurity learning visual">
+    </div>
+  </div>
+
+            
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>BIT+ &mdash; Practical Cybersecurity Knowledge</p>
+        <a href="about.html">About</a>
+        <a href="privacy-Policy.html">Privacy Policy</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="contact.html">Contact</a>
+    </footer>
+
+</body>
+</html>
