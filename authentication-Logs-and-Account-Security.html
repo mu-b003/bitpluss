@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>BIT+ | Cybersecurity Notes</title>
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2368362978436357"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="BIT+ Home">BIT<span>+</span></a>
+        </div>
+    </header>
+
+    <main class="content">
+      
+        
+      
+
+       
+
+        <section class="notes">
+            <h2>Authentication Logs and Account Security</h2>
+
+
+  <div class="learn-layout">
+    <div class="learn-links">
+   <h3>Authentication Logs and Account Security</h3>
+
+<p>Authentication logs record activities related to users accessing systems, applications, and services. They are one of the most useful sources of information for understanding account activity and detecting potentially suspicious access.</p>
+
+<p>For SOC analysts, authentication logs can help answer important questions such as <strong>who logged in, when they logged in, where the login came from, whether authentication succeeded, and what happened after the login.</strong></p>
+
+<h3>What Is Authentication?</h3>
+
+<p>Authentication is the process of verifying the identity of a user, device, or service before access is granted.</p>
+
+<p>A common example is a user entering a username and password. Modern environments can also use methods such as multi-factor authentication, security keys, certificates, and other authentication mechanisms.</p>
+
+<p>Authentication should be distinguished from <strong>authorization</strong>. Authentication answers <strong>"Who are you?"</strong>, while authorization determines <strong>"What are you allowed to access?"</strong></p>
+
+<h3>What Are Authentication Logs?</h3>
+
+<p>Authentication logs are records generated when authentication-related activity occurs.</p>
+
+<p>Depending on the system, they may record:</p>
+
+<p><strong>Successful logins</strong></p>
+
+<p><strong>Failed login attempts</strong></p>
+
+<p><strong>Account lockouts</strong></p>
+
+<p><strong>Password changes</strong></p>
+
+<p><strong>MFA activity</strong></p>
+
+<p><strong>Logouts or session activity</strong></p>
+
+<p><strong>Authentication failures</strong></p>
+
+<p>The exact information depends on the operating system, application, identity provider, and logging configuration.</p>
+
+<h3>Why Authentication Logs Matter</h3>
+
+<p>Accounts are often a critical part of an organization's security. If an attacker obtains valid credentials, they may be able to access systems without using obvious malware.</p>
+
+<p>Authentication logs can provide visibility into unusual access patterns.</p>
+
+<p>For example:</p>
+
+<p><strong>Multiple failed logins → Successful login → Privileged activity</strong></p>
+
+<p>This sequence may deserve investigation because the events together provide more context than any individual event.</p>
+
+<h3>Failed Login Attempts</h3>
+
+<p>A failed login simply means that an authentication attempt was unsuccessful.</p>
+
+<p>A single failed login is common and may have a normal explanation, such as an incorrect password.</p>
+
+<p>However, repeated failures can become more interesting to a SOC analyst.</p>
+
+<p>For example:</p>
+
+<p><strong>08:10 — Failed login</strong></p>
+
+<p><strong>08:10 — Failed login</strong></p>
+
+<p><strong>08:11 — Failed login</strong></p>
+
+<p><strong>08:11 — Failed login</strong></p>
+
+<p><strong>08:12 — Successful login</strong></p>
+
+<p>The analyst would investigate the pattern and determine whether the activity was legitimate or suspicious.</p>
+
+<h3>Successful Logins</h3>
+
+<p>A successful login does not automatically mean that everything is normal.</p>
+
+<p>Analysts may examine the context around the login.</p>
+
+<p>Useful questions include:</p>
+
+<p>Was the user expected to access the system?</p>
+
+<p>Was the login from a normal device?</p>
+
+<p>Was the source location expected?</p>
+
+<p>Did the login occur at an unusual time?</p>
+
+<p>Were there failed attempts immediately before it?</p>
+
+<p>What activity occurred after the login?</p>
+
+<p>This type of contextual analysis is important because attackers may sometimes use valid credentials.</p>
+
+<h3>Account Lockouts</h3>
+
+<p>An account may become locked after a certain number of unsuccessful authentication attempts.</p>
+
+<p>Account lockouts can have legitimate causes, such as a user repeatedly entering an incorrect password.</p>
+
+<p>They can also provide useful information during investigations when multiple accounts are affected or when the timing and source of the attempts are unusual.</p>
+
+<h3>Privileged Accounts</h3>
+
+<p>Privileged accounts deserve particular attention because they can have greater access to systems and data.</p>
+
+<p>Examples include administrative accounts, domain administrators, root accounts, and other accounts with elevated permissions.</p>
+
+<p>Authentication activity involving privileged accounts may therefore receive additional monitoring.</p>
+
+<p>For example:</p>
+
+<p><strong>Normal user → Privilege change → Administrative login → Sensitive system access</strong></p>
+
+<p>This sequence would provide useful context for an investigation.</p>
+
+<h3>What Should a SOC Analyst Look For?</h3>
+
+<p>When reviewing authentication activity, analysts may look for unusual patterns such as:</p>
+
+<p>Repeated failed login attempts.</p>
+
+<p>Successful authentication after many failures.</p>
+
+<p>Authentication from an unexpected source.</p>
+
+<p>Unexpected access to sensitive systems.</p>
+
+<p>Unusual login times.</p>
+
+<p>Multiple accounts being targeted.</p>
+
+<p>Unexpected privileged account activity.</p>
+
+<p>Authentication activity that differs significantly from the user's normal behavior.</p>
+
+<p>These indicators do not automatically prove malicious activity. They provide reasons to investigate further.</p>
+
+<h3>Authentication Logs and Account Security</h3>
+
+<p>Authentication logs are only one part of account security.</p>
+
+<p>Organizations can also use controls such as strong passwords, multi-factor authentication, least privilege, account management, access reviews, and monitoring.</p>
+
+<p>Logging helps organizations understand whether these controls are working as expected and provides evidence when investigating unusual account activity.</p>
+
+<h3>Connecting Authentication Events</h3>
+
+<p>The most useful investigations often connect authentication events with other security data.</p>
+
+<p>For example:</p>
+
+<p><strong>Authentication Log → Successful login</strong></p>
+
+<p><strong>Endpoint Log → New process</strong></p>
+
+<p><strong>Network Log → External connection</strong></p>
+
+<p><strong>File Log → Sensitive file accessed</strong></p>
+
+<p>When these events occur close together, the analyst can investigate them as part of the same timeline.</p>
+
+<h3>A Simple Investigation Example</h3>
+
+<p>Suppose an administrative account receives 15 failed login attempts within a few minutes.</p>
+
+<p>The SOC receives an alert and begins reviewing the authentication logs.</p>
+
+<p>The analyst discovers that the attempts came from the same source and that one successful login occurred shortly afterward.</p>
+
+<p>The analyst then checks what happened after the successful authentication.</p>
+
+<p>Additional logs show that the account accessed a sensitive server and started an unusual process.</p>
+
+<p>At this point, the analyst has more evidence to investigate rather than relying only on the original failed-login alert.</p>
+
+<h3>Key Takeaway</h3>
+
+<p>Authentication logs provide valuable visibility into account access and are an important source of evidence for SOC investigations.</p>
+
+<p>The goal is not simply to count failed or successful logins. Analysts should examine the <strong>user, source, time, system, authentication result, and activity surrounding the login.</strong></p>
+
+<p>A useful investigation pattern is:</p>
+
+<p><strong>Authentication Event → Context → Related Events → Timeline → Finding</strong></p>
+
+<p>Understanding authentication logs provides a strong foundation for investigating <strong>account compromise, suspicious logins, privilege changes, and unauthorized access.</strong></p>
+
+
+
+
+
+        
+    </div>
+
+     <div class="learn-image">
+      <img
+        src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1790100777/Screenshot_From_2026-09-22_23-40-34_e96y1d.png"
+        alt="BIT+ cybersecurity learning visual">
+    </div>
+  </div>
+
+            
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>BIT+ &mdash; Practical Cybersecurity Knowledge</p>
+        <a href="about.html">About</a>
+        <a href="privacy-Policy.html">Privacy Policy</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="contact.html">Contact</a>
+    </footer>
+
+</body>
+</html>
