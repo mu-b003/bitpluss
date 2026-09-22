@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>BIT+ | Cybersecurity Notes</title>
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2368362978436357"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="BIT+ Home">BIT<span>+</span></a>
+        </div>
+    </header>
+
+    <main class="content">
+     
+
+      
+
+       
+
+        <section class="notes">
+            <h2>What Is Threat Intelligence?</h2>
+
+
+  <div class="learn-layout">
+    <div class="learn-links">
+    <h3>What Is Threat Intelligence?</h3>
+<p>Threat Intelligence is information about cyber threats that helps security teams understand potential attackers, their techniques, infrastructure, and indicators of malicious activity.</p>
+
+<p>In a SOC, threat intelligence can provide additional context when analysts investigate alerts, suspicious activity, or potential security incidents.</p>
+
+<h3>Why Is Threat Intelligence Important?</h3>
+<p>Security logs show what happened inside an environment, but they may not always explain whether an IP address, domain, file, or behavior is associated with a known threat.</p>
+
+<p>Threat intelligence can provide additional information that helps analysts investigate suspicious activity and understand possible risks.</p>
+
+<h3>Types of Threat Intelligence</h3>
+<p><strong>Strategic Intelligence:</strong> Provides a broader view of threats, trends, and risks that may affect an organization. It is generally useful for security planning and decision-making.</p>
+
+<p><strong>Tactical Intelligence:</strong> Focuses on attacker techniques and behaviors, including tactics, techniques, and procedures used during attacks.</p>
+
+<p><strong>Operational Intelligence:</strong> Provides information about specific campaigns, attacks, or threat activity that can help security teams understand current operations.</p>
+
+<p><strong>Technical Intelligence:</strong> Focuses on technical indicators such as IP addresses, domains, URLs, file hashes, and other observable artifacts.</p>
+
+<h3>Threat Intelligence and IoCs</h3>
+<p>Indicators of Compromise are one part of technical threat intelligence.</p>
+
+<p>For example, threat intelligence may identify an IP address, domain, or file hash associated with previously observed malicious activity. An analyst can then compare that information with indicators found in their own environment.</p>
+
+<p>However, an IoC should always be investigated in context. A matching indicator alone does not necessarily prove that a system has been compromised.</p>
+
+<h3>How SOC Analysts Use Threat Intelligence</h3>
+<p>A SOC analyst may use threat intelligence during several stages of an investigation.</p>
+
+<p><strong>Alert → Identify Indicator → Enrich → Correlate → Investigate → Document</strong></p>
+
+<p>For example, an alert may contain an external IP address. The analyst can investigate the IP using available intelligence, then compare the result with firewall, DNS, endpoint, or other logs from the organization.</p>
+
+<h3>Threat Intelligence Enrichment</h3>
+<p>Enrichment means adding useful information to an existing security event or alert.</p>
+
+<p>An alert containing an IP address may initially provide only the address and timestamp. Intelligence enrichment can add information such as known associations, domain information, reputation data, or previously observed activity.</p>
+
+<p>This additional context can help an analyst decide what should be investigated next.</p>
+
+<h3>Threat Intelligence and MITRE ATT&CK</h3>
+<p>Threat intelligence can also describe how attackers operate. Frameworks such as <strong>MITRE ATT&CK</strong> organize known adversary behaviors into tactics and techniques.</p>
+
+<p>This helps SOC analysts move beyond individual indicators and understand the behavior associated with an attack.</p>
+
+<h3>Example of Threat Intelligence in a SOC</h3>
+<p>Suppose a firewall alert shows an internal computer connecting to an unfamiliar external IP address.</p>
+
+<p>The analyst can investigate the destination, search internal logs for previous connections, identify the process responsible for the connection, and compare the indicator with available threat intelligence.</p>
+
+<p>If several pieces of evidence are connected, the analyst can build a clearer timeline and determine whether further investigation is required.</p>
+
+<h3>Limitations of Threat Intelligence</h3>
+<p>Threat intelligence is not always complete or accurate. Indicators can become outdated, attackers can change infrastructure, and legitimate services may sometimes be associated with suspicious activity.</p>
+
+<p>For this reason, intelligence should support an investigation rather than replace analysis of the organization's own evidence.</p>
+
+<h3>Key Takeaway</h3>
+<p>Threat Intelligence provides information that helps security teams understand threats and add context to suspicious activity.</p>
+
+<p>For a SOC analyst, its value comes from connecting external knowledge with internal evidence such as logs, alerts, network activity, and endpoint events.</p>
+
+
+
+
+
+        
+    </div>
+
+    <div class="learn-image">
+      <img
+        src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1790100777/Screenshot_From_2026-09-22_23-40-34_e96y1d.png"
+        alt="BIT+ cybersecurity learning visual">
+    </div>
+  </div>
+
+            
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>BIT+ &mdash; Practical Cybersecurity Knowledge</p>
+        <a href="about.html">About</a>
+        <a href="privacy-Policy.html">Privacy Policy</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="contact.html">Contact</a>
+    </footer>
+
+</body>
+</html>
