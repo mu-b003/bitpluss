@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>BIT+ | Cybersecurity Notes</title>
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2368362978436357"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="BIT+ Home">BIT<span>+</span></a>
+        </div>
+    </header>
+
+    <main class="content">
+      
+        
+      
+
+       
+
+        <section class="notes">
+            <h2>What Is Phishing?</h2>
+
+
+  <div class="learn-layout">
+    <div class="learn-links">
+   <h3>What Is Phishing?</h3>
+<p>Phishing is a social engineering technique in which an attacker attempts to trick a person into revealing information, opening a malicious file, clicking a harmful link, or performing another action that benefits the attacker.</p>
+
+<p>Phishing commonly uses email, but similar attacks can also occur through text messages, messaging platforms, social media, and other communication channels.</p>
+
+<h3>How Does Phishing Work?</h3>
+<p>A typical phishing attack creates a message that appears to come from a trusted person or organization.</p>
+
+<p>The message may create urgency, request a password reset, ask the user to review an account, or direct them to a website or attachment.</p>
+
+<p>The goal is to persuade the recipient to take an action without carefully checking whether the request is legitimate.</p>
+
+<h3>Common Phishing Indicators</h3>
+<p><strong>Suspicious Sender:</strong> The sender address may use an unfamiliar domain or contain small differences from a legitimate address.</p>
+
+<p><strong>Unexpected Links:</strong> A message may contain a link that does not match the organization it claims to represent.</p>
+
+<p><strong>Urgent Requests:</strong> Messages may pressure users to act quickly by claiming that an account will be disabled or that an immediate action is required.</p>
+
+<p><strong>Unexpected Attachments:</strong> An attachment that was not expected by the recipient may require investigation, especially when it requests the user to enable or execute something.</p>
+
+<p><strong>Unusual Language or Requests:</strong> Unexpected requests for credentials, payments, sensitive information, or account changes can be warning signs.</p>
+
+<h3>How SOC Analysts Investigate Phishing</h3>
+<p>A SOC analyst should examine the message and collect relevant evidence before deciding whether it is malicious.</p>
+
+<p><strong>Email → Sender → Headers → Links/Attachments → User Activity → Related Events → Finding</strong></p>
+
+<p>The analyst may examine the sender address, email headers, URLs, attachments, recipient information, timestamps, and related security alerts.</p>
+
+<h3>Investigating a Phishing Link</h3>
+<p>If an email contains a suspicious link, the analyst can examine the URL and determine where it leads without unnecessarily exposing users or systems to the destination.</p>
+
+<p>The domain, URL structure, DNS activity, web logs, and available threat intelligence can provide additional context.</p>
+
+<h3>Investigating a Phishing Attachment</h3>
+<p>Attachments should be handled carefully during analysis. Security teams can use appropriate analysis environments and security tools to examine suspicious files.</p>
+
+<p>Useful evidence may include the file name, hash, file type, origin, endpoint alerts, process activity, and network connections associated with the file.</p>
+
+<h3>What Happens If a User Clicks?</h3>
+<p>If a user interacts with a suspicious email, the investigation should not stop at the email itself.</p>
+
+<p>The analyst may check authentication logs, DNS activity, web requests, endpoint processes, and other events around the time of the interaction.</p>
+
+<p>This helps determine whether the interaction resulted in additional suspicious activity.</p>
+
+<h3>Phishing and Security Awareness</h3>
+<p>Technical controls can reduce phishing risk, but users are also an important part of the security process.</p>
+
+<p>Security awareness helps users recognize suspicious messages and report them to the appropriate security team instead of interacting with them.</p>
+
+<h3>Key Takeaway</h3>
+<p>Phishing attempts to manipulate users into performing an action that can benefit an attacker. For SOC analysts, investigating phishing involves examining the message, sender, links, attachments, and related activity across security logs.</p>
+
+<p>The most important part of a phishing investigation is connecting the email with other evidence to understand what happened before and after the user interaction.</p>
+
+
+
+
+
+        
+    </div>
+
+    <div class="learn-image">
+      <img
+        src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1790100777/Screenshot_From_2026-09-22_23-40-34_e96y1d.png"
+        alt="BIT+ cybersecurity learning visual">
+    </div>
+  </div>
+
+            
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>BIT+ &mdash; Practical Cybersecurity Knowledge</p>
+        <a href="about.html">About</a>
+        <a href="privacy-Policy.html">Privacy Policy</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="contact.html">Contact</a>
+    </footer>
+
+</body>
+</html>
