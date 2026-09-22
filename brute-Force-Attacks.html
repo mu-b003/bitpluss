@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>BIT+ | Cybersecurity Notes</title>
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2368362978436357"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="BIT+ Home">BIT<span>+</span></a>
+        </div>
+    </header>
+
+    <main class="content">
+      
+       
+
+      
+
+       
+
+        <section class="notes">
+            <h2>What Is a Brute-Force Attack?</h2>
+
+
+  <div class="learn-layout">
+    <div class="learn-links">
+    <h3>What Is a Brute-Force Attack?</h3>
+<p>A brute-force attack is an attempt to gain access to an account or system by repeatedly trying different passwords, credentials, or authentication combinations.</p>
+
+<p>The attacker relies on repeated attempts rather than knowing the correct credentials in advance.</p>
+
+<h3>How Do Brute-Force Attacks Work?</h3>
+<p>An attacker may target an account, service, or login portal and generate many authentication attempts over a period of time.</p>
+
+<p>Depending on the attack, the attempts may focus on one account, many accounts, or combinations of usernames and passwords.</p>
+
+<h3>Common Signs of a Brute-Force Attack</h3>
+<p><strong>Repeated Failed Logins:</strong> A large number of failed authentication attempts can be an important indicator.</p>
+
+<p><strong>Multiple Accounts Targeted:</strong> Attempts against many accounts from the same source can indicate automated activity.</p>
+
+<p><strong>Unusual Source:</strong> Login attempts from an unfamiliar IP address, location, or device may require investigation.</p>
+
+<p><strong>Short Time Period:</strong> A high number of authentication failures within a short period can make the activity more suspicious.</p>
+
+<p><strong>Successful Login After Failures:</strong> A successful login following many failed attempts can require additional investigation.</p>
+
+<h3>Brute Force in Authentication Logs</h3>
+<p>Authentication logs are one of the most useful sources for detecting brute-force activity.</p>
+
+<p>An analyst can examine the timestamp, username, source IP address, authentication result, hostname, and other available fields.</p>
+
+<p>For example, repeated failed logins from the same source followed by a successful login can form a useful investigation timeline.</p>
+
+<h3>How SOC Analysts Investigate</h3>
+<p>A SOC analyst should examine the pattern rather than looking at one failed login in isolation.</p>
+
+<p><strong>Failed Attempts → Source → Account → Timeline → Successful Login → Related Activity</strong></p>
+
+<p>The analyst can determine whether the attempts targeted one account or several accounts, identify the source, and check what happened after any successful authentication.</p>
+
+<h3>Brute Force vs Normal Failed Logins</h3>
+<p>Failed authentication does not automatically mean that a brute-force attack is occurring.</p>
+
+<p>A user may enter an incorrect password several times, a service may have outdated credentials, or an administrator may be troubleshooting an account.</p>
+
+<p>The frequency, source, affected accounts, timing, and related activity provide important context when deciding whether the pattern requires further investigation.</p>
+
+<h3>How Organizations Reduce Brute-Force Risk</h3>
+<p>Organizations can use controls such as multi-factor authentication, account lockout policies, rate limiting, strong password policies, monitoring, and appropriate access controls to reduce the risk associated with repeated authentication attempts.</p>
+
+<h3>Simple Investigation Example</h3>
+<p>Imagine an authentication log contains 25 failed login attempts for one account from the same IP address within a short period, followed by a successful login.</p>
+
+<p>The analyst can investigate the source IP, determine whether the account normally uses that source, examine activity after the successful login, and correlate the authentication events with endpoint or network logs.</p>
+
+<p>The result should be based on the available evidence rather than the number of failed attempts alone.</p>
+
+<h3>Key Takeaway</h3>
+<p>Brute-force attacks rely on repeated authentication attempts to gain access to an account or system. Authentication logs provide important evidence for detecting these patterns.</p>
+
+<p>For SOC analysts, the goal is not simply to count failed logins, but to understand the pattern, investigate the source and account, and correlate the activity with other security events.</p>
+
+
+
+
+
+        
+    </div>
+
+     <div class="learn-image">
+      <img
+        src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1790100777/Screenshot_From_2026-09-22_23-40-34_e96y1d.png"
+        alt="BIT+ cybersecurity learning visual">
+    </div>
+  </div>
+
+            
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>BIT+ &mdash; Practical Cybersecurity Knowledge</p>
+        <a href="about.html">About</a>
+        <a href="privacy-Policy.html">Privacy Policy</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="contact.html">Contact</a>
+    </footer>
+
+</body>
+</html>
