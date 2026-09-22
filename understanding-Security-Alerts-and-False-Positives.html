@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>BIT+ | Cybersecurity Notes</title>
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2368362978436357"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="BIT+ Home">BIT<span>+</span></a>
+        </div>
+    </header>
+
+    <main class="content">
+      
+
+      
+
+       
+
+        <section class="notes">
+            <h2>What Is a Security Alert?</h2>
+
+
+  <div class="learn-layout">
+    <div class="learn-links">
+    <h3>What Is a Security Alert?</h3>
+<p>A security alert is a notification generated when a security tool detects activity that matches a suspicious pattern or a predefined detection rule.</p>
+
+<p>Alerts can come from SIEM platforms, EDR solutions, firewalls, IDS/IPS systems, email security tools, and other security technologies.</p>
+
+<h3>Why Are Security Alerts Important?</h3>
+<p>Security alerts help SOC analysts identify activity that may require investigation. Without alerts, analysts would have to manually review large amounts of security events to find potentially important activity.</p>
+
+<p>However, an alert is not automatically an incident. It is a signal that requires analysis and context.</p>
+
+<h3>Common Security Alert Examples</h3>
+<p>Common alerts include repeated failed login attempts, suspicious PowerShell activity, malware detection, unusual network connections, account privilege changes, suspicious DNS requests, and activity from known malicious indicators.</p>
+
+<p>The exact meaning of an alert depends on the detection rule, the environment, and the surrounding activity.</p>
+
+<h3>What Is a False Positive?</h3>
+<p>A false positive occurs when a security tool generates an alert for activity that appears suspicious but is later determined to be legitimate.</p>
+
+<p>For example, an administrator may perform several failed login attempts while troubleshooting an account. A detection rule could interpret this as suspicious authentication activity even though there is no attack.</p>
+
+<h3>Why Do False Positives Happen?</h3>
+<p>Security tools cannot always understand the full context behind an event. A rule may identify a pattern that is unusual from a technical perspective but normal for a particular user, system, or organization.</p>
+
+<p>False positives can also occur because detection rules are too broad, thresholds are too sensitive, or normal administrative and automated activity resembles malicious behavior.</p>
+
+<h3>How SOC Analysts Investigate an Alert</h3>
+<p>A SOC analyst normally starts by understanding what triggered the alert and then examines the surrounding evidence.</p>
+
+<p><strong>Alert → Context → Related Events → Timeline → Finding</strong></p>
+
+<p>The analyst may check the affected user, source IP address, destination, hostname, process, timestamps, previous activity, and related logs.</p>
+
+<h3>Example: Failed Login Alert</h3>
+<p>Suppose a SIEM generates an alert after ten failed login attempts.</p>
+
+<p>The analyst should not immediately conclude that an account attack occurred. They can check whether the attempts came from the user's normal device, whether a successful login followed, whether other accounts were targeted, and whether suspicious activity occurred afterward.</p>
+
+<p>If the activity matches normal behavior, the alert may be classified as a false positive. If additional evidence supports malicious activity, the investigation may continue as a potential security incident.</p>
+
+<h3>False Positive vs True Positive</h3>
+<p>A <strong>false positive</strong> is an alert that appears suspicious but is determined to be legitimate.</p>
+
+<p>A <strong>true positive</strong> is an alert where the detected condition is genuinely present. A true positive does not always mean that an attack is confirmed; further investigation may still be required to understand the impact and scope.</p>
+
+<h3>Reducing False Positives</h3>
+<p>Organizations can reduce unnecessary alerts by improving detection rules and adding appropriate context.</p>
+
+<p>This can include adjusting thresholds, excluding known legitimate activity, improving asset and user information, tuning detection rules, and reviewing repeated false-positive patterns.</p>
+
+<p>Good alert tuning helps analysts spend more time investigating meaningful activity instead of repeatedly reviewing expected behavior.</p>
+
+<h3>Key Takeaway</h3>
+<p>Security alerts are signals that help SOC analysts identify activity that may require attention. They must be investigated using context and related evidence rather than treated as confirmed incidents.</p>
+
+<p>Understanding false positives is also important because effective SOC monitoring is not about generating the largest number of alerts. It is about producing useful alerts that help analysts identify and investigate meaningful security activity.</p>
+
+
+
+
+
+        
+    </div>
+
+    <div class="learn-image">
+      <img
+        src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1790100777/Screenshot_From_2026-09-22_23-40-34_e96y1d.png"
+        alt="BIT+ cybersecurity learning visual">
+    </div>
+  </div>
+
+            
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>BIT+ &mdash; Practical Cybersecurity Knowledge</p>
+        <a href="about.html">About</a>
+        <a href="privacy-Policy.html">Privacy Policy</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="contact.html">Contact</a>
+    </footer>
+
+</body>
+</html>
