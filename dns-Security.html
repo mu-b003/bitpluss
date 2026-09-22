@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>BIT+ | Cybersecurity Notes</title>
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2368362978436357"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="BIT+ Home">BIT<span>+</span></a>
+        </div>
+    </header>
+
+    <main class="content">
+      
+       
+
+      
+
+       
+
+        <section class="notes">
+            <h2>What Is DNS?</h2>
+
+
+  <div class="learn-layout">
+    <div class="learn-links">
+    <h3>What Is DNS?</h3>
+<p>DNS, or Domain Name System, translates domain names into IP addresses so systems can communicate with the correct servers.</p>
+
+<p>For example, when a user accesses a website using a domain name, the device may perform a DNS query to find the IP address associated with that domain.</p>
+
+<h3>Why Is DNS Important for Security?</h3>
+<p>DNS activity can provide useful visibility into what domains systems are trying to reach.</p>
+
+<p>SOC analysts can use DNS logs to investigate suspicious domains, unusual communication patterns, malware activity, and potentially compromised systems.</p>
+
+<h3>What Are DNS Logs?</h3>
+<p>DNS logs record information about DNS queries and responses. Depending on the environment, they may contain the timestamp, requesting device, queried domain, record type, response, and destination information.</p>
+
+<p>This information can help analysts understand which systems are communicating with which domains.</p>
+
+<h3>Common DNS Security Indicators</h3>
+<p><strong>Suspicious Domains:</strong> A system repeatedly querying an unfamiliar or suspicious domain may require investigation.</p>
+
+<p><strong>Unexpected Domains:</strong> Domains that do not match the normal activity of a user, application, or system can provide useful clues.</p>
+
+<p><strong>Repeated Queries:</strong> Frequent queries to the same unusual domain may indicate automated communication.</p>
+
+<p><strong>Unusual Query Patterns:</strong> Large numbers of unusual or randomly generated-looking domain names can sometimes require further investigation.</p>
+
+<h3>DNS and Malware</h3>
+<p>Some malicious software uses DNS as part of its communication process. A compromised system may repeatedly resolve domains associated with attacker infrastructure or other suspicious services.</p>
+
+<p>DNS activity alone does not prove that malware is present. Analysts should correlate the query with endpoint, network, and process activity.</p>
+
+<h3>How SOC Analysts Investigate DNS Activity</h3>
+<p>A basic DNS investigation can follow this process:</p>
+
+<p><strong>DNS Query → Domain → Source Host → Time → Related Connections → Context</strong></p>
+
+<p>The analyst can identify which system made the query, when it occurred, whether the domain is expected, and whether the system later established a connection to the resolved IP address.</p>
+
+<h3>DNS and Threat Intelligence</h3>
+<p>Threat intelligence can provide additional context about domains and IP addresses observed in DNS activity.</p>
+
+<p>An analyst may compare a suspicious domain with available intelligence and then search internal logs to determine whether other systems have queried the same domain.</p>
+
+<p>The result should still be evaluated using the organization's own evidence because domains and reputation information can change over time.</p>
+
+<h3>Example DNS Investigation</h3>
+<p>Suppose a workstation repeatedly queries an unfamiliar domain and then establishes outbound connections to the returned IP address.</p>
+
+<p>The analyst can investigate the DNS timestamps, domain information, destination IP, process responsible for the connection, and whether other systems show the same behavior.</p>
+
+<p>Combining these events creates a clearer picture than looking at the DNS query alone.</p>
+
+<h3>DNS Security Monitoring</h3>
+<p>Organizations can monitor DNS activity through DNS servers, security platforms, network monitoring systems, and SIEM solutions.</p>
+
+<p>Centralized DNS logging allows security teams to search historical queries, identify unusual patterns, and correlate DNS activity with other security events.</p>
+
+<h3>Key Takeaway</h3>
+<p>DNS is more than a service used to find IP addresses. Its activity can provide valuable security evidence.</p>
+
+<p>For SOC analysts, DNS logs can help identify suspicious domains, investigate unusual network behavior, and connect domain activity with endpoint and network events.</p>
+
+
+
+
+
+        
+    </div>
+
+    <div class="learn-image">
+      <img
+        src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1790100777/Screenshot_From_2026-09-22_23-40-34_e96y1d.png"
+        alt="BIT+ cybersecurity learning visual">
+    </div>
+  </div>
+
+            
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>BIT+ &mdash; Practical Cybersecurity Knowledge</p>
+        <a href="about.html">About</a>
+        <a href="privacy-Policy.html">Privacy Policy</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="contact.html">Contact</a>
+    </footer>
+
+</body>
+</html>
