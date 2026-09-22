@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>BIT+ | Cybersecurity Notes</title>
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2368362978436357"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="BIT+ Home">BIT<span>+</span></a>
+        </div>
+    </header>
+
+    <main class="content">
+      
+       
+
+      
+
+       
+
+        <section class="notes">
+            <h2>What Are Indicators of Compromise?</h2>
+
+
+  <div class="learn-layout">
+    <div class="learn-links">
+    <h3>What Are Indicators of Compromise?</h3>
+<p>Indicators of Compromise, commonly called <strong>IoCs</strong>, are pieces of evidence that may indicate a system, account, or network has been involved in suspicious or malicious activity.</p>
+
+<p>IoCs are commonly used by SOC analysts during alert investigation, incident response, threat hunting, and malware analysis.</p>
+
+<h3>Common Types of IoCs</h3>
+<p><strong>IP Addresses:</strong> An IP address associated with suspicious or malicious network activity can be used as an indicator during an investigation.</p>
+
+<p><strong>Domain Names:</strong> Suspicious domains may be identified through DNS queries, web traffic, or threat intelligence sources.</p>
+
+<p><strong>File Hashes:</strong> A hash such as SHA-256 can be used to identify a specific file. Security teams can compare a suspicious file's hash with known threat intelligence.</p>
+
+<p><strong>File Names and Paths:</strong> Unusual files, locations, or executable names can provide additional evidence during an endpoint investigation.</p>
+
+<p><strong>Email Indicators:</strong> Sender addresses, malicious links, attachments, and other email characteristics can help identify phishing activity.</p>
+
+<p><strong>URLs:</strong> Suspicious URLs found in emails, browser activity, or network logs can be investigated as potential indicators.</p>
+
+<h3>IoCs in Security Logs</h3>
+<p>IoCs can appear in many different types of logs. For example, a suspicious IP address may appear in firewall or network logs, while a suspicious domain may appear in DNS logs.</p>
+
+<p>A file hash or process name may be found in endpoint security logs, while a suspicious URL may appear in web proxy or HTTP logs.</p>
+
+<h3>How SOC Analysts Use IoCs</h3>
+<p>When an IoC is identified, analysts can search across available security data to determine whether the same indicator appears elsewhere.</p>
+
+<p>For example, if a suspicious IP address is found in one alert, the analyst can search historical network logs to determine whether other systems communicated with that address.</p>
+
+<p>This can help identify related activity and determine the possible scope of an investigation.</p>
+
+<h3>IoCs and Threat Intelligence</h3>
+<p>Threat intelligence sources can provide information about indicators associated with known malicious activity.</p>
+
+<p>An analyst may compare an IP address, domain, URL, or file hash found during an investigation with available threat intelligence. However, an indicator should not be treated as proof of malicious activity without considering its context and reliability.</p>
+
+<h3>IoC Example</h3>
+<p>Imagine a user visits a suspicious website and the endpoint later makes a connection to an unusual external IP address.</p>
+
+<p>The analyst can investigate the DNS request, destination IP, process responsible for the connection, timestamps, and other related events.</p>
+
+<p>If the same destination appears on multiple systems or is associated with known malicious activity, it can provide additional evidence for the investigation.</p>
+
+<h3>IoCs vs Normal Activity</h3>
+<p>Not every suspicious-looking indicator is malicious. IP addresses can be shared, domains can change ownership, and legitimate software can communicate with external services.</p>
+
+<p>For this reason, analysts should combine IoCs with other evidence such as user activity, process information, network connections, and timelines.</p>
+
+<h3>IoCs and Incident Response</h3>
+<p>IoCs can also help incident response teams search for affected systems and determine whether an identified threat exists elsewhere in the environment.</p>
+
+<p>After an incident, the identified indicators can be used to search historical logs and check whether similar activity occurred before the original alert.</p>
+
+<h3>Key Takeaway</h3>
+<p>Indicators of Compromise provide useful evidence during security investigations. Common IoCs include IP addresses, domains, URLs, file hashes, filenames, and suspicious email characteristics.</p>
+
+<p>The important part of working with IoCs is not simply finding a matching indicator. Analysts need to examine its context, connect it with other events, and determine what the evidence shows.</p>
+
+
+
+
+
+        
+    </div>
+
+    <div class="learn-image">
+      <img
+        src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1790100777/Screenshot_From_2026-09-22_23-40-34_e96y1d.png"
+        alt="BIT+ cybersecurity learning visual">
+    </div>
+  </div>
+
+            
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>BIT+ &mdash; Practical Cybersecurity Knowledge</p>
+        <a href="about.html">About</a>
+        <a href="privacy-Policy.html">Privacy Policy</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="contact.html">Contact</a>
+    </footer>
+
+</body>
+</html>
