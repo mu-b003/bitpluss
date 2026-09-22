@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>BIT+ | Cybersecurity Notes</title>
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2368362978436357"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="BIT+ Home">BIT<span>+</span></a>
+        </div>
+    </header>
+
+    <main class="content">
+      
+
+      
+
+       
+
+        <section class="notes">
+            <h2>What Is Network Traffic Analysis?</h2>
+
+
+  <div class="learn-layout">
+    <div class="learn-links">
+    <h3>What Is Network Traffic Analysis?</h3>
+<p>Network traffic analysis is the process of examining network communications to understand what systems are communicating, what protocols are being used, and whether the activity appears normal or suspicious.</p>
+
+<p>For SOC analysts, network traffic provides important evidence when investigating security alerts, suspicious connections, malware activity, and potential attacks.</p>
+
+<h3>What Can Network Traffic Show?</h3>
+<p>Network traffic can provide information about the source and destination of a connection, ports, protocols, timestamps, data flows, and other communication details.</p>
+
+<p>Depending on the available monitoring tools, analysts may also be able to examine DNS requests, HTTP activity, TLS connections, and other network metadata.</p>
+
+<h3>Important Network Traffic Fields</h3>
+<p><strong>Source IP:</strong> The system initiating the communication.</p>
+
+<p><strong>Destination IP:</strong> The system receiving the communication.</p>
+
+<p><strong>Source and Destination Ports:</strong> Ports help identify the services or applications involved in a connection.</p>
+
+<p><strong>Protocol:</strong> Common protocols include TCP, UDP, DNS, HTTP, HTTPS, and SSH.</p>
+
+<p><strong>Timestamp:</strong> Helps establish when communication occurred and build an investigation timeline.</p>
+
+<p><strong>Direction:</strong> Shows whether traffic is entering or leaving a system, which can be useful when investigating unusual outbound connections.</p>
+
+<h3>Normal vs Suspicious Traffic</h3>
+<p>Not every unusual connection is malicious. Security analysts need to understand what normal network behavior looks like before identifying anomalies.</p>
+
+<p>Potentially suspicious patterns may include unexpected external connections, repeated connections to an unfamiliar destination, unusual ports, large unexpected data transfers, or communication that does not match the normal behavior of the system.</p>
+
+<h3>Common Network Patterns Analysts Investigate</h3>
+<p><strong>Port Scanning:</strong> A system attempting connections to many ports or hosts may indicate scanning activity.</p>
+
+<p><strong>Repeated Connections:</strong> Regular connections to the same external destination may require investigation, especially when they are unexpected.</p>
+
+<p><strong>Unusual DNS Requests:</strong> Unexpected domains or unusual DNS behavior can provide useful evidence during an investigation.</p>
+
+<p><strong>Unexpected Outbound Traffic:</strong> A system communicating with an unfamiliar external service may require additional investigation.</p>
+
+<h3>How SOC Analysts Analyze Network Traffic</h3>
+<p>A basic investigation can follow this process:</p>
+
+<p><strong>Source → Destination → Protocol → Port → Time → Pattern → Context</strong></p>
+
+<p>The analyst first identifies the systems involved and then examines the protocol, ports, timestamps, and frequency of communication.</p>
+
+<p>Additional context can come from DNS logs, firewall logs, endpoint events, authentication logs, threat intelligence, or packet captures.</p>
+
+<h3>Network Traffic and Wireshark</h3>
+<p>Wireshark is a network protocol analyzer that can be used to inspect captured network packets.</p>
+
+<p>An analyst can examine packet details such as Ethernet frames, IP addresses, TCP or UDP information, ports, DNS queries, and other protocol fields.</p>
+
+<p>Packet analysis can provide deeper evidence when log information alone is not enough to understand a network event.</p>
+
+<h3>Example Investigation</h3>
+<p>Imagine an endpoint generates an alert because it repeatedly connects to an unfamiliar external IP address.</p>
+
+<p>The analyst can examine the destination, connection frequency, destination port, DNS activity, the process responsible for the connection, and whether other systems contacted the same destination.</p>
+
+<p>Combining these sources can help determine whether the connection is expected, suspicious, or requires further investigation.</p>
+
+<h3>Why Network Traffic Matters in a SOC</h3>
+<p>Network monitoring provides visibility into communication between systems. It can help analysts detect suspicious connections, investigate alerts, understand attack activity, and build timelines during incidents.</p>
+
+<p>Network evidence becomes even more useful when correlated with endpoint, authentication, DNS, and other security logs.</p>
+
+<h3>Key Takeaway</h3>
+<p>Network traffic analysis helps SOC analysts understand how systems communicate and identify patterns that may require investigation.</p>
+
+<p>The goal is not to treat every unusual connection as an attack. Analysts should examine the communication pattern, compare it with expected behavior, and correlate network evidence with other security information.</p>
+
+
+
+
+
+        
+    </div>
+
+    <div class="learn-image">
+      <img
+        src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1790100777/Screenshot_From_2026-09-22_23-40-34_e96y1d.png"
+        alt="BIT+ cybersecurity learning visual">
+    </div>
+  </div>
+
+            
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>BIT+ &mdash; Practical Cybersecurity Knowledge</p>
+        <a href="about.html">About</a>
+        <a href="privacy-Policy.html">Privacy Policy</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="contact.html">Contact</a>
+    </footer>
+
+</body>
+</html>
