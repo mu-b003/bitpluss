@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>BIT+ | Cybersecurity Notes</title>
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2368362978436357"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="BIT+ Home">BIT<span>+</span></a>
+        </div>
+    </header>
+
+    <main class="content">
+      
+        
+
+      
+
+       
+
+        <section class="notes">
+            <h2>What Is MITRE ATT&CK?</h2>
+
+
+  <div class="learn-layout">
+    <div class="learn-links">
+    <h3>What Is MITRE ATT&CK?</h3>
+<p>MITRE ATT&CK is a knowledge base and framework that documents how attackers operate during cyber attacks.</p>
+
+<p>It organizes known adversary behaviors into <strong>tactics</strong> and <strong>techniques</strong>, helping security teams understand, detect, investigate, and respond to suspicious activity.</p>
+
+<h3>What Are Tactics?</h3>
+<p>Tactics describe the <strong>goal</strong> an attacker is trying to achieve during a stage of an attack.</p>
+
+<p>Examples include <strong>Initial Access</strong>, <strong>Execution</strong>, <strong>Persistence</strong>, <strong>Privilege Escalation</strong>, <strong>Credential Access</strong>, <strong>Discovery</strong>, <strong>Lateral Movement</strong>, <strong>Collection</strong>, and <strong>Exfiltration</strong>.</p>
+
+<p>Thinking about tactics helps analysts understand where a particular activity fits within a larger attack.</p>
+
+<h3>What Are Techniques?</h3>
+<p>Techniques describe <strong>how</strong> an attacker may achieve a particular objective.</p>
+
+<p>For example, under the Execution tactic, an attacker may use techniques involving command and scripting interpreters. Under Credential Access, different techniques can describe methods used to obtain credentials.</p>
+
+<p>Some techniques also contain <strong>sub-techniques</strong> that provide more specific descriptions of attacker behavior.</p>
+
+<h3>How SOC Analysts Use MITRE ATT&CK</h3>
+<p>SOC analysts can use ATT&CK to add context to alerts and investigations.</p>
+
+<p><strong>Alert → Evidence → Identify Behavior → Map to ATT&CK → Investigate</strong></p>
+
+<p>For example, an alert showing suspicious PowerShell activity can be investigated by examining the command, parent process, user, host, timestamp, and related events. The observed behavior can then be mapped to the relevant ATT&CK technique when appropriate.</p>
+
+<h3>MITRE ATT&CK and Detection</h3>
+<p>ATT&CK can help security teams identify what types of attacker behavior they should be able to detect.</p>
+
+<p>Instead of focusing only on individual indicators such as IP addresses or file hashes, analysts can also look for behaviors that may remain relevant even when attackers change their infrastructure.</p>
+
+<h3>MITRE ATT&CK and Threat Hunting</h3>
+<p>Threat hunters can use ATT&CK techniques as a starting point for proactive searches.</p>
+
+<p>For example, a hunter may choose a technique related to command execution and search endpoint or process logs for unusual command-line activity.</p>
+
+<p>This approach helps turn a general question such as <strong>"Is there suspicious activity in this environment?"</strong> into a more focused investigation.</p>
+
+<h3>MITRE ATT&CK and Incident Investigation</h3>
+<p>During an investigation, multiple events may represent different stages of an attack.</p>
+
+<p>Mapping relevant behaviors to ATT&CK can help analysts organize those events and understand how they may be connected. It can also help communicate findings using a common security vocabulary.</p>
+
+<h3>Simple Example</h3>
+<p>Imagine an analyst discovers that a suspicious script was executed on a Windows system.</p>
+
+<p>The analyst can examine the process that launched the script, the user who executed it, the command-line arguments, network connections, and other related events.</p>
+
+<p>If the behavior matches a documented ATT&CK technique, the analyst can use that technique to describe the observed behavior and continue looking for related activity.</p>
+
+<h3>ATT&CK Is Not an Attack Tool</h3>
+<p>MITRE ATT&CK is primarily a knowledge base and framework for understanding adversary behavior. It is not a SIEM, antivirus product, or incident-response platform.</p>
+
+<p>Security teams use it alongside tools such as SIEM, EDR, threat intelligence platforms, and other security technologies.</p>
+
+<h3>Key Takeaway</h3>
+<p>MITRE ATT&CK gives SOC teams a structured way to understand how attackers behave.</p>
+
+<p>For a SOC analyst, learning ATT&CK helps connect security events and alerts to broader attacker tactics and techniques, making investigations and detection work more structured.</p>
+
+
+
+
+
+        
+    </div>
+
+    <div class="learn-image">
+      <img
+        src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1790100777/Screenshot_From_2026-09-22_23-40-34_e96y1d.png"
+        alt="BIT+ cybersecurity learning visual">
+    </div>
+  </div>
+
+            
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>BIT+ &mdash; Practical Cybersecurity Knowledge</p>
+        <a href="about.html">About</a>
+        <a href="privacy-Policy.html">Privacy Policy</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="contact.html">Contact</a>
+    </footer>
+
+</body>
+</html>
