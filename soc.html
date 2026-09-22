@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>BIT+ | Cybersecurity Notes</title>
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2368362978436357"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="BIT+ Home">BIT<span>+</span></a>
+        </div>
+    </header>
+
+    <main class="content">
+      
+        <h3></h3>
+       
+        <section class="notes">
+            <h2>How a Security Operations Center Works</h2>
+
+
+  <div class="learn-layout">
+    <div class="learn-links">
+    <h3>How a Security Operations Center Works</h3>
+
+<p>A <strong>Security Operations Center (SOC)</strong> is a team responsible for monitoring an organization's systems, detecting suspicious activity, investigating security alerts, and responding to potential security incidents.</p>
+
+<p>In simple terms, a SOC helps an organization answer four important questions:</p>
+
+<p><strong>What is happening? Is it suspicious? What happened? What should we do about it?</strong></p>
+
+<p>A SOC combines <strong>people, processes, and security technologies</strong> to continuously monitor the organization's digital environment.</p>
+
+<h3>What Does a SOC Monitor?</h3>
+
+<p>A SOC can monitor many different sources of security information, including user login activity, Windows and Linux logs, network traffic, firewalls, servers, endpoints, DNS requests, web activity, cloud services, and security tools.</p>
+
+<p>For example, a single failed login may not be important. But hundreds of failed logins followed by a successful login could require investigation.</p>
+
+<p>This is why SOC analysts look at <strong>patterns and context</strong>, rather than treating every event as an attack.</p>
+
+<h3>How Does a SOC Work?</h3>
+
+<p>A simplified SOC workflow looks like this:</p>
+
+<p><strong>Monitor → Detect → Triage → Investigate → Respond → Recover</strong></p>
+
+<h3>Monitor</h3>
+
+<p>Security tools continuously collect activity from systems and networks. This can include authentication events, endpoint activity, network connections, firewall events, DNS requests, and other security-related information.</p>
+
+<h3>Detect</h3>
+
+<p>Detection rules and security platforms look for activity that may be suspicious. When activity matches a detection condition, the security system can generate an alert for the SOC team.</p>
+
+<h3>Triage</h3>
+
+<p>An analyst reviews the alert and determines whether the activity appears to be normal, suspicious, or requires deeper investigation.</p>
+
+<p>The analyst may ask: Which user was involved? Which device was affected? Where did the activity originate? When did it happen? What happened before and after the alert? Are other systems involved?</p>
+
+<h3>Investigate</h3>
+
+<p>The analyst collects additional evidence and connects related events to understand what actually happened.</p>
+
+<p>Investigation may involve authentication logs, endpoint activity, network connections, process information, DNS requests, and other available security data.</p>
+
+<h3>Respond</h3>
+
+<p>If malicious activity is confirmed, the organization can take appropriate response actions, such as isolating an affected system, disabling a compromised account, blocking malicious activity, or escalating the incident to the appropriate security team.</p>
+
+<h3>Recover</h3>
+
+<p>Affected systems are restored and monitored, and the organization reviews what happened to improve its security controls and reduce the possibility of similar incidents in the future.</p>
+
+<h3>Events, Alerts, and Incidents</h3>
+
+<p>These terms are important for understanding SOC work.</p>
+
+<p>An <strong>event</strong> is an activity recorded by a system.</p>
+
+<p>An <strong>alert</strong> is a notification that certain activity may require attention.</p>
+
+<p>An <strong>incident</strong> is a security event that has been determined to require a formal response.</p>
+
+<p>For example:</p>
+
+<p><strong>Failed login → Multiple failed logins → Alert → Investigation → Confirmed incident</strong></p>
+
+<p>Not every alert is a security incident. Analysts must investigate the available evidence before reaching a conclusion.</p>
+
+<h3>Who Works in a SOC?</h3>
+
+<p>SOC teams can have different roles depending on the organization.</p>
+
+<p><strong>SOC Analyst:</strong> Monitors and investigates security alerts.</p>
+
+<p><strong>Incident Responder:</strong> Handles confirmed security incidents and helps contain and recover from them.</p>
+
+<p><strong>Threat Hunter:</strong> Proactively searches for suspicious activity that automated detections may have missed.</p>
+
+<p><strong>Detection Engineer:</strong> Develops and improves security detections and monitoring rules.</p>
+
+<p><strong>SOC Manager:</strong> Coordinates the team, processes, and security operations.</p>
+
+<p>Smaller organizations may combine several of these responsibilities into a smaller number of roles.</p>
+
+<h3>Common SOC Technologies</h3>
+
+<p>SOC teams use different technologies to collect and analyze security information.</p>
+
+<h3>SIEM</h3>
+
+<p>A <strong>Security Information and Event Management (SIEM)</strong> platform collects and analyzes logs from multiple sources.</p>
+
+<p>Examples include Splunk, Microsoft Sentinel, and Elastic Security.</p>
+
+<h3>EDR</h3>
+
+<p><strong>Endpoint Detection and Response (EDR)</strong> provides visibility into activity on computers and servers, including processes, files, and network connections.</p>
+
+<h3>IDS/IPS</h3>
+
+<p>Intrusion Detection and Prevention systems monitor network activity for potentially malicious behavior.</p>
+
+<h3>SOAR</h3>
+
+<p>Security Orchestration, Automation and Response platforms can automate repetitive investigation and response tasks.</p>
+
+<p>These technologies support analysts, but human investigation and decision-making remain important.</p>
+
+<h3>What Does a SOC Analyst Actually Do?</h3>
+
+<p>A SOC analyst may spend a large part of the day reviewing alerts and investigating suspicious activity.</p>
+
+<p>A typical investigation might look like:</p>
+
+<p><strong>Security Alert → Review the alert → Check the user and device → Examine related logs → Check network activity → Build a timeline → Determine what happened → Document the findings</strong></p>
+
+<p>The analyst does not simply ask:</p>
+
+<p><strong>"Is this an attack?"</strong></p>
+
+<p>They also ask:</p>
+
+<p><strong>"What evidence supports that conclusion?"</strong></p>
+
+<p>This evidence-based approach is an important part of security operations.</p>
+
+<h3>A Simple SOC Example</h3>
+
+<p>Imagine that an organization detects several failed login attempts against an administrative account.</p>
+
+<p>At first, the SOC receives an alert.</p>
+
+<p>The analyst checks the source address and discovers that many attempts came from the same location.</p>
+
+<p>The analyst then finds that one login eventually succeeded.</p>
+
+<p>The investigation continues by checking what happened after the successful login, whether the account was used to access sensitive systems, whether unusual commands were executed, whether the system communicated with unexpected destinations, and whether other accounts or systems were involved.</p>
+
+<p>The investigation may determine that the activity was legitimate or that it represents a security incident.</p>
+
+<p>The important point is that <strong>the initial alert is only the beginning of the investigation.</strong></p>
+
+<h3>Why Is a SOC Important?</h3>
+
+<p>Organizations generate enormous amounts of digital activity every day.</p>
+
+<p>Without monitoring and investigation, suspicious activity can be difficult to identify among normal operations.</p>
+
+<p>A SOC provides a structured way to monitor security activity, detect suspicious behavior, investigate potential threats, respond to incidents, document security events, and improve security controls over time.</p>
+
+<p>A SOC is therefore not simply a room full of dashboards. It is a security operation built around <strong>continuous monitoring, investigation, response, and improvement.</strong></p>
+
+<h3>Key Takeaway</h3>
+
+<p>The simplest way to understand a SOC is:</p>
+
+<p><strong>A SOC monitors an organization's digital environment, investigates suspicious activity, and helps respond to security incidents.</strong></p>
+
+<p>The core process can be remembered as:</p>
+
+<p><strong>Monitor → Detect → Triage → Investigate → Respond → Recover → Improve</strong></p>
+
+<p>Understanding this workflow provides a foundation for learning more advanced SOC topics such as <strong>SIEM, log analysis, incident response, threat intelligence, EDR, MITRE ATT&amp;CK, and threat hunting.</strong></p>
+
+
+
+    </div>
+
+   <div class="learn-image">
+      <img
+        src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1790100777/Screenshot_From_2026-09-22_23-40-34_e96y1d.png"
+        alt="BIT+ cybersecurity learning visual">
+    </div>
+  </div>
+
+            
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>BIT+ &mdash; Practical Cybersecurity Knowledge</p>
+        <a href="about.html">About</a>
+        <a href="privacy-Policy.html">Privacy Policy</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="contact.html">Contact</a>
+    </footer>
+
+</body>
+</html>
