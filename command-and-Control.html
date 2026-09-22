@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <title>BIT+ | Cybersecurity Notes</title>
+    <link rel="stylesheet" href="style.css">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2368362978436357"
+     crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="index.html" class="logo" aria-label="BIT+ Home">BIT<span>+</span></a>
+        </div>
+    </header>
+
+    <main class="content">
+      
+       
+
+      
+
+       
+
+        <section class="notes">
+            <h2>What Is Command and Control?</h2>
+
+
+  <div class="learn-layout">
+    <div class="learn-links">
+    <h3>What Is Command and Control?</h3>
+<p>Command and Control, commonly called <strong>C2</strong>, refers to the communication channel an attacker uses to interact with compromised systems.</p>
+
+<p>After a system is compromised, an attacker may use C2 communication to send instructions, receive information, maintain access, or perform additional actions on the affected system.</p>
+
+<h3>How Does C2 Communication Work?</h3>
+<p>A compromised device may communicate with infrastructure controlled by an attacker. The communication can use different network protocols and may attempt to blend into normal network traffic.</p>
+
+<p>From a SOC perspective, the important question is whether the communication is expected for that system and application.</p>
+
+<h3>Common C2 Indicators</h3>
+<p><strong>Repeated Outbound Connections:</strong> A device repeatedly connecting to the same unusual destination may require investigation.</p>
+
+<p><strong>Unfamiliar Domains:</strong> Unexpected DNS queries or connections to unfamiliar domains can provide useful clues.</p>
+
+<p><strong>Unusual Destinations:</strong> Connections to external IP addresses that are not normally used by the organization may require additional investigation.</p>
+
+<p><strong>Regular Communication Patterns:</strong> Repeated connections occurring at similar intervals can sometimes be a useful behavioral indicator.</p>
+
+<p><strong>Unexpected Processes:</strong> A process making network connections that do not match its expected behavior may require investigation.</p>
+
+<h3>How SOC Analysts Detect C2 Activity</h3>
+<p>C2 detection often involves combining network and endpoint evidence.</p>
+
+<p><strong>Connection → Destination → DNS → Process → Timeline → Context</strong></p>
+
+<p>The analyst can examine the destination IP or domain, connection frequency, protocol, destination port, DNS activity, and the process responsible for the connection.</p>
+
+<h3>C2 and DNS Logs</h3>
+<p>DNS logs can provide useful evidence during a C2 investigation. A compromised system may repeatedly query a domain before establishing outbound connections.</p>
+
+<p>Analysts can compare DNS activity with network connections and endpoint events to determine whether the communication is expected.</p>
+
+<h3>C2 and Endpoint Activity</h3>
+<p>Network activity becomes more useful when it can be connected to a process on the endpoint.</p>
+
+<p>For example, if an unusual application repeatedly communicates with an unfamiliar external destination, the analyst can investigate the process, user, file path, execution time, and related events.</p>
+
+<h3>Simple C2 Investigation Example</h3>
+<p>Suppose a workstation repeatedly connects to an unfamiliar external IP address every few minutes.</p>
+
+<p>The analyst can check whether the destination is expected, identify any related DNS queries, determine which process initiated the connection, and search other systems for similar activity.</p>
+
+<p>If additional evidence indicates that the communication is associated with suspicious software or known malicious infrastructure, the investigation can be escalated according to the organization's incident response process.</p>
+
+<h3>C2 and MITRE ATT&CK</h3>
+<p>Command and Control is also represented as a tactic in the <strong>MITRE ATT&CK</strong> framework.</p>
+
+<p>ATT&CK documents different techniques that adversaries may use to communicate with compromised systems. SOC analysts can use this information to understand behaviors and develop or investigate relevant detections.</p>
+
+<h3>C2 Detection Challenges</h3>
+<p>Detecting C2 is not always simple because legitimate applications also communicate regularly with external services.</p>
+
+<p>For this reason, analysts should not classify a connection as malicious based only on its destination or frequency. Process information, DNS activity, historical behavior, threat intelligence, and other evidence should be considered together.</p>
+
+<h3>Key Takeaway</h3>
+<p>Command and Control describes communication between a compromised system and attacker-controlled infrastructure.</p>
+
+<p>For SOC analysts, detecting potential C2 activity involves examining network connections, DNS requests, processes, destinations, timing patterns, and related security events to determine whether the communication is legitimate or suspicious.</p>
+
+
+
+
+
+        
+    </div>
+
+    <div class="learn-image">
+      <img
+        src="https://res.cloudinary.com/dlrvcieqk/image/upload/v1790100777/Screenshot_From_2026-09-22_23-40-34_e96y1d.png"
+        alt="BIT+ cybersecurity learning visual">
+    </div>
+  </div>
+
+            
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>BIT+ &mdash; Practical Cybersecurity Knowledge</p>
+        <a href="about.html">About</a>
+        <a href="privacy-Policy.html">Privacy Policy</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="contact.html">Contact</a>
+    </footer>
+
+</body>
+</html>
